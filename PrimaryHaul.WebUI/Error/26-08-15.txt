@@ -4,3 +4,15 @@ Log Entry :
  IP :  ::1 
 Error in: http://localhost:35449/changeprofile.aspx?r=A1&p=pEauQDD9SvzfKGHbJ9NjFg==&id=MmT1vOzJptk=. Error Message:Column 'contact_preson' does not belong to table Table.
 __________________________
+
+Log Entry : 
+26/08/2015 22:52:03
+ IP :  ::1 
+Error in: http://localhost:35449/addnew.aspx?type=HL&r=A1&p=pEauQDD9SvzfKGHbJ9NjFg==&id=MmT1vOzJptk=. Error Message:SelAllUserName >>PH_UserProfile_SelUserName >>Object reference not set to an instance of an object.
+__________________________
+
+Log Entry : 
+26/08/2015 22:55:26
+ IP :  ::1 
+Error in: http://localhost:35449/addnew.aspx?type=HL&r=A1&p=pEauQDD9SvzfKGHbJ9NjFg==&id=MmT1vOzJptk=. Error Message:PH_Haulier_SelByTaxId >>Object reference not set to an instance of an object.
+__________________________

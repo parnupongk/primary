@@ -43,7 +43,7 @@ namespace PrimaryHaul_WS
                 object oUserName = SqlHelper.ExecuteScalar(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_UserProfileSelUserName"
                     ,new SqlParameter[] {new SqlParameter("@UserName",strUserName) });
 
-                return oUserName.ToString();
+                return oUserName == null ? "" : oUserName.ToString();
             }
             catch(Exception ex)
             {

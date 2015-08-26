@@ -65,6 +65,7 @@
     <Compile Include="PH_DayofPasswrdExp.cs" />
     <Compile Include="PH_EncrptHelper.cs" />
     <Compile Include="PH_ExceptionManager.cs" />
+    <Compile Include="PH_HaulierInfo.cs" />
     <Compile Include="PH_MenuInfo.cs" />
     <Compile Include="PH_MenuRole.cs" />
     <Compile Include="PH_UserProfile.cs" />

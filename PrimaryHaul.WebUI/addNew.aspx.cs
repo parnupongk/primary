@@ -67,6 +67,9 @@ namespace PrimaryHaul.WebUI
                 if(PHCore_User.SelAllUserName(AppCode.strConnDB, txtUserName.Text).Trim() != "")
                 {
                     lblErrUserName.Text = ConfigurationManager.AppSettings["PH_AddNew_UserName_Err"];
+                }else if(GetRoleId() == PHCore_Status.RoleID.HL.ToString() && PH_HaulierInfo.PH_Haulier_SelByTaxId(AppCode.strConnDB,txtTaxId.Text).Trim() == "" )
+                {
+                    lblErrHaulierCode.Text = ConfigurationManager.AppSettings["PH_AddNew_Haulier_Err"];
                 }
                 else InsertUserProfile();
 

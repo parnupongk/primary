@@ -165,6 +165,7 @@
                         <asp:Label runat="server" AssociatedControlID="txtHaulierCode" CssClass="col-md-3 control-label">Haulier Code(Tax ID)</asp:Label>
                         <div class="col-md-9">
                             <asp:TextBox runat="server" ID="txtHaulierCode" CssClass="form-control" onkeypress="return isNumberKey(event)"   MaxLength="13" />
+                            <asp:Label ID="lblErrHaulierCode" CssClass="text-danger" runat="server"></asp:Label>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
                                 ErrorMessage="The Haulier Code(Tax ID) field is required."
                                 ForeColor="Red"
