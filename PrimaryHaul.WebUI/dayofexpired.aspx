@@ -11,7 +11,7 @@
                         <div class="form-group">
                             <asp:Label runat="server" AssociatedControlID="txtDayofExpired" CssClass="col-md-2 control-label">Day of Expired</asp:Label>
                             <div class="col-md-10">
-                                <asp:TextBox runat="server" ID="txtDayofExpired" Width="150px" onkeypress="return isNumberKey(event)" CssClass="form-control" />
+                                <asp:TextBox autocomplete="off" runat="server" ID="txtDayofExpired" Width="150px" onkeypress="return isNumberKey(event)" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDayofExpired"
                                     CssClass="text-danger" ErrorMessage="The Day of Expired field is required." />
                             </div>

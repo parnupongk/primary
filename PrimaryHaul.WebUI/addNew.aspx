@@ -116,7 +116,7 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtUserName" CssClass="col-md-3 control-label">User Name</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtUserName" CssClass="form-control" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtUserName" CssClass="form-control" />
                             <asp:Label ID="lblErrUserName" CssClass="text-danger" runat="server"></asp:Label>
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUserName"
                                 CssClass="text-danger" ErrorMessage="The Username field is required." />
@@ -125,7 +125,7 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPassword" CssClass="col-md-3 control-label">Password</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" MaxLength="8" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtPassword" CssClass="form-control" MaxLength="8" />
                             <asp:RegularExpressionValidator ID="regexpName" runat="server"
                                 ErrorMessage="Passwords must have at least 8 characters and contain at least two of the following: uppercase letters, lowercase letters, numbers, and symbols."
                                 ForeColor="Red" Font-Size="Small"
@@ -150,21 +150,21 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPasswordConf" CssClass="col-md-3 control-label">Password Confirm</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtPasswordConf" TextMode="Password" CssClass="form-control" MaxLength="8" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtPasswordConf" TextMode="Password" CssClass="form-control" MaxLength="8" />
                             <asp:CompareValidator runat="server" ID="Comp1" ForeColor="Red" ControlToValidate="txtPassword" ControlToCompare="txtPasswordConf" Text="These passwords don't match." />
                         </div>
                     </div>
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPasswrdExpried" CssClass="col-md-3 control-label">Password Expired Date</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtPasswrdExpried" CssClass="form-control" Enabled="false" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtPasswrdExpried" CssClass="form-control" Enabled="false" />
                             <br />
                         </div>
                     </div>
                     <div id="divHaulier" runat="server" class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtHaulierCode" CssClass="col-md-3 control-label">Haulier Code(Tax ID)</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtHaulierCode" CssClass="form-control" onkeypress="return isNumberKey(event)"   MaxLength="13" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtHaulierCode" CssClass="form-control" onkeypress="return isNumberKey(event)"   MaxLength="13" />
                             <asp:Label ID="lblErrHaulierCode" CssClass="text-danger" runat="server"></asp:Label>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
                                 ErrorMessage="The Haulier Code(Tax ID) field is required."
@@ -176,7 +176,7 @@
                     <div id="divVender" runat="server" class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtTaxId" CssClass="col-md-3 control-label">Tax ID</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtTaxId" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="5" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtTaxId" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="5" />
                             <asp:HiddenField ID="hfCustomerId" runat="server" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtTaxId" CssClass="text-danger" ErrorMessage="The Tax ID is required." />
                         </div>
@@ -184,35 +184,35 @@
                     <div id="divContact" runat="server" class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtContact" CssClass="col-md-3 control-label">Contact Point</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtContact" CssClass="form-control" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtContact" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtContact" CssClass="text-danger" ErrorMessage="The Contact field is required." />
                         </div>
                     </div>
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtEngName" CssClass="col-md-3 control-label">English Name</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtEngName" CssClass="form-control" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtEngName" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEngName" CssClass="text-danger" ErrorMessage="The Name field is required." />
                         </div>
                     </div>
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtTHAName" CssClass="col-md-3 control-label">ชื่อภาษาไทย</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtTHAName" CssClass="form-control" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtTHAName" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtTHAName" CssClass="text-danger" ErrorMessage="The Name field is required." />
                         </div>
                     </div>
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtMobile" CssClass="col-md-3 control-label">Mobile Number</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtMobile" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="10" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtMobile" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="10" />
                             <br />
                         </div>
                     </div>
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtEmail" CssClass="col-md-3 control-label">Email</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" TextMode="Email" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtEmail" CssClass="form-control" TextMode="Email" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEmail"
                                 CssClass="text-danger" ErrorMessage="The email field is required." />
                         </div>

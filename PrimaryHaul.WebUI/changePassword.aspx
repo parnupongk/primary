@@ -39,7 +39,7 @@
 
                         <asp:Label runat="server" AssociatedControlID="txtPassword" CssClass="col-md-2 control-label">Password<asp:RequiredFieldValidator runat="server" ControlToValidate="txtPassword" CssClass="text-danger" ErrorMessage=" * " /></asp:Label>
                         <div class="col-md-10">
-                            <asp:TextBox runat="server" ID="txtPassword"  Width="200px" CssClass="form-control" MaxLength="8" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtPassword"  Width="200px" CssClass="form-control" MaxLength="8" />
                             <asp:RegularExpressionValidator ID="regexpName" runat="server"
                                 ErrorMessage="Passwords must have at least 8 characters and contain at least two of the following: uppercase letters, lowercase letters, numbers, and symbols."
                                 ForeColor="Red"
@@ -64,13 +64,13 @@
                     </div>
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPasswordConf" CssClass="col-md-2 control-label">Password Confirm<asp:RequiredFieldValidator runat="server" ControlToValidate="txtPasswordConf" CssClass="text-danger" ErrorMessage=" * " /></asp:Label><div class="col-md-6">
-                            <asp:TextBox runat="server" ID="txtPasswordConf"  Width="200px" TextMode="Password" CssClass="form-control" MaxLength="8" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtPasswordConf"  Width="200px" TextMode="Password" CssClass="form-control" MaxLength="8" />
                             <asp:CompareValidator runat="server" ID="Comp1" ForeColor="Red" ControlToValidate="txtPassword" ControlToCompare="txtPasswordConf" Text=" These passwords don't match." />
                         </div>
                     </div>
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPasswordExpired"  CssClass="col-md-2 control-label">Password Expired</asp:Label><div class="col-md-6">
-                            <asp:TextBox runat="server" ID="txtPasswordExpired"  Width="200px" CssClass="form-control" Enabled="false" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtPasswordExpired"  Width="200px" CssClass="form-control" Enabled="false" />
                             <br />
                         </div>
                     </div>

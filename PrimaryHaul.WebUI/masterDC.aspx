@@ -72,7 +72,7 @@
                             <div class="form-group">
                                 <asp:Label runat="server" AssociatedControlID="txtDcNo" CssClass="col-md-2 control-label">DC No.</asp:Label>
                                 <div class="col-md-10">
-                                    <asp:TextBox runat="server" ID="txtDcNo" CssClass="form-control" />
+                                    <asp:TextBox autocomplete="off" runat="server" ID="txtDcNo" CssClass="form-control" />
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDcNo"
                                         CssClass="text-danger" ErrorMessage="The DC No. field is required." />
                                 </div>
@@ -80,7 +80,7 @@
                             <div class="form-group">
                                 <asp:Label runat="server" AssociatedControlID="txtDcName" CssClass="col-md-2 control-label">DC Name</asp:Label>
                                 <div class="col-md-10">
-                                    <asp:TextBox runat="server" ID="txtDcName" CssClass="form-control" />
+                                    <asp:TextBox autocomplete="off" runat="server" ID="txtDcName" CssClass="form-control" />
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDcNo"
                                         CssClass="text-danger" ErrorMessage="The DC Name field is required." />
                                 </div>
@@ -88,7 +88,7 @@
                             <div class="form-group">
                                 <asp:Label runat="server" AssociatedControlID="txtDcName" CssClass="col-md-2 control-label">Start Date</asp:Label>
                                 <div class="col-md-10">
-                                    <asp:TextBox runat="server" ID="txtStartDate" autocomplete="off" CssClass="form-control" /><br />
+                                    <asp:TextBox autocomplete="off" runat="server" ID="txtStartDate" autocomplete="off" CssClass="form-control" /><br />
                                     <asp:CalendarExtender ID="defaultCalendarExtender" Format="MM/dd/yyyy" runat="server" TargetControlID="txtStartDate" />
                                 </div>
                             </div>

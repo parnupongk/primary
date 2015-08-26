@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtUserName" CssClass="col-md-4 col-xs-4 control-label">User Name</asp:Label>
                         <div class="col-md-8 col-xs-8">
-                            <asp:TextBox runat="server" ID="txtUserName" CssClass="form-control" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtUserName" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUserName"
                                 CssClass="text-danger" ErrorMessage="The username field is required." />
                         </div>
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPassword" CssClass="col-md-4 col-xs-4 control-label">Password</asp:Label>
                         <div class="col-md-8 col-xs-8">
-                            <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" CssClass="form-control" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtPassword" TextMode="Password" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPassword" CssClass="text-danger" ErrorMessage="The password field is required." />
                         </div>
                     </div>
