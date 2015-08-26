@@ -174,10 +174,13 @@
                     <div id="divVender" runat="server" class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtTaxId" CssClass="col-md-3 control-label">Tax ID</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtTaxId" CssClass="form-control" />
-
+                            <asp:TextBox runat="server" ID="txtTaxId" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="5" />
                             <asp:HiddenField ID="hfCustomerId" runat="server" />
-
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
+                                ErrorMessage="The Haulier Code(Tax ID) field is required."
+                                ForeColor="Red"
+                                ControlToValidate="txtTaxId"
+                                ValidationExpression="\d{5}" />
                         </div>
                     </div>
                     <div id="divContact" runat="server" class="form-group">
