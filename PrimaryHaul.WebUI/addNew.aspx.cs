@@ -24,6 +24,7 @@ namespace PrimaryHaul.WebUI
                     if( strRoleId != "" )
                     eStatus.RoleId = (PHCore_Status.RoleID)Enum.Parse(typeof(PHCore_Status.RoleID), strRoleId, true);*/
 
+                    #region Check Type
                     string[] type = (Request["type"] != null) ? Request["type"].Split(',') : null;
                     if (type != null && type[0] == PHCore_Status.RoleID.A1.ToString())
                     {
@@ -43,6 +44,8 @@ namespace PrimaryHaul.WebUI
 
                     }
                     else Response.Redirect("logout.aspx", false);
+                    #endregion
+
 
                     lblHeader.Text = (type != null) ? ConfigurationManager.AppSettings["PH_AddNew_" + type[0]] : "";
                     txtPasswrdExpried.Text = DateTime.Now.AddDays(AppCode.GetDayofPasswdExp(Page)).ToString(ConfigurationManager.AppSettings["PH_Date_format"]);
@@ -56,27 +59,34 @@ namespace PrimaryHaul.WebUI
             }
         }
 
-        private void GetUserName()
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
             {
-                
+                if(PHCore_User.SelAllUserName(AppCode.strConnDB, txtUserName.Text).Trim() != "")
+                {
+                    lblErrUserName.Text = ConfigurationManager.AppSettings["PH_AddNew_UserName_Err"];
+                }
+                else InsertUserProfile();
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 lblError.Text = ex.Message;
                 PH_ExceptionManager.WriteError(ex.Message);
             }
         }
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
+        private void InsertUserProfile()
         {
-            try {
-
+            try
+            {
                 List<PrimaryHaul_WS.AppCode_DS.PHDS_User.User_VendorRow> drVenders = new List<PrimaryHaul_WS.AppCode_DS.PHDS_User.User_VendorRow>();
                 PrimaryHaul_WS.AppCode_DS.PHDS_User.User_ProfileRow drProfile = new PrimaryHaul_WS.AppCode_DS.PHDS_User.User_ProfileDataTable().NewUser_ProfileRow();
                 drProfile.UserType = "T";
 
+                #region Row Profile
                 drProfile.RoleID = GetRoleId();//(Request["r"] != null && Request["r"] != "") ? Request["r"].ToString().ToUpper() : GetRoleId().ToString();
                 drProfile.UserName = txtUserName.Text;
                 drProfile.Passwd = PH_EncrptHelper.MD5Encryp(txtPassword.Text);
@@ -89,8 +99,10 @@ namespace PrimaryHaul.WebUI
                 drProfile.Contact_Person = txtContact.Text;
                 drProfile.StampTime = DateTime.Now;
                 drProfile.Passwd_Expired_Date = DateTime.Now;
+                #endregion
 
-                if( txtTaxId.Text != "" )
+                #region Vendor
+                if (txtTaxId.Text != "")
                 {
                     PrimaryHaul_WS.AppCode_DS.PHDS_User.User_VendorRow drVendor;
                     string[] strVendorsId = txtTaxId.Text.Split(',');
@@ -105,10 +117,11 @@ namespace PrimaryHaul.WebUI
                         }
                     }
                 }
+                #endregion
 
                 PHCore_Status status = new PHCore_User().PH_Flow_UserInsert(AppCode.strConnDB, drProfile, drVenders);
 
-                if(status.Status == PHCore_Status.SignInStatus.Success)
+                if (status.Status == PHCore_Status.SignInStatus.Success)
                 {
                     Response.Redirect("addnew.aspx?" + Request.QueryString, false);
                 }
@@ -119,23 +132,19 @@ namespace PrimaryHaul.WebUI
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                throw new Exception(ex.Message);
             }
         }
-
         private string GetRoleId()
         {
             try
             {
-                //if (rdoRoleAdmin1.Checked) return PHCore_Status.RoleID.A1.ToString();
                 if(rdoRoleAdmin2.Checked) return PHCore_Status.RoleID.A2.ToString();
                 else
                 {
                     string[] type = (Request["type"] != null) ? Request["type"].Split(',') : null;
                     return type[0];
                 }
-                //else if (rdoRolePH.Checked) return PHCore_Status.RoleID.HL;
-                //return PHCore_Status.RoleID.VD;
             }
             catch(Exception ex)
             {

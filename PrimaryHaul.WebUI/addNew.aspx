@@ -116,9 +116,8 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtUserName" CssClass="col-md-3 control-label">User Name</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox runat="server" ID="txtUserName" CssClass="form-inline" />
+                            <asp:TextBox runat="server" ID="txtUserName" CssClass="form-control" />
                             <asp:Label ID="lblErrUserName" CssClass="text-danger" runat="server"></asp:Label>
-                            <br/>
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUserName"
                                 CssClass="text-danger" ErrorMessage="The Username field is required." />
                         </div>
@@ -178,11 +177,7 @@
                         <div class="col-md-9">
                             <asp:TextBox runat="server" ID="txtTaxId" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="5" />
                             <asp:HiddenField ID="hfCustomerId" runat="server" />
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
-                                ErrorMessage="The Haulier Code(Tax ID) field is required."
-                                ForeColor="Red"
-                                ControlToValidate="txtTaxId"
-                                ValidationExpression="\d{5}" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtTaxId" CssClass="text-danger" ErrorMessage="The Tax ID is required." />
                         </div>
                     </div>
                     <div id="divContact" runat="server" class="form-group">

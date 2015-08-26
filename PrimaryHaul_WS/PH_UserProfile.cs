@@ -34,14 +34,16 @@ namespace PrimaryHaul_WS
         /// PH_UserProfile_SelUserName
         /// </summary>
         /// <param name="strConnDB"></param>
+        /// <param name="strUserName"></param>
         /// <returns></returns>
-        public static DataTable PH_UserProfile_SelUserName(string strConnDB)
+        public static string PH_UserProfile_SelUserName(string strConnDB,string strUserName)
         {
             try
             {
-                DataSet ds = SqlHelper.ExecuteDataset(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_UserProfileSelAll");
+                object oUserName = SqlHelper.ExecuteScalar(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_UserProfileSelUserName"
+                    ,new SqlParameter[] {new SqlParameter("@UserName",strUserName) });
 
-                return ds.Tables.Count > 0 ? ds.Tables[0] : null;
+                return oUserName.ToString();
             }
             catch(Exception ex)
             {

@@ -93,7 +93,7 @@
               <li><a href="logout.aspx">Log Out</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#" title="Manage your account">Hello, <%:  GetUserName(Request)  %> !</a></li>
+                <li class="active"><a href="#" title="Manage your account">Hello, <%:  GetUserName(Request)  %> </a></li>
            </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
