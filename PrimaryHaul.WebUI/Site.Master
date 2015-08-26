@@ -1,0 +1,120 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="PrimaryHaul.WebUI.Site" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="cpHead" runat="server">
+    </asp:ContentPlaceHolder>
+<!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link href="navbar.css" rel="stylesheet"/>
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <script>
+
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+        <div class="container">
+            <!-- Static navbar -->
+      <div class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <img alt="Tesco" src="images/icon.jpg" />
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a  id="lnkMaster" href="#" name="MASTER" class="dropdown-toggle" data-toggle="dropdown">Master Data <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a runat="server" id="lnkDC" href="masterdc.aspx?" name="DC">DC</a></li>
+                  <li><a runat="server" id="lnkDayWeek" href="master_dayweek.aspx?" name="Day & Week">Day & Week</a></li>
+                  <li><a runat="server" id="lnkFuelPrice" href="master_fuelprice.aspx?" name="Fuel Price">Fuel Price</a></li>
+                  <li><a runat="server" id="lnkRateCard" href="master_ratecard.aspx?" name="Rate Card">Rate Card</a></li>
+                  <li><a runat="server" id="lnkUAD10" href="master_uad10.aspx?" name="UAD10">UAD10</a></li>
+                    <li><a runat="server" id="lnkSKU" href="master_sku.aspx?" name="SKU">SKU</a></li>
+                  <li><a runat="server" id="lnkHaulier" href="master_haulier.aspx?" name="Haulier">Haulier</a></li>
+                    <li><a runat="server" id="lnkVender" href="master_vender.aspx?" name="Vendor">Vendor</a></li>
+                </ul>
+              </li>
+              <li><a runat="server" id="lnkRate" href="master_rate.aspx?" name="RATE CALCULATION">Rate Calulation</a></li>
+              <li class="dropdown">
+                <a  href="#" name="REPORT" class="dropdown-toggle" data-toggle="dropdown">REPORT <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a runat="server" id="lnkFinance" href="report_finance.aspx?" name="Tesco Finance">Tesco Finance  Report</a></li>
+                  <li class="divider"></li>
+                  <li><a runat="server" id="lnkVendorLog" href="report_venderlog.aspx?" name="VENDOR DOWNLOAD FILE">Vendor Download</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">PROFILE <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a runat="server" id="lnkTesco" name="Tesco" href="addNew.aspx?type=A1&">Tesco</a></li>
+                  <li><a runat="server" id="lnkProHaulier" name="Haulier" href="addnew.aspx?type=HL&">Haulier</a></li>
+                  <li><a runat="server" id="lnkProVendor" name="Vendor" href="addnew.aspx?type=VD&">Vendor</a></li>
+                  <li><a runat="server" id="lnkChangePasswd" href="changepassword.aspx?" name="Change Password">Change Password</a></li>
+                  <li><a runat="server" id="lnkChangeProfile" href="changeprofile.aspx?" name="Change Profile">Change Profile</a></li>
+                  <li><a runat="server" id="lnkDayofExpired" href="dayofexpired.aspx?" name="Change Day of Password Expired">Day of Expired Date</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="logout.aspx">Log Out</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#" title="Manage your account">Hello, <%:  GetUserName(Request)  %> !</a></li>
+           </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div>
+
+    <form id="form1" runat="server">
+    <div>
+        <asp:ToolkitScriptManager runat="Server" ID="ScriptManager1" EnableScriptGlobalization="true" EnableScriptLocalization="true" >
+        </asp:ToolkitScriptManager>
+        <asp:Label ID="lbl" runat="server"></asp:Label>
+        <asp:ContentPlaceHolder ID="cpControl" runat="server">
+            
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+
+                </div> <!-- /container -->
+
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type = "text/javascript"></!--script-->
+    
+    <script src="dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
