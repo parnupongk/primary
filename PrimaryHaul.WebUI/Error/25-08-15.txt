@@ -1,0 +1,6 @@
+
+Log Entry : 
+25/08/2015 22:39:19
+ IP :  ::1 
+Error in: http://localhost:35449/addNew.aspx. Error Message:Object reference not set to an instance of an object.
+__________________________
