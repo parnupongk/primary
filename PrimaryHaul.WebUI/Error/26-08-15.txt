@@ -1,6 +1,0 @@
-
-Log Entry : 
-26/08/2015 14:39:35
- IP :  ::1 
-Error in: http://localhost:35449/changeprofile.aspx?r=A1&p=pEauQDD9SvzfKGHbJ9NjFg==&id=MmT1vOzJptk=. Error Message:Column 'contact_preson' does not belong to table Table.
-__________________________
