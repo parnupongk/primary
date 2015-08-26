@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PrimaryHaul.WebUI.Account {
+namespace PrimaryHaul.WebUI {
     
     
     public partial class addNew {

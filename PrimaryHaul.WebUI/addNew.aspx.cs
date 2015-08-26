@@ -8,7 +8,7 @@ using System.Configuration;
 using System.Data;
 using PrimaryHaul_WSFlow;
 using PrimaryHaul_WS;
-namespace PrimaryHaul.WebUI.Account
+namespace PrimaryHaul.WebUI
 {
     public partial class addNew : System.Web.UI.Page
     {
@@ -50,7 +50,7 @@ namespace PrimaryHaul.WebUI.Account
 
                 catch (Exception ex)
                 {
-                    lblErr.Text = ex.Message;
+                    lblError.Text = ex.Message;
                     PH_ExceptionManager.WriteError(ex.Message);
                 }
             }
@@ -64,7 +64,7 @@ namespace PrimaryHaul.WebUI.Account
             }
             catch(Exception ex)
             {
-                lblErr.Text = ex.Message;
+                lblError.Text = ex.Message;
                 PH_ExceptionManager.WriteError(ex.Message);
             }
         }
