@@ -31,6 +31,25 @@ namespace PrimaryHaul_WS
         }
 
         /// <summary>
+        /// PH_UserProfile_SelUserName
+        /// </summary>
+        /// <param name="strConnDB"></param>
+        /// <returns></returns>
+        public static DataTable PH_UserProfile_SelUserName(string strConnDB)
+        {
+            try
+            {
+                DataSet ds = SqlHelper.ExecuteDataset(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_UserProfileSelAll");
+
+                return ds.Tables.Count > 0 ? ds.Tables[0] : null;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("PH_UserProfile_SelUserName >>" + ex.Message);
+            }
+        }
+
+        /// <summary>
         /// PH_UserProfile_SelByUserId
         /// </summary>
         /// <param name="strConnDB"></param>

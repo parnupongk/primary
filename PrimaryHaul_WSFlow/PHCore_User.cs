@@ -10,6 +10,18 @@ namespace PrimaryHaul_WSFlow
 {
     public class PHCore_User
     {
+        public static DataTable SelAllUserName(string strConnDB)
+        {
+            try
+            {
+                return PH_UserProfile.PH_UserProfile_SelUserName(strConnDB);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("SelAllUserName >>" + ex.Message);
+            }
+        }
+
         /// <summary>
         /// SelByUserId
         /// </summary>

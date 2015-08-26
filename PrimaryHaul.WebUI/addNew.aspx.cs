@@ -44,15 +44,30 @@ namespace PrimaryHaul.WebUI.Account
                     }
                     else Response.Redirect("logout.aspx", false);
 
-                    lblHeader.Text = (type != null)? ConfigurationManager.AppSettings["PH_AddNew_" + type[0]]:"";
+                    lblHeader.Text = (type != null) ? ConfigurationManager.AppSettings["PH_AddNew_" + type[0]] : "";
                     txtPasswrdExpried.Text = DateTime.Now.AddDays(AppCode.GetDayofPasswdExp(Page)).ToString(ConfigurationManager.AppSettings["PH_Date_format"]);
                 }
 
                 catch (Exception ex)
-                { PH_ExceptionManager.WriteError(ex.Message); }
+                {
+                    lblErr.Text = ex.Message;
+                    PH_ExceptionManager.WriteError(ex.Message);
+                }
             }
         }
 
+        private void GetUserName()
+        {
+            try
+            {
+                
+            }
+            catch(Exception ex)
+            {
+                lblErr.Text = ex.Message;
+                PH_ExceptionManager.WriteError(ex.Message);
+            }
+        }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
