@@ -101,7 +101,7 @@ namespace PrimaryHaul.WebUI
                 drProfile.TaxID = txtHaulierCode.Text;
                 drProfile.Contact_Person = txtContact.Text;
                 drProfile.StampTime = DateTime.Now;
-                drProfile.Passwd_Expired_Date = DateTime.Now;
+                drProfile.Passwd_Expired_Date =  chkForepasswrd.Checked ? DateTime.Now : DateTime.ParseExact(txtPasswrdExpried.Text, ConfigurationManager.AppSettings["PH_Date_format"], null) ;
                 #endregion
 
                 #region Vendor

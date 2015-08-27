@@ -226,6 +226,13 @@
 
                     </div>
                     <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="chkForepasswrd" CssClass="col-md-3 control-label">Fore Change Password</asp:Label>
+                        <div class="col-md-9">
+                            <asp:CheckBox ID="chkForepasswrd" runat="server" CssClass="radio" />
+                        </div>
+
+                    </div>
+                    <div class="form-group">
                         <div class="col-md-offset-3 col-md-9">
                             <asp:Button runat="server" Text="Submit" ID="btnSubmit" CssClass="btn btn-default" OnClick="btnSubmit_Click" />
                             <p class="text-danger">
