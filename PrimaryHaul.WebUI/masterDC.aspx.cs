@@ -22,5 +22,10 @@ namespace PrimaryHaul.WebUI
                 gvDc.DataBind();
             }
         }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            txtDcName.Text = PrimaryHaul_WS.PH_EncrptHelper.MD5Encryp(txtDcNo.Text);
+        }
     }
 }

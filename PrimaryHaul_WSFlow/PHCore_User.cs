@@ -88,7 +88,7 @@ namespace PrimaryHaul_WSFlow
         {
             try
             {
-                return PH_UserProfile.PH_UserProfile_ChangePasswd(strConnDB, strUserId, strPasswd, dtPasswdExp);
+                return PH_UserProfile.PH_UserProfile_ChangePasswd(strConnDB, strUserId, PH_EncrptHelper.MD5Encryp(strPasswd), dtPasswdExp);
             }
             catch(Exception ex)
             {

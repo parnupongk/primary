@@ -55,7 +55,8 @@
 </style>
 </asp:Content>
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="cpControl">
-    <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" Width="100%" Height="500px" CssClass="MyTabStyle">
+    
+    <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="100%" Height="500px" CssClass="MyTabStyle">
         <asp:TabPanel runat="server" HeaderText="Add Data DC" ID="tabAddDc" Height="100%" >
 
             <ContentTemplate>
@@ -86,15 +87,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <asp:Label runat="server" AssociatedControlID="txtDcName" CssClass="col-md-2 control-label">Start Date</asp:Label>
+                                <asp:Label runat="server" AssociatedControlID="txtStartDate" CssClass="col-md-2 control-label">Start Date</asp:Label>
                                 <div class="col-md-10">
-                                    <asp:TextBox autocomplete="off" runat="server" ID="txtStartDate" autocomplete="off" CssClass="form-control" /><br />
+                                    <asp:TextBox autocomplete="off" runat="server" ID="txtStartDate" CssClass="form-control" /><br />
                                     <asp:CalendarExtender ID="defaultCalendarExtender" Format="MM/dd/yyyy" runat="server" TargetControlID="txtStartDate" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <asp:Button runat="server" Text="Submit" ID="btnSubmit" CssClass="btn btn-default" />
+                                    <asp:Button runat="server" Text="Submit" ID="btnSubmit" CssClass="btn btn-default" OnClick="btnSubmit_Click" />
                                     <p class="text-danger">
                                         <asp:Label ID="lblError" runat="server"></asp:Label>
                                     </p>
