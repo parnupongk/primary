@@ -38,55 +38,118 @@
         });
         function SearchText() {
             $("#<%=txtTaxId.ClientID %>").autocomplete({
-        source: function (request, response) {
-            $.ajax({
-                url: '<%=ResolveUrl("~/AutoComplete.asmx/GetVendorCode") %>',
-                    data: "{ 'prefixText': '" + request.term + "'}",
-                    dataType: "json",
-                    type: "POST",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-                        response($.map(data.d, function (item) {
-                            return {
-                                label: item.split('-')[0],
-                                val: item.split('-')[1]
-                            }
-                        }))
-                    },
-                    error: function (result) {
-                        alert(response.responseText);
-                    }
-                });
-},
-    focus: function () {
-        // prevent value inserted on focus
-        return false;
-    },
-    select: function (event, ui) {
-        var terms = split(this.value);
-        // remove the current input
-        terms.pop();
-        // add the selected item
-        terms.push(ui.item.value);
-        // add placeholder to get the comma-and-space at the end
-        terms.push("");
-        this.value = terms.join(", ");
-        return false;
-    }
-});
-        $("#<%=txtTaxId.ClientID %>").bind("keydown", function (event) {
-        if (event.keyCode === $.ui.keyCode.TAB &&
-        $(this).data("autocomplete").menu.active) {
-            event.preventDefault();
+                source: function (request, response) {
+                    $.ajax({
+                        url: '<%=ResolveUrl("~/AutoComplete.asmx/GetVendorCode") %>',
+                data: "{ 'prefixText': '" + request.term + "'}",
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    response($.map(data.d, function (item) {
+                        return {
+                            label: item.split('-')[0],
+                            val: item.split('-')[1]
+                        }
+                    }))
+                },
+                error: function (result) {
+                    alert(response.responseText);
+                }
+            });
+        },
+                focus: function () {
+                    // prevent value inserted on focus
+                    return false;
+                },
+                select: function (event, ui) {
+                    var terms = split(this.value);
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push(ui.item.value);
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push("");
+                    this.value = terms.join(", ");
+                    return false;
+                }
+            });
+    $("#<%=txtTaxId.ClientID %>").bind("keydown", function (event) {
+                if (event.keyCode === $.ui.keyCode.TAB &&
+                $(this).data("autocomplete").menu.active) {
+                    event.preventDefault();
+                }
+            })
+            function split(val) {
+                return val.split(/,\s*/);
+            }
+            function extractLast(term) {
+                return split(term).pop();
+            }
         }
-    })
-    function split(val) {
-        return val.split(/,\s*/);
-    }
-    function extractLast(term) {
-        return split(term).pop();
-    }
-}
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            SearchTextHaulier();
+        });
+        function SearchTextHaulier() {
+            $("#<%=txtHaulierCode.ClientID %>").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '<%=ResolveUrl("~/AutoComplete.asmx/GetHaulierCode") %>',
+                data: "{ 'prefixText': '" + request.term + "'}",
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    response($.map(data.d, function (item) {
+                        return {
+                            label: item.split('-')[0],
+                            val: item.split('-')[1],
+                            val1: item.split('-')[2]
+                        }
+                    }))
+                },
+                error: function (result) {
+                    alert(response.responseText);
+                }
+            });
+        },
+                focus: function () {
+                    // prevent value inserted on focus
+                    return false;
+                },
+                select: function (event, ui) {
+                    var terms = split(this.value);
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push(ui.item.label);
+                    // add placeholder to get the comma-and-space at the end
+                    //terms.push("");
+                    document.getElementById('<%=txtEngName.ClientID%>').value = ui.item.val;
+                    document.getElementById('<%=txtTHAName.ClientID%>').value = ui.item.valๅ;
+                    this.value = terms;//.join(", ");
+                    //alert(document.getElementById("txtEngName").innerHTML);
+
+                    return false;
+                }
+            });
+    $("#<%=txtHaulierCode.ClientID %>").bind("keydown", function (event) {
+                if (event.keyCode === $.ui.keyCode.TAB &&
+                $(this).data("autocomplete").menu.active) {
+                    event.preventDefault();
+                }
+            })
+            function split(val) {
+                return val.split(/,\s*/);
+            }
+            function extractLast(term) {
+                return split(term).pop();
+            }
+        }
+
     </script>
 
 </asp:Content>
@@ -97,7 +160,8 @@
 
             <section id="loginForm">
                 <div class="form-horizontal">
-                    <h4><asp:Label ID="lblHeader" runat="server"></asp:Label></h4>
+                    <h4>
+                        <asp:Label ID="lblHeader" runat="server"></asp:Label></h4>
                     <hr />
                     <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">
@@ -107,8 +171,8 @@
                     <div id="divRole" runat="server" class="form-group">
                         <asp:Label runat="server" AssociatedControlID="rdoRoleAdmin1" CssClass="col-md-3 control-label">Role</asp:Label>
                         <div class="col-md-9">
-                            <asp:RadioButton ID="rdoRoleAdmin1" runat="server" Checked="True" GroupName="rdoStatus" cssClass="radio-inline"  Text=" Admin1" />
-                            &nbsp;<asp:RadioButton ID="rdoRoleAdmin2" runat="server" GroupName="rdoStatus" cssClass="radio-inline"  Text=" Admin2" />
+                            <asp:RadioButton ID="rdoRoleAdmin1" runat="server" Checked="True" GroupName="rdoStatus" CssClass="radio-inline" Text=" Admin1" />
+                            &nbsp;<asp:RadioButton ID="rdoRoleAdmin2" runat="server" GroupName="rdoStatus" CssClass="radio-inline" Text=" Admin2" />
                             &nbsp;&nbsp;
                         </div>
 
@@ -164,13 +228,9 @@
                     <div id="divHaulier" runat="server" class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtHaulierCode" CssClass="col-md-3 control-label">Haulier Code(Tax ID)</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox autocomplete="off" runat="server" ID="txtHaulierCode" CssClass="form-control" onkeypress="return isNumberKey(event)"   MaxLength="13" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtHaulierCode" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="13" />
                             <asp:Label ID="lblErrHaulierCode" CssClass="text-danger" runat="server"></asp:Label>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                                ErrorMessage="The Haulier Code(Tax ID) field is required."
-                                ForeColor="Red"
-                                ControlToValidate="txtHaulierCode"
-                                ValidationExpression="\d{13}" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtHaulierCode" CssClass="text-danger" ErrorMessage="The Haulier Code(Tax ID) is required." />
                         </div>
                     </div>
                     <div id="divVender" runat="server" class="form-group">
@@ -220,8 +280,8 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="rdoStatusA" CssClass="col-md-3 control-label">Status</asp:Label>
                         <div class="col-md-9">
-                            <asp:RadioButton ID="rdoStatusA" runat="server" Checked="True" GroupName="rdoStatusA" cssClass="radio-inline"  Text="Active" />
-                            &nbsp;<asp:RadioButton ID="rdoStatusD" runat="server" GroupName="rdoStatusA" cssClass="radio-inline"  Text="Deactive" />
+                            <asp:RadioButton ID="rdoStatusA" runat="server" Checked="True" GroupName="rdoStatusA" CssClass="radio-inline" Text="Active" />
+                            &nbsp;<asp:RadioButton ID="rdoStatusD" runat="server" GroupName="rdoStatusA" CssClass="radio-inline" Text="Deactive" />
                         </div>
 
                     </div>

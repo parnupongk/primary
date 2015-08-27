@@ -34,6 +34,21 @@ namespace PrimaryHaul.WebUI
         }
 
         [WebMethod]
+        [System.Web.Script.Services.ScriptMethod(ResponseFormat = System.Web.Script.Services.ResponseFormat.Json)]
+        public string[] GetHaulierCode(string prefixText)
+        {
+            DataTable dt = PH_HaulierInfo.PH_Haulier_SelAll(AppCode.strConnDB);
+            List<string> items = new List<string>(dt.Rows.Count);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                string strName = dt.Rows[i]["haulier_taxid"].ToString() +"-" + dt.Rows[i]["haulier_name_en"].ToString() + "-" + dt.Rows[i]["haulier_name_th"].ToString();
+                items.Add(strName);
+            }
+            return items.ToArray();
+        }
+
+        [WebMethod]
         public string HelloWorld()
         {
             return "Hello World";
