@@ -94,6 +94,15 @@ namespace PrimaryHaul.WebUI {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkVender;
         
         /// <summary>
+        /// lnkVendorDownloadFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkVendorDownloadFile;
+        
+        /// <summary>
         /// lnkRate control.
         /// </summary>
         /// <remarks>
