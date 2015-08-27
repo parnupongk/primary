@@ -87,9 +87,10 @@ namespace PrimaryHaul.WebUI
             {
                 List<PrimaryHaul_WS.AppCode_DS.PHDS_User.User_VendorRow> drVenders = new List<PrimaryHaul_WS.AppCode_DS.PHDS_User.User_VendorRow>();
                 PrimaryHaul_WS.AppCode_DS.PHDS_User.User_ProfileRow drProfile = new PrimaryHaul_WS.AppCode_DS.PHDS_User.User_ProfileDataTable().NewUser_ProfileRow();
-                drProfile.UserType = "T";
+
 
                 #region Row Profile
+                drProfile.UserType = GetRoleId();
                 drProfile.RoleID = GetRoleId();//(Request["r"] != null && Request["r"] != "") ? Request["r"].ToString().ToUpper() : GetRoleId().ToString();
                 drProfile.UserName = txtUserName.Text;
                 drProfile.Passwd = PH_EncrptHelper.MD5Encryp(txtPassword.Text);
@@ -97,7 +98,7 @@ namespace PrimaryHaul.WebUI
                 drProfile.FullName_Th = txtTHAName.Text;
                 drProfile.Mobile = txtMobile.Text;
                 drProfile.EMail_Address = txtEmail.Text;
-                drProfile.User_Status = rdoStatusA.Checked.ToString();
+                drProfile.User_Status = rdoStatusA.Checked?"A":"D";
                 drProfile.TaxID = txtHaulierCode.Text;
                 drProfile.Contact_Person = txtContact.Text;
                 drProfile.StampTime = DateTime.Now;
