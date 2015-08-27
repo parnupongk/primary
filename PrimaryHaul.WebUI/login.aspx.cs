@@ -22,7 +22,7 @@ namespace PrimaryHaul.WebUI
                 if (status.Status == PrimaryHaul_WSFlow.PHCore_Status.SignInStatus.Success)
                 {
                     storeUser(status);
-                    Response.Redirect("index.aspx?r=" + status.RoleId + "&id=" + PH_EncrptHelper.MD5Encryp(status.UserId), false);
+                    Response.Redirect("index.aspx?r=" + status.RoleId + "&id=" + status.UserId, false);
                 }
                 else if (status.Status == PrimaryHaul_WSFlow.PHCore_Status.SignInStatus.PasswordExpired)
                 {

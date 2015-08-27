@@ -40,7 +40,7 @@ namespace PrimaryHaul.WebUI
         {
             try {
 
-                if (PHCore_User.ChangeProfile(AppCode.strConnDB, PH_EncrptHelper.MD5Decryp(Request["id"]), txtContact.Text, txtEmail.Text, txtMobile.Text) > 0)
+                if (PHCore_User.ChangeProfile(AppCode.strConnDB, Request["id"], txtContact.Text, txtEmail.Text, txtMobile.Text) > 0)
                     lblError.Text = ConfigurationManager.AppSettings["PH_Success_Message"];
                 else lblError.Text = ConfigurationManager.AppSettings["PH_Error_Message"];
             }

@@ -36,7 +36,7 @@ namespace PrimaryHaul.WebUI
                     lblErr.Text = ConfigurationManager.AppSettings["PH_Error_PasswordExpired"];
                 } else
                 {
-                    var rtn = PHCore_User.ChangePasswd(AppCode.strConnDB, PH_EncrptHelper.MD5Decryp(Request["id"]), txtPassword.Text, DateTime.ParseExact(txtPasswordExpired.Text, "dd/MM/yyyy", null));
+                    var rtn = PHCore_User.ChangePasswd(AppCode.strConnDB, Request["id"], txtPassword.Text, DateTime.ParseExact(txtPasswordExpired.Text, "dd/MM/yyyy", null));
                     if (rtn > 0) Response.Redirect("login.aspx",false);
                 }
             }

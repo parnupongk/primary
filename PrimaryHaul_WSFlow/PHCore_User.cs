@@ -32,7 +32,7 @@ namespace PrimaryHaul_WSFlow
         {
             try
             {
-                return PH_UserProfile.PH_UserProfile_SelByUserId(strConnDB, PH_EncrptHelper.MD5Decryp(strUserId));
+                return PH_UserProfile.PH_UserProfile_SelByUserId(strConnDB, strUserId);
             }
             catch(Exception ex)
             {

@@ -56,7 +56,7 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li class="dropdown">
-                <a  id="lnkMaster" href="#" name="MASTER" class="dropdown-toggle" data-toggle="dropdown">Master Data <span class="caret"></span></a>
+                <a  id="lnkMaster" runat="server" href="#" name="MASTER" class="dropdown-toggle" data-toggle="dropdown">Master Data <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li><a runat="server" id="lnkDC" href="masterdc.aspx?" name="DC">DC</a></li>
                   <li><a runat="server" id="lnkDayWeek" href="master_dayweek.aspx?" name="Day & Week">Day & Week</a></li>
@@ -69,11 +69,12 @@
                 </ul>
               </li>
               <li><a runat="server" id="lnkVendorDownloadFile" href="#" name="VENDOR DOWNLOAD FILE">Vendor Download File</a></li>
+                <li><a runat="server" id="lnkHaulierDownload" href="#" name="HAULIER UPLOAD FILE">Haulier Upload File</a></li>
                 <li><a runat="server" id="lnkRate" href="master_rate.aspx?" name="RATE CALCULATION">Rate Calulation</a></li>
               <li class="dropdown">
                 <a  href="#" name="REPORT" class="dropdown-toggle" data-toggle="dropdown">REPORT <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a runat="server" id="lnkFinance" href="report_finance.aspx?" name="Tesco Finance">Tesco Finance  Report</a></li>
+                  <li><a runat="server" id="lnkFinance" href="report_finance.aspx?" name="Tesco Finance">Tesco Finance Report</a></li>
                   <li class="divider"></li>
                   <li><a runat="server" id="lnkVendorLog" href="report_venderlog.aspx?" name="Vendor Download Log">Vendor Download</a></li>
                 </ul>
