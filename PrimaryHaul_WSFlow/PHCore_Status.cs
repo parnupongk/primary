@@ -71,5 +71,12 @@ namespace PrimaryHaul_WSFlow
             get { return strUserId; }
             set { strUserId = value; }
         }
+
+        private string strUserStatus;
+        public string UserStatus
+        {
+            get { return strUserStatus; }
+            set { strUserStatus = value; }
+        }
     }
 }

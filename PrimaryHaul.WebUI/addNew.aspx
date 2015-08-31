@@ -149,7 +149,37 @@
                 return split(term).pop();
             }
         }
+        function ajax_userDuplicate() {
+            var req = Inint_AJAX();
+            var str = Math.random();
+            var varUsername = document.getElementById('<%= txtUserName.ClientID %>').value;
+            if (varUsername != '') {
+                var str_url_address = "./pph_include/ajax/files/userDuplicate.aspx";
+                var str_url = "var01=" + varUsername;
+                str_url += "&clearmemory=" + str;
+                req.open('POST', str_url_address, true)
+                req.onreadystatechange = function () {
+                    if (req.readyState == 4) {
+                        if (req.status == 200) {
+                            var strRes = req.responseText;
+                            if (strRes > "0") {
+                                document.getElementById('<%= btnSubmit.ClientID %>').disabled = true;
+                                document.getElementById('dupError').innerHTML = "<font color=\"red\">Duplicate Username</font>";
+                                document.getElementById('dupError').style.display = "";
+                            }
+                            else {
+                                document.getElementById('<%= btnSubmit.ClientID %>').disabled = false;
+                                document.getElementById('dupError').style.display = "none";
+                            }
+                        }
+                    }
+                }
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.send(str_url);
+            }
+        }
 
+        document.getElementById('dupError').style.display = "none";
     </script>
 
 </asp:Content>
@@ -180,7 +210,8 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtUserName" CssClass="col-md-3 control-label">User Name</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox autocomplete="off" runat="server" ID="txtUserName" CssClass="form-control" />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtUserName" CssClass="form-control" onchange="ajax_userDuplicate();" />
+                            <p class="text-danger" id="dupError" style="display:none;"></p>
                             <asp:Label ID="lblErrUserName" CssClass="text-danger" runat="server"></asp:Label>
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUserName"
                                 CssClass="text-danger" ErrorMessage="The Username field is required." />
@@ -194,7 +225,7 @@
                                 ErrorMessage="Passwords must have at least 8 characters and contain at least two of the following: uppercase letters, lowercase letters, numbers, and symbols."
                                 ForeColor="Red" Font-Size="Small"
                                 ControlToValidate="txtPassword"
-                                ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$" />
+                                ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$" />
                             <asp:PasswordStrength ID="PasswordStrength2"
                                 runat="server"
                                 TargetControlID="txtPassword"
@@ -215,7 +246,7 @@
                         <asp:Label runat="server" AssociatedControlID="txtPasswordConf" CssClass="col-md-3 control-label">Password Confirm</asp:Label>
                         <div class="col-md-9">
                             <asp:TextBox autocomplete="off" runat="server" ID="txtPasswordConf"  TextMode="Password" CssClass="form-control" MaxLength="8" />
-                            <asp:CompareValidator runat="server" ID="Comp1"   ForeColor="Red" ControlToValidate="txtPassword" ControlToCompare="txtPasswordConf" Text="These passwords don't match." />
+                            <asp:CompareValidator runat="server" ID="Comp1"   ForeColor="Red" ControlToValidate="txtPasswordConf" ControlToCompare="txtPassword" Text="These passwords don't match." />
                         </div>
                     </div>
                     <div class="form-group">
@@ -281,7 +312,6 @@
                         <asp:Label runat="server" AssociatedControlID="rdoStatusA" CssClass="col-md-3 control-label">Status</asp:Label>
                         <div class="col-md-9">
                             <asp:RadioButton ID="rdoStatusA" runat="server" Checked="True" GroupName="rdoStatusA" CssClass="radio-inline" Text="Active" />
-                            &nbsp;<asp:RadioButton ID="rdoStatusD" runat="server" GroupName="rdoStatusA" CssClass="radio-inline" Text="Deactive" />
                         </div>
 
                     </div>

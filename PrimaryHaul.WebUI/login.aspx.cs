@@ -19,16 +19,30 @@ namespace PrimaryHaul.WebUI
         {
             try {
                 PrimaryHaul_WSFlow.PHCore_Status status = PrimaryHaul_WSFlow.PHCore_Login.UserSignIn(AppCode.strConnDB, txtUserName.Text, txtPassword.Text);
-                if (status.Status == PrimaryHaul_WSFlow.PHCore_Status.SignInStatus.Success)
+                if (status.UserStatus == "D")
                 {
-                    storeUser(status);
-                    Response.Redirect("index.aspx?r=" + status.RoleId + "&id=" + status.UserId, false);
+                    lblErr.Text = "Please contact System Administrator";
                 }
-                else if (status.Status == PrimaryHaul_WSFlow.PHCore_Status.SignInStatus.PasswordExpired)
+                else
                 {
-                    storeUser(status);
-                    Response.Redirect("changepassword.aspx?r=" + status.RoleId +"&p=" + PH_EncrptHelper.MD5Encryp(txtPassword.Text) +"&id="+ status.UserId, false);
+                    if (status.Status == PrimaryHaul_WSFlow.PHCore_Status.SignInStatus.Success)
+                    {
+                        storeUser(status);
+                        Session["s_forceChange"] = "";
+                        Response.Redirect("index.aspx?r=" + status.RoleId + "&id=" + status.UserId, false);
+                    }
+                    else if (status.Status == PrimaryHaul_WSFlow.PHCore_Status.SignInStatus.PasswordExpired)
+                    {
+                        storeUser(status);
+                        Session["s_forceChange"] = "changepassword.aspx?r=" + status.RoleId + "&p=" + PH_EncrptHelper.MD5Encryp(txtPassword.Text) + "&id=" + status.UserId;
+                        Response.Redirect("changepassword.aspx?r=" + status.RoleId + "&p=" + PH_EncrptHelper.MD5Encryp(txtPassword.Text) + "&id=" + status.UserId, false);
+                    }
+                    else
+                    {
+                        lblErr.Text = "User Name or Password incorrect";
+                    }
                 }
+                
             }
             catch(Exception ex)
             {

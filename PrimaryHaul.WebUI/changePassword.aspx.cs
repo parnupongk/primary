@@ -37,7 +37,7 @@ namespace PrimaryHaul.WebUI
                 } else
                 {
                     var rtn = PHCore_User.ChangePasswd(AppCode.strConnDB, Request["id"], txtPassword.Text, DateTime.ParseExact(txtPasswordExpired.Text, "dd/MM/yyyy", null));
-                    if (rtn > 0) Response.Redirect("login.aspx",false);
+                    if (rtn > 0) Session["s_forceChange"] = ""; Response.Redirect("login.aspx", false);
                 }
             }
             catch(Exception ex)

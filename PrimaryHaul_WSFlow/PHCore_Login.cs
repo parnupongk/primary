@@ -26,6 +26,7 @@ namespace PrimaryHaul_WSFlow
 
                     eStatus.UserId = dtUser.Rows[0]["userid"].ToString();
                     eStatus.UserName = dtUser.Rows[0]["username"].ToString();
+                    eStatus.UserStatus = dtUser.Rows[0]["User_Status"].ToString();
                     eStatus.RoleId =  (PHCore_Status.RoleID)Enum.Parse( typeof(PHCore_Status.RoleID),dtUser.Rows[0]["roleid"].ToString() ,true);
                 }
                 else {

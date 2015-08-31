@@ -63,7 +63,7 @@
                 <asp:UpdatePanel ID="updatePanel1" runat="server">
                     <ContentTemplate>
                         <div class="form-horizontal">
-                            <h4>Use a local account to log in.</h4>
+                            <h4>Master Data > DC > ADD</h4>
                             <hr />
                             <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                                 <p class="text-danger">
@@ -110,6 +110,9 @@
 
         <asp:TabPanel ID="tabViewDc" runat="server" HeaderText="View Data DC">
             <ContentTemplate>
+                <div class="form-horizontal">
+                <h4>Master Data > DC </h4>
+                <hr />
                 <asp:GridView ID="gvDc" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
@@ -130,7 +133,7 @@
                     <SortedDescendingCellStyle BackColor="#D4DFE1" />
                     <SortedDescendingHeaderStyle BackColor="#15524A" />
                 </asp:GridView>
-                
+                </div>
             </ContentTemplate>
         </asp:TabPanel>
 

@@ -32,7 +32,7 @@
 
             <section id="loginForm">
                 <div class="form-horizontal">
-                    <h4>Use a local account to change password.</h4>
+                    <h4>Profile > Change Password</h4>
                     <hr />
 
                     <div class="form-group">
@@ -44,7 +44,7 @@
                                 ErrorMessage="Passwords must have at least 8 characters and contain at least two of the following: uppercase letters, lowercase letters, numbers, and symbols."
                                 ForeColor="Red"
                                 ControlToValidate="txtPassword"
-                                ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$" />
+                                ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$" />
                             <asp:PasswordStrength ID="PasswordStrength2"
                                 runat="server"
                                 TargetControlID="txtPassword"
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPasswordConf" CssClass="col-md-2 control-label">Password Confirm<asp:RequiredFieldValidator runat="server" ControlToValidate="txtPasswordConf" CssClass="text-danger" ErrorMessage=" * " /></asp:Label><div class="col-md-6">
                             <asp:TextBox autocomplete="off" runat="server" ID="txtPasswordConf"  Width="200px" TextMode="Password" CssClass="form-control" MaxLength="8" />
-                            <asp:CompareValidator runat="server" ID="Comp1" ForeColor="Red" ControlToValidate="txtPassword" ControlToCompare="txtPasswordConf" Text=" These passwords don't match." />
+                            <asp:CompareValidator runat="server" ID="Comp1" ForeColor="Red" ControlToValidate="txtPasswordConf" ControlToCompare="txtPassword" Text=" These passwords don't match." />
                         </div>
                     </div>
                     <div class="form-group">

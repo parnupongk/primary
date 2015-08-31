@@ -8,7 +8,7 @@
 
             <section id="loginForm">
                 <div class="form-horizontal">
-                    <h4>Use a local account to change profile.</h4>
+                    <h4>Profile > Change Profile</h4>
                     <hr />
                     <div id="divContact" runat="server" class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtContact" CssClass="col-md-3 control-label">Contact</asp:Label>

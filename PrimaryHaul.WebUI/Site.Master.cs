@@ -22,6 +22,13 @@ namespace PrimaryHaul.WebUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(Session["s_forceChange"] as string))
+            {
+                if (HttpContext.Current.Request.Url.AbsolutePath != "/changepassword.aspx")
+                {
+                    Response.Redirect(Session["s_forceChange"].ToString(), false);                   
+                }
+            }
             if( !IsPostBack )
             {
 
