@@ -27,7 +27,7 @@ namespace PrimaryHaul.WebUI
                 else if (status.Status == PrimaryHaul_WSFlow.PHCore_Status.SignInStatus.PasswordExpired)
                 {
                     storeUser(status);
-                    Response.Redirect("changepassword.aspx?r=" + status.RoleId +"&p=" + PH_EncrptHelper.MD5Encryp(txtPassword.Text) +"&id="+ PH_EncrptHelper.MD5Encryp(status.UserId), false);
+                    Response.Redirect("changepassword.aspx?r=" + status.RoleId +"&p=" + PH_EncrptHelper.MD5Encryp(txtPassword.Text) +"&id="+ status.UserId, false);
                 }
             }
             catch(Exception ex)

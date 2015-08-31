@@ -153,7 +153,7 @@
     </script>
 
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="cpControl"  runat="server">
 
     <div class="row">
         <div class="">
@@ -189,8 +189,8 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPassword" CssClass="col-md-3 control-label">Password</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox autocomplete="off" runat="server" ID="txtPassword" CssClass="form-control" MaxLength="8" />
-                            <asp:RegularExpressionValidator ID="regexpName" runat="server"
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtPassword"  CssClass="form-control" MaxLength="8" />
+                            <asp:RegularExpressionValidator ID="regexpName" runat="server" 
                                 ErrorMessage="Passwords must have at least 8 characters and contain at least two of the following: uppercase letters, lowercase letters, numbers, and symbols."
                                 ForeColor="Red" Font-Size="Small"
                                 ControlToValidate="txtPassword"
@@ -214,8 +214,8 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPasswordConf" CssClass="col-md-3 control-label">Password Confirm</asp:Label>
                         <div class="col-md-9">
-                            <asp:TextBox autocomplete="off" runat="server" ID="txtPasswordConf" TextMode="Password" CssClass="form-control" MaxLength="8" />
-                            <asp:CompareValidator runat="server" ID="Comp1" ForeColor="Red" ControlToValidate="txtPassword" ControlToCompare="txtPasswordConf" Text="These passwords don't match." />
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtPasswordConf"  TextMode="Password" CssClass="form-control" MaxLength="8" />
+                            <asp:CompareValidator runat="server" ID="Comp1"   ForeColor="Red" ControlToValidate="txtPassword" ControlToCompare="txtPasswordConf" Text="These passwords don't match." />
                         </div>
                     </div>
                     <div class="form-group">
