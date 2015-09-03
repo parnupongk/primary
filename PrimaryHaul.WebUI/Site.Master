@@ -85,6 +85,7 @@
                   <li><a runat="server" id="lnkTesco" name="Tesco" href="addNew.aspx?type=A1&">Tesco</a></li>
                   <li><a runat="server" id="lnkProHaulier" name="Haulier" href="addnew.aspx?type=HL&">Haulier</a></li>
                   <li><a runat="server" id="lnkProVendor" name="Vendor" href="addnew.aspx?type=VD&">Vendor</a></li>
+                  <li><a runat="server" id="lnkUserManagement" href="user_management.aspx?" name="User Management">User Management</a></li>
                   <li><a runat="server" id="lnkChangePasswd" href="changepassword.aspx?" name="Change Password">Change Password</a></li>
                   <li><a runat="server" id="lnkChangeProfile" href="changeprofile.aspx?" name="Change Profile">Change Profile</a></li>
                   <li><a runat="server" id="lnkDayofExpired" href="dayofexpired.aspx?" name="Change Day of Password Expired">Day of Expired Date</a></li>

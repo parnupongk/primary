@@ -48,7 +48,7 @@ namespace PrimaryHaul.WebUI
 
 
                     lblHeader.Text = (type != null) ? ConfigurationManager.AppSettings["PH_AddNew_" + type[0]] : "";
-                    txtPasswrdExpried.Text = DateTime.Now.AddDays(AppCode.GetDayofPasswdExp(Page)).ToString(ConfigurationManager.AppSettings["PH_Date_format"]);
+                    txtPasswrdExpried.Text = DateTime.Now.AddDays(AppCode.GetDayofPasswdExp(Page)).ToString("dd/MM/yyyy");
                 }
 
                 catch (Exception ex)

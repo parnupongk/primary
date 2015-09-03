@@ -11,7 +11,7 @@
                     <h4>Profile > Change Profile</h4>
                     <hr />
                     <div id="divContact" runat="server" class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="txtContact" CssClass="col-md-3 control-label">Contact</asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="txtContact" CssClass="col-md-3 control-label">Contact Point</asp:Label>
                         <div class="col-md-6">
                             <asp:TextBox autocomplete="off" runat="server" ID="txtContact" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtContact" CssClass="text-danger" ErrorMessage="The Contact field is required." />
