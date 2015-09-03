@@ -41,23 +41,23 @@
                 source: function (request, response) {
                     $.ajax({
                         url: '<%=ResolveUrl("~/AutoComplete.asmx/GetVendorCode") %>',
-                data: "{ 'prefixText': '" + request.term + "'}",
-                dataType: "json",
-                type: "POST",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    response($.map(data.d, function (item) {
-                        return {
-                            label: item.split('-')[0],
-                            val: item.split('-')[1]
+                        data: "{ 'prefixText': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data.d, function (item) {
+                                return {
+                                    label: item.split('-')[0],
+                                    val: item.split('-')[1]
+                                }
+                            }))
+                        },
+                        error: function (result) {
+                            alert(response.responseText);
                         }
-                    }))
+                    });
                 },
-                error: function (result) {
-                    alert(response.responseText);
-                }
-            });
-        },
                 focus: function () {
                     // prevent value inserted on focus
                     return false;
@@ -74,7 +74,7 @@
                     return false;
                 }
             });
-    $("#<%=txtTaxId.ClientID %>").bind("keydown", function (event) {
+            $("#<%=txtTaxId.ClientID %>").bind("keydown", function (event) {
                 if (event.keyCode === $.ui.keyCode.TAB &&
                 $(this).data("autocomplete").menu.active) {
                     event.preventDefault();
@@ -94,28 +94,28 @@
             SearchTextHaulier();
         });
         function SearchTextHaulier() {
-            $("#<%=txtHaulierCode.ClientID %>").autocomplete({
+            $("#<%=txtEngName.ClientID %>").autocomplete({
                 source: function (request, response) {
                     $.ajax({
                         url: '<%=ResolveUrl("~/AutoComplete.asmx/GetHaulierCode") %>',
-                data: "{ 'prefixText': '" + request.term + "'}",
-                dataType: "json",
-                type: "POST",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    response($.map(data.d, function (item) {
-                        return {
-                            label: item.split('-')[0],
-                            val: item.split('-')[1],
-                            val1: item.split('-')[2]
+                        data: "{ 'prefixText': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data.d, function (item) {
+                                return {
+                                    label: item.split('-')[1],
+                                    val: item.split('-')[0],
+                                    val1: item.split('-')[2]
+                                }
+                            }))
+                        },
+                        error: function (result) {
+                            alert(response.responseText);
                         }
-                    }))
+                    });
                 },
-                error: function (result) {
-                    alert(response.responseText);
-                }
-            });
-        },
                 focus: function () {
                     // prevent value inserted on focus
                     return false;
@@ -128,15 +128,15 @@
                     terms.push(ui.item.label);
                     // add placeholder to get the comma-and-space at the end
                     //terms.push("");
-                    document.getElementById('<%=txtEngName.ClientID%>').value = ui.item.val;
-                    document.getElementById('<%=txtTHAName.ClientID%>').value = ui.item.valๅ;
+                    document.getElementById('<%=txtHaulierCode.ClientID%>').value = ui.item.val;
+                    document.getElementById('<%=txtTHAName.ClientID%>').value = ui.item.val1;
                     this.value = terms;//.join(", ");
                     //alert(document.getElementById("txtEngName").innerHTML);
 
                     return false;
                 }
             });
-    $("#<%=txtHaulierCode.ClientID %>").bind("keydown", function (event) {
+            $("#<%=txtEngName.ClientID %>").bind("keydown", function (event) {
                 if (event.keyCode === $.ui.keyCode.TAB &&
                 $(this).data("autocomplete").menu.active) {
                     event.preventDefault();
@@ -183,7 +183,7 @@
     </script>
 
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cpControl"  runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
 
     <div class="row">
         <div class="">
@@ -211,13 +211,13 @@
                         <asp:Label runat="server" AssociatedControlID="txtUserName" CssClass="col-md-3 control-label">User Name</asp:Label>
                         <div class="col-md-9">
                             <asp:TextBox autocomplete="off" runat="server" ID="txtUserName" CssClass="form-control" onchange="ajax_userDuplicate();" />
-                            <p class="text-danger" id="dupError" style="display:none;"></p>
+                            <p class="text-danger" id="dupError" style="display: none;"></p>
                             <asp:Label ID="lblErrUserName" CssClass="text-danger" runat="server"></asp:Label>
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUserName"
                                 CssClass="text-danger" ErrorMessage="The Username field is required." />
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPassword" CssClass="col-md-3 control-label">Password</asp:Label>
                         <div class="col-md-9">
                             <asp:TextBox autocomplete="off" runat="server" ID="txtPassword"  CssClass="form-control" MaxLength="8" />
@@ -241,19 +241,26 @@
                             </asp:PasswordStrength>
 
                         </div>
-                    </div>
-                    <div class="form-group">
+                    </!-->
+                    <!-- div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPasswordConf" CssClass="col-md-3 control-label">Password Confirm</asp:Label>
                         <div class="col-md-9">
                             <asp:TextBox autocomplete="off" runat="server" ID="txtPasswordConf"  TextMode="Password" CssClass="form-control" MaxLength="8" />
                             <asp:CompareValidator runat="server" ID="Comp1"   ForeColor="Red" ControlToValidate="txtPasswordConf" ControlToCompare="txtPassword" Text="These passwords don't match." />
                         </div>
-                    </div>
-                    <div class="form-group">
+                    </!-->
+                    <!-- div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPasswrdExpried" CssClass="col-md-3 control-label">Password Expired Date</asp:Label>
                         <div class="col-md-9">
                             <asp:TextBox autocomplete="off" runat="server" ID="txtPasswrdExpried" CssClass="form-control" Enabled="false" />
                             <br />
+                        </div>
+                    </!-->
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="txtEngName" CssClass="col-md-3 control-label">English Name</asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtEngName" CssClass="form-control" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEngName" CssClass="text-danger" ErrorMessage="The Name field is required." />
                         </div>
                     </div>
                     <div id="divHaulier" runat="server" class="form-group">
@@ -277,13 +284,6 @@
                         <div class="col-md-9">
                             <asp:TextBox autocomplete="off" runat="server" ID="txtContact" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtContact" CssClass="text-danger" ErrorMessage="The Contact field is required." />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="txtEngName" CssClass="col-md-3 control-label">English Name</asp:Label>
-                        <div class="col-md-9">
-                            <asp:TextBox autocomplete="off" runat="server" ID="txtEngName" CssClass="form-control" />
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEngName" CssClass="text-danger" ErrorMessage="The Name field is required." />
                         </div>
                     </div>
                     <div class="form-group">
@@ -315,13 +315,13 @@
                         </div>
 
                     </div>
-                    <div class="form-group">
+                    <!-- div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="chkForepasswrd" CssClass="col-md-3 control-label">Fore Change Password</asp:Label>
                         <div class="col-md-9">
                             <asp:CheckBox ID="chkForepasswrd" runat="server" CssClass="radio" />
                         </div>
 
-                    </div>
+                    </!-->
                     <div class="form-group">
                         <div class="col-md-offset-3 col-md-9">
                             <asp:Button runat="server" Text="Submit" ID="btnSubmit" CssClass="btn btn-default" OnClick="btnSubmit_Click" />

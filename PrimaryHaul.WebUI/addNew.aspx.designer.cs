@@ -139,6 +139,15 @@ namespace PrimaryHaul.WebUI {
         protected global::System.Web.UI.WebControls.TextBox txtPasswrdExpried;
         
         /// <summary>
+        /// txtEngName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEngName;
+        
+        /// <summary>
         /// divHaulier control.
         /// </summary>
         /// <remarks>
@@ -209,15 +218,6 @@ namespace PrimaryHaul.WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtContact;
-        
-        /// <summary>
-        /// txtEngName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEngName;
         
         /// <summary>
         /// txtTHAName control.

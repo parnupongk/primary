@@ -22,13 +22,13 @@ namespace PrimaryHaul.WebUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Session["s_forceChange"] as string))
+            /*if (!string.IsNullOrEmpty(Session["s_forceChange"] as string))
             {
                 if (HttpContext.Current.Request.Url.AbsolutePath.Substring(HttpContext.Current.Request.Url.AbsolutePath.Length - 19, 19) != "changepassword.aspx")
                 {
                     Response.Redirect(Session["s_forceChange"].ToString(), false);                   
                 }
-            }
+            }*/
             if( !IsPostBack )
             {
                 //lnkChangePasswd.HRef = "changepassword.aspx?" + Request.QueryString;

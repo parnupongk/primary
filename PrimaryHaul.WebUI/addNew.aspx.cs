@@ -93,7 +93,7 @@ namespace PrimaryHaul.WebUI
                 drProfile.UserType = GetRoleId();
                 drProfile.RoleID = GetRoleId();//(Request["r"] != null && Request["r"] != "") ? Request["r"].ToString().ToUpper() : GetRoleId().ToString();
                 drProfile.UserName = txtUserName.Text;
-                drProfile.Passwd = PH_EncrptHelper.MD5Encryp(txtPassword.Text);
+                drProfile.Passwd = PH_EncrptHelper.MD5Encryp(ConfigurationManager.AppSettings["PH_AddNew_Password_Default"]);
                 drProfile.FullName_En = txtEngName.Text;
                 drProfile.FullName_Th = txtTHAName.Text;
                 drProfile.Mobile = txtMobile.Text;
@@ -102,7 +102,7 @@ namespace PrimaryHaul.WebUI
                 drProfile.TaxID = txtHaulierCode.Text;
                 drProfile.Contact_Person = txtContact.Text;
                 drProfile.StampTime = DateTime.Now;
-                drProfile.Passwd_Expired_Date =  chkForepasswrd.Checked ? DateTime.Now : DateTime.ParseExact(txtPasswrdExpried.Text, ConfigurationManager.AppSettings["PH_Date_format"], null) ;
+                drProfile.Passwd_Expired_Date = DateTime.Now;//chkForepasswrd.Checked ? DateTime.Now : DateTime.ParseExact(txtPasswrdExpried.Text, ConfigurationManager.AppSettings["PH_Date_format"], null) ;
                 #endregion
 
                 #region Vendor
