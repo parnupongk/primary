@@ -5,27 +5,36 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Data.SqlClient;
+using System.Globalization;
+using PrimaryHaul.WebUI.App_Code;
 namespace PrimaryHaul.WebUI
 {
     public partial class masterDC : System.Web.UI.Page
     {
 
+        public SqlConnection objConn;
+        public String strConnString = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
-            {
-                txtStartDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
-                DataTable dt = new DataTable("DC");
-                dt.Columns.AddRange(new DataColumn[] {new DataColumn("dcNo"),new DataColumn("dcName"),new DataColumn("startDate") });
-                dt.Rows.Add(dt.NewRow());
-                gvDc.DataSource = dt;
-                gvDc.DataBind();
-            }
+            objConn = new SqlConnection();
+            objConn.ConnectionString = strConnString;
+            objConn.Open();
+                
+            txt_enddate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            hid_DC_NO.Value = Request.QueryString["DC_NO"];
+            urlHidden.Value = HttpContext.Current.Request.Url.AbsolutePath+"?r="+Request.QueryString["r"].ToString()+"&id="+Request.QueryString["id"].ToString();
         }
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
+        protected void btnEdit_Click(object sender, EventArgs e)
         {
-            txtDcName.Text = PrimaryHaul_WS.PH_EncrptHelper.MD5Encryp(txtDcNo.Text);
+            
+            main_function PPHfunction = new main_function();
+            string[] arrDate = txt_enddate.Text.Split('/');
+
+            PPHfunction.QueryExecuteNonQuery("update DC_Info set EndDate='" + arrDate[2] + "-" + arrDate[1] + "-" + arrDate[0] + "' where DC_NO='" + hid_DC_NO.Value + "'");
+            Response.Write("<script>alert('Submit Success');window.location.href='" + urlHidden.Value + "';</script>");
+        
         }
     }
 }
