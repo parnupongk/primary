@@ -25,7 +25,7 @@ namespace PrimaryHaul.WebUI.pph_include.module.profile.user_management
             {
                 PPHfunction.QueryExecuteNonQuery("update User_Profile set User_Status='" + Request.QueryString["status"].ToString() + "' WHERE UserID='" + Request.QueryString["id"].ToString() + "'");
             }
-            Response.Redirect("../../../.." + PPHfunction.decodeBase64(Request.QueryString["url"].ToString()), false);
+            Response.Write("<script>alert('Status Updated Success');window.location.href='../../../.." + PPHfunction.decodeBase64(Request.QueryString["url"].ToString())+"';</script>");
         }
     }
 }

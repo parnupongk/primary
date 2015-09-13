@@ -30,7 +30,7 @@
 <input type="hidden" name="urlSubmit" id="urlSubmit" value="<%= HttpContext.Current.Request.Url.AbsolutePath %>?r=<%= Request.QueryString["r"].ToString() %>&id=<%= Request.QueryString["id"].ToString() %>" />
 <div class="form-group">
 <div class="row">
-    <div class="col-md-2" style="text-align:right;"><label class="control-label">User Type : </label></div>
+    <div class="col-md-2"><label class="control-label">User Type </label></div>
     <div class="col-md-3">
         <select class="form-control" id="search_usertype" name="search_usertype">
             <option value="All" selected="selected" <% if (str_usertype == "All") { Response.Write("selected"); } %>>All</option>
@@ -44,9 +44,9 @@
 </div>
 <div class="form-group">
 <div class="row">
-    <div class="col-md-2" style="text-align:right;"><label class="control-label">Username : </label></div>
+    <div class="col-md-2" ><label class="control-label">Username </label></div>
     <div class="col-md-3"><input type="text" class="form-control" name="search_text" id="search_text" value="<%= str_text %>" /></div>
-    <div class="col-md-7" style="text-align:left;"><input type="button" value="Search" class="btn btn-default" onclick="js_submitSearch('search_usertype',  'search_text' , 'urlSubmit');" /></div>
+    <div class="col-md-7" ><input type="button" value="Search" class="btn btn-default" onclick="js_submitSearch('search_usertype',  'search_text' , 'urlSubmit');" /></div>
 </div>
 </div>
 <% if (!string.IsNullOrEmpty(Request.QueryString["search_usertype"] as string)){ %>
@@ -73,7 +73,7 @@
             int icolor = 0;
             string searchRole = "";
             if (txtType != "All") { searchRole = "and RoleID='" + txtType + "'"; }
-            string sql_listuser = "select * from User_Profile where UserID != '' " + searchRole + " " + txtText + " order by UserID asc";
+            string sql_listuser = "select * from User_Profile where UserID != '' " + searchRole + " " + txtText + " order by UserID asc";         
             SqlCommand rs_listuser = new SqlCommand(sql_listuser, objConn);
             obj_listuser = rs_listuser.ExecuteReader();
             while (obj_listuser.Read())
@@ -95,8 +95,8 @@
         <td style="text-align:center;"><%= obj_listuser["EMail_Address"].ToString() %></td>
         <td style="text-align:center;"><%= detailStatus %></td>
         <td style="text-align:center;">
-            <input type="button" value="Reset Password" id="btnResetPass" class="btn btn-default" onclick="<%= urlReset %>" /> 
-            <input type="button" value="Status" class="btn btn-default" onclick="<%= urlUpdateStatus %>" />
+            <div class="form-group"><input type="button" value="Reset Password" id="btnResetPass" class="btn btn-default" onclick="<%= urlReset %>" style="width:100%;" /></div>
+            <div class="form-group"><input type="button" value="Update Status" class="btn btn-default" onclick="<%= urlUpdateStatus %>" style="width:100%;" /></div>
         </td>                   
       </tr>
      <% } obj_listuser.Close();

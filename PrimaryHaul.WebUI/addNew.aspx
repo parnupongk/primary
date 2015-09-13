@@ -324,7 +324,7 @@
                     </!-->
                     <div class="form-group">
                         <div class="col-md-offset-3 col-md-9">
-                            <asp:Button runat="server" Text="Submit" ID="btnSubmit" CssClass="btn btn-default" OnClick="btnSubmit_Click" />
+                            <asp:Button runat="server" Text="Save" ID="btnSubmit" CssClass="btn btn-default" OnClick="btnSubmit_Click" />
                             <p class="text-danger">
                                 <asp:Label ID="lblError" runat="server"></asp:Label>
                             </p>

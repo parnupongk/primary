@@ -20,20 +20,23 @@ namespace PrimaryHaul.WebUI
             objConn = new SqlConnection();
             objConn.ConnectionString = strConnString;
             objConn.Open();
-                
-            txt_enddate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
+            //if (!string.IsNullOrEmpty(Request.QueryString["DC_Date"] as string)) { txt_enddate.Text = Request.QueryString["DC_Date"].ToString(); }
             hid_DC_NO.Value = Request.QueryString["DC_NO"];
             urlHidden.Value = HttpContext.Current.Request.Url.AbsolutePath+"?r="+Request.QueryString["r"].ToString()+"&id="+Request.QueryString["id"].ToString();
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            
             main_function PPHfunction = new main_function();
-            string[] arrDate = txt_enddate.Text.Split('/');
-
-            PPHfunction.QueryExecuteNonQuery("update DC_Info set EndDate='" + arrDate[2] + "-" + arrDate[1] + "-" + arrDate[0] + "' where DC_NO='" + hid_DC_NO.Value + "'");
-            Response.Write("<script>alert('Submit Success');window.location.href='" + urlHidden.Value + "';</script>");
+            string dateEndUse = "NULL";
+            if(txt_enddate.Text!="")
+            { 
+                string[] arrDate = txt_enddate.Text.Split('/');
+                dateEndUse = "'"+arrDate[2] + "-" + arrDate[1] + "-" + arrDate[0]+"'";
+            }
+            PPHfunction.QueryExecuteNonQuery("update DC_Info set EndDate=" + dateEndUse + " where DC_NO='" + hid_DC_NO.Value + "'");
+            Response.Write("<script>alert('Submit Success "+txt_enddate.Text+"');window.location.href='" + urlHidden.Value + "';</script>");
         
         }
     }

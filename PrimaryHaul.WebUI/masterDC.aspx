@@ -10,15 +10,14 @@
         document.getElementById('form_add').style.display = 'none';
         document.getElementById(varTab).style.display = '';
     }
-    function js_dcForm(varUrl, varTax) {
+    function js_dcForm(varUrl, varTax, varDate) {
         strUrl = document.getElementById(varUrl).value;
-        window.location.href = strUrl + '&DC_NO=' + varTax;
+        window.location.href = strUrl + '&DC_NO=' + varTax + '&DC_Date=' + varDate;
     }
 </script>
 <div id="form_button">
 <div class="row">
-    <div class="col-md-2"><input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" style="width:100%;" /></div>
-    <div class="col-md-2"><input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" style="width:100%;" /></div>
+    <div class="col-md-4"><input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" />&nbsp;&nbsp;&nbsp;<input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" /></div>
     <div class="col-md-8"></div>
 </div>
 <br />
@@ -56,7 +55,7 @@
             <td style="text-align:left;"><%= obj_dcInfo["DC_Name"].ToString() %></td>
             <td style="text-align:center;"><%= obj_dcInfo["EndDate"].ToString() %></td>
             <td style="text-align:center;">
-                <input type="button" value="Update" class="btn btn-default" <% Response.Write("onclick=\"js_dcForm('urlSubmit', '" + obj_dcInfo["DC_NO"].ToString() + "');\""); %> />
+                <input type="button" value="Update" class="btn btn-default" <% Response.Write("onclick=\"js_dcForm('urlSubmit', '" + obj_dcInfo["DC_NO"].ToString() + "', '" +obj_dcInfo["EndDate"].ToString()+ "');\""); %> />
                  
             </td>                   
           </tr>
@@ -144,7 +143,7 @@
                 if (req.readyState == 4) {
                     if (req.status == 200) {
                         document.getElementById('btnSubmit').disabled = false;
-                        document.getElementById('btnSubmitError').innerHTML = "<font color=\"red\">Submit Success</font>";
+                        document.getElementById('btnSubmitError').innerHTML = "<font color=\"red\">Save Success</font>";
                         document.getElementById('btnSubmitError').style.display = "";
                         document.getElementById('DC_NO').value = "";
                         document.getElementById('DC_Name').value = "";
@@ -172,12 +171,12 @@
     document.getElementById('btnSubmitError').style.display = "none";
 </script>
 <div class="row">
-    <div class="form-horizontal">
-        <h4>Master Data > DC > Add</h4>
+     <div class="col-md-12">
+        <h4>Master Data > DC > ADD</h4>
         <hr />   
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">DC NO : </label></div>
+                <div class="col-md-2" ><label class="control-label">DC NO </label></div>
                 <div class="col-md-3">
                     <input type="text" class="form-control" name="DC_NO" id="DC_NO" onkeypress='return isNumberKey(event)'  onchange="dc_noDuplicate();" />
                     <p class="text-danger" id="taxError" style="display:none;"></p>
@@ -187,7 +186,7 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">DC Name : </label></div>
+                <div class="col-md-2" ><label class="control-label">DC Name </label></div>
                 <div class="col-md-5"><input type="text" class="form-control" name="DC_Name" id="DC_Name" onchange="dc_nameDuplicate();" style="width:100%;"/><p class="text-danger" id="nameEnError" style="display:none;"></p></div>               
                 <div class="col-md-5"></div>
             </div>
@@ -195,7 +194,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" style="text-align:right;"></div>
-                <div class="col-md-3" style="text-align:left;"><input type="button" id="btnSubmit" value="Submit" class="btn btn-default" onclick="dc_Submit();" /><p class="text-danger" id="btnSubmitError" style="display:none;"></p></div>
+                <div class="col-md-3" style="text-align:left;"><input type="button" id="btnSubmit" value="Save" class="btn btn-default" onclick="dc_Submit();" /><p class="text-danger" id="btnSubmitError" style="display:none;"></p></div>
                 <div class="col-md-7" style="text-align:left;"></div>
             </div>
         </div>
@@ -217,12 +216,12 @@
 <br />
 <div id="form_db">
 <div class="row">
-    <div class="form-horizontal">
+     <div class="col-md-12">
         <h4>Master Data > DC > Update</h4>
         <hr />   
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">End Date : </label></div>
+                <div class="col-md-2" ><label class="control-label">End Date </label></div>
                 <div class="col-md-3">
                     <input type="hidden" class="form-control" id="hid_DC_NO" name="hid_DC_NO" runat="server" />
                      <asp:TextBox autocomplete="off" runat="server" ID="txt_enddate" CssClass="form-control" /><br />
@@ -234,7 +233,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" style="text-align:right;"></div>
-                <div class="col-md-3" style="text-align:left;"> <asp:Button runat="server" ID="btnEdit" Text="Submit" CssClass="btn btn-default" OnClick="btnEdit_Click" /></div>
+                <div class="col-md-3" style="text-align:left;"> <asp:Button runat="server" ID="btnEdit" Text="Save" CssClass="btn btn-default" OnClick="btnEdit_Click" /></div>
                 <div class="col-md-7" style="text-align:left;"></div>
             </div>
         </div>

@@ -184,6 +184,15 @@ namespace PrimaryHaul.WebUI {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkUserManagement;
         
         /// <summary>
+        /// lnkDayofExpired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkDayofExpired;
+        
+        /// <summary>
         /// lnkChangePasswd control.
         /// </summary>
         /// <remarks>
@@ -200,15 +209,6 @@ namespace PrimaryHaul.WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkChangeProfile;
-        
-        /// <summary>
-        /// lnkDayofExpired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkDayofExpired;
         
         /// <summary>
         /// form1 control.

@@ -26,12 +26,12 @@ namespace PrimaryHaul.WebUI
             objConn.ConnectionString = strConnString;
             objConn.Open();
 
-            string sql_usertype = "select distinct RoleID, Group_Menu from Menu_Role order by RoleID asc";
+            string sql_usertype = "select distinct RoleID, Group_Menu from Menu_Role where Group_Menu+RoleID not in ('TESCOHL', 'TESCOVD') order by RoleID asc";
             SqlCommand rs_usertype = new SqlCommand(sql_usertype, objConn);
             obj_usertype = rs_usertype.ExecuteReader();
 
             if (!string.IsNullOrEmpty(Request.QueryString["search_usertype"])) { txtType = Request.QueryString["search_usertype"]; }
-            if (!string.IsNullOrEmpty(Request.QueryString["search_text"])) { txtText = "and UserName like '%"+Request.QueryString["search_text"]+"'"; }
+            if (!string.IsNullOrEmpty(Request.QueryString["search_text"])) { txtText = "and UserName like '%"+Request.QueryString["search_text"]+"%'"; }
             
         }
     }

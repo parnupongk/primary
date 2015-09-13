@@ -93,18 +93,21 @@
                                     </ul>
                                 </li>
 
-                                <li><a runat="server" id="lnkUserManagement" href="user_management.aspx?" name="User Management">User Management</a></li>
-                                <li><a runat="server" id="lnkChangePasswd" href="changepassword.aspx?" name="Change Password">Change Password</a></li>
-                                <li><a runat="server" id="lnkChangeProfile" href="changeprofile.aspx?" name="Change Profile">Change Profile</a></li>
+                                <li><a runat="server" id="lnkUserManagement" href="user_management.aspx?" name="User Management">User Management</a></li>                               
                                 <li><a runat="server" id="lnkDayofExpired" href="dayofexpired.aspx?" name="Change Day of Password Expired">Day of Expired Date</a></li>
                             </ul>
                     </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="logout.aspx">Log Out</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="#" title="Manage your account">Hello, <%:  GetUserName(Request)  %> </a></li>
+                         <li class="active">
+                            <a class="dropdown-toggle" data-toggle="dropdown"title="Manage your account">Hello, <%:  GetUserName(Request)  %><span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                 <li><a runat="server" id="lnkChangePasswd" href="changepassword.aspx?" name="Change Password">Change Password</a></li>
+                                 <li><a runat="server" id="lnkChangeProfile" href="changeprofile.aspx?" name="Change Profile">Change Profile</a></li>
+                                 <li class="divider"></li>
+                                 <li><a href="logout.aspx">Log Out</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
@@ -124,8 +127,6 @@
 
     </div>
     <!-- /container -->
-
-    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type = "text/javascript"></!--script-->
 
     <script src="dist/js/bootstrap.min.js"></script>
 

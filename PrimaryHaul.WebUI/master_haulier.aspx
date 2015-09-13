@@ -16,8 +16,7 @@
 </script>
 <div id="form_button">
 <div class="row">
-    <div class="col-md-2"><input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" style="width:100%;" /></div>
-    <div class="col-md-2"><input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" style="width:100%;" /></div>
+    <div class="col-md-4"><input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" />&nbsp;&nbsp;&nbsp;<input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" /></div>
     <div class="col-md-8"></div>
 </div>
 <br />
@@ -171,12 +170,12 @@
                 if (req.readyState == 4) {
                     if (req.status == 200) {
                         document.getElementById('btnSubmit').disabled = false;
-                        document.getElementById('btnSubmitError').innerHTML = "<font color=\"red\">Submit Success</font>";
+                        document.getElementById('btnSubmitError').innerHTML = "<font color=\"red\">Save Success</font>";
                         document.getElementById('btnSubmitError').style.display = "";
                         document.getElementById('Haulier_TaxID').value = "";
                         document.getElementById('Haulier_Name_En').value = "";
                         document.getElementById('Haulier_Abbr').value = "";
-                        window.location.reload()
+                        window.location.reload();
                     }
                 }
             }
@@ -201,14 +200,14 @@
     document.getElementById('btnSubmitError').style.display = "none";
 </script>
 <div class="row">
-    <div class="form-horizontal">
+    <div class="col-md-12">
         <h4>Master Data > Haulier > Add</h4>
         <hr />   
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">Tax ID : </label></div>
+                <div class="col-md-2" ><label class="control-label">Tax ID </label></div>
                 <div class="col-md-3">
-                    <input type="text" class="form-control" name="Haulier_TaxID" id="Haulier_TaxID" onkeypress='return isNumberKey(event)'  onchange="haulier_taxDuplicate();" />
+                    <input type="text" class="form-control" name="Haulier_TaxID" id="Haulier_TaxID" onkeypress='return isNumberKey(event)' maxlength="13"  onchange="haulier_taxDuplicate();" />
                     <p class="text-danger" id="taxError" style="display:none;"></p>
                 </div>
                 <div class="col-md-7"></div>
@@ -216,14 +215,14 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">Haulier Name : </label></div>
+                <div class="col-md-2" ><label class="control-label">Haulier Name </label></div>
                 <div class="col-md-5"><input type="text" class="form-control" name="Haulier_Name_En" id="Haulier_Name_En" onchange="haulier_nameEnDuplicate();" style="width:100%;"/><p class="text-danger" id="nameEnError" style="display:none;"></p></div>               
                 <div class="col-md-5"></div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">Haulier Abbr : </label></div>
+                <div class="col-md-2" ><label class="control-label">Haulier Abbr </label></div>
                 <div class="col-md-5"><input type="text" class="form-control" name="Haulier_Abbr" id="Haulier_Abbr" onchange="haulier_abbrDuplicate();" style="width:100%;"/><p class="text-danger" id="abbrError" style="display:none;"></p></div>
                 <div class="col-md-5"></div>
             </div>
@@ -231,7 +230,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" style="text-align:right;"></div>
-                <div class="col-md-3" style="text-align:left;"><input type="button" id="btnSubmit" value="Submit" class="btn btn-default" onclick="haulier_Submit();" /><p class="text-danger" id="btnSubmitError" style="display:none;"></p></div>
+                <div class="col-md-3" style="text-align:left;"><input type="button" id="btnSubmit" value="Save" class="btn btn-default" onclick="haulier_Submit();" /><p class="text-danger" id="btnSubmitError" style="display:none;"></p></div>
                 <div class="col-md-7" style="text-align:left;"></div>
             </div>
         </div>
@@ -314,7 +313,7 @@
         req.send(str_url);
     }
 
-    function haulier_edit_Submit() {
+    function haulier_edit_Submit(varA, varB) {
         var req = Inint_AJAX();
         var str = Math.random();
         var strTax = document.getElementById('edit_Haulier_TaxID').value;
@@ -331,12 +330,12 @@
                 if (req.readyState == 4) {
                     if (req.status == 200) {
                         document.getElementById('edit_btnSubmit').disabled = false;
-                        document.getElementById('edit_btnSubmitError').innerHTML = "<font color=\"red\">Submit Success</font>";
+                        document.getElementById('edit_btnSubmitError').innerHTML = "<font color=\"red\">Save Success</font>";
                         document.getElementById('edit_btnSubmitError').style.display = "";
                         document.getElementById('edit_Haulier_TaxID').value = "";
                         document.getElementById('edit_Haulier_Name_En').value = "";
                         document.getElementById('edit_Haulier_Abbr').value = "";
-                        window.location.reload()
+                        window.location.href = './master_haulier.aspx?r='+varA+'&id='+varB;
                     }
                 }
             }
@@ -366,12 +365,12 @@
        SqlDataReader obj_haulier = rs_haulier.ExecuteReader();
        obj_haulier.Read();           
     %>
-    <div class="form-horizontal">
+    <div class="col-md-12">
         <h4>Master Data > Haulier > Edit</h4>
         <hr />   
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">Tax ID : </label></div>
+                <div class="col-md-2"><label class="control-label">Tax ID </label></div>
                 <div class="col-md-3">
                     <input type="text" value="<%= obj_haulier[0].ToString() %>" class="form-control" disabled="disabled" />
                     <input type="hidden" class="form-control" name="edit_Haulier_TaxID" id="edit_Haulier_TaxID" value="<%= obj_haulier[0].ToString() %>" />
@@ -381,14 +380,14 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">Haulier Name : </label></div>
+                <div class="col-md-2" ><label class="control-label">Haulier Name </label></div>
                 <div class="col-md-5"><input type="text" value="<%= obj_haulier[1].ToString() %>" class="form-control" name="edit_Haulier_Name_En" id="edit_Haulier_Name_En" onchange="haulier_edit_nameEnDuplicate();" style="width:100%;"/><p class="text-danger" id="edit_nameEnError" style="display:none;"></p></div>               
                 <div class="col-md-5"></div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">Haulier Abbr : </label></div>
+                <div class="col-md-2" ><label class="control-label">Haulier Abbr </label></div>
                 <div class="col-md-5"><input type="text" value="<%= obj_haulier[2].ToString() %>" class="form-control" name="edit_Haulier_Abbr" id="edit_Haulier_Abbr" onchange="haulier_edit_abbrDuplicate();" style="width:100%;"/><p class="text-danger" id="edit_abbrError" style="display:none;"></p></div>
                 <div class="col-md-5"></div>
             </div>
@@ -396,7 +395,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" style="text-align:right;"></div>
-                <div class="col-md-3" style="text-align:left;"><input type="button" id="edit_btnSubmit" value="Submit" class="btn btn-default" onclick="haulier_edit_Submit();" /><p class="text-danger" id="edit_btnSubmitError" style="display:none;"></p></div>
+                <div class="col-md-3" style="text-align:left;"><input type="button" id="edit_btnSubmit" value="Save" class="btn btn-default" <% Response.Write("onclick=\"haulier_edit_Submit('" + Request.QueryString["r"].ToString() + "', '" + Request.QueryString["id"].ToString() + "');\""); %>  /><p class="text-danger" id="edit_btnSubmitError" style="display:none;"></p></div>
                 <div class="col-md-7" style="text-align:left;"></div>
             </div>
         </div>
