@@ -36,7 +36,7 @@ namespace PrimaryHaul.WebUI
                 dateEndUse = "'"+arrDate[2] + "-" + arrDate[1] + "-" + arrDate[0]+"'";
             }
             PPHfunction.QueryExecuteNonQuery("update DC_Info set EndDate=" + dateEndUse + " where DC_NO='" + hid_DC_NO.Value + "'");
-            Response.Write("<script>alert('Submit Success "+txt_enddate.Text+"');window.location.href='" + urlHidden.Value + "';</script>");
+            Response.Write("<script>alert('Submit Success');window.location.href='" + urlHidden.Value + "';</script>");
         
         }
     }
