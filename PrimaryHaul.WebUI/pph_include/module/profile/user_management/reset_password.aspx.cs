@@ -16,7 +16,7 @@ namespace PrimaryHaul.WebUI.pph_include.module.profile.user_management
         protected void Page_Load(object sender, EventArgs e)
         {
             main_function PPHfunction = new main_function();
-            PPHfunction.QueryExecuteNonQuery("update User_Profile set Passwd_Expired_Date='" + DateTime.Now + "', Passwd='" + PH_EncrptHelper.MD5Encryp("P@sswOrd") + "' WHERE UserID='" + PPHfunction.decodeBase64(Request.QueryString["Param"].ToString()) + "'");
+            PPHfunction.QueryExecuteNonQuery("update User_Profile set Passwd_Expired_Date='" + DateTime.Now + "', Passwd='" + PH_EncrptHelper.MD5Encryp("P@ssw0rd") + "' WHERE UserID='" + PPHfunction.decodeBase64(Request.QueryString["Param"].ToString()) + "'");
 
             Response.Write("<script>alert('Password Reset Already');window.location.href='../../../.." + PPHfunction.decodeBase64(Request.QueryString["url"].ToString())+"';</script>");
         }
