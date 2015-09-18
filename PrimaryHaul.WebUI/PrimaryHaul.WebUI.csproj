@@ -103,6 +103,7 @@
     <Content Include="images\2.jpg" />
     <Content Include="images\bg-login.png" />
     <Content Include="images\icon.jpg" />
+    <Content Include="images\icon_setting.png" />
     <Content Include="index.aspx" />
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
