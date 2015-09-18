@@ -92,16 +92,20 @@
                                         <li><a runat="server" id="lnkProVendor" name="Vendor" href="addnew.aspx?type=VD&">Vendor</a></li>
                                     </ul>
                                 </li>
-
                                 <li><a runat="server" id="lnkUserManagement" href="user_management.aspx?" name="User Management">User Management</a></li>
-                                <li><a runat="server" id="lnkChangePasswd" href="changepassword.aspx?" name="Change Password">Change Password</a></li>
-                                <li><a runat="server" id="lnkChangeProfile" href="changeprofile.aspx?" name="Change Profile">Change Profile</a></li>
                                 <li><a runat="server" id="lnkDayofExpired" href="dayofexpired.aspx?" name="Change Day of Password Expired">Day of Expired Date</a></li>
                             </ul>
-                    </li>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="logout.aspx">Log Out</a></li>
+                        <li class="dropdown">
+                           <a class="dropdown-toggle" data-toggle="dropdown"><asp:Image src="images/icon_setting.png" runat="server" /><span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a runat="server" id="A5" href="changepassword.aspx?" name="Change Password">Change Password</a></li>
+                                <li><a runat="server" id="A6" href="changeprofile.aspx?" name="Change Profile">Change Profile</a></li>
+                            </ul>
+                            </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="#" title="Manage your account">Hello, <%:  GetUserName(Request)  %> </a></li>
