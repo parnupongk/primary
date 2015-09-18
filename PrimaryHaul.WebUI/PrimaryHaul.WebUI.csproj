@@ -108,9 +108,18 @@
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="masterDC.aspx" />
+    <Content Include="master_haulier.aspx" />
     <Content Include="master_vender.aspx" />
     <Content Include="packages.config" />
     <Content Include="pph_include\ajax\ajax_connect.js" />
+    <Content Include="pph_include\ajax\files\dc_nameDuplicate.aspx" />
+    <Content Include="pph_include\ajax\files\dc_noDuplicate.aspx" />
+    <Content Include="pph_include\ajax\files\dc_Submit.aspx" />
+    <Content Include="pph_include\ajax\files\haulier_abbrDuplicate.aspx" />
+    <Content Include="pph_include\ajax\files\haulier_edit_Submit.aspx" />
+    <Content Include="pph_include\ajax\files\haulier_nameEnDuplicate.aspx" />
+    <Content Include="pph_include\ajax\files\haulier_Submit.aspx" />
+    <Content Include="pph_include\ajax\files\haulier_taxDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\userDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\vender_nameEnDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\vender_nameThDuplicate.aspx" />
@@ -234,12 +243,75 @@
     <Compile Include="masterDC.aspx.designer.cs">
       <DependentUpon>masterDC.aspx</DependentUpon>
     </Compile>
+    <Compile Include="master_haulier.aspx.cs">
+      <DependentUpon>master_haulier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="master_haulier.aspx.designer.cs">
+      <DependentUpon>master_haulier.aspx</DependentUpon>
+    </Compile>
     <Compile Include="master_vender.aspx.cs">
       <DependentUpon>master_vender.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="master_vender.aspx.designer.cs">
       <DependentUpon>master_vender.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\dc_nameDuplicate.aspx.cs">
+      <DependentUpon>dc_nameDuplicate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\dc_nameDuplicate.aspx.designer.cs">
+      <DependentUpon>dc_nameDuplicate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\dc_noDuplicate.aspx.cs">
+      <DependentUpon>dc_noDuplicate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\dc_noDuplicate.aspx.designer.cs">
+      <DependentUpon>dc_noDuplicate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\dc_Submit.aspx.cs">
+      <DependentUpon>dc_Submit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\dc_Submit.aspx.designer.cs">
+      <DependentUpon>dc_Submit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\haulier_abbrDuplicate.aspx.cs">
+      <DependentUpon>haulier_abbrDuplicate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\haulier_abbrDuplicate.aspx.designer.cs">
+      <DependentUpon>haulier_abbrDuplicate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\haulier_edit_Submit.aspx.cs">
+      <DependentUpon>haulier_edit_Submit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\haulier_edit_Submit.aspx.designer.cs">
+      <DependentUpon>haulier_edit_Submit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\haulier_nameEnDuplicate.aspx.cs">
+      <DependentUpon>haulier_nameEnDuplicate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\haulier_nameEnDuplicate.aspx.designer.cs">
+      <DependentUpon>haulier_nameEnDuplicate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\haulier_Submit.aspx.cs">
+      <DependentUpon>haulier_Submit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\haulier_Submit.aspx.designer.cs">
+      <DependentUpon>haulier_Submit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\haulier_taxDuplicate.aspx.cs">
+      <DependentUpon>haulier_taxDuplicate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\haulier_taxDuplicate.aspx.designer.cs">
+      <DependentUpon>haulier_taxDuplicate.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\ajax\files\userDuplicate.aspx.cs">
       <DependentUpon>userDuplicate.aspx</DependentUpon>
