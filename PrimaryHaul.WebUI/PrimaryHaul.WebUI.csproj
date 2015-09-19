@@ -109,6 +109,7 @@
     <Content Include="logout.aspx" />
     <Content Include="masterDC.aspx" />
     <Content Include="master_haulier.aspx" />
+    <Content Include="master_ratecard.aspx" />
     <Content Include="master_vender.aspx" />
     <Content Include="packages.config" />
     <Content Include="pph_include\ajax\ajax_connect.js" />
@@ -133,6 +134,7 @@
     <Content Include="dist\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="dist\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="file\ratecard.xls" />
     <None Include="Properties\PublishProfiles\primaryHaul.pubxml" />
     <None Include="Properties\PublishProfiles\tesco.pubxml" />
     <None Include="Web.Debug.config">
@@ -249,6 +251,13 @@
     </Compile>
     <Compile Include="master_haulier.aspx.designer.cs">
       <DependentUpon>master_haulier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="master_ratecard.aspx.cs">
+      <DependentUpon>master_ratecard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="master_ratecard.aspx.designer.cs">
+      <DependentUpon>master_ratecard.aspx</DependentUpon>
     </Compile>
     <Compile Include="master_vender.aspx.cs">
       <DependentUpon>master_vender.aspx</DependentUpon>
@@ -390,6 +399,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Error\" />
+    <Folder Include="upload\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

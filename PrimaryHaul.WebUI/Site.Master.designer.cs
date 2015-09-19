@@ -175,15 +175,6 @@ namespace PrimaryHaul.WebUI {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkProVendor;
         
         /// <summary>
-        /// lnkUserManagement control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkUserManagement;
-        
-        /// <summary>
         /// lnkDayofExpired control.
         /// </summary>
         /// <remarks>
@@ -193,37 +184,40 @@ namespace PrimaryHaul.WebUI {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkDayofExpired;
         
         /// <summary>
-<<<<<<< HEAD
         /// A5 control.
-=======
-        /// lnkChangePasswd control.
->>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A5;
         
         /// <summary>
         /// A6 control.
-=======
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkChangePasswd;
-        
-        /// <summary>
-        /// lnkChangeProfile control.
->>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A6;
-=======
+        
+        /// <summary>
+        /// lnkChangePasswd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkChangePasswd;
+        
+        /// <summary>
+        /// lnkChangeProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkChangeProfile;
->>>>>>> origin/master
         
         /// <summary>
         /// form1 control.

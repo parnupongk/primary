@@ -22,6 +22,7 @@ namespace PrimaryHaul.WebUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             if (!string.IsNullOrEmpty(Session["s_forceChange"] as string))
             {
                 if (HttpContext.Current.Request.Url.AbsolutePath.Substring(HttpContext.Current.Request.Url.AbsolutePath.Length - 19, 19) != "changepassword.aspx")
@@ -49,7 +50,7 @@ namespace PrimaryHaul.WebUI
                     GenMenu();
 
                 }
-            }
+            }*/
         }
 
         private void GenMenu()

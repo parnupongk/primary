@@ -27,7 +27,7 @@ namespace PrimaryHaul.WebUI
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                string strName = dt.Rows[i]["vendor_code"].ToString();
+                string strName = dt.Rows[i]["vendor_code"].ToString() + "-" + dt.Rows[i]["Vendor_Name_Th"].ToString();
                 items.Add(strName);
             }
             return items.ToArray();

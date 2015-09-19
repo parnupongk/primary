@@ -31,8 +31,9 @@
     <script>
 
         function isNumberKey(evt) {
+            
             var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57))
+            if (charCode > 31 && (charCode < 48 || charCode > 57) && (charCode !=46))
                 return false;
 
             return true;
@@ -92,18 +93,13 @@
                                         <li><a runat="server" id="lnkProVendor" name="Vendor" href="addnew.aspx?type=VD&">Vendor</a></li>
                                     </ul>
                                 </li>
-<<<<<<< HEAD
-                                <li><a runat="server" id="lnkUserManagement" href="user_management.aspx?" name="User Management">User Management</a></li>
-=======
 
-                                <li><a runat="server" id="lnkUserManagement" href="user_management.aspx?" name="User Management">User Management</a></li>                               
->>>>>>> origin/master
                                 <li><a runat="server" id="lnkDayofExpired" href="dayofexpired.aspx?" name="Change Day of Password Expired">Day of Expired Date</a></li>
                             </ul>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
+
                         <li><a href="logout.aspx">Log Out</a></li>
                         <li class="dropdown">
                            <a class="dropdown-toggle" data-toggle="dropdown"><asp:Image src="images/icon_setting.png" runat="server" /><span class="caret"></span></a>
@@ -115,7 +111,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="#" title="Manage your account">Hello, <%:  GetUserName(Request)  %> </a></li>
-=======
+<!--
                          <li class="active">
                             <a class="dropdown-toggle" data-toggle="dropdown"title="Manage your account">Hello, <%:  GetUserName(Request)  %><span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -125,7 +121,7 @@
                                  <li><a href="logout.aspx">Log Out</a></li>
                             </ul>
                         </li>
->>>>>>> origin/master
+>>>>>>> origin/master -->
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
