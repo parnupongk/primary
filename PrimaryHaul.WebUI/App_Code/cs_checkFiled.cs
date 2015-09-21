@@ -35,5 +35,23 @@ namespace PrimaryHaul.WebUI.App_Code
             objConn = null;
             return txt_return;
         }
+
+        public string sql_getAjaxAnswer(string sql_string)
+        {
+            string txt_return = "";
+            objConn = new SqlConnection();
+            objConn.ConnectionString = strConnString;
+            objConn.Open();
+            DataTable obj_getAjaxAnswer = new DataTable();
+            SqlDataAdapter rs_getAjaxAnswer = new SqlDataAdapter(sql_string, objConn);
+            rs_getAjaxAnswer.Fill(obj_getAjaxAnswer);
+            if (obj_getAjaxAnswer.Rows.Count > 0)
+            {
+                txt_return = obj_getAjaxAnswer.Rows[0][0].ToString();
+            }
+            objConn.Close();
+            objConn = null;
+            return txt_return;
+        }
     }
 }

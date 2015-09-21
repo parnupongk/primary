@@ -22,9 +22,9 @@
         strUrl = document.getElementById(varUrl).value;
         window.location.href = strUrl;
     }
-    function js_venderForm(varUrl, varTax) {
+    function js_venderForm(varUrl, varTax, varID) {
         strUrl = document.getElementById(varUrl).value;
-        window.location.href = strUrl + '&taxID=' + varTax;
+        window.location.href = strUrl + '&taxID=' + varTax + '&vnID=' + varID;
     }
 </script>
 <div id="form_button">
@@ -108,7 +108,7 @@
         <td style="text-align:center;"><%= irows %></td>
         <td style="text-align:left;"><%= obj_vendorInfo["Vendor_Name_En"].ToString() %></td>
         <td style="text-align:left;"><%= obj_vendorInfo["Vendor_Name_Th"].ToString() %></td>
-        <td style="text-align:center;"><input type="button" value="View Vender" class="btn btn-default" <% Response.Write("onclick=\"js_venderForm('urlSubmit', '" + obj_vendorInfo["Vendor_TaxID"].ToString() + "');\""); %> /> </td>                   
+        <td style="text-align:center;"><input type="button" value="Vendor List" class="btn btn-default" <% Response.Write("onclick=\"js_venderForm('urlSubmit', '" + obj_vendorInfo["Vendor_TaxID"].ToString() + "', '" + obj_vendorInfo["VendorID"].ToString() + "');\""); %> /> </td>                   
       </tr>
      <% } obj_vendorInfo.Close(); %>
     </table>
@@ -229,7 +229,7 @@ function vender_Submit() {
     var strTax = document.getElementById('addNameTax').value;
     var strNameEn = document.getElementById('addNameEn').value;
     var strNameTh = document.getElementById('addNameTh').value;
-    if (strTax != '' && strNameEn != '' || strNameTh != '') {
+    if (strTax != '' && strNameEn != '' && strTax.length == 13 && strNameTh != '') {
         var str_url_address = "./pph_include/ajax/files/vender_Submit.aspx";
         var str_url = "var01=" + strTax;
         str_url += "&var02=" + strNameEn;
@@ -240,11 +240,13 @@ function vender_Submit() {
             if (req.readyState == 4) {
                 if (req.status == 200) {
                     document.getElementById('btnSubmit').disabled = false;
-                    document.getElementById('btnSubmitError').innerHTML = "<font color=\"red\">Submit Success</font>";
-                    document.getElementById('btnSubmitError').style.display = "";
+                   // document.getElementById('btnSubmitError').innerHTML = "<font color=\"red\">Submit Success</font>";
+                    document.getElementById('btnSubmitError').style.display = "none";
                     document.getElementById('addNameTax').value = "";
                     document.getElementById('addNameEn').value = "";
                     document.getElementById('addNameTh').value = "";
+                    alert('Save Success');
+                    window.location.reload();
                 }
             }
         }
@@ -253,7 +255,7 @@ function vender_Submit() {
     }
     else {
         document.getElementById('btnSubmit').disabled = true;
-        document.getElementById('btnSubmitError').innerHTML = "<font color=\"red\">field is required</font>";
+        document.getElementById('btnSubmitError').innerHTML = "";
         document.getElementById('btnSubmitError').style.display = "";
     }
 }
@@ -299,7 +301,7 @@ function isNumberKey(evt) {
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" style="text-align:right;"></div>
-                <div class="col-md-3" style="text-align:left;"><input type="button" id="btnSubmit" value="Submit" class="btn btn-default" onclick="vender_Submit();" /><p class="text-danger" id="btnSubmitError" style="display:none;"></p></div>
+                <div class="col-md-3" style="text-align:left;"><input type="button" id="btnSubmit" value="Save" class="btn btn-default" onclick="vender_Submit();" /><p class="text-danger" id="btnSubmitError" style="display:none;"></p></div>
                 <div class="col-md-7" style="text-align:left;"></div>
             </div>
         </div>
@@ -313,17 +315,20 @@ function isNumberKey(evt) {
     document.getElementById('form_view').style.display = 'none';
     document.getElementById('form_add').style.display = 'none';
     document.getElementById('form_button').style.display = 'none';
+    document.getElementById('form_addUsername').style.display = 'none';
 </script>
+
+
+<div id="form_vendor">
 <div class="row">
     <div class="col-md-2"><input type="button" value="Back" class="btn btn-default" onclick="window.history.back();" style="width:100%;" /></div>
     <div class="col-md-2"></div>
     <div class="col-md-8"></div>
 </div>
 <br />
-<div id="form_vendor">
 <div class="row">
     <div class="form-horizontal">
-    <h4>Master Data > Vender > View Vender</h4>
+    <h4>Master Data > Vender > Vendor List</h4>
     <hr />
     </div>
 </div>
@@ -340,7 +345,7 @@ function isNumberKey(evt) {
         string detailColor = "";
         int irows = 0;
         int icolor = 0;
-        string sql_vendorInfo = "select * from Vendor_Group where Vendor_TaxID = '" + Request.QueryString["taxID"].ToString() + "' order by Vendor_Code asc";
+        string sql_vendorInfo = "select B.VendorID, B.Vendor_Code,B.Vendor_UserName  from Vendor_Info A , Vendor_Group B where  A.VendorID = B.VendorID and A.VendorID='"+Request.QueryString["vnID"]+"' Order by B.Vendor_Code  asc";
         SqlCommand rs_vendorInfo = new SqlCommand(sql_vendorInfo, objConn);
         SqlDataReader obj_vendorInfo = rs_vendorInfo.ExecuteReader();
         while (obj_vendorInfo.Read())
@@ -353,13 +358,238 @@ function isNumberKey(evt) {
         <td style="text-align:center;"><%= irows %></td>
         <td style="text-align:center;"><%= obj_vendorInfo["Vendor_Code"].ToString() %></td>
         <td style="text-align:center;"><%= obj_vendorInfo["Vendor_UserName"].ToString() %></td>
-        <td style="text-align:center;"></td>                   
+        <td style="text-align:center;"><input type="checkbox" name="selectV[]" id="selectV_<%= irows %>" value="<%= obj_vendorInfo["VendorID"].ToString() %>-<%= obj_vendorInfo["Vendor_Code"].ToString() %>" /><%= obj_vendorInfo["VendorID"].ToString() %>-<%= obj_vendorInfo["Vendor_Code"].ToString() %></td>                   
       </tr>
      <% } obj_vendorInfo.Close(); %>
     </table>
     </div>
 </div>
+<script>
+    function ajax_duVendorCode2() {
+
+        var req = Inint_AJAX();
+        var str = Math.random();
+        var strValue = document.getElementById('addVendorCode').value;
+        if (strValue == "") {
+            document.getElementById('btnAddVendorCode').disabled = true;
+            document.getElementById('addVendorCodeError').innerHTML = "<font color=\"red\">field is required</font>";
+            document.getElementById('addVendorCodeError').style.display = "";
+        } else {
+            var str_url_address = "./pph_include/ajax/files/ajax_duVendorCode.aspx";
+            var str_url = "var01=" + strValue;
+            str_url += "&clearmemory=" + str;
+            req.open('POST', str_url_address, true)
+            req.onreadystatechange = function () {
+                if (req.readyState == 4) {
+                    if (req.status == 200) {
+                        var strRes = req.responseText;
+                        if (strRes > "0") {
+                            document.getElementById('btnAddVendorCode').disabled = true;
+                            document.getElementById('addVendorCodeError').innerHTML = "<font color=\"red\">Duplicate Vendor Code</font>";
+                            document.getElementById('addVendorCodeError').style.display = "";
+                        }
+                        else {
+                            document.getElementById('btnAddVendorCode').disabled = false;
+                            document.getElementById('addVendorCodeError').style.display = "none";
+                        }
+                    }
+                }
+            }
+            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            req.send(str_url);
+        }
+    }
+    function ajax_duVendorCode(objVNID) {
+        var req = Inint_AJAX();
+        var str = Math.random();
+        var strValue = document.getElementById('addVendorCode').value;
+        var strVNID = document.getElementById('vnID').value;
+        if (strValue == "") {
+            document.getElementById('btnAddVendorCode').disabled = true;
+            document.getElementById('addVendorCodeError').innerHTML = "<font color=\"red\">field is required</font>";
+            document.getElementById('addVendorCodeError').style.display = "";
+        } else {
+            var str_url_address = "./pph_include/ajax/files/ajax_duVendorCode.aspx";
+            var str_url = "var01=" + strValue;
+            str_url += "&clearmemory=" + str;
+            req.open('POST', str_url_address, true)
+            req.onreadystatechange = function () {
+                if (req.readyState == 4) {
+                    if (req.status == 200) {
+                        var strRes = req.responseText;
+                        if (strRes > "0") {
+                            document.getElementById('btnAddVendorCode').disabled = true;
+                            document.getElementById('addVendorCodeError').innerHTML = "<font color=\"red\">Duplicate Vendor Code</font>";
+                            document.getElementById('addVendorCodeError').style.display = "";
+                        }
+                        else {
+                           
+                            document.getElementById('btnAddVendorCode').disabled = false;
+                            document.getElementById('addVendorCodeError').style.display = "none";
+                            ajax_addVendorCode(strValue, strVNID);
+                        }
+                    }
+                }
+            }
+            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            req.send(str_url);
+        }
+    }
+    function ajax_addVendorCode(strValue, strVNID) {
+        var req = Inint_AJAX();
+        var str = Math.random();
+        var str_url_address = "./pph_include/ajax/files/ajax_addVendorCode.aspx";
+        var str_url = "var01=" + strValue;
+        str_url += "&var02=" + strVNID;
+        str_url += "&clearmemory=" + str;
+        //alert(strVNID);
+        req.open('POST', str_url_address, true)
+        req.onreadystatechange = function () {
+            if (req.readyState == 4) {
+                if (req.status == 200) {
+                    alert('Save Success');
+                    window.location.reload();
+                }
+            }
+        }
+        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        req.send(str_url);
+    }
+</script>
+<div class="form-group">
+<div class="row">
+    <input type="hidden" name="vnID" id="vnID" value="<%= Request.QueryString["taxID"] %>" />
+    <div class="col-md-2"></div>
+    <div class="col-md-2"><label class="control-label">Vendor Code </label></div>
+    <div class="col-md-3"><input type="text" class="form-control" name="addVendorCode" id="addVendorCode" onchange="ajax_duVendorCode2();"   style="width:100%;" /><p class="text-danger" id="addVendorCodeError" style="display:none;"></p></div>
+    <div class="col-md-5"></div>
 </div>
+</div>
+<div class="form-group">
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-3"><input type="button" value="Add Vendor Code" class="btn btn-default" id="btnAddVendorCode" style="width:100%;" onclick="ajax_duVendorCode('vnID');" /></div>
+    <div class="col-md-5"></div>
+</div>
+</div>
+<div class="form-group">
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-3"><input type="button" value="Add Username" class="btn btn-default" style="width:100%;" onclick="document.getElementById('form_view').style.display = 'none'; document.getElementById('form_add').style.display = 'none'; document.getElementById('form_button').style.display = 'none'; document.getElementById('form_vendor').style.display = 'none'; document.getElementById('form_addUsername').style.display = ''; "/></div>
+    <div class="col-md-5"></div>
+</div>
+</div>
+</div>
+<div id="form_addUsername" style="display:none;">
+<div class="row">
+    <div class="col-md-2"><input type="button" value="Back" class="btn btn-default" onclick="window.location.reload();" style="width:100%;" /></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-8"></div>
+</div>
+<br />
+<div class="row">
+    <script>
+        function ajax_vnContactPoint(objValue) {
+            var req = Inint_AJAX();
+            var str = Math.random();
+            var strValue = document.getElementById(objValue).value;
+            if (strValue == "") {
+                document.getElementById('showCP').value = "";
+            } else {
+                var str_url_address = "./pph_include/ajax/files/ajax_vnContactPoint.aspx";
+                var str_url = "var01=" + strValue;
+                str_url += "&clearmemory=" + str;
+                req.open('POST', str_url_address, true)
+                req.onreadystatechange = function () {
+                    if (req.readyState == 4) {
+                        if (req.status == 200) {
+                            document.getElementById('showCP').value = req.responseText;
+                            document.getElementById('btnSubmitAddUsername').disabled = false;
+                            document.getElementById('btnSubmitErrorUsername').innerHTML = "";
+                            document.getElementById('btnSubmitErrorUsername').style.display = "none";
+                        }
+                    }
+                }
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.send(str_url);
+            }
+        }
+
+        function ajax_addVendorUsername() {
+            var req = Inint_AJAX();
+            var str = Math.random();
+            var strValue = document.getElementById('vn_username').value;
+            var IDUP = "";
+            var IDCO = "";
+            var checkbox = document.getElementsByName('selectV[]'); for (var i = 0; i < checkbox.length; i++) { if (checkbox[i].checked) { var res = checkbox[i].value.split("-"); IDUP = IDUP + "|" + res[0] + "|"; IDCO = IDCO + "|" + res[1] + "|"; } }
+            //alert(IDUP);
+            //alert(IDCO);
+            if (strValue == "") {
+                document.getElementById('btnSubmitAddUsername').disabled = true;
+                document.getElementById('btnSubmitErrorUsername').innerHTML = "<font color=\"red\">field is required</font>";
+                document.getElementById('btnSubmitErrorUsername').style.display = "";
+            } else {
+                var str_url_address = "./pph_include/ajax/files/ajax_addVendorUsername.aspx";
+                var str_url = "var01=" + strValue;
+                str_url += "&var02=" + IDUP;
+                str_url += "&var03=" + IDCO;
+                str_url += "&clearmemory=" + str;
+                req.open('POST', str_url_address, true)
+                req.onreadystatechange = function () {
+                    if (req.readyState == 4) {
+                        if (req.status == 200) {
+                            //alert(req.responseText);
+                            alert('Save Success');
+                            window.location.reload();
+                        }
+                    }
+                }
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.send(str_url);
+            }
+        }
+    </script>
+    <div class="form-horizontal">
+    <h4>Master Data > Vender > Vendor List > ADD Username</h4>
+    <hr />
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2" style="text-align:right;"><label class="control-label">Username : </label></div>
+            <div class="col-md-3">
+            <select name="vn_username" id="vn_username" onchange="ajax_vnContactPoint('vn_username');">
+                <option value="">กรุณาเลือก Username</option>
+            <%
+                string sql_vnUsername = "select UserName, Contact_Person from User_Profile where RoleID ='VD' order by UserName asc";
+                SqlCommand rs_vnUsername = new SqlCommand(sql_vnUsername, objConn);
+                SqlDataReader obj_vnUsername = rs_vnUsername.ExecuteReader();
+                while (obj_vnUsername.Read()){
+            %>
+                <option value="<%= obj_vnUsername["UserName"].ToString() %>"><%= obj_vnUsername["UserName"].ToString() %></option>
+            <% }obj_vnUsername.Close(); %>
+            </select>
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2" style="text-align:right;"><label class="control-label">Contact Point : </label></div>
+            <div class="col-md-3"><input type="text" class="form-control" name="showCP" id="showCP" disabled="disabled" /></div>
+            <div class="col-md-7"></div>
+        </div>
+    </div>
+        <div class="form-group">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><input type="button" id="btnSubmitAddUsername" value="Save" class="btn btn-default" <% Response.Write("onclick=\"ajax_addVendorUsername();\""); %> /><br /><p class="text-danger" id="btnSubmitErrorUsername" style="display:none;"></p></div>
+            <div class="col-md-7"></div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>    
 <% } %>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </asp:Content>

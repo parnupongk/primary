@@ -39,7 +39,7 @@
             string detailColor = "";
             int irows = 0;
             int icolor = 0;
-            string sql_haulierInfo = "select * from Haulier_Info  order by Haulier_TaxID desc";
+            string sql_haulierInfo = "select * from Haulier_Info  order by Haulier_Name_En asc";
             SqlCommand rs_haulierInfo = new SqlCommand(sql_haulierInfo, objConn);
             SqlDataReader obj_haulierInfo = rs_haulierInfo.ExecuteReader();
             while (obj_haulierInfo.Read())
@@ -67,30 +67,38 @@
         var req = Inint_AJAX();
         var str = Math.random();
         var strTax = document.getElementById('Haulier_TaxID').value;
-        var str_url_address = "./pph_include/ajax/files/haulier_taxDuplicate.aspx";
-        var str_url = "var01=" + strTax;
-        str_url += "&clearmemory=" + str;
-        req.open('POST', str_url_address, true)
-        req.onreadystatechange = function () {
-            if (req.readyState == 4) {
-                if (req.status == 200) {
-                    var strRes = req.responseText;
-                    if (strRes > "0") {
-                        document.getElementById('btnSubmit').disabled = true;
-                        document.getElementById('taxError').innerHTML = "<font color=\"red\">Duplicate TAX ID</font>";
-                        document.getElementById('taxError').style.display = "";
-                        document.getElementById('btnSubmitError').style.display = "none";
-                    }
-                    else {
-                        document.getElementById('btnSubmit').disabled = false;
-                        document.getElementById('taxError').style.display = "none";
-                        document.getElementById('btnSubmitError').style.display = "none";
+        if (strTax.length < 9) {
+            document.getElementById('btnSubmit').disabled = true;
+            document.getElementById('taxError').innerHTML = "<font color=\"red\">TaxID ต้องมีตั้งแต่ 9 Digit ขึ้นไป</font>";
+            document.getElementById('taxError').style.display = "";
+            document.getElementById('btnSubmitError').style.display = "none";
+        }
+        else {
+            var str_url_address = "./pph_include/ajax/files/haulier_taxDuplicate.aspx";
+            var str_url = "var01=" + strTax;
+            str_url += "&clearmemory=" + str;
+            req.open('POST', str_url_address, true)
+            req.onreadystatechange = function () {
+                if (req.readyState == 4) {
+                    if (req.status == 200) {
+                        var strRes = req.responseText;
+                        if (strRes > "0") {
+                            document.getElementById('btnSubmit').disabled = true;
+                            document.getElementById('taxError').innerHTML = "<font color=\"red\">Duplicate TAX ID</font>";
+                            document.getElementById('taxError').style.display = "";
+                            document.getElementById('btnSubmitError').style.display = "none";
+                        }
+                        else {
+                            document.getElementById('btnSubmit').disabled = false;
+                            document.getElementById('taxError').style.display = "none";
+                            document.getElementById('btnSubmitError').style.display = "none";
+                        }
                     }
                 }
             }
+            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            req.send(str_url);
         }
-        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        req.send(str_url);
     }
 
     function haulier_nameEnDuplicate() {
@@ -159,7 +167,7 @@
         var strTax = document.getElementById('Haulier_TaxID').value;
         var strName = document.getElementById('Haulier_Name_En').value;
         var strAbbr = document.getElementById('Haulier_Abbr').value;
-        if (strTax != '' || strName != '' || strAbbr != '') {
+        if (strTax != '' && strName != '' && strAbbr != '') {
             var str_url_address = "./pph_include/ajax/files/haulier_Submit.aspx";
             var str_url = "var01=" + strTax;
             str_url += "&var02=" + strName;
@@ -170,11 +178,11 @@
                 if (req.readyState == 4) {
                     if (req.status == 200) {
                         document.getElementById('btnSubmit').disabled = false;
-                        document.getElementById('btnSubmitError').innerHTML = "<font color=\"red\">Save Success</font>";
-                        document.getElementById('btnSubmitError').style.display = "";
+                        document.getElementById('btnSubmitError').style.display = "none";
                         document.getElementById('Haulier_TaxID').value = "";
                         document.getElementById('Haulier_Name_En').value = "";
                         document.getElementById('Haulier_Abbr').value = "";
+                        alert('Save Success');
                         window.location.reload();
                     }
                 }
@@ -319,7 +327,7 @@
         var strTax = document.getElementById('edit_Haulier_TaxID').value;
         var strName = document.getElementById('edit_Haulier_Name_En').value;
         var strAbbr = document.getElementById('edit_Haulier_Abbr').value;
-        if (strTax != '' || strName != '' || strAbbr != '') {
+        if (strTax != '' && strName != '' && strAbbr != '') {
             var str_url_address = "./pph_include/ajax/files/haulier_edit_Submit.aspx";
             var str_url = "var01=" + strTax;
             str_url += "&var02=" + strName;
@@ -330,11 +338,12 @@
                 if (req.readyState == 4) {
                     if (req.status == 200) {
                         document.getElementById('edit_btnSubmit').disabled = false;
-                        document.getElementById('edit_btnSubmitError').innerHTML = "<font color=\"red\">Save Success</font>";
-                        document.getElementById('edit_btnSubmitError').style.display = "";
+                        //document.getElementById('edit_btnSubmitError').innerHTML = "<font color=\"red\">Save Success</font>";
+                        document.getElementById('edit_btnSubmitError').style.display = "none";
                         document.getElementById('edit_Haulier_TaxID').value = "";
                         document.getElementById('edit_Haulier_Name_En').value = "";
                         document.getElementById('edit_Haulier_Abbr').value = "";
+                        alert('Save Success');
                         window.location.href = './master_haulier.aspx?r='+varA+'&id='+varB;
                     }
                 }

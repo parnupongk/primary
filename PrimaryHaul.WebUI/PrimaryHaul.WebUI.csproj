@@ -113,7 +113,14 @@
     <Content Include="master_vender.aspx" />
     <Content Include="packages.config" />
     <Content Include="pph_include\ajax\ajax_connect.js" />
+    <Content Include="pph_include\ajax\files\ajax_addVendorCode.aspx" />
+    <Content Include="pph_include\ajax\files\ajax_addVendorUsername.aspx" />
+    <Content Include="pph_include\ajax\files\ajax_duVendorCode.aspx" />
+    <Content Include="pph_include\ajax\files\ajax_vnContactPoint.aspx" />
+    <Content Include="pph_include\ajax\files\dc_abbrDuplicate.aspx" />
+    <Content Include="pph_include\ajax\files\dc_EditSubmit.aspx" />
     <Content Include="pph_include\ajax\files\dc_nameDuplicate.aspx" />
+    <Content Include="pph_include\ajax\files\dc_nameEditDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\dc_noDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\dc_Submit.aspx" />
     <Content Include="pph_include\ajax\files\haulier_abbrDuplicate.aspx" />
@@ -126,6 +133,24 @@
     <Content Include="pph_include\ajax\files\vender_nameThDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\vender_Submit.aspx" />
     <Content Include="pph_include\ajax\files\vender_taxDuplicate.aspx" />
+    <Content Include="pph_include\css\images\bg_bar.png" />
+    <Content Include="pph_include\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="pph_include\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="pph_include\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="pph_include\css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="pph_include\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="pph_include\css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="pph_include\css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="pph_include\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="pph_include\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="pph_include\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="pph_include\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="pph_include\css\images\ui-icons_888888_256x240.png" />
+    <Content Include="pph_include\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="pph_include\css\jquery-ui.min.css" />
+    <Content Include="pph_include\jquery\jquery-ui.js" />
+    <Content Include="pph_include\jquery\jquery.js" />
+    <Content Include="pph_include\module\profile\user_management\delete_user.aspx" />
     <Content Include="pph_include\module\profile\user_management\reset_password.aspx" />
     <Content Include="pph_include\module\profile\user_management\update_status.aspx" />
     <Content Include="Site.Master" />
@@ -266,12 +291,61 @@
     <Compile Include="master_vender.aspx.designer.cs">
       <DependentUpon>master_vender.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_addVendorCode.aspx.cs">
+      <DependentUpon>ajax_addVendorCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_addVendorCode.aspx.designer.cs">
+      <DependentUpon>ajax_addVendorCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_addVendorUsername.aspx.cs">
+      <DependentUpon>ajax_addVendorUsername.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_addVendorUsername.aspx.designer.cs">
+      <DependentUpon>ajax_addVendorUsername.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_duVendorCode.aspx.cs">
+      <DependentUpon>ajax_duVendorCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_duVendorCode.aspx.designer.cs">
+      <DependentUpon>ajax_duVendorCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_vnContactPoint.aspx.cs">
+      <DependentUpon>ajax_vnContactPoint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_vnContactPoint.aspx.designer.cs">
+      <DependentUpon>ajax_vnContactPoint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\dc_abbrDuplicate.aspx.cs">
+      <DependentUpon>dc_abbrDuplicate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\dc_abbrDuplicate.aspx.designer.cs">
+      <DependentUpon>dc_abbrDuplicate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\dc_EditSubmit.aspx.cs">
+      <DependentUpon>dc_EditSubmit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\dc_EditSubmit.aspx.designer.cs">
+      <DependentUpon>dc_EditSubmit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pph_include\ajax\files\dc_nameDuplicate.aspx.cs">
       <DependentUpon>dc_nameDuplicate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pph_include\ajax\files\dc_nameDuplicate.aspx.designer.cs">
       <DependentUpon>dc_nameDuplicate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\dc_nameEditDuplicate.aspx.cs">
+      <DependentUpon>dc_nameEditDuplicate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\dc_nameEditDuplicate.aspx.designer.cs">
+      <DependentUpon>dc_nameEditDuplicate.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\ajax\files\dc_noDuplicate.aspx.cs">
       <DependentUpon>dc_noDuplicate.aspx</DependentUpon>
@@ -356,6 +430,13 @@
     </Compile>
     <Compile Include="pph_include\ajax\files\vender_taxDuplicate.aspx.designer.cs">
       <DependentUpon>vender_taxDuplicate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\module\profile\user_management\delete_user.aspx.cs">
+      <DependentUpon>delete_user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\module\profile\user_management\delete_user.aspx.designer.cs">
+      <DependentUpon>delete_user.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\module\profile\user_management\reset_password.aspx.cs">
       <DependentUpon>reset_password.aspx</DependentUpon>

@@ -12,6 +12,11 @@
         strUrl = document.getElementById(varUrl).value;
         window.location.href = strUrl + '&search_usertype=' + strType + '&search_text=' + strText;
     }
+    function js_confirm(varText, varURL) {
+        if (confirm(varText) == true) {
+             window.location.href = varURL;
+        }
+    }
 </script>
 <%
     string str_usertype = "All";
@@ -56,6 +61,7 @@
     <tr style="background-color:#9bbb59;">
         <td style="text-align:center;">No.</td>
         <td style="text-align:center;">Username</td>
+        <td style="text-align:center;">User Type</td>
         <td style="text-align:center;">Password Expired Date</td>
         <td style="text-align:center;">Full Name En</td>
         <td style="text-align:center;">Contact Person</td>
@@ -68,12 +74,12 @@
     <%
     if (txtType != "")
         {
-            string detailColor = "", detailStatus = "", urlUpdateStatus = "", urlReset = "";
+            string detailColor = "", detailStatus = "", urlUpdateStatus = "", urlReset = "", urlDeleteUser = "";
             int irows = 0;
             int icolor = 0;
             string searchRole = "";
             if (txtType != "All") { searchRole = "and RoleID='" + txtType + "'"; }
-            string sql_listuser = "select * from User_Profile where UserID != '' " + searchRole + " " + txtText + " order by UserID asc";         
+            string sql_listuser = "select CONVERT(varchar(11),Passwd_Expired_Date,103) as Passwd_Expired_Date, * from User_Profile where UserID != '' " + searchRole + " " + txtText + " order by UserName asc";         
             SqlCommand rs_listuser = new SqlCommand(sql_listuser, objConn);
             obj_listuser = rs_listuser.ExecuteReader();
             while (obj_listuser.Read())
@@ -81,12 +87,14 @@
                 irows++;
                 icolor++;
                 if (icolor == 1) { detailColor = "style=\"background-color:#ffffff;\""; } else { detailColor = "style=\"background-color:#f3f3f3;\""; icolor = 0; }
-                if (obj_listuser["User_Status"].ToString() == "A") { detailStatus = "Active"; urlUpdateStatus = "window.location.href='./pph_include/module/profile/user_management/update_status.aspx?url=" + PPHfunction.encodeBase64("/user_management.aspx" + HttpContext.Current.Request.Url.Query) + "&id=" + obj_listuser["UserID"].ToString() + "&status=D&force=N';"; } else { detailStatus = "Deactive"; urlUpdateStatus = "window.location.href='./pph_include/module/profile/user_management/update_status.aspx?url=" + PPHfunction.encodeBase64("/user_management.aspx" + HttpContext.Current.Request.Url.Query) + "&id=" + obj_listuser["UserID"].ToString() + "&status=A&force=Y';"; }
-                urlReset = "window.location.href='./pph_include/module/profile/user_management/reset_password.aspx?url=" + PPHfunction.encodeBase64("/user_management.aspx" + HttpContext.Current.Request.Url.Query) + "&Param=" + PPHfunction.encodeBase64(obj_listuser["UserID"].ToString()) + "';";
+                if (obj_listuser["User_Status"].ToString() == "A") { detailStatus = "Active"; urlUpdateStatus = "./pph_include/module/profile/user_management/update_status.aspx?url=" + PPHfunction.encodeBase64("/user_management.aspx" + HttpContext.Current.Request.Url.Query) + "&id=" + obj_listuser["UserID"].ToString() + "&status=D&force=N"; } else { detailStatus = "Deactive"; urlUpdateStatus = "./pph_include/module/profile/user_management/update_status.aspx?url=" + PPHfunction.encodeBase64("/user_management.aspx" + HttpContext.Current.Request.Url.Query) + "&id=" + obj_listuser["UserID"].ToString() + "&status=A&force=Y"; }
+                urlReset = "./pph_include/module/profile/user_management/reset_password.aspx?url=" + PPHfunction.encodeBase64("/user_management.aspx" + HttpContext.Current.Request.Url.Query) + "&Param=" + PPHfunction.encodeBase64(obj_listuser["UserID"].ToString()) + "";
+                urlDeleteUser = "./pph_include/module/profile/user_management/delete_user.aspx?url=" + PPHfunction.encodeBase64("/user_management.aspx" + HttpContext.Current.Request.Url.Query) + "&Param=" + PPHfunction.encodeBase64(obj_listuser["UserID"].ToString()) + "";
     %>
       <tr <%= detailColor %>>
         <td style="text-align:center;"><%= irows %></td>
         <td style="text-align:center;"><%= obj_listuser["UserName"].ToString() %></td>
+         <td style="text-align:center;"><%= obj_listuser["RoleID"].ToString() %></td>
         <td style="text-align:center;"><%= obj_listuser["Passwd_Expired_Date"].ToString() %></td>
         <td style="text-align:center;"><%= obj_listuser["FullName_En"].ToString() %></td>
         <td style="text-align:center;"><%= obj_listuser["Contact_Person"].ToString() %></td>
@@ -95,8 +103,9 @@
         <td style="text-align:center;"><%= obj_listuser["EMail_Address"].ToString() %></td>
         <td style="text-align:center;"><%= detailStatus %></td>
         <td style="text-align:center;">
-            <div class="form-group"><input type="button" value="Reset Password" id="btnResetPass" class="btn btn-default" onclick="<%= urlReset %>" style="width:100%;" /></div>
-            <div class="form-group"><input type="button" value="Update Status" class="btn btn-default" onclick="<%= urlUpdateStatus %>" style="width:100%;" /></div>
+            <div class="form-group"><input type="button" value="Reset Password" id="btnResetPass" class="btn btn-default" <% Response.Write("onclick=\"js_confirm('คุณต้องการ Reset Password ใช่หรือไม่', '" + urlReset + "');\""); %> style="width:100%;" /></div>
+            <div class="form-group"><input type="button" value="Update Status" class="btn btn-default" <% Response.Write("onclick=\"js_confirm('คุณต้องการ Update Status ใช่หรือไม่', '" + urlUpdateStatus + "');\""); %> style="width:100%;" /></div>
+            <div class="form-group"><input type="button" value="Delete" class="btn btn-default" <% Response.Write("onclick=\"js_confirm('คุณต้องการ Delete User นี้ใช่หรือไม่', '" + urlDeleteUser + "');\""); %> style="width:100%;" /></div>
         </td>                   
       </tr>
      <% } obj_listuser.Close();
