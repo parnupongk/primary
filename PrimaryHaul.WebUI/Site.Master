@@ -93,7 +93,7 @@
                                         <li><a runat="server" id="lnkProVendor" name="Vendor" href="addnew.aspx?type=VD&">Vendor</a></li>
                                     </ul>
                                 </li>
-
+                                <li><a runat="server" id="A1" href="user_management.aspx?" name="User Management">User Management</a></li>
                                 <li><a runat="server" id="lnkDayofExpired" href="dayofexpired.aspx?" name="Change Day of Password Expired">Day of Expired Date</a></li>
                             </ul>
                         </li>

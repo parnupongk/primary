@@ -223,7 +223,7 @@ function vender_nameThDuplicate() {
     }
 }
 
-function vender_Submit() {
+function vender_Submit(varA, varB) {
     var req = Inint_AJAX();
     var str = Math.random();
     var strTax = document.getElementById('addNameTax').value;
@@ -246,7 +246,8 @@ function vender_Submit() {
                     document.getElementById('addNameEn').value = "";
                     document.getElementById('addNameTh').value = "";
                     alert('Save Success');
-                    window.location.reload();
+                    //window.location.href = './master_vender.aspx?r=' + varA + '&id=' + varB;
+
                 }
             }
         }
@@ -301,7 +302,7 @@ function isNumberKey(evt) {
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" style="text-align:right;"></div>
-                <div class="col-md-3" style="text-align:left;"><input type="button" id="btnSubmit" value="Save" class="btn btn-default" onclick="vender_Submit();" /><p class="text-danger" id="btnSubmitError" style="display:none;"></p></div>
+                <div class="col-md-3" style="text-align:left;"><input type="button" id="btnSubmit" value="Save" class="btn btn-default" <% Response.Write("onclick=\"vender_Submit('" + Request.QueryString["r"].ToString() + "', '" + Request.QueryString["id"].ToString() + "');\""); %> /><p class="text-danger" id="btnSubmitError" style="display:none;"></p></div>
                 <div class="col-md-7" style="text-align:left;"></div>
             </div>
         </div>
