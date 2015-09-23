@@ -31,6 +31,24 @@ namespace PrimaryHaul.WebUI.App_Code
             return Encoding.UTF8.GetString(Convert.FromBase64String(txtValue));
         }
 
+        public string chrShortMonth(string txtValue)
+        {
+            string txtReturn="";
+            if (txtValue.Length == 1) { txtValue = "0" + txtValue; }
+            if (txtValue == "01") { txtReturn = "Jan"; }
+            if (txtValue == "02") { txtReturn = "Feb"; }
+            if (txtValue == "03") { txtReturn = "Mar"; }
+            if (txtValue == "04") { txtReturn = "Apr"; }
+            if (txtValue == "05") { txtReturn = "May"; }
+            if (txtValue == "06") { txtReturn = "Jun"; }
+            if (txtValue == "07") { txtReturn = "Jul"; }
+            if (txtValue == "08") { txtReturn = "Aug"; }
+            if (txtValue == "09") { txtReturn = "Sep"; }
+            if (txtValue == "10") { txtReturn = "Oct"; }
+            if (txtValue == "11") { txtReturn = "Nov"; }
+            if (txtValue == "12") { txtReturn = "Dec"; }
+            return txtReturn;
+        }
         public Boolean QueryExecuteNonQuery(String strSQL)
         {
             objConn = new SqlConnection();

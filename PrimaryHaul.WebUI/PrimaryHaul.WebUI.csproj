@@ -108,8 +108,12 @@
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="masterDC.aspx" />
+    <Content Include="master_dayweek.aspx" />
+    <Content Include="master_fuelprice.aspx" />
     <Content Include="master_haulier.aspx" />
     <Content Include="master_ratecard.aspx" />
+    <Content Include="master_sku.aspx" />
+    <Content Include="master_uad10.aspx" />
     <Content Include="master_vender.aspx" />
     <Content Include="packages.config" />
     <Content Include="pph_include\ajax\ajax_connect.js" />
@@ -123,6 +127,7 @@
     <Content Include="pph_include\ajax\files\dc_nameEditDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\dc_noDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\dc_Submit.aspx" />
+    <Content Include="pph_include\ajax\files\edit_dateweek.aspx" />
     <Content Include="pph_include\ajax\files\haulier_abbrDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\haulier_edit_Submit.aspx" />
     <Content Include="pph_include\ajax\files\haulier_nameEnDuplicate.aspx" />
@@ -270,6 +275,20 @@
     <Compile Include="masterDC.aspx.designer.cs">
       <DependentUpon>masterDC.aspx</DependentUpon>
     </Compile>
+    <Compile Include="master_dayweek.aspx.cs">
+      <DependentUpon>master_dayweek.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="master_dayweek.aspx.designer.cs">
+      <DependentUpon>master_dayweek.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="master_fuelprice.aspx.cs">
+      <DependentUpon>master_fuelprice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="master_fuelprice.aspx.designer.cs">
+      <DependentUpon>master_fuelprice.aspx</DependentUpon>
+    </Compile>
     <Compile Include="master_haulier.aspx.cs">
       <DependentUpon>master_haulier.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -283,6 +302,20 @@
     </Compile>
     <Compile Include="master_ratecard.aspx.designer.cs">
       <DependentUpon>master_ratecard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="master_sku.aspx.cs">
+      <DependentUpon>master_sku.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="master_sku.aspx.designer.cs">
+      <DependentUpon>master_sku.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="master_uad10.aspx.cs">
+      <DependentUpon>master_uad10.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="master_uad10.aspx.designer.cs">
+      <DependentUpon>master_uad10.aspx</DependentUpon>
     </Compile>
     <Compile Include="master_vender.aspx.cs">
       <DependentUpon>master_vender.aspx</DependentUpon>
@@ -360,6 +393,13 @@
     </Compile>
     <Compile Include="pph_include\ajax\files\dc_Submit.aspx.designer.cs">
       <DependentUpon>dc_Submit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\edit_dateweek.aspx.cs">
+      <DependentUpon>edit_dateweek.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\edit_dateweek.aspx.designer.cs">
+      <DependentUpon>edit_dateweek.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\ajax\files\haulier_abbrDuplicate.aspx.cs">
       <DependentUpon>haulier_abbrDuplicate.aspx</DependentUpon>
