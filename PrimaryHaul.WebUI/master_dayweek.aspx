@@ -89,11 +89,11 @@
                 <td style="text-align:center;"><%= irows %></td>
                 <td style="text-align:center;"><%= obj_dateweek["Tesco_Year"].ToString() %></td>
                 <td style="text-align:center;"><%= obj_dateweek["Tesco_Week"].ToString() %></td>
-                <td style="text-align:center;"></td>
+                <td style="text-align:center;"><%= obj_dateweek["Tesco_Period"].ToString() %></td>
                 <td style="text-align:center;"><%= obj_dateweek["Period_SStartDate"].ToString() %></td>
                 <td style="text-align:center;"><%= obj_dateweek["Period_EEndDate"].ToString() %></td>
                 <td style="text-align:center;"><%= obj_dateweek["Between_Date"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_dateweek["Testco_FY"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_dateweek["Tesco_FY"].ToString() %></td>
                 <td style="text-align:center;"><input type="button" value="Edit" class="btn btn-default" <% Response.Write("onclick=\"window.location.href='./master_dayweek.aspx?id=" + Request.QueryString["id"].ToString() + "&r=" + Request.QueryString["r"].ToString() + "&Wk_ID=" + obj_dateweek["Wk_ID"].ToString() + "';\""); %> /> </td>                   
               </tr>
              <% } obj_dateweek.Close(); %>
@@ -124,7 +124,8 @@
         var strID = document.getElementById('hid_Wk_ID').value;
         var strYear = document.getElementById('Tesco_Year').value;
         var strWeek = document.getElementById('Tesco_Week').value;
-        var strFY = document.getElementById('Testco_FY').value;
+        var strFY = document.getElementById('Tesco_FY').value;
+        var strTP = document.getElementById('Tesco_Period').value;
         var str_url_address = "./pph_include/ajax/files/edit_dateweek.aspx";
         var str_url = "var01=" + strS;
         str_url += "&var02=" + strE;
@@ -132,6 +133,7 @@
         str_url += "&var04=" + strYear;
         str_url += "&var05=" + strWeek;
         str_url += "&var06=" + strFY;
+        str_url += "&var07=" + strTP;
         str_url += "&clearmemory=" + str;
         req.open('POST', str_url_address, true)
         req.onreadystatechange = function () {
@@ -148,7 +150,7 @@
 </script>
 <div id="form_edit">
 <%
-       string sql_edit = "select Wk_ID, CONVERT(varchar(11),Period_StartDate,103) as Period_StartDate, CONVERT(varchar(11),Period_EndDate ,103) as Period_EndDate, Tesco_Year, Tesco_Week, Testco_FY  from Date_Week_Info  where Wk_ID ='" + Request.QueryString["Wk_ID"] + "'";
+       string sql_edit = "select Wk_ID, CONVERT(varchar(11),Period_StartDate,103) as Period_StartDate, CONVERT(varchar(11),Period_EndDate ,103) as Period_EndDate, Tesco_Year, Tesco_Week, Tesco_FY, Tesco_Period  from Date_Week_Info  where Wk_ID ='" + Request.QueryString["Wk_ID"] + "'";
     SqlCommand rs_edit = new SqlCommand(sql_edit, objConn);
     SqlDataReader obj_edit = rs_edit.ExecuteReader();
     obj_edit.Read();
@@ -175,7 +177,15 @@
                 <div class="col-md-7"></div>
             </div>
         </div>
-        
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-2" ><label class="control-label">Tesco Period</label></div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" autocomplete="off" name="Tesco_Period" id="Tesco_Period" style="width:100%;" value="<%=obj_edit[6].ToString() %>" />
+                </div>
+                <div class="col-md-7"></div>
+            </div>
+        </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" ><label class="control-label">Start Date </label></div>
@@ -199,14 +209,15 @@
             <div class="row">
                 <div class="col-md-2" ><label class="control-label">Tesco FY</label></div>
                 <div class="col-md-3">
-                    <input type="text" class="form-control" autocomplete="off" name="Testco_FY" id="Testco_FY" style="width:100%;" value="<%=obj_edit[5].ToString() %>" />
+                    <input type="text" class="form-control" autocomplete="off" name="Tesco_FY" id="Tesco_FY" style="width:100%;" value="<%=obj_edit[5].ToString() %>" />
                 </div>
                 <div class="col-md-7"></div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"></div>
+                <div class="col-md-2" style="text-align:right;">
+                </div>
                 <div class="col-md-3" style="text-align:left;"><input type="button" id="btnEdit" value="Save" class="btn btn-default"  <% Response.Write("onclick=\"edit_dateweek('" + Request.QueryString["r"].ToString() + "', '" + Request.QueryString["id"].ToString() + "');\""); %> /><p class="text-danger" id="btnEditSubmitError" style="display:none;"></p></div>
                 <div class="col-md-7" style="text-align:left;"></div>
             </div>

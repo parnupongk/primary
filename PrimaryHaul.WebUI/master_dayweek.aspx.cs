@@ -42,12 +42,12 @@ namespace PrimaryHaul.WebUI
                 if (InsertData(Session["fileName"].ToString()))
                 {
                     //ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('Import Data Successful');", true);
-                    Response.Write("<script>alert('Import Data Successful');window.location.href='master_dayweek.aspx?r=A1&id=6';</script>");
+                    Response.Write("<script>alert('Import Data Successful');</script>");
                 }
                 else
                 {
                     //ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertMessage", "alertMessage('Import Data Not Successful');", true);
-                    Response.Write("<script>alert('Import Data Not Successful');window.location.href='master_dayweek.aspx?r=A1&id=6';</script>");
+                    Response.Write("<script>alert('Import Data Not Successful');</script>");
                 }
             }
         }
@@ -55,7 +55,7 @@ namespace PrimaryHaul.WebUI
         private bool InsertData(string path)
         {
             DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[] { new DataColumn("Year"), new DataColumn("Tesco_WK"), new DataColumn("Period_StartDate"), new DataColumn("Period_EndDate"),new DataColumn("Tesco_FY")});
+            dt.Columns.AddRange(new DataColumn[] { new DataColumn("Year"), new DataColumn("Tesco_WK"), new DataColumn("Period_StartDate"), new DataColumn("Period_EndDate"), new DataColumn("Tesco_FY"), new DataColumn("Tesco_Period") });
             //Response.Write(path);
             main_function PPHfunction = new main_function();
         
@@ -79,8 +79,8 @@ namespace PrimaryHaul.WebUI
                         string[] arrSDate = drRead[2].ToString().Split('/'); strBetweenS = arrSDate[1] + " " + PPHfunction.chrShortMonth(arrSDate[0]) + " " + arrSDate[2].Substring(2, 2);
                         string[] arrESDate = drRead[3].ToString().Split('/'); strBetweenE = arrESDate[1] + " " + PPHfunction.chrShortMonth(arrESDate[0]) + " " + arrESDate[2].Substring(2, 2); 
                         strBetween = strBetweenS + " - " + strBetweenE;
-                        PPHfunction.QueryExecuteNonQuery("insert into Date_Week_Info (Tesco_Year, Tesco_Week, Period_StartDate, Period_EndDate, Between_Date, Testco_FY) values ('" + drRead[0] + "','" + drRead[1] + "','" + drRead[2] + "','" + drRead[3] + "','" + strBetween + "', '" + drRead[4] + "')");
-
+                        PPHfunction.QueryExecuteNonQuery("insert into Date_Week_Info (Tesco_Year, Tesco_Week, Period_StartDate, Period_EndDate, Between_Date, Tesco_FY, Tesco_Period) values ('" + drRead[0] + "','" + drRead[1] + "','" + drRead[2] + "','" + drRead[3] + "','" + strBetween + "', '" + drRead[4] + "', '" + drRead[5] + "')");
+                       
                     }
 
                 }
