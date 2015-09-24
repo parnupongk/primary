@@ -18,7 +18,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-default" OnClick="btnSubmit_Click"  />
+                                <asp:Button runat="server" ID="btnSubmit" Text="Save" CssClass="btn btn-default" OnClick="btnSubmit_Click"  />
                                 <p class="text-danger">
                                     <asp:Label ID="lblErr" runat="server"></asp:Label>
                                 </p>

@@ -63,7 +63,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a runat="server" id="lnkDC" href="masterdc.aspx?" name="DC">DC</a></li>
                                 <li><a runat="server" id="lnkDayWeek" href="master_dayweek.aspx?" name="Day & Week">Day & Week</a></li>
-                                <li><a runat="server" id="lnkFuelPrice" href="master_fuelprice.aspx?" name="Fuel Price">Fuel Price</a></li>
+                                <li><a runat="server" id="lnkFuelPrice" href="master_fuelprice.aspx?" name="Fuel Price">Fuel Rate</a></li>
                                 <li><a runat="server" id="lnkRateCard" href="master_ratecard.aspx?" name="Rate Card">Rate Card</a></li>
                                 <li><a runat="server" id="lnkUAD10" href="master_uad10.aspx?" name="UAD10">UAD10</a></li>
                                 <li><a runat="server" id="lnkSKU" href="master_sku.aspx?" name="SKU">SKU</a></li>
