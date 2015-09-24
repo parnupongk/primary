@@ -131,7 +131,7 @@
             <div runat="server" class="form-group">
                 <asp:Label runat="server" AssociatedControlID="txtVendorName" CssClass="col-md-3 control-label">Vendor Name</asp:Label>
                 <div class="col-md-9">
-                    <asp:TextBox autocomplete="off" runat="server" ID="txtVendorName" CssClass="form-control" />
+                    <asp:TextBox autocomplete="off" runat="server" ID="txtVendorName" onkeypress="return false;" CssClass="form-control" />
                     <br />
                 </div>
             </div>

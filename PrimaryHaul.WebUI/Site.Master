@@ -33,7 +33,8 @@
         function isNumberKey(evt) {
             
             var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57) && (charCode !=46))
+            if (charCode == 13) return false;
+            else if (charCode > 31 && (charCode < 48 || charCode > 57) && (charCode !=46) )
                 return false;
 
             return true;
@@ -71,7 +72,7 @@
                             </ul>
                         </li>
                         <li><a runat="server" id="lnkVendorDownloadFile" href="#" name="VENDOR DOWNLOAD FILE">Vendor Download File</a></li>
-                        <li><a runat="server" id="lnkHaulierDownload" href="#" name="HAULIER UPLOAD FILE">Haulier Upload File</a></li>
+                        <li><a runat="server" id="lnkHaulierDownload" href="haulier_upload.aspx?" name="HAULIER UPLOAD FILE">Haulier Upload File</a></li>
                         <li><a runat="server" id="lnkRate" href="master_rate.aspx?" name="RATE CALCULATION">Rate Calulation</a></li>
                         <li class="dropdown">
                             <a runat="server" name="REPORT" class="dropdown-toggle" data-toggle="dropdown">REPORT <span class="caret"></span></a>

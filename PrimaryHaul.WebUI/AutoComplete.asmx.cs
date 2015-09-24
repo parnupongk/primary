@@ -23,11 +23,14 @@ namespace PrimaryHaul.WebUI
         public string[] GetVendorCode(string prefixText)
         {
             DataTable dt = PH_UserVendor.PH_UserVendor_SelectAll(AppCode.strConnDB);
-            List<string> items = new List<string>(dt.Rows.Count);
+            DataView dv = dt.DefaultView;
+            dv.RowFilter = new System.Text.StringBuilder(" vendor_code like '%" + prefixText + "%'").ToString();
+             
+            List<string> items = new List<string>(dv.Count);
 
-            for (int i = 0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < dv.Count; i++)
             {
-                string strName = dt.Rows[i]["vendor_code"].ToString() + "-" + dt.Rows[i]["Vendor_Name_Th"].ToString();
+                string strName = dv[i]["vendor_code"].ToString() + "-" + dv[i]["Vendor_Name_en"].ToString();
                 items.Add(strName);
             }
             return items.ToArray();

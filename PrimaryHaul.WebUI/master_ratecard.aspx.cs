@@ -15,6 +15,10 @@ namespace PrimaryHaul.WebUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(IsCallback)
+            {
+                
+            }
            if(!IsPostBack)
             {
                 DataBindData(true);
@@ -136,9 +140,9 @@ namespace PrimaryHaul.WebUI
                 }
 
 
-                gvData.DataSource = dt;
-                gvData.DataBind();
-
+                //gvData.DataSource = dt;
+                //gvData.DataBind();
+                DataBindData(true);
 
                 conn.Close();
                 return true;
@@ -197,22 +201,29 @@ namespace PrimaryHaul.WebUI
         }
         protected void btnAddSubmit_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[] { new DataColumn("Vendor_Code"), new DataColumn("Vendor_Name"), new DataColumn("StartDate"), new DataColumn("EndDate")
+            try {
+                DataTable dt = new DataTable();
+                dt.Columns.AddRange(new DataColumn[] { new DataColumn("Vendor_Code"), new DataColumn("Vendor_Name"), new DataColumn("StartDate"), new DataColumn("EndDate")
                                                         ,new DataColumn("Collection_Point"), new DataColumn("DC_ABBR"), new DataColumn("Transporter_Name"), new DataColumn("Buy_Rate")
                                                         ,new DataColumn("Buy_RateType"), new DataColumn("Buy_RateType_Info"), new DataColumn("Load_Type"), new DataColumn("Transporter_Desc")
                                                         ,new DataColumn("Sell_Rate"), new DataColumn("Sell_RateType"), new DataColumn("Currency"), new DataColumn("Fuel_Rate_From")
                                                         ,new DataColumn("Fuel_Rate_To")
                                                      });
-            dt.Rows.Add(txtVendorCode.Text, txtVendorName.Text, DateTime.Now.ToString("MM/dd/yyyy"), null
-                        , ddlCollectionPoint.SelectedItem, ddlDC.SelectedValue, "NSL", txtBuyRate.Text
-                        , ddlRateType.SelectedItem, ddlRateType.SelectedItem, "", ""
-                        , txtSellRate.Text, ddlRateType.SelectedItem, "THB", txtRateFrom.Text
-                        , txtRateTo.Text);
+                dt.Rows.Add(txtVendorCode.Text, txtVendorName.Text, DateTime.Now.ToString("MM/dd/yyyy"), null
+                            , ddlCollectionPoint.SelectedItem, ddlDC.SelectedValue, "NSL", txtBuyRate.Text
+                            , ddlRateType.SelectedItem, ddlRateType.SelectedItem, "", ""
+                            , txtSellRate.Text, ddlRateType.SelectedItem, "THB", txtRateFrom.Text
+                            , txtRateTo.Text);
 
-            string message = PH_RateCardInfo.PH_RateCard_Insert(AppCode.strConnDB, dt.Rows[dt.Rows.Count - 1]) > 0 ? "Save Data Successfull" : "Save Data Not Successfull";
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);
-            DataBindData(true);
+                string message = PH_RateCardInfo.PH_RateCard_Insert(AppCode.strConnDB, dt.Rows[dt.Rows.Count - 1]) > 0 ? "Save Data Successfull" : "Save Data Not Successfull";
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);
+                DataBindData(true);
+            }
+            catch(Exception ex)
+            {
+                PrimaryHaul_WS.PH_ExceptionManager.WriteError(ex.Message);
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('Save Data Not Successfull');", true);
+            }
         }
     }
 }

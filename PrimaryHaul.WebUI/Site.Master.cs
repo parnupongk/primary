@@ -22,7 +22,7 @@ namespace PrimaryHaul.WebUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!string.IsNullOrEmpty(Session["s_forceChange"] as string))
             {
                 if (HttpContext.Current.Request.Url.AbsolutePath.Substring(HttpContext.Current.Request.Url.AbsolutePath.Length - 19, 19) != "changepassword.aspx")
@@ -39,7 +39,7 @@ namespace PrimaryHaul.WebUI
                 {
                     Response.Redirect("login.aspx", false);
                 }
-                else if (Request["id"] == null) Response.Redirect("logout.aspx", false);
+                //else if (Request["id"] == null) Response.Redirect("logout.aspx", false);
                 else
                 {
                     eStatus = new PHCore_Status();

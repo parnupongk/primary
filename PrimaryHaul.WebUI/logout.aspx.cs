@@ -11,9 +11,12 @@ namespace PrimaryHaul.WebUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            PrimaryHaul_WS.PH_Utility.DeleteCookie(Response, ConfigurationManager.AppSettings["PH_NameUserCookie"]);
-            PrimaryHaul_WS.PH_Utility.DeleteCookie(Response, ConfigurationManager.AppSettings["PH_RoleUserCookie"]);
-            Response.Redirect("login.aspx", false);
+            if (!IsPostBack)
+            {
+                PrimaryHaul_WS.PH_Utility.DeleteCookie(Response, ConfigurationManager.AppSettings["PH_NameUserCookie"]);
+                PrimaryHaul_WS.PH_Utility.DeleteCookie(Response, ConfigurationManager.AppSettings["PH_RoleUserCookie"]);
+                Response.Redirect("login.aspx", false);
+            }
         }
     }
 }

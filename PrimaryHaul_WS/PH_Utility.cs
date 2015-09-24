@@ -112,15 +112,21 @@ namespace PrimaryHaul_WS
 
             public static void CreateCookie(string values, System.Web.HttpResponse response, string cookieName, double addMinutes)
             {
-                try
-                {
-                    response.Cookies[cookieName].Value = values;
-                    response.Cookies[cookieName].Expires = DateTime.Now.AddMinutes(addMinutes);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
+            try
+            {
+                response.Cookies[cookieName].Value = values;
+                response.Cookies[cookieName].Expires = DateTime.Now.AddMinutes(addMinutes);
+
+                HttpCookie aCookie = new HttpCookie(cookieName);
+                aCookie.Value = values;
+                aCookie.Expires = DateTime.Now.AddMinutes(addMinutes);
+                response.Cookies.Add(aCookie);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
             }
             public static string GetCookie(System.Web.HttpRequest request, string cookieName)
             {
