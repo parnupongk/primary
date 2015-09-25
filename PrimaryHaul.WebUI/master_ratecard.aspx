@@ -204,15 +204,15 @@
             <asp:GridView ID="gvData" DataKeyNames="RateCard_ID" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCancelingEdit="gvData_RowCancelingEdit" OnRowDataBound="gvData_RowDataBound" OnRowEditing="gvData_RowEditing" OnRowUpdating="gvData_RowUpdating" Width="100%" CellSpacing="2">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
-                    <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor_Code" ReadOnly="True" />
-                    <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor_Name" ReadOnly="True" />
-                    <asp:BoundField DataField="Collection_Point" HeaderText="Collection_Point" ReadOnly="True" />
-                    <asp:BoundField DataField="Transporter_Desc" HeaderText="Transporter_Desc" ReadOnly="True" />
-                    <asp:BoundField DataField="DC_No" HeaderText="DC_No" ReadOnly="True" />
-                    <asp:BoundField DataField="Sell_Rate" HeaderText="Sell_Rate" ReadOnly="True" />
-                    <asp:BoundField DataField="Sell_RateType" HeaderText="Sell_RateType" ReadOnly="True" />
-                    <asp:BoundField DataField="StartDate" HeaderText="StartDate" ReadOnly="True" DataFormatString="{0:MM/dd/yyyy}" />
-                    <asp:TemplateField HeaderText="EndDate">
+                    <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True" />
+                    <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True" />
+                    <asp:BoundField DataField="Collection_Point" HeaderText="Collection Point" ReadOnly="True" />
+                    <asp:BoundField DataField="Transporter_Desc" HeaderText="Transporter Desc" ReadOnly="True" />
+                    <asp:BoundField DataField="DC_No" HeaderText="DC No" ReadOnly="True" />
+                    <asp:BoundField DataField="Sell_Rate" HeaderText="Sell Rate" ReadOnly="True" />
+                    <asp:BoundField DataField="Sell_RateType" HeaderText="Sell Rate Type" ReadOnly="True" />
+                    <asp:BoundField DataField="StartDate" HeaderText="Star tDate" ReadOnly="True" DataFormatString="{0:MM/dd/yyyy}" />
+                    <asp:TemplateField HeaderText="End Date">
                         <EditItemTemplate>
                             <asp:TextBox ID="txtEndDate" runat="server" Text='<%# Bind("enddate") %>'>
                             </asp:TextBox>

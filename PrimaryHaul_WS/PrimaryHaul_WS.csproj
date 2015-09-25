@@ -68,6 +68,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode_DS\PHDS_HaulierUpload.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PHDS_HaulierUpload.xsd</DependentUpon>
+    </Compile>
     <Compile Include="AppCode_DS\PHDS_Menu.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,6 +110,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AppCode_DS\PHDS_HaulierUpload.xsc">
+      <DependentUpon>PHDS_HaulierUpload.xsd</DependentUpon>
+    </None>
+    <None Include="AppCode_DS\PHDS_HaulierUpload.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PHDS_HaulierUpload.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AppCode_DS\PHDS_HaulierUpload.xss">
+      <DependentUpon>PHDS_HaulierUpload.xsd</DependentUpon>
+    </None>
     <None Include="AppCode_DS\PHDS_Menu.xsc">
       <DependentUpon>PHDS_Menu.xsd</DependentUpon>
     </None>

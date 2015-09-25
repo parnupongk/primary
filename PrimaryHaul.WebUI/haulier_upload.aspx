@@ -4,6 +4,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
+        <script>
+        function alertMessage(str) {
+            alert(str);
+        }
+    </script>
     <div class="form-horizontal">
         <h4>HAULIER Upload</h4>
         <hr />
@@ -42,17 +47,17 @@
             </div>
         </div>
         <div id="form_view" style="display: ;">
-            <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="2">
+            <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="2" OnRowDataBound="gvData_RowDataBound">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
-                    <asp:BoundField DataField="Haulier_Abbr" HeaderText="Haulier_Abbr" ReadOnly="True" />
-                    <asp:BoundField DataField="Po_No" HeaderText="Po_No" ReadOnly="True" />
-                    <asp:BoundField DataField="Delivery_Ref" HeaderText="Delivery_Ref" ReadOnly="True" />
-                    <asp:BoundField DataField="Delivery_Date" HeaderText="Delivery_Date" ReadOnly="True" />
-                    <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor_Code" ReadOnly="True" />
-                    <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor_Name" ReadOnly="True" />
-                    <asp:BoundField DataField="Collection_Point" HeaderText="Collection_Point" ReadOnly="True" />
-                    <asp:BoundField DataField="Delivery_Location" HeaderText="Delivery_Location" ReadOnly="True" />
+                    <asp:BoundField DataField="Haulier_Abbr" HeaderText="Haulier Abbr" ReadOnly="True" />
+                    <asp:BoundField DataField="Po_No" HeaderText="Po No" ReadOnly="True" />
+                    <asp:BoundField DataField="Delivery_Ref" HeaderText="Delivery Ref" ReadOnly="True" />
+                    <asp:BoundField DataField="Delivery_Date" HeaderText="Delivery Date" ReadOnly="True" />
+                    <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True" />
+                    <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True" />
+                    <asp:BoundField DataField="Collection_Point" HeaderText="Collection Point" ReadOnly="True" />
+                    <asp:BoundField DataField="Delivery_Location" HeaderText="Delivery Location" ReadOnly="True" />
                     <asp:BoundField DataField="Remark1" HeaderText="Remark1" ReadOnly="True" />
                     <asp:BoundField DataField="Remark2" HeaderText="Remark2" ReadOnly="True" />
                     <asp:BoundField DataField="Fuel_Rate" HeaderText="Fuel_Rate" ReadOnly="True" />
@@ -82,5 +87,5 @@
 >>>>>>> origin/master -->
         </div>
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </asp:Content>
