@@ -233,12 +233,26 @@ namespace PrimaryHaul.WebUI
                     {
                         isError = true;
                         strMess = ex.Message;
+                        PH_ExceptionManager.WriteError("btnInsert_Click ,PH_HaulierUp_Insert >>" + ex.Message);
                     }
 
-                    string message = isError ? "Save Data Successfull" : "Save Data Not Successfull";
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);
-
                 }
+                
+                if( !isError )
+                {
+                    try {
+                        // no error insert logs
+                        PH_HaulierUpload.PH_HaulierUpLog_Insert(AppCode.strConnDB, int.Parse(Request["id"]), lblWeek.Text, Session["fileName"].ToString());
+                    }
+                    catch(Exception ex)
+                    {
+                        isError = true;
+                        strMess = ex.Message;
+                        PH_ExceptionManager.WriteError("btnInsert_Click ,PH_HaulierUpLog_Insert >>" + ex.Message);
+                    }
+                }
+                string message = isError ? "Save Data Successfull" : "Save Data Not Successfull";
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);
             }
             catch(Exception ex)
             {

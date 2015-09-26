@@ -207,10 +207,13 @@
                     <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True" />
                     <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True" />
                     <asp:BoundField DataField="Collection_Point" HeaderText="Collection Point" ReadOnly="True" />
-                    <asp:BoundField DataField="Transporter_Desc" HeaderText="Transporter Desc" ReadOnly="True" />
-                    <asp:BoundField DataField="DC_No" HeaderText="DC No" ReadOnly="True" />
-                    <asp:BoundField DataField="Sell_Rate" HeaderText="Sell Rate" ReadOnly="True" />
+                    <asp:BoundField DataField="DC_ABBR" HeaderText="DC Abbr" ReadOnly="True" />
+                    <asp:BoundField DataField="buy_ratetype" HeaderText="Buy Rate Type" ReadOnly="True" />
+                    <asp:BoundField DataField="buy_rate" HeaderText="Buy Rate" ReadOnly="True" />
                     <asp:BoundField DataField="Sell_RateType" HeaderText="Sell Rate Type" ReadOnly="True" />
+                    <asp:BoundField DataField="Sell_Rate" HeaderText="Sell Rate" ReadOnly="True" />
+                    <asp:BoundField DataField="fuel_rate_from" HeaderText="Fuel Rate From" ReadOnly="True" />
+                    <asp:BoundField DataField="fuel_rate_to" HeaderText="Fuel Rate To" ReadOnly="True" />
                     <asp:BoundField DataField="StartDate" HeaderText="Star tDate" ReadOnly="True" DataFormatString="{0:MM/dd/yyyy}" />
                     <asp:TemplateField HeaderText="End Date">
                         <EditItemTemplate>
@@ -238,7 +241,10 @@
                 <SortedDescendingCellStyle BackColor="#D4DFE1" />
                 <SortedDescendingHeaderStyle BackColor="#15524A" />
             </asp:GridView>
-
+            <!-- 
+                <asp:BoundField DataField="DC_No" HeaderText="DC No" ReadOnly="True" />
+                <asp:BoundField DataField="Transporter_Desc" HeaderText="Transporter Desc" ReadOnly="True" />
+                -->
         </div>
 
     </div>
