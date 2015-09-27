@@ -41,7 +41,7 @@
             string detailColor = "";
             int irows = 0;
             int icolor = 0;
-            string sql_dcInfo = "select DC_NO, DC_Name, CONVERT(varchar(11),EndDate,103) as EndDate from DC_Info  order by DC_Name asc";
+            string sql_dcInfo = "select DC_NO, DC_Name, CONVERT(varchar(11),EndDate,103) as EndDate from DC_Info  order by DC_NO asc";
             SqlCommand rs_dcInfo = new SqlCommand(sql_dcInfo, objConn);
             SqlDataReader obj_dcInfo = rs_dcInfo.ExecuteReader();
             while (obj_dcInfo.Read())
@@ -75,27 +75,40 @@
         var str_url_address = "./pph_include/ajax/files/dc_noDuplicate.aspx";
         var str_url = "var01=" + strTax;
         str_url += "&clearmemory=" + str;
-        req.open('POST', str_url_address, true)
-        req.onreadystatechange = function () {
-            if (req.readyState == 4) {
-                if (req.status == 200) {
-                    var strRes = req.responseText;
-                    if (strRes > "0") {
-                        document.getElementById('btnSubmit').disabled = true;
-                        document.getElementById('taxError').innerHTML = "<font color=\"red\">Duplicate DC No.</font>";
-                        document.getElementById('taxError').style.display = "";
-                        document.getElementById('btnSubmitError').style.display = "none";
-                    }
-                    else {
-                        document.getElementById('btnSubmit').disabled = false;
-                        document.getElementById('taxError').style.display = "none";
-                        document.getElementById('btnSubmitError').style.display = "none";
+        if (strTax.length == 3) {
+            document.getElementById('btnSubmit').disabled = true;
+            document.getElementById('taxError').innerHTML = "<font color=\"red\">TAX ID must be 3 digit</font>";
+            document.getElementById('taxError').style.display = "";
+            document.getElementById('btnSubmitError').style.display = "none";
+            req.open('POST', str_url_address, true)
+            req.onreadystatechange = function () {
+                if (req.readyState == 4) {
+                    if (req.status == 200) {
+                        var strRes = req.responseText;
+                        if (strRes > "0") {
+                            document.getElementById('btnSubmit').disabled = true;
+                            document.getElementById('taxError').innerHTML = "<font color=\"red\">Duplicate DC No.</font>";
+                            document.getElementById('taxError').style.display = "";
+                            document.getElementById('btnSubmitError').style.display = "none";
+                        }
+                        else {
+                            document.getElementById('btnSubmit').disabled = false;
+                            document.getElementById('taxError').style.display = "none";
+                            document.getElementById('btnSubmitError').style.display = "none";
+                        }
                     }
                 }
             }
+            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            req.send(str_url);
         }
-        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        req.send(str_url);
+        else
+        {
+            document.getElementById('btnSubmit').disabled = true;
+            document.getElementById('taxError').innerHTML = "<font color=\"red\">DC No. must be 13 digit</font>";
+            document.getElementById('taxError').style.display = "";
+            document.getElementById('btnSubmitError').style.display = "none";
+        }
     }
 
     function dc_nameDuplicate() {
@@ -212,7 +225,7 @@
             <div class="row">
                 <div class="col-md-2" ><label class="control-label">DC NO </label></div>
                 <div class="col-md-3">
-                    <input type="text" class="form-control" name="DC_NO" id="DC_NO" onkeypress='return isNumberKey(event)'  onchange="dc_noDuplicate();" />
+                    <input type="text" class="form-control" name="DC_NO" id="DC_NO" onkeypress='return isNumberKey(event)'  onchange="dc_noDuplicate();" maxlength="3" />
                     <p class="text-danger" id="taxError" style="display:none;"></p>
                 </div>
                 <div class="col-md-7"></div>

@@ -69,7 +69,7 @@
         var strTax = document.getElementById('Haulier_TaxID').value;
         if (strTax.length < 9) {
             document.getElementById('btnSubmit').disabled = true;
-            document.getElementById('taxError').innerHTML = "<font color=\"red\">TaxID ต้องมีตั้งแต่ 9 Digit ขึ้นไป</font>";
+            document.getElementById('taxError').innerHTML = "<font color=\"red\">TaxID ต้องมี 13 Digit</font>";
             document.getElementById('taxError').style.display = "";
             document.getElementById('btnSubmitError').style.display = "none";
         }
@@ -167,7 +167,7 @@
         var strTax = document.getElementById('Haulier_TaxID').value;
         var strName = document.getElementById('Haulier_Name_En').value;
         var strAbbr = document.getElementById('Haulier_Abbr').value;
-        if (strTax != '' && strName != '' && strAbbr != '') {
+        if (strTax != '' && strName != '' && strAbbr != '' && strTax == 13) {
             var str_url_address = "./pph_include/ajax/files/haulier_Submit.aspx";
             var str_url = "var01=" + strTax;
             str_url += "&var02=" + strName;

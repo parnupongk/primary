@@ -233,7 +233,7 @@
     $(function () {
 
         $("#Period_StartDate").datepicker({ dateFormat: 'dd/mm/yy' });
-        $("#Period_EndDate").datepicker({ dateFormat: 'dd/mm/yy' });
+        $("#Period_EndDate").datepicker({ dateFormat: 'dd/mm/yy', minDate: 0 });
     });
 
 </script>

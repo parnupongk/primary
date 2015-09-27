@@ -359,7 +359,7 @@ function isNumberKey(evt) {
         <td style="text-align:center;"><%= irows %></td>
         <td style="text-align:center;"><%= obj_vendorInfo["Vendor_Code"].ToString() %></td>
         <td style="text-align:center;"><%= obj_vendorInfo["Vendor_UserName"].ToString() %></td>
-        <td style="text-align:center;"><input type="checkbox" name="selectV[]" id="selectV_<%= irows %>" value="<%= obj_vendorInfo["VendorID"].ToString() %>-<%= obj_vendorInfo["Vendor_Code"].ToString() %>" /><%= obj_vendorInfo["VendorID"].ToString() %>-<%= obj_vendorInfo["Vendor_Code"].ToString() %></td>                   
+        <td style="text-align:center;"><input type="checkbox" name="selectV[]" id="selectV_<%= irows %>" value="<%= obj_vendorInfo["VendorID"].ToString() %>-<%= obj_vendorInfo["Vendor_Code"].ToString() %>" /></td>                   
       </tr>
      <% } obj_vendorInfo.Close(); %>
     </table>
