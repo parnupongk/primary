@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="report_venderlog.aspx.cs" Inherits="PrimaryHaul.WebUI.report_venderlog" %>
 <%@ Import Namespace="System.Data"%>
 <%@ Import Namespace="System.Data.SqlClient"%>
+<%@ Import Namespace="PrimaryHaul_WS"%>
+<%@ Import Namespace="PrimaryHaul_WSFlow"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
@@ -44,10 +46,9 @@
     </tr>
     <%
         string detailColor = "";
-        string strstatus = "";
         int irows = 0;
         int icolor = 0;
-        string sql_download = "select Distinct VDM.Vendor_Code, B.Vendor_Code as Status from( Select B.Vendor_Code From vendor_info A,vendor_group B Where A.vendorid=B.vendorid and B.vendor_Username ='340hydro_1') VDM LEFT OUTER JOIN  transportation B on VDM.Vendor_Code=B.VEndor_code and B.Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "'";
+        string sql_download = "select Distinct VD.Vendor_Code as VD, Case  When (T.Calc_Date is NULL) and (isnull(Year_Week_Upload,'No')='No') Then 'Not Upload' When (T.Calc_Date is NULL) and (isnull(Year_Week_Upload,'No')<>'No') Then 'Not Calculate'  Else 'Waiting' End As Status_Download,T.Year_Week_Upload,Calc_Date from ( Select B.Vendor_Code,B.Vendor_Username From Vendor_Info A , vendor_group B Where A.VendorID=B.VendorID  and B.Vendor_UserName=(select UserName from User_Profile where UserID="+Request.QueryString["id"]+")) VD LEFT OUTER JOIN  Transportation T ON VD.Vendor_Code=T.Vendor_code and T.Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "' Order by VD.Vendor_Code Asc";
         SqlCommand rs_download = new SqlCommand(sql_download, objConn);
         SqlDataReader obj_download = rs_download.ExecuteReader();
         while (obj_download.Read())
@@ -55,19 +56,20 @@
             irows++;
             icolor++;
             if (icolor == 1) { detailColor = "style=\"background-color:#ffffff;\""; } else { detailColor = "style=\"background-color:#f3f3f3;\""; icolor = 0; }
-            if (obj_download["Status"] == null) { strstatus = "Not Upload"; } else { strstatus = "Waiting Download"; }
     %>
         <tr <%= detailColor %>>
         <td style="text-align:center;"><%= irows %></td>
-        <td style="text-align:center;"><%= obj_download["Vendor_Code"].ToString() %></td>
-        <td style="text-align:center;"><%= strstatus %></td>
+        <td style="text-align:center;"><%= obj_download["VD"].ToString() %></td>
+        <td style="text-align:center;"><%= obj_download["Status_Download"].ToString() %></td>
         <td style="text-align:center;">
-            <input type="button" value="Download" class="btn btn-default" />
-                 
+            <input type="button" value="Download" class="btn btn-default" <%if (obj_download["Status_Download"].ToString() == "Not Upload") { Response.Write("disabled=\"disabled\""); } else if (obj_download["Status_Download"].ToString() == "Not Calculate") { Response.Write("disabled=\"disabled\""); } else { } %> />
+            <br />
+            <a href ="./pph_include/download/vendor_file.aspx?id=<%=Request.QueryString["id"].ToString()%>&YW=<%=Request.QueryString["YW"].ToString()%>&VD=<%= obj_download["VD"].ToString() %>" target="_blank">test</a>  
         </td>                   
         </tr>
         <% } obj_download.Close(); %>
     </table>
+    <a href="./sss.html">dsdf</a>
 </div>
 </div>
 <% } %>

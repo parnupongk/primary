@@ -154,6 +154,8 @@
     <Content Include="pph_include\css\images\ui-icons_888888_256x240.png" />
     <Content Include="pph_include\css\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="pph_include\css\jquery-ui.min.css" />
+    <Content Include="pph_include\download\vendor_file.aspx" />
+    <Content Include="pph_include\images\tesco_logo.jpg" />
     <Content Include="pph_include\jquery\jquery-ui.js" />
     <Content Include="pph_include\jquery\jquery.js" />
     <Content Include="pph_include\module\profile\user_management\delete_user.aspx" />
@@ -480,6 +482,13 @@
     </Compile>
     <Compile Include="pph_include\ajax\files\vender_taxDuplicate.aspx.designer.cs">
       <DependentUpon>vender_taxDuplicate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\download\vendor_file.aspx.cs">
+      <DependentUpon>vendor_file.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\download\vendor_file.aspx.designer.cs">
+      <DependentUpon>vendor_file.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\module\profile\user_management\delete_user.aspx.cs">
       <DependentUpon>delete_user.aspx</DependentUpon>
