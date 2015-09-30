@@ -24,10 +24,11 @@ namespace PrimaryHaul.WebUI
         {
             try {
                 DataSet ds = PH_RateCalc.PH_RateCalc_DateWeekSelAll(AppCode.strConnDB);
-
-                ddlDateWeek.DataSource = ds;
+                //PH_ExceptionManager.WriteError("DataBindDateWeek >>" + ds.Tables[0].Rows.Count);
                 ddlDateWeek.DataValueField = "dateweek";
                 ddlDateWeek.DataTextField = "dateweek";
+                ddlDateWeek.DataSource = ds.Tables[0];
+                ddlDateWeek.DataBind();
                 if (ddlDateWeek.Items.Count > 0)
                 {
                     ddlDateWeek.ClearSelection();
@@ -62,23 +63,30 @@ namespace PrimaryHaul.WebUI
 
         protected void btnAddSubmit_Click(object sender, EventArgs e)
         {
-            DataSet ds = (DataSet)ViewState["DataRateCalc"];
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                int iSucc = 0, iErr = 0, iRtn = 0;
-                foreach (DataRow dr in ds.Tables[0].Rows)
+            try {
+                DataSet ds = (DataSet)ViewState["DataRateCalc"];
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
-                    iRtn = PH_RateCalc.PH_RateCalc_TransporationCalc(AppCode.strConnDB, dr);
-                    if (iRtn > 0) iSucc++;
-                    else iErr++;
-                }
+                    int iSucc = 0, iErr = 0, iRtn = 0;
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        iRtn = PH_RateCalc.PH_RateCalc_TransporationCalc(AppCode.strConnDB, dr);
+                        if (iRtn > 0) iSucc++;
+                        else iErr++;
+                    }
 
-                lblErr.Text = iSucc + "/" + ds.Tables[0].Rows.Count + "  Haulier , Calculate Completed";
-                DataBindHaulier();
+                    lblErr.Text = iSucc + "/" + ds.Tables[0].Rows.Count + "  Haulier , Calculate Completed";
+                    DataBindHaulier();
+                }
+                else
+                {
+                    lblErr.Text = "No Data Calculate.";
+                }
             }
-            else
+            catch(Exception ex)
             {
-                lblErr.Text = "No Data Calculate.";
+                PH_ExceptionManager.WriteError("btnAddSubmit_Click>> " + ex.Message);
+                lblErr.Text = ex.Message;
             }
         }
 

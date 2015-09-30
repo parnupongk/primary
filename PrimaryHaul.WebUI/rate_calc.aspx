@@ -9,7 +9,7 @@
         }
     </script>
     <div class="form-horizontal">
-        <h4>HAULIER Upload</h4>
+        <h4>Rate Calculation </h4>
         <hr />
         <div id="form_import" style="display: ;">
             <div runat="server" class="form-group">
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
+                <div class="col-md-offset-3 col-md-9">
                     <asp:Button runat="server" ID="btnAddSubmit" Text="Calculate" CssClass="btn btn-default" OnClick="btnAddSubmit_Click" />
                     <p class="text-danger">
                         <asp:Label ID="lblErr" runat="server"></asp:Label>
