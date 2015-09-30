@@ -128,8 +128,8 @@ namespace PrimaryHaul.WebUI
                         dt.Rows.Add(drRead[0], drRead[1], drRead[2], drRead[3]
                             , drRead[4], drRead[5], drRead[6], drRead[7]
                             , drRead[8], drRead[9], drRead[10], drRead[11]
-                            , drRead[12], drRead[13], drRead[14], drRead[15]
-                            , drRead[16]);
+                            , drRead[12], drRead[13], drRead[14], drRead[16]
+                            , drRead[17]);
 
                         PH_RateCardInfo.PH_RateCard_Insert(AppCode.strConnDB, dt.Rows[dt.Rows.Count - 1]);
 
