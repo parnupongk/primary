@@ -106,7 +106,7 @@
 
                     <asp:AjaxFileUpload ID="AjaxFileUpload" runat="server" Padding-Bottom="4"
                         Padding-Left="2" Padding-Right="1" Padding-Top="4" ThrobberID="myThrobber" MaximumNumberOfFiles="10"
-                        AllowedFileTypes="xls,vnd.ms-excel,xls,jpg,png,application/vnd.ms-excel" OnUploadComplete="AjaxFileUpload_UploadComplete" />
+                        AllowedFileTypes="xls,vnd.ms-excel,application/vnd.ms-excel" OnUploadComplete="AjaxFileUpload_UploadComplete" />
                 </div>
             </div>
             <div class="form-group">
