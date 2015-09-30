@@ -73,7 +73,7 @@
                         </li>
                         <li><a runat="server" id="lnkVendorDownloadFile" href="#" name="VENDOR DOWNLOAD FILE">Vendor Download File</a></li>
                         <li><a runat="server" id="lnkHaulierDownload" href="haulier_upload.aspx?" name="HAULIER UPLOAD FILE">Haulier Upload File</a></li>
-                        <li><a runat="server" id="lnkRate" href="master_rate.aspx?" name="RATE CALCULATION">Rate Calulation</a></li>
+                        <li><a runat="server" id="lnkRate" href="rate_calc.aspx?" name="RATE CALCULATION">Rate Calulation</a></li>
                         <li class="dropdown">
                             <a runat="server" name="REPORT" class="dropdown-toggle" data-toggle="dropdown">REPORT <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">

@@ -98,6 +98,7 @@
     <Compile Include="PH_HaulierUpload.cs" />
     <Compile Include="PH_MenuInfo.cs" />
     <Compile Include="PH_MenuRole.cs" />
+    <Compile Include="PH_RateCalc.cs" />
     <Compile Include="PH_RateCardInfo.cs" />
     <Compile Include="PH_UserProfile.cs" />
     <Compile Include="PH_UserVendor.cs" />
