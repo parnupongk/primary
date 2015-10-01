@@ -46,6 +46,7 @@ namespace PrimaryHaul_WS
                                             ,new SqlParameter("@Rate_Per_Unit",drTrans["Rate_Per_Unit"])
                                             ,new SqlParameter("@Fuel_Rate",drTrans["Fuel_Rate"])
                                             ,new SqlParameter("@NoOfQty",drTrans["No_Of_Qty"])
+                                            ,new SqlParameter("@DC_Abbr",drTrans["DC_Abbr"])
                                         });
             }
             catch(Exception ex)
