@@ -62,11 +62,12 @@ namespace PrimaryHaul_WS
                 throw new Exception("PH_RateCard_Update >> " + ex.Message);
             }
         }
-        public static DataTable PH_RateCard_SelAll(string strConnDB)
+        public static DataTable PH_RateCard_SelByVendorName(string strConnDB,string strVendorName)
         {
             try
             {
-                DataSet ds = SqlHelper.ExecuteDataset(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_RateCardSelAll");
+                DataSet ds = SqlHelper.ExecuteDataset(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_RateCardSelAll"
+                    ,new SqlParameter[] {new SqlParameter("@vendor_name", strVendorName) });
 
                 return ds.Tables[0];
             }

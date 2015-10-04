@@ -38,7 +38,7 @@ namespace PrimaryHaul.WebUI
             }
             else
             {
-                dt = PH_RateCardInfo.PH_RateCard_SelAll(AppCode.strConnDB);
+                dt = PH_RateCardInfo.PH_RateCard_SelByVendorName(AppCode.strConnDB,txtFillVendorName.Text);
             }
 
             ViewState["RateCardInfo"] = dt;
@@ -234,7 +234,7 @@ namespace PrimaryHaul.WebUI
         protected void btnFillter_Click(object sender, EventArgs e)
         {
             try {
-                if (ViewState["RateCardInfo"] == null)
+                /*if (ViewState["RateCardInfo"] == null)
                     DataBindData(false);
 
                 DataTable dt = (DataTable)ViewState["RateCardInfo"];
@@ -243,7 +243,8 @@ namespace PrimaryHaul.WebUI
 
 
                 gvData.DataSource = dv;
-                gvData.DataBind();
+                gvData.DataBind();*/
+                DataBindData(true);
             }
             catch(Exception ex)
             {
