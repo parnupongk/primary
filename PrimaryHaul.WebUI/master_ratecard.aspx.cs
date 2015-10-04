@@ -234,17 +234,20 @@ namespace PrimaryHaul.WebUI
         protected void btnFillter_Click(object sender, EventArgs e)
         {
             try {
-                /*if (ViewState["RateCardInfo"] == null)
-                    DataBindData(false);
+                if (txtFillVendorName.Text == "")
+                {
+                    if (ViewState["RateCardInfo"] == null)
+                        DataBindData(false);
 
-                DataTable dt = (DataTable)ViewState["RateCardInfo"];
-                DataView dv = dt.DefaultView;
-                dv.RowFilter = new System.Text.StringBuilder(string.Empty).Append(" vendor_name like '%" + txtFillVendorName.Text + "%'").ToString();
+                    DataTable dt = (DataTable)ViewState["RateCardInfo"];
+                    DataView dv = dt.DefaultView;
+                    dv.RowFilter = new System.Text.StringBuilder(string.Empty).Append(" vendor_name like '%" + txtFillVendorName.Text + "%'").ToString();
 
 
-                gvData.DataSource = dv;
-                gvData.DataBind();*/
-                DataBindData(true);
+                    gvData.DataSource = dv;
+                    gvData.DataBind();
+                }
+                else DataBindData(true);
             }
             catch(Exception ex)
             {

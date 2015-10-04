@@ -240,7 +240,7 @@
                     <asp:Button ID="btnFillter" CssClass="btn btn-default" runat="server" Text="Search" OnClick="btnFillter_Click" />
                 </div>
             </div>
-            <asp:GridView ID="gvData" DataKeyNames="RateCard_ID" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCancelingEdit="gvData_RowCancelingEdit" OnRowDataBound="gvData_RowDataBound" OnRowEditing="gvData_RowEditing" OnRowUpdating="gvData_RowUpdating" Width="100%" AllowPaging="True" OnPageIndexChanging="gvData_PageIndexChanging" PageIndex="0" PageSize="500">
+            <asp:GridView ID="gvData" DataKeyNames="RateCard_ID" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCancelingEdit="gvData_RowCancelingEdit" OnRowDataBound="gvData_RowDataBound" OnRowEditing="gvData_RowEditing" OnRowUpdating="gvData_RowUpdating" Width="100%" AllowPaging="True" OnPageIndexChanging="gvData_PageIndexChanging" PageIndex="0" PageSize="100">
                 <AlternatingRowStyle BackColor="White" HorizontalAlign="Center" />
                 <Columns>
                     <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True" />
