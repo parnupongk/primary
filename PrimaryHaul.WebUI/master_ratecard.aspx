@@ -4,6 +4,35 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
+    <style type="text/css">
+        .paginationr {
+            line-height: 26px;
+        }
+
+            .paginationr span {
+                padding: 5px;
+                border: solid 1px #477B0E;
+                text-decoration: none;
+                white-space: nowrap;
+                background: #547B2A;
+            }
+
+            .paginationr a,
+            .paginationr a:visited {
+                text-decoration: none;
+                padding: 6px;
+                white-space: nowrap;
+            }
+
+                .paginationr a:hover,
+                .paginationr a:active {
+                    padding: 5px;
+                    border: solid 1px #9ECDE7;
+                    text-decoration: none;
+                    white-space: nowrap;
+                    background: #486694;
+                }
+    </style>
     <script>
         function js_tab(varTab) {
             document.getElementById('form_view').style.display = 'none';
@@ -97,7 +126,7 @@
             <div runat="server" class="form-group">
                 <asp:Label runat="server" AssociatedControlID="lnkFile" CssClass="col-md-3 control-label"></asp:Label>
                 <div class="col-md-9">
-                    <a runat="server" id="lnkFile" href="file/ratecard.xls" target="_blank" >file ตัวอย่าง</a>
+                    <a runat="server" id="lnkFile" href="file/ratecard.xls" target="_blank">file ตัวอย่าง</a>
                 </div>
             </div>
             <div class="form-group">
@@ -200,18 +229,28 @@
             </div>
 
         </div>
+
         <div id="form_view" style="display: ;">
-            <asp:GridView ID="gvData" DataKeyNames="RateCard_ID" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCancelingEdit="gvData_RowCancelingEdit" OnRowDataBound="gvData_RowDataBound" OnRowEditing="gvData_RowEditing" OnRowUpdating="gvData_RowUpdating" Width="100%" CellSpacing="5">
+            <div runat="server" class="form-group">
+                <asp:Label runat="server" AssociatedControlID="txtVendorName" CssClass="col-md-3 control-label">Vendor Name</asp:Label>
+                <div class="col-md-2">
+                    <asp:TextBox ID="txtFillVendorName" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-md-3">
+                    <asp:Button ID="btnFillter" CssClass="btn btn-default" runat="server" Text="Search" OnClick="btnFillter_Click" />
+                </div>
+            </div>
+            <asp:GridView ID="gvData" DataKeyNames="RateCard_ID" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCancelingEdit="gvData_RowCancelingEdit" OnRowDataBound="gvData_RowDataBound" OnRowEditing="gvData_RowEditing" OnRowUpdating="gvData_RowUpdating" Width="100%" AllowPaging="True" OnPageIndexChanging="gvData_PageIndexChanging" PageIndex="0" PageSize="500">
                 <AlternatingRowStyle BackColor="White" HorizontalAlign="Center" />
                 <Columns>
                     <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True" />
-                    <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True" >
-                    <HeaderStyle HorizontalAlign="Center" />
+                    <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True">
+                        <HeaderStyle HorizontalAlign="Center" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="Collection_Point"  HeaderText="Collection Point" ReadOnly="True" >
-<HeaderStyle Width="120px"></HeaderStyle>
+                    <asp:BoundField DataField="Collection_Point" HeaderText="Collection Point" ReadOnly="True">
+                        <HeaderStyle Width="120px"></HeaderStyle>
 
-<ItemStyle Width="120px"></ItemStyle>
+                        <ItemStyle Width="120px"></ItemStyle>
                     </asp:BoundField>
                     <asp:BoundField DataField="DC_ABBR" HeaderText="DC Abbr" ReadOnly="True" />
                     <asp:BoundField DataField="buy_ratetype" HeaderText="Buy Rate Type" ReadOnly="True" />
@@ -220,12 +259,12 @@
                     <asp:BoundField DataField="Sell_Rate" HeaderText="Sell Rate" ReadOnly="True" />
                     <asp:BoundField DataField="fuel_rate_from" HeaderText="Fuel Rate From" ReadOnly="True" />
                     <asp:BoundField DataField="fuel_rate_to" HeaderText="Fuel Rate To" ReadOnly="True" />
-                    <asp:BoundField DataField="StartDate" HeaderText="Star tDate" ReadOnly="True" DataFormatString="{0:MM/dd/yyyy}" >
-<HeaderStyle Width="120px" HorizontalAlign="Right"></HeaderStyle>
-                        
-<ItemStyle Width="120px" HorizontalAlign="Center"></ItemStyle>
+                    <asp:BoundField DataField="StartDate" HeaderText="Star tDate" ReadOnly="True" DataFormatString="{0:MM/dd/yyyy}">
+                        <HeaderStyle Width="120px" HorizontalAlign="Right"></HeaderStyle>
+
+                        <ItemStyle Width="120px" HorizontalAlign="Center"></ItemStyle>
                     </asp:BoundField>
-                    <asp:TemplateField HeaderText="End Date" >
+                    <asp:TemplateField HeaderText="End Date">
                         <EditItemTemplate>
                             <asp:TextBox ID="txtEndDate" runat="server" Text='<%# Bind("enddate") %>'>
                             </asp:TextBox>
@@ -238,15 +277,16 @@
                             <asp:Label ID="lblendDate" Text='<%# Bind("enddate", "{0:MM/dd/yyyy}") %>' runat="server"></asp:Label>
                         </ItemTemplate>
 
-<HeaderStyle Width="120px" HorizontalAlign="Center"></HeaderStyle>
+                        <HeaderStyle Width="120px" HorizontalAlign="Center"></HeaderStyle>
 
-<ItemStyle Width="120px" HorizontalAlign="Center"></ItemStyle>
+                        <ItemStyle Width="120px" HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="True" />
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />
                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                <PagerSettings FirstPageText="&lt;&lt;" LastPageText="&gt;&gt;" NextPageText="&amp;gt;&amp;gt;" Position="TopAndBottom" PreviousPageText="&amp;lt;&amp;lt;&amp;lt;" />
                 <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
                 <RowStyle BackColor="#E3EAEB" HorizontalAlign="Center" />
                 <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
@@ -254,6 +294,7 @@
                 <SortedAscendingHeaderStyle BackColor="#246B61" />
                 <SortedDescendingCellStyle BackColor="#D4DFE1" />
                 <SortedDescendingHeaderStyle BackColor="#15524A" />
+                <PagerStyle CssClass="paginationr" HorizontalAlign="Center" />
             </asp:GridView>
             <!-- 
                 <asp:BoundField DataField="DC_No" HeaderText="DC No" ReadOnly="True" />

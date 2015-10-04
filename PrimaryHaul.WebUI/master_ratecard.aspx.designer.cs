@@ -157,6 +157,24 @@ namespace PrimaryHaul.WebUI {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
+        /// txtFillVendorName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFillVendorName;
+        
+        /// <summary>
+        /// btnFillter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFillter;
+        
+        /// <summary>
         /// gvData control.
         /// </summary>
         /// <remarks>

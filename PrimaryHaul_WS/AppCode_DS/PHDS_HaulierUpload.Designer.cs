@@ -886,9 +886,9 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 this.columnVendor_Name.AllowDBNull = false;
                 this.columnVendor_Name.MaxLength = 255;
                 this.columnCollection_Point.AllowDBNull = false;
-                this.columnCollection_Point.MaxLength = 100;
+                this.columnCollection_Point.MaxLength = 1000;
                 this.columnDelivery_Location.AllowDBNull = false;
-                this.columnDelivery_Location.MaxLength = 100;
+                this.columnDelivery_Location.MaxLength = 2000;
                 this.columnRateType.MaxLength = 10;
                 this.columnCurrency.MaxLength = 5;
                 this.columnYear_Week_OnFile.MaxLength = 6;

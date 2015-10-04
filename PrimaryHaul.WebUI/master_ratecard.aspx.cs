@@ -122,19 +122,24 @@ namespace PrimaryHaul.WebUI
                 {
                     if (drRead[0].ToString() != "" && drRead[1].ToString() != "")
                     {
+                        try {
+                            if (strTempColl != drRead[4].ToString()) PH_RateCardInfo.PH_CollectionPoint_Insert(AppCode.strConnDB, drRead[4].ToString());  //dtColl.Rows.Add(drRead[4], DateTime.Now);
+                            if (strTempRate != drRead[8].ToString()) PH_RateCardInfo.PH_RateType_Insert(AppCode.strConnDB, drRead[8].ToString());//dtRate.Rows.Add(drRead[8], DateTime.Now);
+                            dt.Rows.Add(drRead[0], drRead[1], drRead[2], drRead[3]
+                                , drRead[4], drRead[5], drRead[6], drRead[7]
+                                , drRead[8], drRead[9], drRead[10], drRead[11]
+                                , drRead[12], drRead[13], drRead[14], drRead[16]
+                                , drRead[17]);
 
-                        if (strTempColl != drRead[4].ToString()) PH_RateCardInfo.PH_CollectionPoint_Insert(AppCode.strConnDB, drRead[4].ToString());  //dtColl.Rows.Add(drRead[4], DateTime.Now);
-                        if (strTempRate != drRead[8].ToString()) PH_RateCardInfo.PH_RateType_Insert(AppCode.strConnDB, drRead[8].ToString());//dtRate.Rows.Add(drRead[8], DateTime.Now);
-                        dt.Rows.Add(drRead[0], drRead[1], drRead[2], drRead[3]
-                            , drRead[4], drRead[5], drRead[6], drRead[7]
-                            , drRead[8], drRead[9], drRead[10], drRead[11]
-                            , drRead[12], drRead[13], drRead[14], drRead[16]
-                            , drRead[17]);
+                            PH_RateCardInfo.PH_RateCard_Insert(AppCode.strConnDB, dt.Rows[dt.Rows.Count - 1]);
 
-                        PH_RateCardInfo.PH_RateCard_Insert(AppCode.strConnDB, dt.Rows[dt.Rows.Count - 1]);
-
-                        strTempRate = drRead[8].ToString();
-                        strTempColl = drRead[4].ToString();
+                            strTempRate = drRead[8].ToString();
+                            strTempColl = drRead[4].ToString();
+                        }
+                        catch(Exception ex)
+                        {
+                            PrimaryHaul_WS.PH_ExceptionManager.WriteError(ex.Message);
+                        }
                     }
 
                 }
@@ -224,6 +229,32 @@ namespace PrimaryHaul.WebUI
                 PrimaryHaul_WS.PH_ExceptionManager.WriteError(ex.Message);
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('Save Data Not Successfull');", true);
             }
+        }
+
+        protected void btnFillter_Click(object sender, EventArgs e)
+        {
+            try {
+                if (ViewState["RateCardInfo"] == null)
+                    DataBindData(false);
+
+                DataTable dt = (DataTable)ViewState["RateCardInfo"];
+                DataView dv = dt.DefaultView;
+                dv.RowFilter = new System.Text.StringBuilder(string.Empty).Append(" vendor_name like '%" + txtFillVendorName.Text + "%'").ToString();
+
+
+                gvData.DataSource = dv;
+                gvData.DataBind();
+            }
+            catch(Exception ex)
+            {
+                PH_ExceptionManager.WriteError("btnFillter_Click >> " + ex.Message);
+            }
+        }
+
+        protected void gvData_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvData.PageIndex = e.NewPageIndex;
+            DataBindData(false);
         }
     }
 }
