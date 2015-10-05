@@ -125,7 +125,7 @@ namespace PrimaryHaul.WebUI
                         try {
                             if (strTempColl != drRead[4].ToString()) PH_RateCardInfo.PH_CollectionPoint_Insert(AppCode.strConnDB, drRead[4].ToString());  //dtColl.Rows.Add(drRead[4], DateTime.Now);
                             if (strTempRate != drRead[8].ToString()) PH_RateCardInfo.PH_RateType_Insert(AppCode.strConnDB, drRead[8].ToString());//dtRate.Rows.Add(drRead[8], DateTime.Now);
-                            dt.Rows.Add(drRead[0], drRead[1], drRead[2], drRead[3]
+                            dt.Rows.Add(string.Format("{0:00000}", drRead[0].ToString()), drRead[1], drRead[2], drRead[3]
                                 , drRead[4], drRead[5], drRead[6], drRead[7]
                                 , drRead[8], drRead[9], drRead[10], drRead[11]
                                 , drRead[12], drRead[13], drRead[14], drRead[16]
@@ -214,7 +214,7 @@ namespace PrimaryHaul.WebUI
                                                         ,new DataColumn("Sell_Rate"), new DataColumn("Sell_RateType"), new DataColumn("Currency"), new DataColumn("Fuel_Rate_From")
                                                         ,new DataColumn("Fuel_Rate_To")
                                                      });
-                dt.Rows.Add(txtVendorCode.Text, txtVendorName.Text, DateTime.Now.ToString("MM/dd/yyyy"), null
+                dt.Rows.Add(string.Format("{0:00000}",txtVendorCode.Text), txtVendorName.Text, DateTime.Now.ToString("MM/dd/yyyy"), null
                             , ddlCollectionPoint.SelectedItem, ddlDC.SelectedValue, "NSL", txtBuyRate.Text
                             , ddlRateType.SelectedItem, ddlRateType.SelectedItem, "", ""
                             , txtSellRate.Text, ddlRateType.SelectedItem, "THB", txtRateFrom.Text

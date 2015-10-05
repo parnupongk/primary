@@ -158,7 +158,7 @@ namespace PrimaryHaul.WebUI
                                     dr.Remark1 = "dup";
                                 }
                             }
-                            catch (Exception ex)
+                            catch(Exception ex)
                             {
                                 dr.Remark1 = "err";
                                 dr.Remark2 = ex.Message;
@@ -235,6 +235,7 @@ namespace PrimaryHaul.WebUI
                 {
                     try {
                         PH_HaulierUpload.PH_HaulierUp_Insert(AppCode.strConnDB, dr);
+                        PH_HaulierUpload.PH_HaulierUpLog_Insert(AppCode.strConnDB, int.Parse(Request["id"]), lblWeek.Text, Session["fileName"].ToString(),dr.Haulier_Abbr.ToString());
                     }
                     catch(Exception ex)
                     {
@@ -245,7 +246,7 @@ namespace PrimaryHaul.WebUI
 
                 }
                 
-                if( !isError )
+                /*if( !isError )
                 {
                     try {
                         // no error insert logs
@@ -257,7 +258,7 @@ namespace PrimaryHaul.WebUI
                         strMess = ex.Message;
                         PH_ExceptionManager.WriteError("btnInsert_Click ,PH_HaulierUpLog_Insert >>" + ex.Message);
                     }
-                }
+                }*/
                 string message = !isError ? "Save Data Successfull" : "Save Data Not Successfull";
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);
             }

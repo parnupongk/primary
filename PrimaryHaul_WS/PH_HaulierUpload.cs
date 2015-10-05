@@ -6,12 +6,13 @@ namespace PrimaryHaul_WS
 {
     public class PH_HaulierUpload
     {
-        public static string PH_HaulierUpLog_Insert(string strConnDB,int iUserId,string strTescoWeek,string strFileName)
+        public static string PH_HaulierUpLog_Insert(string strConnDB,int iUserId,string strTescoWeek,string strFileName,string strHaulierAbbr)
         {
             try
             {
                 return SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_HaulierUpLogInsert"
                     , new SqlParameter[] {new SqlParameter("@Haulier_UserID",iUserId)
+                                        , new SqlParameter("Haulier_Abbr",strHaulierAbbr)
                                         , new SqlParameter("@Tesco_Year_Week",strTescoWeek)
                                         ,new SqlParameter("@File_Name",strFileName)
                                         ,new SqlParameter("@Upload_DateTime",DateTime.Now)
