@@ -86,7 +86,7 @@ namespace PrimaryHaul.WebUI
                                                         ,new DataColumn("Remark1"), new DataColumn("Remark2"), new DataColumn("Fuel_Rate") ,new DataColumn("Trans_Type")
                                                      });*/
 
-                string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source= " + path + " ; Extended Properties=Excel 8.0;";
+                string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source= " + path + " ; Extended Properties='Excel 8.0;IMEX=1;HDR=Yes;TypeGuessRows=0;ImportMixedTypes=Text;'";
                 OleDbConnection conn = new OleDbConnection(connectionString);
                 if (conn.State == ConnectionState.Open) conn.Close();
                 conn.Open();
@@ -129,7 +129,7 @@ namespace PrimaryHaul.WebUI
                                 dr.Additional_Cost_Reason = drRead[13].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[13].ToString().Trim());
                                 dr.Additional_Cost = drRead[12].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[12].ToString().Trim());
                                 dr.Total_Cost = decimal.Parse(drRead[14].ToString().Trim());
-                                dr.Year_Week_OnFile = "";
+                                dr.Year_Week_OnFile = drRead[15].ToString();
                                 dr.Year_Week_Upload = lblWeek.Text;
                                 dr.Remark1 = drRead[16].ToString().Trim();
                                 dr.Remark2 = drRead[17].ToString().Trim();

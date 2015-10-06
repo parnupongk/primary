@@ -32,7 +32,7 @@ namespace PrimaryHaul.WebUI
                 if (ddlDateWeek.Items.Count > 0)
                 {
                     ddlDateWeek.ClearSelection();
-                    ddlDateWeek.Items[ddlDateWeek.Items.Count - 1].Selected = true;
+                    ddlDateWeek.Items[0].Selected = true;
                 }
             }
             catch(Exception ex)
@@ -45,10 +45,20 @@ namespace PrimaryHaul.WebUI
         {
             try
             {
-                DataSet ds = PH_RateCalc.PH_ReateCalc_HaulierSelByDateWeek(AppCode.strConnDB, ddlDateWeek.SelectedItem.Text);
-                ViewState["DataRateCalc"] = ds;
-                gvData.DataSource = ds;
-                gvData.DataBind();
+                DataSet dsHaulier = PH_RateCalc.PH_ReateCalc_HaulierSelByDateWeek(AppCode.strConnDB, ddlDateWeek.SelectedItem.Text);
+                ViewState["DataRateCalc"] = dsHaulier;
+                if (dsHaulier.Tables[0].Rows.Count > 0)
+                {
+                    gvData.Visible = true;
+
+                    gvData.DataSource = dsHaulier;
+                    gvData.DataBind();
+                }
+                else
+                {
+                    lblErr.Text = "data not found.";
+                    gvData.Visible = false;
+                }
             }
             catch(Exception ex)
             {
@@ -58,7 +68,14 @@ namespace PrimaryHaul.WebUI
 
         protected void ddlDateWeek_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataBindHaulier();
+            try {
+                lblErr.Text = "";
+                DataBindHaulier();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         protected void btnAddSubmit_Click(object sender, EventArgs e)
@@ -70,7 +87,7 @@ namespace PrimaryHaul.WebUI
                     int iSucc = 0, iErr = 0, iRtn = 0;
                     foreach (DataRow dr in ds.Tables[0].Rows)
                     {
-                        iRtn = PH_RateCalc.PH_RateCalc_TransporationCalc(AppCode.strConnDB, dr);
+                        iRtn = PH_RateCalc.PH_RateCalc_TransporationCalc(AppCode.strConnDB, dr,ddlDateWeek.SelectedItem.Text);
                         if (iRtn > 0) iSucc++;
                         else iErr++;
                     }

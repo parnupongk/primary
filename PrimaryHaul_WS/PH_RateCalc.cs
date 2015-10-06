@@ -32,21 +32,13 @@ namespace PrimaryHaul_WS
             }
         }
 
-        public static int PH_RateCalc_TransporationCalc(string strConnDB,DataRow drTrans)
+        public static int PH_RateCalc_TransporationCalc(string strConnDB,DataRow drTrans,string strWeek)
         {
             try
             {
                 return SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_RateCalcUpdateTransportation"
-                    , new SqlParameter[] {new SqlParameter("@TransID",drTrans["transid"])
-                                            ,new SqlParameter("@Vendor_Code",drTrans["Vendor_Code"])
-                                            ,new SqlParameter("@Collection_Point",drTrans["Collection_Point"])
-                                            ,new SqlParameter("@Delivery_Location",drTrans["Delivery_Location"])
-                                            ,new SqlParameter("@DC_No",drTrans["DC_No"])
-                                            ,new SqlParameter("@RateType",drTrans["RateType"])
-                                            ,new SqlParameter("@Rate_Per_Unit",drTrans["Rate_Per_Unit"])
-                                            ,new SqlParameter("@Fuel_Rate",drTrans["Fuel_Rate"])
-                                            ,new SqlParameter("@NoOfQty",drTrans["No_Of_Qty"])
-                                            ,new SqlParameter("@DC_Abbr",drTrans["DC_Abbr"])
+                    , new SqlParameter[] {new SqlParameter("@Haulier_Abbr",drTrans["Haulier_Abbr"])
+                                            ,new SqlParameter("@date_week",strWeek)
                                         });
             }
             catch(Exception ex)

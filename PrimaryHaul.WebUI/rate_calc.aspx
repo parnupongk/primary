@@ -37,7 +37,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="Haulier_Abbr" HeaderText="Haulier Abbr" ReadOnly="True" />
-                    <asp:BoundField DataField="Year_Week_Upload" HeaderText="Upload Status" ReadOnly="True" />
+                    <asp:BoundField DataField="Status_Upload" HeaderText="Upload Status" ReadOnly="True" />
                     <asp:BoundField DataField="Status_Calculate" HeaderText="Calc. Status" ReadOnly="True" />
 
                 </Columns>
