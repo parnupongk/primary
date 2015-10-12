@@ -178,7 +178,7 @@
         var strTax = document.getElementById('DC_NO').value;
         var strName = document.getElementById('DC_Name').value;
         var strAbbr = document.getElementById('dc_abbr').value;
-        if (strTax != '' && strName != '' && strAbbr != '') {
+        if (strTax != '') {
             var str_url_address = "./pph_include/ajax/files/dc_Submit.aspx";
             var str_url = "var01=" + strTax;
             str_url += "&var02=" + strName;
@@ -234,14 +234,14 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" ><label class="control-label">DC Name </label></div>
-                <div class="col-md-5"><input type="text" class="form-control" name="DC_Name" id="DC_Name" onchange="dc_nameDuplicate();" style="width:100%;"/><p class="text-danger" id="nameEnError" style="display:none;"></p></div>               
+                <div class="col-md-5"><input type="text" class="form-control" name="DC_Name" id="DC_Name"  style="width:100%;"/><p class="text-danger" id="nameEnError" style="display:none;"></p></div>               
                 <div class="col-md-5"></div>
             </div>
         </div> 
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" ><label class="control-label">DC Abbr </label></div>
-                <div class="col-md-5"><input type="text" class="form-control" name="dc_abbr" id="dc_abbr" onchange="dc_abbrDuplicate();" style="width:100%;"/><p class="text-danger" id="abbrError" style="display:none;"></p></div>               
+                <div class="col-md-5"><input type="text" class="form-control" name="dc_abbr" id="dc_abbr"  style="width:100%;"/><p class="text-danger" id="abbrError" style="display:none;"></p></div>               
                 <div class="col-md-5"></div>
             </div>
         </div>  
@@ -386,14 +386,14 @@
          <div class="form-group">
             <div class="row">
                 <div class="col-md-2" ><label class="control-label">DC Name </label></div>
-                <div class="col-md-5"><input type="text" class="form-control" autocomplete="off" name="DC_NameEdit" id="DC_NameEdit" value="<%=obj_dc[0].ToString() %>" onchange="dc_nameEditDuplicate();" style="width:100%;"/><p class="text-danger" id="nameEnErrorEdit" style="display:none;"></p></div>               
+                <div class="col-md-5"><input type="text" class="form-control" autocomplete="off" name="DC_NameEdit" id="DC_NameEdit" value="<%=obj_dc[0].ToString() %>" style="width:100%;"/><p class="text-danger" id="nameEnErrorEdit" style="display:none;"></p></div>               
                 <div class="col-md-5"></div>
             </div>
         </div>   
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" ><label class="control-label">DC Abbr </label></div>
-                <div class="col-md-5"><input type="text" class="form-control" name="dc_abbrEdit" id="dc_abbrEdit" onchange="dc_abbrEditDuplicate();" style="width:100%;" value="<%=obj_dc[2].ToString() %>" /><p class="text-danger" id="abbrEditError" style="display:none;"></p></div>               
+                <div class="col-md-5"><input type="text" class="form-control" name="dc_abbrEdit" id="dc_abbrEdit" style="width:100%;" value="<%=obj_dc[2].ToString() %>" /><p class="text-danger" id="abbrEditError" style="display:none;"></p></div>               
                 <div class="col-md-5"></div>
             </div>
         </div>  
