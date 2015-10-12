@@ -11,7 +11,7 @@
         }
     </script>
     <div class="form-horizontal">
-        <h4>Rate Calculation Adjust</h4>
+        <h4>Rate Calculation > Adjust Calculator</h4>
         <hr />
         <div id="form_import" style="display: ;">
             <div runat="server" class="form-group">

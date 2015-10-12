@@ -130,6 +130,15 @@ namespace PrimaryHaul.WebUI {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkRate;
         
         /// <summary>
+        /// lnkRateAdj control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkRateAdj;
+        
+        /// <summary>
         /// lnkFinance control.
         /// </summary>
         /// <remarks>
