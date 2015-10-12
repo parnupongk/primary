@@ -684,7 +684,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                         decimal Rate_Per_Unit, 
                         string Currency, 
                         decimal Additional_Cost, 
-                        decimal Additional_Cost_Reason, 
+                        string Additional_Cost_Reason, 
                         decimal Total_Cost, 
                         string Year_Week_OnFile, 
                         string Year_Week_Upload, 
@@ -831,7 +831,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 base.Columns.Add(this.columnCurrency);
                 this.columnAdditional_Cost = new global::System.Data.DataColumn("Additional_Cost", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAdditional_Cost);
-                this.columnAdditional_Cost_Reason = new global::System.Data.DataColumn("Additional_Cost_Reason", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnAdditional_Cost_Reason = new global::System.Data.DataColumn("Additional_Cost_Reason", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAdditional_Cost_Reason);
                 this.columnTotal_Cost = new global::System.Data.DataColumn("Total_Cost", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal_Cost);
@@ -1234,10 +1234,10 @@ namespace PrimaryHaul_WS.AppCode_DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Additional_Cost_Reason {
+            public string Additional_Cost_Reason {
                 get {
                     try {
-                        return ((decimal)(this[this.tableTransportation.Additional_Cost_ReasonColumn]));
+                        return ((string)(this[this.tableTransportation.Additional_Cost_ReasonColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Additional_Cost_Reason\' in table \'Transportation\' is DBNull" +

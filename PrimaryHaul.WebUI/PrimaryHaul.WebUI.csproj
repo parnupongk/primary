@@ -162,6 +162,7 @@
     <Content Include="pph_include\module\profile\user_management\reset_password.aspx" />
     <Content Include="pph_include\module\profile\user_management\update_status.aspx" />
     <Content Include="rate_calc.aspx" />
+    <Content Include="rate_calc_adj.aspx" />
     <Content Include="report_venderlog.aspx" />
     <Content Include="Site.Master" />
     <Content Include="dist\css\bootstrap-theme.css.map" />
@@ -518,6 +519,13 @@
     </Compile>
     <Compile Include="rate_calc.aspx.designer.cs">
       <DependentUpon>rate_calc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="rate_calc_adj.aspx.cs">
+      <DependentUpon>rate_calc_adj.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rate_calc_adj.aspx.designer.cs">
+      <DependentUpon>rate_calc_adj.aspx</DependentUpon>
     </Compile>
     <Compile Include="report_venderlog.aspx.cs">
       <DependentUpon>report_venderlog.aspx</DependentUpon>

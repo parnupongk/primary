@@ -126,7 +126,7 @@ namespace PrimaryHaul.WebUI
                                 dr.No_Of_Qty = int.Parse(drRead[9].ToString().Trim());
                                 dr.Rate_Per_Unit = decimal.Parse(drRead[10].ToString().Trim());
                                 dr.Currency = drRead[11].ToString().Trim();
-                                dr.Additional_Cost_Reason = drRead[13].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[13].ToString().Trim());
+                                dr.Additional_Cost_Reason = drRead[13].ToString();//.Trim() == "" ? 0 : decimal.Parse(drRead[13].ToString().Trim());
                                 dr.Additional_Cost = drRead[12].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[12].ToString().Trim());
                                 dr.Total_Cost = decimal.Parse(drRead[14].ToString().Trim());
                                 dr.Year_Week_OnFile = drRead[15].ToString();
