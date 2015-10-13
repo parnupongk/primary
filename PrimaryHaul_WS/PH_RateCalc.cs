@@ -7,13 +7,14 @@ namespace PrimaryHaul_WS
 {
     public class PH_RateCalc
     {
-        public static int PH_RateCaclAdj_TransportUpdate(string strConnDB, string strHaulier, string strYearWeek)
+        public static int PH_RateCaclAdj_TransportUpdate(string strConnDB, string strHaulier, string strYearWeek,string strVendorCode)
         {
             try
             {
-                return SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_RateCalcUpdateTransportation"
+                return SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_ReCalculate"
                     , new SqlParameter[] {new SqlParameter("@Haulier_Abbr",strHaulier)
                                         , new SqlParameter("@Date_Week",strYearWeek)
+                                        , new SqlParameter("@vendor_code",strVendorCode)
                                         });
             }
             catch (Exception ex)

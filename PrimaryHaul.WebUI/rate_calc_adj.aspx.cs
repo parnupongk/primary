@@ -128,7 +128,7 @@ namespace PrimaryHaul.WebUI
         {
             try
             {
-                int rtn = PH_RateCalc.PH_RateCaclAdj_TransportUpdate(AppCode.strConnDB, ddlHaluier.SelectedValue, ddlDateWeek.SelectedValue);
+                int rtn = PH_RateCalc.PH_RateCaclAdj_TransportUpdate(AppCode.strConnDB, ddlHaluier.SelectedValue, ddlDateWeek.SelectedValue,ddlVendorCode.SelectedValue);
 
                 string message = rtn > 0 ? "Calculate Completed" : "Calculate  Not Completed";
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);

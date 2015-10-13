@@ -76,7 +76,7 @@
                         <li class="dropdown">
                             <a runat="server" name="RATE CALC" class="dropdown-toggle" data-toggle="dropdown">RATE CALCULATION <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a runat="server" id="lnkRate" href="rate_calc.aspx?" name="Rate Calulation">Rate Calulation</a></li>
+                                <li><a runat="server" id="lnkRate" href="rate_calc.aspx?" name="Rate Calculation">Rate Calculation</a></li>
                                 <li><a runat="server" id="lnkRateAdj" href="rate_calc_adj.aspx?" name="Adjust & Re Calculate">Adjust & Re Calculate</a></li>
                             </ul>
                         </li>
