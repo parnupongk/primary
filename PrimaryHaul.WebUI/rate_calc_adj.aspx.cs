@@ -29,13 +29,13 @@ namespace PrimaryHaul.WebUI
                 ddlDateWeek.DataSource = ds;
                 ddlDateWeek.DataBind();
 
-                DataTable dt = PH_UserVendor.PH_UserVendor_SelectAll(AppCode.strConnDB);
+                /*DataTable dt = PH_UserVendor.PH_UserVendor_SelectAll(AppCode.strConnDB);
                 ddlVendorCode.DataTextField = "vendor_code";
                 ddlVendorCode.DataValueField = "vendor_code";
                 ddlVendorCode.DataSource = dt;
-                ddlVendorCode.DataBind();
+                ddlVendorCode.DataBind();*/
 
-                dt = PH_HaulierInfo.PH_Haulier_SelAll(AppCode.strConnDB);
+                DataTable dt = PH_HaulierInfo.PH_Haulier_SelAll(AppCode.strConnDB);
                 ddlHaluier.DataTextField = "haulier_abbr";
                 ddlHaluier.DataValueField = "haulier_abbr";
                 ddlHaluier.DataSource = dt;
@@ -56,7 +56,7 @@ namespace PrimaryHaul.WebUI
                 if (isNew)
                 {
 
-                    ds = PH_RateCalc.PH_RateCalcAdj_TransportSel(AppCode.strConnDB, ddlHaluier.SelectedValue, ddlVendorCode.SelectedValue, ddlDateWeek.SelectedValue);
+                    ds = PH_RateCalc.PH_RateCalcAdj_TransportSel(AppCode.strConnDB, ddlHaluier.SelectedValue, txtVendorCode.Text, ddlDateWeek.SelectedValue);
                 }
                 else
                 {
@@ -128,7 +128,7 @@ namespace PrimaryHaul.WebUI
         {
             try
             {
-                int rtn = PH_RateCalc.PH_RateCaclAdj_TransportUpdate(AppCode.strConnDB, ddlHaluier.SelectedValue, ddlDateWeek.SelectedValue,ddlVendorCode.SelectedValue);
+                int rtn = PH_RateCalc.PH_RateCaclAdj_TransportUpdate(AppCode.strConnDB, ddlHaluier.SelectedValue, ddlDateWeek.SelectedValue,txtVendorCode.Text);
 
                 string message = rtn > 0 ? "Calculate Completed" : "Calculate  Not Completed";
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);
@@ -137,6 +137,15 @@ namespace PrimaryHaul.WebUI
             {
                 lblErr.Text = ex.Message;
                 PH_ExceptionManager.WriteError(ex.Message);
+            }
+        }
+
+        protected void gvData_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string strPoNo = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "po_no"));
+                e.Row.Cells[1].Text = strPoNo.Replace(",", " ,");
             }
         }
     }

@@ -25,9 +25,10 @@
                     <asp:DropDownList ID="ddlHaluier" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
 
-                <asp:Label runat="server" AssociatedControlID="ddlVendorCode" CssClass="col-md-2 control-label">Vendor Code </asp:Label>
+                <asp:Label runat="server" AssociatedControlID="txtVendorCode" CssClass="col-md-2 control-label">Vendor Code </asp:Label>
                 <div class="col-md-2">
-                    <asp:DropDownList ID="ddlVendorCode" runat="server" CssClass="form-control"></asp:DropDownList>
+                    <!-- sp:DropDownList ID="ddlVendorCode" runat="server" CssClass="form-control"></!-->
+                    <asp:TextBox runat="server" ID="txtVendorCode" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="5" />
                 </div>
 
             </div>
@@ -44,20 +45,25 @@
             </div>
         </div>
         <div id="form_view" style="display: ;">
-            <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="2" OnRowCommand="gvData_RowCommand" OnRowCancelingEdit="gvData_RowCancelingEdit" OnRowEditing="gvData_RowEditing" OnRowUpdating="gvData_RowUpdating">
+            <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="4" OnRowCommand="gvData_RowCommand" OnRowCancelingEdit="gvData_RowCancelingEdit" OnRowEditing="gvData_RowEditing" DataKeyNames="transid" OnRowUpdating="gvData_RowUpdating" OnRowDataBound="gvData_RowDataBound">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Haulier_Abbr" HeaderText="Haulier Abbr" ReadOnly="True" />
-                    <asp:BoundField DataField="Po_No" HeaderText="Po No" ReadOnly="True" />
+                    <asp:BoundField DataField="Po_No" HeaderText="Po No" ReadOnly="True" >
+                        <ControlStyle Width="50px" />
+                        <FooterStyle Width="50px" />
+                        <HeaderStyle Width="50px"></HeaderStyle>
+                        <ItemStyle Width="50px"></ItemStyle>
+                    </asp:BoundField>
                     <asp:BoundField DataField="Delivery_Ref" HeaderText="Delivery Ref" ReadOnly="True" />
                     <asp:BoundField DataField="Delivery_Date" HeaderText="Delivery Date" ReadOnly="True" />
                     <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True" />
                     <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True" />
                     <asp:BoundField DataField="Collection_Point" HeaderText="Collection Point" ReadOnly="True" />
                     <asp:BoundField DataField="Delivery_Location" HeaderText="Delivery Location" ReadOnly="True" />
-                    <asp:BoundField DataField="Fuel_Rate" HeaderText="Fuel_Rate" ReadOnly="True" />
-                    <asp:BoundField DataField="Trans_Type" HeaderText="Trans_Type" ReadOnly="True" />
-                    <asp:TemplateField HeaderText="No_Of_Qty">
+                    <asp:BoundField DataField="Fuel_Rate" HeaderText="Fuel Rate" ReadOnly="True" />
+                    
+                    <asp:TemplateField HeaderText="Qty">
                         <EditItemTemplate>
                             <div>
                                 <asp:TextBox ID="txtOldNoQty" Text='<%# "-" + Eval("No_Of_Qty")%>' CssClass="form-control" runat="server"></asp:TextBox></div>
@@ -69,7 +75,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField EditText="Adjust Data" ShowEditButton="True" />
-
+                    <asp:BoundField DataField="Trans_Type" HeaderText="Trans_Type" ReadOnly="True"  Visible="false"/>
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />
                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />

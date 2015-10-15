@@ -156,6 +156,10 @@ namespace PrimaryHaul.WebUI
                                 {
                                     isErr = true;
                                     dr.Remark1 = "dup";
+                                }else if(IsErrYearWeek(dr))
+                                {
+                                    isErr = true;
+                                    dr.Remark1 = "errYearWeek";
                                 }
                             }
                             catch(Exception ex)
@@ -191,6 +195,18 @@ namespace PrimaryHaul.WebUI
             }
         }
 
+        private bool IsErrYearWeek(PHDS_HaulierUpload.TransportationRow dr)
+        {
+            try
+            {
+                if (dr.Year_Week_OnFile != lblWeek.Text) return true;
+                else return false;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         private bool IsErrCaseI(PHDS_HaulierUpload.TransportationRow dr, DataView dv)
         {
             try
@@ -216,6 +232,7 @@ namespace PrimaryHaul.WebUI
                 else if (string.IsNullOrEmpty(dr.PO_No) && dr.Remark1.Trim().ToLower() == "rejecteditems") str = "R";
                 else if (string.IsNullOrEmpty(dr.PO_No)) str = "N";
                 else if (dr.Vendor_Name == "Dummy" && dr.PO_No == "" && dr.Total_Cost >0) str = "L";
+                
 
                 return str;
             }
@@ -273,11 +290,18 @@ namespace PrimaryHaul.WebUI
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                string strPoNo = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "po_no"));
+                e.Row.Cells[1].Text = strPoNo.Replace(",", " ,");
+
                 string Status = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "Remark1"));
 
-                if (Status == "err" || Status == "dup")
+                if (Status == "err" || Status == "dup" || Status == "errYearWeek")
                 {
                     e.Row.Attributes["style"] = "background-color: #FF9999";
+                }
+                else
+                {
+                    e.Row.Cells[11].Text = "";
                 }
             }
         }
