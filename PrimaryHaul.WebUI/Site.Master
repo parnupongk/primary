@@ -86,8 +86,8 @@
                             <a runat="server" name="REPORT" class="dropdown-toggle" data-toggle="dropdown">REPORT <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a runat="server" id="lnkFinance" href="report_finance.aspx?" name="Tesco Finance">Tesco Finance Report</a></li>
-                                <li class="divider"></li>
-                                <li><a runat="server" id="lnkVendorLog" href="report_venderlog.aspx?" name="Vendor Download Log">Vendor Download</a></li>
+                                <!--<li class="divider"></li>
+                                <li><a runat="server" id="lnkVendorLog" href="report_venderlog.aspx?" name="Vendor Download Log">Vendor Download</a></li>-->
                             </ul>
                         </li>
                         <li class="dropdown">

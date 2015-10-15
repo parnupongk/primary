@@ -20,11 +20,6 @@ namespace PrimaryHaul.WebUI.pph_include.perview
             objConn = new SqlConnection();
             objConn.ConnectionString = strConnString;
             objConn.Open();
-
-            string sql_detail = "select top 1 Vendor_Info.Vendor_Name_En from Vendor_Group, Vendor_Info where Vendor_Group.VendorID=Vendor_Info.VendorID and Vendor_Group.Vendor_Code='" + Request.QueryString["VD"].ToString() + "'";
-            SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
-            obj_detail = rs_detail.ExecuteReader();
-            obj_detail.Read();
         }
     }
 }
