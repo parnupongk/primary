@@ -47,6 +47,10 @@ namespace PrimaryHaul.WebUI
                     #endregion
 
 
+                    if (PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A2")
+                    {
+                        btnSubmit.Style["visibility"] = "hidden";
+                    }
                     lblHeader.Text = (type != null) ? ConfigurationManager.AppSettings["PH_AddNew_" + type[0]] : "";
                     txtPasswrdExpried.Text = DateTime.Now.AddDays(AppCode.GetDayofPasswdExp(Page)).ToString("dd/MM/yyyy");
                 }

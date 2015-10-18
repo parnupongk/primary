@@ -40,7 +40,7 @@
 <input type="hidden" name="urlSubmit" id="urlSubmit" value="<%= HttpContext.Current.Request.Url.AbsolutePath %>?r=<%= Request.QueryString["r"].ToString() %>&id=<%= Request.QueryString["id"].ToString() %>" />
 <div id="form_view">
 <div class="row">
-    <div class="form-horizontal">
+    <div class="col-md-12">
         <h4>Master Data > Vender</h4>
         <hr />
         <%
@@ -51,28 +51,28 @@
         %>       
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">Vendor Name En : </label></div>
+                <div class="col-md-2" ><label class="control-label">Vendor Name En : </label></div>
                 <div class="col-md-3"><input type="text" class="form-control" name="seNameEn" id="seNameEn" value="<%= str_sNameEn %>" /></div>
                 <div class="col-md-7"></div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">Vendor Name Th : </label></div>
+                <div class="col-md-2" ><label class="control-label">Vendor Name Th : </label></div>
                 <div class="col-md-3"><input type="text" class="form-control" name="seNameTh" id="seNameTh" value="<%= str_sNameTh %>" /></div>
                 <div class="col-md-7"></div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">Tax ID : </label></div>
+                <div class="col-md-2"><label class="control-label">Tax ID : </label></div>
                 <div class="col-md-3"><input type="text" class="form-control" name="seNameTax" id="seNameTax" value="<%= str_sNameTax %>" /></div>
                 <div class="col-md-7"></div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"></div>
+                <div class="col-md-2" ></div>
                 <div class="col-md-3" style="text-align:left;"><input type="button" value="Search" class="btn btn-default" onclick="js_submitSearch('seNameEn', 'seNameTh', 'seNameTax', 'urlSubmit');" /> <input type="button" value="Clear" class="btn btn-default" onclick="js_clearSearch('urlSubmit');" /></div>
                 <div class="col-md-7" style="text-align:left;"></div>
             </div>
@@ -273,12 +273,12 @@ function isNumberKey(evt) {
     document.getElementById('btnSubmitError').style.display = "none";
 </script>
 <div class="row">
-    <div class="form-horizontal">
+    <div class="col-md-12">
         <h4>Master Data > Vender > Add</h4>
         <hr />   
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">Tax ID : </label></div>
+                <div class="col-md-2" ><label class="control-label">Tax ID : </label></div>
                 <div class="col-md-3">
                     <input type="text" class="form-control" name="addNameTax" id="addNameTax" maxlength="13" onkeypress='return isNumberKey(event)'  onchange="vender_taxDuplicate();" />
                     <p class="text-danger" id="taxError" style="display:none;"></p>
@@ -288,21 +288,21 @@ function isNumberKey(evt) {
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">Vendor Name En : </label></div>
+                <div class="col-md-2" ><label class="control-label">Vendor Name En : </label></div>
                 <div class="col-md-5"><input type="text" class="form-control" name="addNameEn" id="addNameEn" onchange="vender_nameEnDuplicate();" style="width:100%;"/><p class="text-danger" id="nameEnError" style="display:none;"></p></div>               
                 <div class="col-md-5"></div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"><label class="control-label">Vendor Name Th : </label></div>
+                <div class="col-md-2" ><label class="control-label">Vendor Name Th : </label></div>
                 <div class="col-md-5"><input type="text" class="form-control" name="addNameTh" id="addNameTh" onchange="vender_nameThDuplicate();" style="width:100%;"/><p class="text-danger" id="nameThError" style="display:none;"></p></div>
                 <div class="col-md-5"></div>
             </div>
         </div>       
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2" style="text-align:right;"></div>
+                <div class="col-md-2" ></div>
                 <div class="col-md-3" style="text-align:left;"><input type="button" id="btnSubmit" value="Save" class="btn btn-default" <% Response.Write("onclick=\"vender_Submit('" + Request.QueryString["r"].ToString() + "', '" + Request.QueryString["id"].ToString() + "');\""); %> /><p class="text-danger" id="btnSubmitError" style="display:none;"></p></div>
                 <div class="col-md-7" style="text-align:left;"></div>
             </div>
