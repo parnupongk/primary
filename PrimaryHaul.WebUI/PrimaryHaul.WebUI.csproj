@@ -135,6 +135,7 @@
     <Content Include="pph_include\ajax\files\haulier_Submit.aspx" />
     <Content Include="pph_include\ajax\files\haulier_taxDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\userDuplicate.aspx" />
+    <Content Include="pph_include\ajax\files\vdAll_download_log.aspx" />
     <Content Include="pph_include\ajax\files\vd_download_log.aspx" />
     <Content Include="pph_include\ajax\files\vender_nameEnDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\vender_nameThDuplicate.aspx" />
@@ -465,6 +466,13 @@
     </Compile>
     <Compile Include="pph_include\ajax\files\userDuplicate.aspx.designer.cs">
       <DependentUpon>userDuplicate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\vdAll_download_log.aspx.cs">
+      <DependentUpon>vdAll_download_log.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\vdAll_download_log.aspx.designer.cs">
+      <DependentUpon>vdAll_download_log.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\ajax\files\vd_download_log.aspx.cs">
       <DependentUpon>vd_download_log.aspx</DependentUpon>

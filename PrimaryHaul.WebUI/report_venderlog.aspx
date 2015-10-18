@@ -36,6 +36,45 @@
         req.send(str_url);
         window.open('./pph_include/download/vendor_file.aspx?id=' + objID + '&YW=' + objYW + '&VD=' + objVD, '_blank');
     }
+    function js_downloadAll(obj1, obj2, obj3, obj4) {
+        var req = Inint_AJAX();
+        var str = Math.random();
+        var YM = document.getElementById(obj3).value;
+        var total = document.getElementById(obj4).value;
+        if (YM == '') { alert('กรุณาเลือก Week '); return false; }else{
+            var str_url_address = "./pph_include/ajax/files/vdAll_download_log.aspx";
+            var str_url = "var01=" + obj2;
+            str_url += "&var02=" + YM;
+            str_url += "&clearmemory=" + str;
+            req.open('POST', str_url_address, true)
+            req.onreadystatechange = function () {
+                if (req.readyState == 4) {
+                    if (req.status == 200) {
+                       
+                        var i;
+                        for (i=1;i<=total;i++)
+                        {
+                            var strRes = req.responseText;
+                            var countVendor = strRes.split("-");
+                            if (countVendor[0] == 0) {
+                                alert('ไม่มีไฟล์ให้ Download ค่ะ');
+                            } else {
+                                document.getElementById('downloadStatus' + i).innerHTML = 'Downloaded';
+                                var arrVendor = countVendor[1].split("|");
+                                var iVD;
+                                for (iVD = 1; iVD <= countVendor[0]; iVD++) {
+                                    window.open('./pph_include/download/vendor_file.aspx?id=' + obj2 + '&YW=' + YM + '&VD=' + arrVendor[iVD], '_blank');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            req.send(str_url);
+            
+        }
+    }
 </script>
 <% string strYW = ""; if (!string.IsNullOrEmpty(Request.QueryString["YW"] as string)) { strYW = Request.QueryString["YW"].ToString(); } %>
 <div class="row"><div class="col-md-12"><div class="form-horizontal"><h4>Vendor > Download</h4><hr /></div></div></div>
@@ -51,7 +90,7 @@
         </select>
     </div>
     <div class="col-md-2"><input type="button" id="btnSubmitEdit" value="View" class="btn btn-default"  <% Response.Write("onclick=\"show_download('" + Request.QueryString["r"].ToString() + "', '" + Request.QueryString["id"].ToString() + "');\""); %> /></div>
-    <div class="col-md-2"><input type="button" id="btnDownloadAll" value="Download All File" class="btn btn-default" /></div>
+    <div class="col-md-2"><input type="button" id="btnDownloadAll" value="Download All File" class="btn btn-default" <% Response.Write("onclick=\"js_downloadAll('" + Request.QueryString["r"].ToString() + "', '" + Request.QueryString["id"].ToString() + "', 'YW', 'totalRows');\""); %> /></div>
 </div>
 </div>
 <% if (!string.IsNullOrEmpty(Request.QueryString["YW"] as string)){ %>
@@ -83,10 +122,11 @@
         <td style="text-align:center;"><%= obj_download["vendor_code"].ToString() %></td>
         <td style="text-align:center;"><span id="downloadStatus<%=irows %>"><% if (obj_download["statusDownload"].ToString() == "0") { Response.Write("Not Download"); } else { Response.Write("Downloaded"); } %></span></td>
         <td style="text-align:center;"><a href ="./pph_include/perview/vendor_perview.aspx?id=<%=Request.QueryString["id"].ToString()%>&YW=<%=Request.QueryString["YW"].ToString()%>&VD=<%= obj_download["vendor_code"].ToString() %>" target="_blank">Perview</a></td>  
-            <td style="text-align:center;"><a href ="javascript:void(0);" <% Response.Write("onclick=\"js_download('"+Request.QueryString["id"].ToString()+"', '"+Request.QueryString["YW"].ToString()+"', '"+obj_download["vendor_code"].ToString()+"', 'downloadStatus"+irows+"');\""); %> target="_blank">Download</a></td>                  
+        <td style="text-align:center;"><a href ="javascript:void(0);" <% Response.Write("onclick=\"js_download('"+Request.QueryString["id"].ToString()+"', '"+Request.QueryString["YW"].ToString()+"', '"+obj_download["vendor_code"].ToString()+"', 'downloadStatus"+irows+"');\""); %> target="_blank">Download</a></td>                  
         </tr>
         <% } obj_download.Close(); %>
     </table>
+    <input type="hidden" id="totalRows" name="totalRows" value="<%= irows %>" />
 </div>
 </div>
 <% } %>
