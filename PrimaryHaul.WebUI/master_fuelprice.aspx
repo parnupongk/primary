@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="master_fuelprice.aspx.cs" Inherits="PrimaryHaul.WebUI.master_fuelprice" %>
+<%@ Import Namespace="PrimaryHaul_WS"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
@@ -16,7 +17,7 @@
                                     CssClass="text-danger" ErrorMessage="Fuel Rate field is required." />
                             </div>
                         </div>
-                        <div class="form-group">
+                         <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %><div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 <asp:Button runat="server" ID="btnSubmit" Text="Save" CssClass="btn btn-default" OnClick="btnSubmit_Click"  />
                                 <p class="text-danger">
@@ -24,6 +25,7 @@
                                 </p>
                             </div>
                         </div>
+                        <%} %>
                     </div>
                 </section>
             </div>

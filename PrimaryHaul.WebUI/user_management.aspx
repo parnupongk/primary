@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="user_management.aspx.cs" Inherits="PrimaryHaul.WebUI.user_management" %>
 <%@ Import Namespace="System.Data"%>
 <%@ Import Namespace="System.Data.SqlClient"%>
+<%@ Import Namespace="PrimaryHaul_WS"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
@@ -103,9 +104,11 @@
         <td style="text-align:center;"><%= obj_listuser["EMail_Address"].ToString() %></td>
         <td style="text-align:center;"><%= detailStatus %></td>
         <td style="text-align:center;">
+        <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %>
             <div class="form-group"><input type="button" value="Reset Password" id="btnResetPass" class="btn btn-default" <% Response.Write("onclick=\"js_confirm('คุณต้องการ Reset Password ใช่หรือไม่', '" + urlReset + "');\""); %> style="width:100%;" /></div>
             <div class="form-group"><input type="button" value="Update Status" class="btn btn-default" <% Response.Write("onclick=\"js_confirm('คุณต้องการ Update Status ใช่หรือไม่', '" + urlUpdateStatus + "');\""); %> style="width:100%;" /></div>
             <div class="form-group"><input type="button" value="Delete" class="btn btn-default" <% Response.Write("onclick=\"js_confirm('คุณต้องการ Delete User นี้ใช่หรือไม่', '" + urlDeleteUser + "');\""); %> style="width:100%;" /></div>
+        <% } %>
         </td>                   
       </tr>
      <% } obj_listuser.Close();

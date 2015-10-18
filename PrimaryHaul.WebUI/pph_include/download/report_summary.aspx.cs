@@ -35,12 +35,12 @@ namespace PrimaryHaul.WebUI.pph_include.download
             "Where Year_Week_Upload='" + Request.QueryString["yw"].ToString() + "' " +
             "" + sql_hl + "" +
             "" + sql_vd + "" +
-            "Group by substring(Year_Week_Upload,1,4) ,substring(Year_Week_Upload,5,2), " +
+            "and Calc_Date is not null Group by substring(Year_Week_Upload,1,4) ,substring(Year_Week_Upload,5,2), " +
             "rc_tesco_period,Vendor_Code,Vendor_Name,Haulier_Abbr";
             SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
             obj_detail = rs_detail.ExecuteReader();
             obj_detail.Read();
-            Response.AddHeader("Content-Disposition", "attachment;filename=Tesco_Finance_Report_Summary_" + Request.QueryString["yw"].ToString() + ".xls");
+            Response.AddHeader("Content-Disposition", "attachment;filename=Revenue_Profit_" + Request.QueryString["yw"].ToString() + ".xls");
         }
     }
 }

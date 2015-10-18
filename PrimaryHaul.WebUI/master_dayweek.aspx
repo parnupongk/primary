@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="master_dayweek.aspx.cs" Inherits="PrimaryHaul.WebUI.master_dayweek" %>
 <%@ Import Namespace="System.Data"%>
 <%@ Import Namespace="System.Data.SqlClient"%>
+<%@ Import Namespace="PrimaryHaul_WS"%>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
@@ -18,7 +19,7 @@
     <div id="form_button">
         <div class="row">
             <div class="col-md-4">
-            <input type="button" value="Import File" class="btn btn-default" onclick="js_tab('form_import');" />&nbsp;&nbsp;&nbsp;
+             <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %><input type="button" value="Import File" class="btn btn-default" onclick="js_tab('form_import');" />&nbsp;&nbsp;&nbsp;<%} %>
             <input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" />
             </div>
             <div class="col-md-8"></div>
@@ -94,7 +95,7 @@
                 <td style="text-align:center;"><%= obj_dateweek["Period_EEndDate"].ToString() %></td>
                 <td style="text-align:center;"><%= obj_dateweek["Between_Date"].ToString() %></td>
                 <td style="text-align:center;"><%= obj_dateweek["Tesco_FY"].ToString() %></td>
-                <td style="text-align:center;"><input type="button" value="Edit" class="btn btn-default" <% Response.Write("onclick=\"window.location.href='./master_dayweek.aspx?id=" + Request.QueryString["id"].ToString() + "&r=" + Request.QueryString["r"].ToString() + "&Wk_ID=" + obj_dateweek["Wk_ID"].ToString() + "';\""); %> /> </td>                   
+                <td style="text-align:center;"> <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %><input type="button" value="Edit" class="btn btn-default" <% Response.Write("onclick=\"window.location.href='./master_dayweek.aspx?id=" + Request.QueryString["id"].ToString() + "&r=" + Request.QueryString["r"].ToString() + "&Wk_ID=" + obj_dateweek["Wk_ID"].ToString() + "';\""); %> /><%} %></td>                   
               </tr>
              <% } obj_dateweek.Close(); %>
             </table>

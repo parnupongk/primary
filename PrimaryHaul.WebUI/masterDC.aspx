@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="masterDC.aspx.cs" Inherits="PrimaryHaul.WebUI.masterDC" %>
 <%@ Import Namespace="System.Data"%>
 <%@ Import Namespace="System.Data.SqlClient"%>
+<%@ Import Namespace="PrimaryHaul_WS"%>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
@@ -18,7 +19,7 @@
   <link rel="stylesheet" href="./pph_include/css/jquery-ui.min.css" />  
 <div id="form_button">
 <div class="row">
-    <div class="col-md-4"><input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" />&nbsp;&nbsp;&nbsp;<input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" /></div>
+    <div class="col-md-4"><% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %><input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" />&nbsp;&nbsp;&nbsp;<% } %><input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" /></div>
     <div class="col-md-8"></div>
 </div>
 <br />
@@ -56,8 +57,7 @@
             <td style="text-align:left;"><%= obj_dcInfo["DC_Name"].ToString() %></td>
             <td style="text-align:center;"><%= obj_dcInfo["EndDate"].ToString() %></td>
             <td style="text-align:center;">
-                <input type="button" value="Update" class="btn btn-default" <% Response.Write("onclick=\"js_dcForm('urlSubmit', '" + obj_dcInfo["DC_NO"].ToString() + "', '" +obj_dcInfo["EndDate"].ToString()+ "');\""); %> />
-                 
+                <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %><input type="button" value="Update" class="btn btn-default" <% Response.Write("onclick=\"js_dcForm('urlSubmit', '" + obj_dcInfo["DC_NO"].ToString() + "', '" +obj_dcInfo["EndDate"].ToString()+ "');\""); %> /><%} %>                
             </td>                   
           </tr>
          <% } obj_dcInfo.Close(); %>

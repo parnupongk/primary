@@ -6,15 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
-using System.Globalization;
 using PrimaryHaul.WebUI.App_Code;
 
 
-namespace PrimaryHaul.WebUI
+namespace PrimaryHaul.WebUI.pph_include.perview
 {
-    public partial class report_venderlog : System.Web.UI.Page
+    public partial class hualier_cost : System.Web.UI.Page
     {
-        public SqlDataReader obj_list;
+        public SqlDataReader obj_detail;
         public SqlConnection objConn;
         public String strConnString = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
         protected void Page_Load(object sender, EventArgs e)
@@ -23,9 +22,9 @@ namespace PrimaryHaul.WebUI
             objConn.ConnectionString = strConnString;
             objConn.Open();
 
-            string sql_list = "Select Date_Week_Info.*  From Date_Week_Info Where wk_id <(select wk_id from Date_Week_Info where Period_StartDate <=Convert(varchar, Getdate(),111) and Period_EndDate >= Convert(varchar, Getdate(),111)) order by Tesco_Year+Tesco_week Desc";
-            SqlCommand rs_list = new SqlCommand(sql_list, objConn);
-            obj_list = rs_list.ExecuteReader();
+            string sql_detail = "select Haulier_Abbr, sum(Total_Cost_Charging) as Total_Revenue, sum(Total_Cost+Additional_Cost) as Total_Cost from transportation where year_week_upload='" + Request.QueryString["yw"].ToString() + "' Group by Haulier_Abbr";
+            SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
+            obj_detail = rs_detail.ExecuteReader();
         }
     }
 }

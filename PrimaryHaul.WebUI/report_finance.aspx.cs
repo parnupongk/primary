@@ -13,10 +13,11 @@ namespace PrimaryHaul.WebUI
 {
     public partial class report_finance : System.Web.UI.Page
     {
-        public string sql_yw = "select B.WK_ID,B.Tesco_Year,B.Tesco_Week,B.Between_Date  from ( Select Wk_ID,Tesco_Year,Tesco_Week,Between_DAte From date_week_info where period_startdate <='" + DateTime.Now + "' and period_Enddate >='" + DateTime.Now + "' )A ,date_week_info B Where B.Wk_ID<=A.Wk_ID Order by B.Wk_ID  Desc";
+        public string sql_yw = "Select Date_Week_Info.*  From Date_Week_Info Where wk_id <(select wk_id from Date_Week_Info where Period_StartDate <=Convert(varchar, Getdate(),111) and Period_EndDate >= Convert(varchar, Getdate(),111)) order by Tesco_Year+Tesco_week Desc ";
         public string sql_hl = "select * from Haulier_Info order by Haulier_Name_En asc";
         public string sql_vd = "select * from Vendor_Info order by Vendor_Name_En asc";
         public string sql_dc = "select * from DC_Info order by DC_Name asc";
+        public string sql_userVD = "select UserID, FullName_En  from User_Profile where RoleID='VD' order by FullName_En asc";
         public SqlConnection objConn;
         public String strConnString = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
         protected void Page_Load(object sender, EventArgs e)

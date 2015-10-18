@@ -29,7 +29,18 @@ namespace PrimaryHaul.WebUI
                     {
                         storeUser(status);
                         Session["s_forceChange"] = "";
-                        Response.Redirect("index.aspx?r=" + status.RoleId + "&id=" + status.UserId, false);
+                        if (status.RoleId.ToString() == "VD")
+                        {
+                            Response.Redirect("report_venderlog.aspx?r=" + status.RoleId + "&id=" + status.UserId, false);
+                        }
+                        else if (status.RoleId.ToString() == "HL")
+                        {
+                            Response.Redirect("haulier_upload.aspx?r=" + status.RoleId + "&id=" + status.UserId, false);
+                        }
+                        else
+                        {
+                            Response.Redirect("index.aspx?r=" + status.RoleId + "&id=" + status.UserId, false);
+                        }
                     }
                     else if (status.Status == PrimaryHaul_WSFlow.PHCore_Status.SignInStatus.PasswordExpired)
                     {

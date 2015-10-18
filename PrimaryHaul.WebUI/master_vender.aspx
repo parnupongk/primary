@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="master_vender.aspx.cs" Inherits="PrimaryHaul.WebUI.master_vender" %>
 <%@ Import Namespace="System.Data"%>
 <%@ Import Namespace="System.Data.SqlClient"%>
+<%@ Import Namespace="PrimaryHaul_WS"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
@@ -29,7 +30,7 @@
 </script>
 <div id="form_button">
 <div class="row">
-    <div class="col-md-2"><input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" style="width:100%;" /></div>
+    <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %><div class="col-md-2"><input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" style="width:100%;" /></div><% } %>
     <div class="col-md-2"><input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" style="width:100%;" /></div>
     <div class="col-md-8"></div>
 </div>
@@ -457,6 +458,7 @@ function isNumberKey(evt) {
         req.send(str_url);
     }
 </script>
+<% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %>
 <div class="form-group">
 <div class="row">
     <input type="hidden" name="vnID" id="vnID" value="<%= Request.QueryString["taxID"] %>" />
@@ -482,6 +484,7 @@ function isNumberKey(evt) {
     <div class="col-md-5"></div>
 </div>
 </div>
+ <% } %>
 </div>
 <div id="form_addUsername" style="display:none;">
 <div class="row">

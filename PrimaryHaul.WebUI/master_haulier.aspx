@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="master_haulier.aspx.cs" Inherits="PrimaryHaul.WebUI.master_haulier" %>
 <%@ Import Namespace="System.Data"%>
 <%@ Import Namespace="System.Data.SqlClient"%>
+<%@ Import Namespace="PrimaryHaul_WS"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
 <script>
@@ -16,7 +17,7 @@
 </script>
 <div id="form_button">
 <div class="row">
-    <div class="col-md-4"><input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" />&nbsp;&nbsp;&nbsp;<input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" /></div>
+    <div class="col-md-4"><% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %><input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" />&nbsp;&nbsp;&nbsp;<%} %><input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" /></div>
     <div class="col-md-8"></div>
 </div>
 <br />
@@ -53,7 +54,7 @@
             <td style="text-align:center;"><%= obj_haulierInfo["Haulier_TaxID"].ToString() %></td>
             <td style="text-align:left;"><%= obj_haulierInfo["Haulier_Name_En"].ToString() %></td>
             <td style="text-align:center;"><%= obj_haulierInfo["Haulier_Abbr"].ToString() %></td>
-            <td style="text-align:center;"><input type="button" value="Edit" class="btn btn-default" <% Response.Write("onclick=\"js_haulierForm('urlSubmit', '" + obj_haulierInfo["Haulier_TaxID"].ToString() + "');\""); %> /> </td>                   
+            <td style="text-align:center;"><% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %><input type="button" value="Edit" class="btn btn-default" <% Response.Write("onclick=\"js_haulierForm('urlSubmit', '" + obj_haulierInfo["Haulier_TaxID"].ToString() + "');\""); %> /> <%} %></td>                   
           </tr>
          <% } obj_haulierInfo.Close(); %>
         </table>
