@@ -17,6 +17,7 @@ namespace PrimaryHaul.WebUI
             {
                 DataBindDateWeek();
                 DataBindHaulier();
+                if (Request["r"] == "A2") btnAddSubmit.Visible = false;
             }
         }
 

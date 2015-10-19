@@ -15,16 +15,13 @@ namespace PrimaryHaul.WebUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(IsCallback)
-            {
-                
-            }
            if(!IsPostBack)
             {
                 DataBindData(true);
                 DataBindColl();
                 DataBindDC();
                 DataBindRateType();
+                if (Request["r"] == "A1") btnImport.Visible = false;
             }
         }
 
@@ -114,7 +111,7 @@ namespace PrimaryHaul.WebUI
             {
                 #region Insert
                 string strTempRate = "", strTempColl = "";
-                string sql = "select * from [Sheet1$]";
+                string sql = "select * from [RateCard$]";
                 OleDbCommand cmd = new OleDbCommand(sql, conn);
                 OleDbDataReader drRead = cmd.ExecuteReader();
 
@@ -193,6 +190,16 @@ namespace PrimaryHaul.WebUI
             {
                 TextBox txtEndDate = (TextBox)e.Row.FindControl("txtEndDate");
                 txtEndDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+
+
+            }
+           else if( e.Row.RowType == DataControlRowType.DataRow )
+            {
+                if (Request["r"] == "A2")
+                {
+                    LinkButton lbkBtn = (LinkButton)e.Row.Cells[12].Controls[0]; //here use the cell no in which your edit command button is there.
+                    lbkBtn.Visible = false;//write a logic to disable or enable according to privilages.
+                }
             }
         }
         private void claredata()

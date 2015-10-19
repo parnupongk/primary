@@ -27,7 +27,6 @@
 
                 <asp:Label runat="server" AssociatedControlID="txtVendorCode" CssClass="col-md-2 control-label">Vendor Code </asp:Label>
                 <div class="col-md-2">
-                    <!-- sp:DropDownList ID="ddlVendorCode" runat="server" CssClass="form-control"></!-->
                     <asp:TextBox runat="server" ID="txtVendorCode" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="5" />
                 </div>
 

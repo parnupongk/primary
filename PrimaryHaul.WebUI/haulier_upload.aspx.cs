@@ -93,83 +93,98 @@ namespace PrimaryHaul.WebUI
 
                 try
                 {
-                    #region Insert
-                    string fileName = path.Split('\\').Length > 0 ? path.Split('\\')[path.Split('\\').Length - 1] : "";
-                    bool isErr = false;
-                    string sql = "select * from [haulier$]";
-                    OleDbCommand cmd = new OleDbCommand(sql, conn);
-                    OleDbDataReader drRead = cmd.ExecuteReader();
-                    DataView dv = null;
-                    PHDS_HaulierUpload.TransportationRow dr = null;
                     GetHaulierData(false);
                     DataTable dtHaulier = (DataTable)ViewState["HaulierUpload"];
 
-                    while (drRead.Read())
+                    string strSheet = "Normal";
+                    string fileName = path.Split('\\').Length > 0 ? path.Split('\\')[path.Split('\\').Length - 1] : "";
+                    bool isErr = false;
+
+
+                    #region Insert
+
+                    for (int i = 0; i < 2; i++)
                     {
-                        if (!string.IsNullOrEmpty(drRead[0].ToString().Trim()))
 
+
+                        strSheet = (i == 0) ? "Normal" : "Load";
+                        string sql = "select * from ["+ strSheet + "$]";
+                        OleDbCommand cmd = new OleDbCommand(sql, conn);
+                        OleDbDataReader drRead = cmd.ExecuteReader();
+                        DataView dv = null;
+                        PHDS_HaulierUpload.TransportationRow dr = null;
+                        
+
+                        while (drRead.Read())
                         {
-                            #region Insert Row
-                            try
+                            if (!string.IsNullOrEmpty(drRead[0].ToString().Trim()))
+
                             {
-                                dr = dtHaulierUp.NewTransportationRow();
-                                dr.PO_No = drRead[1].ToString().Trim();
-                                dr.Haulier_Abbr = drRead[0].ToString().Trim();
-                                dr.Delivery_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "M/d/yyyy", null).ToString("MMddyyyy");
-                                dr.Delivery_Ref = drRead[2].ToString().Trim();
-                                dr.Vendor_Code = drRead[4].ToString().Trim();
-                                dr.Vendor_Name = drRead[5].ToString().Trim();
-                                dr.Collection_Point = drRead[6].ToString().Trim();
-                                dr.Delivery_Location = drRead[7].ToString().Trim();
-                                dr.DC_No = 0;
-                                dr.RateType = drRead[8].ToString().Trim();
-                                dr.No_Of_Qty = int.Parse(drRead[9].ToString().Trim());
-                                dr.Rate_Per_Unit = decimal.Parse(drRead[10].ToString().Trim());
-                                dr.Currency = drRead[11].ToString().Trim();
-                                dr.Additional_Cost_Reason = drRead[13].ToString();//.Trim() == "" ? 0 : decimal.Parse(drRead[13].ToString().Trim());
-                                dr.Additional_Cost = drRead[12].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[12].ToString().Trim());
-                                dr.Total_Cost = decimal.Parse(drRead[14].ToString().Trim());
-                                dr.Year_Week_OnFile = drRead[15].ToString();
-                                dr.Year_Week_Upload = lblWeek.Text;
-                                dr.Remark1 = drRead[16].ToString().Trim();
-                                dr.Remark2 = drRead[17].ToString().Trim();
-                                dr.Fuel_Rate = drRead[18].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[18].ToString().Trim());
-                                dr.FileName = fileName;
-                                dr.Trans_Type = IsErrCaseII(dr); // case II , III ,IV
-                                                                 /*  =================================   */
-                                dr.Calc_Date = DateTime.Now;
-                                dr.RC_RateCardID = 0;
-                                dr.RC_Sell_Rate = 0;
-                                dr.Sell_Fuel_Rate = 0;
-                                dr.Total_Cost_Charging = 0;
-                                dr.StampTime = DateTime.Now;
-                                dr.UserID = int.Parse(Request["id"]);//PH_EncrptHelper.MD5Decryp();
-
-                                /*dt.Rows.Add(drRead[0], drRead[1], drRead[2], drRead[3]
-                                            , drRead[4], drRead[5], drRead[6], drRead[7]
-                                            , drRead[8], drRead[9], drRead[10], drRead[11]
-                                            , drRead[12], drRead[13], drRead[14], drRead[15]
-                                            , drRead[16], drRead[17], drRead[18],"");
-
-                                dt.Rows[dt.Rows.Count - 1][19] =  // case II , III ,IV*/
-                                if (IsErrCaseI(dr, dtHaulier.DefaultView))
+                                #region Insert Row
+                                try
                                 {
-                                    isErr = true;
-                                    dr.Remark1 = "dup";
-                                }else if(IsErrYearWeek(dr))
-                                {
-                                    isErr = true;
-                                    dr.Remark1 = "errYearWeek";
+                                    dr = dtHaulierUp.NewTransportationRow();
+                                    dr.PO_No = drRead[1].ToString().Trim();
+                                    dr.Haulier_Abbr = drRead[0].ToString().Trim();
+                                    dr.Delivery_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "M/d/yyyy", null).ToString("MMddyyyy");
+                                    dr.Delivery_Ref = drRead[2].ToString().Trim();
+                                    dr.Vendor_Code = drRead[4].ToString().Trim();
+                                    dr.Vendor_Name = drRead[5].ToString().Trim();
+                                    dr.Collection_Point = drRead[6].ToString().Trim();
+                                    dr.Delivery_Location = drRead[7].ToString().Trim();
+                                    dr.DC_No = 0;
+                                    dr.RateType = drRead[8].ToString().Trim();
+                                    dr.No_Of_Qty = drRead[9].ToString().Trim() == "" ? 0 :  int.Parse(drRead[9].ToString().Trim());
+                                    dr.Rate_Per_Unit = drRead[10].ToString().Trim() == "" ? 0 :  decimal.Parse(drRead[10].ToString().Trim());
+                                    dr.Currency = drRead[11].ToString().Trim();
+                                    dr.Additional_Cost_Reason = drRead[13].ToString();//.Trim() == "" ? 0 : decimal.Parse(drRead[13].ToString().Trim());
+                                    dr.Additional_Cost = drRead[12].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[12].ToString().Trim());
+                                    dr.Total_Cost = drRead[14].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[14].ToString().Trim());
+                                    dr.Year_Week_OnFile = drRead[15].ToString();
+                                    dr.Year_Week_Upload = lblWeek.Text;
+                                    dr.Remark1 = drRead[16].ToString().Trim();
+                                    dr.Remark2 = drRead[17].ToString().Trim();
+                                    dr.Fuel_Rate = drRead[18].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[18].ToString().Trim());
+                                    dr.FileName = fileName;
+                                    dr.Trans_Type = IsErrCaseII(dr); // case II , III ,IV
+                                                                     /*  =================================   */
+                                    dr.Calc_Date = DateTime.Now;
+                                    dr.RC_RateCardID = 0;
+                                    dr.RC_Sell_Rate = 0;
+                                    dr.Sell_Fuel_Rate = 0;
+                                    dr.Total_Cost_Charging = 0;
+                                    dr.StampTime = DateTime.Now;
+                                    dr.UserID = int.Parse(Request["id"]);//PH_EncrptHelper.MD5Decryp();
+
+                                    /*dt.Rows.Add(drRead[0], drRead[1], drRead[2], drRead[3]
+                                                , drRead[4], drRead[5], drRead[6], drRead[7]
+                                                , drRead[8], drRead[9], drRead[10], drRead[11]
+                                                , drRead[12], drRead[13], drRead[14], drRead[15]
+                                                , drRead[16], drRead[17], drRead[18],"");
+
+                                    dt.Rows[dt.Rows.Count - 1][19] =  // case II , III ,IV*/
+
+                                        if (IsErrCaseI(dr, dtHaulier.DefaultView))
+                                        {
+                                            isErr = true;
+                                            dr.Remark1 = "dup";
+                                        }
+                                        else if (IsErrYearWeek(dr))
+                                        {
+                                            isErr = true;
+                                            dr.Remark1 = "errYearWeek";
+                                        }
+
                                 }
-                            }
-                            catch(Exception ex)
-                            {
-                                dr.Remark1 = "err";
-                                dr.Remark2 = ex.Message;
-                            }
+                                catch (Exception ex)
+                                {
+                                    dr.Remark1 = "err";
+                                    dr.Remark2 = ex.Message;
+                                }
 
-                            dtHaulierUp.Rows.Add(dr);
-                            #endregion
+                                dtHaulierUp.Rows.Add(dr);
+                                #endregion
+                            }
                         }
                     }
 

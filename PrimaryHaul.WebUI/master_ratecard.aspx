@@ -115,7 +115,7 @@
         <div id="form_button">
             <div class="row">
                 <div class="col-md-4">
-                    <input type="button" value="Import" class="btn btn-default" onclick="js_tab('form_import');" />&nbsp;&nbsp;&nbsp;
+                    <input type="button" runat="server" id="btnImport" value="Import" class="btn btn-default" onclick="js_tab('form_import');" />&nbsp;&nbsp;&nbsp;
                 <input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" />&nbsp;&nbsp;&nbsp;
                 <input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" />
                 </div>
@@ -281,7 +281,7 @@
 
                         <ItemStyle Width="120px" HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
-                    <asp:CommandField ShowEditButton="True" />
+                   <asp:CommandField ShowEditButton="True" />
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />
                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -297,6 +297,7 @@
                 <PagerStyle CssClass="paginationr" HorizontalAlign="Center" />
             </asp:GridView>
             <!-- 
+                 <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="DC_No" HeaderText="DC No" ReadOnly="True" />
                 <asp:BoundField DataField="Transporter_Desc" HeaderText="Transporter Desc" ReadOnly="True" />
                 -->
