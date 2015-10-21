@@ -20,5 +20,6 @@ namespace PrimaryHaul.WebUI
                 throw new Exception("GetDayofPasswdExp >>" + ex.Message);
             }
         }
+
     }
 }

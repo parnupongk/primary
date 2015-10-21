@@ -11,8 +11,22 @@ namespace PrimaryHaul_WS
 {
     public class PH_Utility
     {
-            #region Export Excel
-            private void ClearControl(Control ctrl)
+        public static decimal StringtoDecimal(string strValue)
+        {
+            try
+            {
+                decimal dValue;
+                bool rtn = decimal.TryParse(strValue, out dValue);
+                return rtn ? dValue : 0;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        #region Export Excel
+        private void ClearControl(Control ctrl)
             {
                 for (int index = ctrl.Controls.Count - 1; index > 0; index--)
                 {
