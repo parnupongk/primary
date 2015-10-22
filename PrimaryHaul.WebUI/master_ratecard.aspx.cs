@@ -21,7 +21,11 @@ namespace PrimaryHaul.WebUI
                 DataBindColl();
                 DataBindDC();
                 DataBindRateType();
-                if (Request["r"] == "A1") btnImport.Visible = false;
+                if (Request["r"] == "A1")
+                {
+                    btnImport.Visible = false;
+                    btnAdd.Visible = false;
+                }
             }
         }
 

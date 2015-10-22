@@ -116,7 +116,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <input type="button" runat="server" id="btnImport" value="Import" class="btn btn-default" onclick="js_tab('form_import');" />&nbsp;&nbsp;&nbsp;
-                <input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" />&nbsp;&nbsp;&nbsp;
+                <input type="button" runat="server" id="btnAdd" value="Add" class="btn btn-default" onclick="js_tab('form_add');" />&nbsp;&nbsp;&nbsp;
                 <input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" />
                 </div>
                 <div class="col-md-8"></div>
