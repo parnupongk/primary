@@ -41,6 +41,7 @@ namespace PrimaryHaul.WebUI
                     {
                         divHaulier.Visible = false;
                         divRole.Visible = false;
+                        divVender.Visible = false;
 
                     }
                     else Response.Redirect("logout.aspx", false);
@@ -89,6 +90,8 @@ namespace PrimaryHaul.WebUI
         {
             try
             {
+                if (!Page.IsValid) return;
+
                 List<PrimaryHaul_WS.AppCode_DS.PHDS_User.User_VendorRow> drVenders = new List<PrimaryHaul_WS.AppCode_DS.PHDS_User.User_VendorRow>();
                 PrimaryHaul_WS.AppCode_DS.PHDS_User.User_ProfileRow drProfile = new PrimaryHaul_WS.AppCode_DS.PHDS_User.User_ProfileDataTable().NewUser_ProfileRow();
 
@@ -131,7 +134,9 @@ namespace PrimaryHaul.WebUI
 
                 if (status.Status == PHCore_Status.SignInStatus.Success)
                 {
-                    Response.Redirect("addnew.aspx?" + Request.QueryString, false);
+
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alertMessage('Save Success');", true);
+                    //Response.Redirect("addnew.aspx?" + Request.QueryString, false);
                 }
                 else
                 {
@@ -143,7 +148,7 @@ namespace PrimaryHaul.WebUI
                 throw new Exception(ex.Message);
             }
         }
-        private string GetRoleId()
+        public string GetRoleId()
         {
             try
             {
@@ -156,7 +161,8 @@ namespace PrimaryHaul.WebUI
             }
             catch(Exception ex)
             {
-                throw new Exception("GetRoleId >>" + ex.Message);
+                return "";
+                //throw new Exception("GetRoleId >>" + ex.Message);
             }
         }
     }

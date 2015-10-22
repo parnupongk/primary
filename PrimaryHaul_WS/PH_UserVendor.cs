@@ -16,7 +16,8 @@ namespace PrimaryHaul_WS
         {
             try
             {
-                DataSet ds = SqlHelper.ExecuteDataset(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_VendorSelectAll");
+                //DataSet ds = SqlHelper.ExecuteDataset(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_VendorSelectAll");
+                DataSet ds = SqlHelper.ExecuteDataset(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_VendorNameSelAll");
 
                 return (ds.Tables.Count > 0) ? ds.Tables[0]:null;
                 

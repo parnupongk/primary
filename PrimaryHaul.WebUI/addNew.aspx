@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="addNew.aspx.cs" Inherits="PrimaryHaul.WebUI.addNew" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="Site.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="addNew.aspx.cs" Inherits="PrimaryHaul.WebUI.addNew" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
@@ -33,6 +33,9 @@
         rel="Stylesheet" type="text/css" />
 
     <script type="text/javascript">
+
+
+
         $(document).ready(function () {
             SearchText();
         });
@@ -90,8 +93,14 @@
     </script>
 
     <script>
+        
+        function alertMessage(str) {
+            alert(str);
+        }
         $(document).ready(function () {
-            SearchTextHaulier();
+
+            var s = "<%= GetRoleId() %>";
+            if (s == "VD") SearchTextHaulier();
         });
         function SearchTextHaulier() {
             $("#<%=txtEngName.ClientID %>").autocomplete({
@@ -149,6 +158,8 @@
                 return split(term).pop();
             }
         }
+
+        
         function ajax_userDuplicate() {
             var req = Inint_AJAX();
             var str = Math.random();
@@ -213,11 +224,85 @@
                             <asp:TextBox autocomplete="off" runat="server" ID="txtUserName" CssClass="form-control" onchange="ajax_userDuplicate();" />
                             <p class="text-danger" id="dupError" style="display: none;"></p>
                             <asp:Label ID="lblErrUserName" CssClass="text-danger" runat="server"></asp:Label>
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUserName"
+                            <asp:RequiredFieldValidator ValidationGroup="add" runat="server" ControlToValidate="txtUserName"
                                 CssClass="text-danger" ErrorMessage="The Username field is required." />
                         </div>
                     </div>
-                    <!-- div class="form-group">
+                    
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="txtEngName" CssClass="col-md-3 control-label">English Name</asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtEngName" CssClass="form-control" />
+                            <asp:RequiredFieldValidator ValidationGroup="add" runat="server" ControlToValidate="txtEngName" CssClass="text-danger" ErrorMessage="The Name field is required." />
+                        </div>
+                    </div>
+                    <div id="divHaulier" runat="server" class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="txtHaulierCode" CssClass="col-md-3 control-label">Haulier Code(Tax ID)</asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtHaulierCode" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="13" />
+                            <asp:Label ID="lblErrHaulierCode" CssClass="text-danger" runat="server"></asp:Label>
+                            <asp:RequiredFieldValidator ValidationGroup="add" runat="server" ControlToValidate="txtHaulierCode" CssClass="text-danger" ErrorMessage="The Haulier Code(Tax ID) is required." />
+                        </div>
+                    </div>
+                    <div id="divVender" runat="server" class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="txtTaxId" CssClass="col-md-3 control-label">Tax ID</asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtTaxId" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="5" />
+                            <asp:HiddenField ID="hfCustomerId" runat="server" />
+                            
+                        </div>
+                    </div>
+                    <div id="divContact" runat="server" class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="txtContact" CssClass="col-md-3 control-label">Contact Point</asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtContact" CssClass="form-control" />
+                            <asp:RequiredFieldValidator ValidationGroup="add" runat="server" ControlToValidate="txtContact" CssClass="text-danger" ErrorMessage="The Contact field is required." />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="txtTHAName" CssClass="col-md-3 control-label">ชื่อภาษาไทย</asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtTHAName" CssClass="form-control" />
+                            <asp:RequiredFieldValidator ValidationGroup="add" runat="server" ControlToValidate="txtTHAName" CssClass="text-danger" ErrorMessage="The Name field is required." />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="txtMobile" CssClass="col-md-3 control-label">Mobile Number</asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtMobile" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="10" />
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="txtEmail" CssClass="col-md-3 control-label">Email</asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox autocomplete="off" runat="server" ID="txtEmail" CssClass="form-control" TextMode="Email" />
+                            <asp:RequiredFieldValidator ValidationGroup="add" runat="server" ControlToValidate="txtEmail"
+                                CssClass="text-danger" ErrorMessage="The email field is required." />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="rdoStatusA" CssClass="col-md-3 control-label">Status</asp:Label>
+                        <div class="col-md-9">
+                            <asp:RadioButton ID="rdoStatusA" runat="server" Checked="True" GroupName="rdoStatusA" CssClass="radio-inline" Text="Active" />
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <asp:Button runat="server" Text="Save" ValidationGroup="add" ID="btnSubmit" CausesValidation="true"  CssClass="btn btn-default" OnClick="btnSubmit_Click" />
+                            <p class="text-danger">
+                                <asp:Label ID="lblError" runat="server"></asp:Label>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    <!-- div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="txtPassword" CssClass="col-md-3 control-label">Password</asp:Label>
                         <div class="col-md-9">
                             <asp:TextBox autocomplete="off" runat="server" ID="txtPassword"  CssClass="form-control" MaxLength="8" />
@@ -256,84 +341,12 @@
                             <br />
                         </div>
                     </!-->
-                    <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="txtEngName" CssClass="col-md-3 control-label">English Name</asp:Label>
-                        <div class="col-md-9">
-                            <asp:TextBox autocomplete="off" runat="server" ID="txtEngName" CssClass="form-control" />
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEngName" CssClass="text-danger" ErrorMessage="The Name field is required." />
-                        </div>
-                    </div>
-                    <div id="divHaulier" runat="server" class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="txtHaulierCode" CssClass="col-md-3 control-label">Haulier Code(Tax ID)</asp:Label>
-                        <div class="col-md-9">
-                            <asp:TextBox autocomplete="off" runat="server" ID="txtHaulierCode" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="13" />
-                            <asp:Label ID="lblErrHaulierCode" CssClass="text-danger" runat="server"></asp:Label>
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtHaulierCode" CssClass="text-danger" ErrorMessage="The Haulier Code(Tax ID) is required." />
-                        </div>
-                    </div>
-                    <div id="divVender" runat="server" class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="txtTaxId" CssClass="col-md-3 control-label">Tax ID</asp:Label>
-                        <div class="col-md-9">
-                            <asp:TextBox autocomplete="off" runat="server" ID="txtTaxId" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="5" />
-                            <asp:HiddenField ID="hfCustomerId" runat="server" />
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtTaxId" CssClass="text-danger" ErrorMessage="The Tax ID is required." />
-                        </div>
-                    </div>
-                    <div id="divContact" runat="server" class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="txtContact" CssClass="col-md-3 control-label">Contact Point</asp:Label>
-                        <div class="col-md-9">
-                            <asp:TextBox autocomplete="off" runat="server" ID="txtContact" CssClass="form-control" />
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtContact" CssClass="text-danger" ErrorMessage="The Contact field is required." />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="txtTHAName" CssClass="col-md-3 control-label">ชื่อภาษาไทย</asp:Label>
-                        <div class="col-md-9">
-                            <asp:TextBox autocomplete="off" runat="server" ID="txtTHAName" CssClass="form-control" />
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtTHAName" CssClass="text-danger" ErrorMessage="The Name field is required." />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="txtMobile" CssClass="col-md-3 control-label">Mobile Number</asp:Label>
-                        <div class="col-md-9">
-                            <asp:TextBox autocomplete="off" runat="server" ID="txtMobile" CssClass="form-control" onkeypress="return isNumberKey(event)" MaxLength="10" />
-                            <br />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="txtEmail" CssClass="col-md-3 control-label">Email</asp:Label>
-                        <div class="col-md-9">
-                            <asp:TextBox autocomplete="off" runat="server" ID="txtEmail" CssClass="form-control" TextMode="Email" />
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEmail"
-                                CssClass="text-danger" ErrorMessage="The email field is required." />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="rdoStatusA" CssClass="col-md-3 control-label">Status</asp:Label>
-                        <div class="col-md-9">
-                            <asp:RadioButton ID="rdoStatusA" runat="server" Checked="True" GroupName="rdoStatusA" CssClass="radio-inline" Text="Active" />
-                        </div>
 
-                    </div>
-                    <!-- div class="form-group">
+                        <!-- div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="chkForepasswrd" CssClass="col-md-3 control-label">Fore Change Password</asp:Label>
                         <div class="col-md-9">
                             <asp:CheckBox ID="chkForepasswrd" runat="server" CssClass="radio" />
                         </div>
 
                     </!-->
-                    <div class="form-group">
-                        <div class="col-md-offset-3 col-md-9">
-                            <asp:Button runat="server" Text="Save" ID="btnSubmit" CssClass="btn btn-default" OnClick="btnSubmit_Click" />
-                            <p class="text-danger">
-                                <asp:Label ID="lblError" runat="server"></asp:Label>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-    </div>
-
 </asp:Content>

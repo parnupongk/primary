@@ -83,7 +83,7 @@ namespace PrimaryHaul.WebUI
         {
             if( Session["fileName"] != null )
             {
-                if (InsertData(Session["fileName"].ToString())) ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('Import Data Successful');", true);
+                if (InsertData(Session["fileName"].ToString())) ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alertMessage('Import Data Successful');", true);
                 else ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertMessage", "alertMessage('Import Data Not Successful');", true);
             }
         }
