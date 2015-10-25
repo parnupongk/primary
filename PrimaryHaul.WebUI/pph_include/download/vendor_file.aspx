@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <%
 
-    string sql_detail = "select top 1 Vendor_Name,Vendor_Code,RC_Tesco_Period,ISNULL(Sell_Fuel_Rate, 0.00) as Sell_Fuel_Rate,Currency, ISNULL(sum(Sell_Fuel_Rate),0.00) as costFuel, ISNULL(sum(Total_Cost_Charging),0.00) as costTotal,  (select Top 1 CONVERT(varchar(11),Download_DateTime,103)  from Vendor_Download_Log where Tesco_Year_Week='" + Request.QueryString["YW"].ToString() + "' and Vendor_UserID=" + Request.QueryString["id"] + " and substring(File_Name,1,5)='" + Request.QueryString["VD"].ToString() + "' order by Download_DateTime desc) as lastDownload, ISNULL(sum(Sell_Fuel_Rate),0.00) as fRate from Transportation  where Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "' and Vendor_Code='" + Request.QueryString["VD"].ToString() + "' and Calc_Date is not null GROUP BY Vendor_Name,Vendor_Code,RC_Tesco_Period,Sell_Fuel_Rate,Currency,year_week_upload";
+    string sql_detail = "select top 1 Vendor_Name,Vendor_Code,RC_Tesco_Period,ISNULL(Sell_Fuel_Rate, 0.00) as Sell_Fuel_Rate,Currency, ISNULL(sum(Sell_Fuel_Rate),0.00) as costFuel, ISNULL(sum(Total_Cost_Charging),0.00) as costTotal,  (select Top 1 CONVERT(varchar(11),Download_DateTime,103)  from Vendor_Download_Log where Tesco_Year_Week='" + Request.QueryString["YW"].ToString() + "' and Vendor_UserID=" + Request.QueryString["id"] + " and substring(File_Name,1,5)='" + Request.QueryString["VD"].ToString() + "' and Vendor_Name<>'DUMMY'  order by Download_DateTime desc) as lastDownload, ISNULL(sum(Sell_Fuel_Rate),0.00) as fRate from Transportation  where Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "' and Vendor_Code='" + Request.QueryString["VD"].ToString() + "' and Calc_Date is not null GROUP BY Vendor_Name,Vendor_Code,RC_Tesco_Period,Sell_Fuel_Rate,Currency,year_week_upload";
     SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
     SqlDataReader obj_detail = rs_detail.ExecuteReader();
     obj_detail.Read();   
@@ -98,7 +98,7 @@
     </tr>
 <% obj_detail.Close(); %>
 <% 
-    string sql_cpoint = "select Distinct Collection_Point from Transportation where Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "' and Vendor_Code='" + Request.QueryString["VD"].ToString() + "' and Calc_Date is not null";
+    string sql_cpoint = "select Distinct Collection_Point from Transportation where Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "' and Vendor_Code='" + Request.QueryString["VD"].ToString() + "' and Calc_Date is not null and Vendor_Name<>'DUMMY' ";
     SqlCommand rs_cpoint = new SqlCommand(sql_cpoint, objConn);
     SqlDataReader obj_cpoint = rs_cpoint.ExecuteReader();
     while (obj_cpoint.Read()) {
@@ -143,8 +143,8 @@
             "Total_Cost_Charging " +
             "from Transportation  " +
             "where Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "' and Vendor_Code='" + Request.QueryString["VD"].ToString() + "'  " +
-            "and replace(collection_point,' ','')=replace('" + obj_cpoint["Collection_Point"].ToString() + "',' ','') " +
-            "order by Vendor_Name asc ";
+            "and replace(collection_point,' ','')=replace('" + obj_cpoint["Collection_Point"].ToString() + "',' ','') and Vendor_Name<>'DUMMY' " +
+            "Order by TransID ";
             SqlCommand rs_detail0 = new SqlCommand(sql_detail0, objConn);
             SqlDataReader obj_detail0 = rs_detail0.ExecuteReader();
             double total_a1 = 0.00, total_a2 = 0.00, total_a3 = 0.00, total_a4 = 0.00, total_a5 = 0.00, total_a6 = 0.00, total_a7 = 0.00, total_vat = 0.00;

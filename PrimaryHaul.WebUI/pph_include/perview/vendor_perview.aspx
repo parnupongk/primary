@@ -139,8 +139,8 @@
             "Total_Cost_Charging " +
             "from Transportation  " +
             "where Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "' and Vendor_Code='" + Request.QueryString["VD"].ToString() + "'  " +
-            "and replace(collection_point,' ','')=replace('" + obj_cpoint["Collection_Point"].ToString() + "',' ','') " +
-            "order by Vendor_Name asc ";
+            "and replace(collection_point,' ','')=replace('" + obj_cpoint["Collection_Point"].ToString() + "',' ','') and Vendor_Name<>'DUMMY' " +
+            "Order by TransID";
             SqlCommand rs_detail0 = new SqlCommand(sql_detail0, objConn);
             SqlDataReader obj_detail0 = rs_detail0.ExecuteReader();
             double total_a1 = 0.00, total_a2 = 0.00, total_a3 = 0.00, total_a4 = 0.00, total_a5 = 0.00, total_a6 = 0.00, total_a7 = 0.00, total_vat = 0.00;

@@ -35,8 +35,9 @@ namespace PrimaryHaul.WebUI.pph_include.perview
             "Where Year_Week_Upload='"+Request.QueryString["yw"].ToString()+"' "+
             "" + sql_hl + ""+
             "" + sql_vd + "" +
+            "and Vendor_Name<>'DUMMY' " +
             "and Calc_Date is not null Group by substring(Year_Week_Upload,1,4) ,substring(Year_Week_Upload,5,2), " +
-            "rc_tesco_period,Vendor_Code,Vendor_Name,Haulier_Abbr";
+            "rc_tesco_period,Vendor_Code,Vendor_Name,Haulier_Abbr Order by TransID";
             SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
             obj_detail = rs_detail.ExecuteReader();
             obj_detail.Read();
