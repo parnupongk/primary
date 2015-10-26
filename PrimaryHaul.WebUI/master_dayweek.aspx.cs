@@ -67,8 +67,8 @@ namespace PrimaryHaul.WebUI
             try
             {
                 #region Insert
-                
-                string sql = "select * from [Sheet1$]";
+
+                string sql = "select * from [DateWeek$]";
                 OleDbCommand cmd = new OleDbCommand(sql, conn);
                 OleDbDataReader drRead = cmd.ExecuteReader();
                 while (drRead.Read())

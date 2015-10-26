@@ -33,7 +33,8 @@
         <table class="table table-bordered">
         <tr style="background-color:#9bbb59;">
             <td style="text-align:center;width:10%;">No.</td>
-            <td style="text-align:center;width:30%;">DC No.</td>
+            <td style="text-align:center;width:15%;">DC No.</td>
+            <td style="text-align:center;width:15%;">DC Abbr</td>
             <td style="text-align:center;width:30%;">DC Name</td>
             <td style="text-align:center;width:20%;">End Date</td>
             <td style="text-align:center;width:10%;"></td>
@@ -42,7 +43,7 @@
             string detailColor = "";
             int irows = 0;
             int icolor = 0;
-            string sql_dcInfo = "select DC_NO, DC_Name, CONVERT(varchar(11),EndDate,103) as EndDate from DC_Info  order by DC_NO asc";
+            string sql_dcInfo = "select DC_NO, DC_Name, CONVERT(varchar(11),EndDate,103) as EndDate, dc_abbr from DC_Info  order by DC_NO asc";
             SqlCommand rs_dcInfo = new SqlCommand(sql_dcInfo, objConn);
             SqlDataReader obj_dcInfo = rs_dcInfo.ExecuteReader();
             while (obj_dcInfo.Read())
@@ -54,6 +55,7 @@
           <tr <%= detailColor %>>
             <td style="text-align:center;"><%= irows %></td>
             <td style="text-align:center;"><%= obj_dcInfo["DC_NO"].ToString() %></td>
+            <td style="text-align:center;"><%= obj_dcInfo["dc_abbr"].ToString() %></td>
             <td style="text-align:left;"><%= obj_dcInfo["DC_Name"].ToString() %></td>
             <td style="text-align:center;"><%= obj_dcInfo["EndDate"].ToString() %></td>
             <td style="text-align:center;">
