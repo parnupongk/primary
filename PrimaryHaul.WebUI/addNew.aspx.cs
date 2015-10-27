@@ -17,6 +17,8 @@ namespace PrimaryHaul.WebUI
         {
             if (!IsPostBack)
             {
+               
+
                 try
                 {
                     /*eStatus = new PHCore_Status();
@@ -137,6 +139,7 @@ namespace PrimaryHaul.WebUI
 
                     ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alertMessage('Save Success');", true);
                     //Response.Redirect("addnew.aspx?" + Request.QueryString, false);
+                    ClearTextAll();
                 }
                 else
                 {
@@ -163,6 +166,26 @@ namespace PrimaryHaul.WebUI
             {
                 return "";
                 //throw new Exception("GetRoleId >>" + ex.Message);
+            }
+        }
+
+        private void ClearTextAll()
+        {
+            try
+            {
+                txtContact.Text = "";
+                txtEmail.Text = "";
+                txtEngName.Text = "";
+                txtHaulierCode.Text = "";
+                txtMobile.Text = "";
+                txtTaxId.Text = "";
+                txtTHAName.Text = "";
+                txtUserName.Text = "";
+               
+            }
+            catch (Exception ex)
+            {
+                PH_ExceptionManager.WriteError(ex.Message);
             }
         }
     }

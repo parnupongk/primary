@@ -100,7 +100,7 @@
         $(document).ready(function () {
 
             var s = "<%= GetRoleId() %>";
-            if (s == "VD") SearchTextHaulier();
+            if (s != "VD") SearchTextHaulier();
         });
         function SearchTextHaulier() {
             $("#<%=txtEngName.ClientID %>").autocomplete({
