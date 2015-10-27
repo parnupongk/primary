@@ -99,9 +99,8 @@
         }
         $(document).ready(function () {
 
-            //var s = "<%= GetRoleId() %>";
-            //if (s != "VD")
-            SearchTextHaulier();
+            var s = "<%= GetRoleId() %>";
+            if (s != "VD")SearchTextHaulier();
         });
         function SearchTextHaulier() {
             $("#<%=txtEngName.ClientID %>").autocomplete({
