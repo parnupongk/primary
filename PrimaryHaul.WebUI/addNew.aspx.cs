@@ -181,7 +181,10 @@ namespace PrimaryHaul.WebUI
                 txtTaxId.Text = "";
                 txtTHAName.Text = "";
                 txtUserName.Text = "";
-               
+                lblErrUserName.Text = "";
+                lblErrHaulierCode.Text = "";
+                lblError.Text = "";
+
             }
             catch (Exception ex)
             {
