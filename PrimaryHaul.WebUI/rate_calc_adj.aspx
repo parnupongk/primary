@@ -11,7 +11,7 @@
         }
     </script>
     <div class="form-horizontal">
-        <h4>Rate Calculation > Adjust Calculator</h4>
+        <h4>Rate Calculation &gt; Adjust</h4>
         <hr />
         <div id="form_import" style="display: ;">
             <div runat="server" class="form-group">
@@ -73,7 +73,12 @@
                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("No_Of_Qty") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField EditText="Adjust Data" ShowEditButton="True" />
+                    <asp:CommandField EditText="Adjust Data" ShowEditButton="True" >
+                                                <ControlStyle Width="70px" />
+                        <FooterStyle Width="70px" />
+                        <HeaderStyle Width="70px"></HeaderStyle>
+                        <ItemStyle Width="90px" HorizontalAlign="Center"></ItemStyle>
+                        </asp:CommandField>
                     <asp:BoundField DataField="Trans_Type" HeaderText="Trans_Type" ReadOnly="True"  Visible="false"/>
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />

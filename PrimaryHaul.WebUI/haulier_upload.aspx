@@ -47,7 +47,7 @@
             </div>
         </div>
         <div id="form_view" style="display: ;">
-            <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="4" OnRowDataBound="gvData_RowDataBound">
+            <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="6" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="6" OnRowDataBound="gvData_RowDataBound">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Haulier_Abbr" HeaderText="Haulier Abbr" ReadOnly="True" />
@@ -81,17 +81,17 @@
                         <HeaderStyle Width="50px"></HeaderStyle>
                         <ItemStyle Width="50px"></ItemStyle>
                         </asp:BoundField>
-                    <asp:BoundField DataField="Rate_Per_Unit" HeaderText="Rate Per Uint" ReadOnly="True" >
+                    <asp:BoundField DataField="Rate_Per_Unit" HeaderText="Rate" ReadOnly="True" >
                                                 <ControlStyle Width="50px" />
                         <FooterStyle Width="50px" />
                         <HeaderStyle Width="50px"></HeaderStyle>
                         <ItemStyle Width="50px"></ItemStyle>
                         </asp:BoundField>
                     <asp:BoundField DataField="Remark1" HeaderText="Verify Result" ReadOnly="True" >
-                                                <ControlStyle Width="50px" />
-                        <FooterStyle Width="50px" />
-                        <HeaderStyle Width="50px"></HeaderStyle>
-                        <ItemStyle Width="50px"></ItemStyle>
+                                                <ControlStyle Width="70px" />
+                        <FooterStyle Width="70px" />
+                        <HeaderStyle Width="70px"></HeaderStyle>
+                        <ItemStyle Width="70px"></ItemStyle>
                         </asp:BoundField>
                     <asp:BoundField DataField="Trans_Type" Visible="false" HeaderText="Trans_Type" ReadOnly="True" />
                     <asp:BoundField DataField="Remark2" HeaderText="Remark2" Visible="false" ReadOnly="True" />

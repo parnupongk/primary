@@ -145,10 +145,11 @@ namespace PrimaryHaul.WebUI
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                string deliveryRef = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "Delivery_Ref"));
                 string strPoNo = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "po_no"));
                 e.Row.Cells[1].Text = strPoNo.Replace(",", " ,");
 
-                if( Request["r"] == "A2" )
+                if( Request["r"] == "A2" || deliveryRef == "ADJ")
                 {
                     LinkButton lbkBtn = (LinkButton)e.Row.Cells[10].Controls[0]; //here use the cell no in which your edit command button is there.
                     lbkBtn.Visible = false;//write a logic to disable or enable according to privilages.
