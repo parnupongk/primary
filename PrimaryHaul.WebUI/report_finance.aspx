@@ -11,6 +11,7 @@
         document.getElementById('form_view02').style.display = 'none';
         document.getElementById('form_view03').style.display = 'none';
         document.getElementById('form_view04').style.display = 'none';
+        document.getElementById('form_view05').style.display = 'none';
         document.getElementById(varTab).style.display = '';
     }
     function js_export(yw, hl, vd, dc, type) {
@@ -53,7 +54,13 @@
             objvd = document.getElementById(vd).value;
             objdc = document.getElementById(dc).value;
             if (objvd == '') { alert('กรุณาเลือก Vendor Name'); return false; } else { } window.location.href='./report_finance.aspx?yw=' + objyw + '&r=' + objhl + '&vd=' + objvd + '&id=' + objdc +'';
-        }       
+        }
+        if (type == 8) {
+            window.open('./pph_include/perview/vendor_download_log.aspx?yw=' + objyw, '_blank');
+        }
+        if (type == 9) {
+            window.open('./pph_include/download/vendor_download_log.aspx?yw=' + objyw, '_blank');
+        }
     }
 </script>
 
@@ -67,6 +74,8 @@
         <input type="button" value="Hualier Cost" class="btn btn-default" onclick="js_tab('form_view03');" />
         &nbsp;&nbsp;&nbsp;
         <input type="button" value="Vendor Download Preview" class="btn btn-default" onclick="js_tab('form_view04');" />
+        &nbsp;&nbsp;&nbsp;
+        <input type="button" value="Vendor Download Log" class="btn btn-default" onclick="js_tab('form_view05');" />
     </div>
     <div class="col-md-8"></div>
 </div>
@@ -87,7 +96,7 @@
                 <select class="form-control" id="YW_SUM" name="YW_SUM">
                 
                 <% SqlCommand rs_yw_sum = new SqlCommand(sql_yw, objConn); SqlDataReader obj_yw_sum = rs_yw_sum.ExecuteReader(); while (obj_yw_sum.Read()){ %>
-                    <option value="<%= obj_yw_sum["Tesco_Year"].ToString() %><%= obj_yw_sum["Tesco_Week"].ToString() %>"><%= obj_yw_sum["Between_Date"].ToString() %></option>
+                    <option value="<%= obj_yw_sum["Tesco_Year"].ToString() %><%= obj_yw_sum["Tesco_Week"].ToString() %>"><%= obj_yw_sum["Tesco_Year"].ToString() %><%= obj_yw_sum["Tesco_Week"].ToString() %> | <%= obj_yw_sum["Between_Date"].ToString() %></option>
                 <% } obj_yw_sum.Close(); %>
                 </select>
             </div>
@@ -144,7 +153,7 @@
             <div class="col-md-3">
                 <select class="form-control" id="YW" name="YW">
                 <% SqlCommand rs_yw = new SqlCommand(sql_yw, objConn); SqlDataReader obj_yw = rs_yw.ExecuteReader(); while (obj_yw.Read()){ %>
-                    <option value="<%= obj_yw["Tesco_Year"].ToString() %><%= obj_yw["Tesco_Week"].ToString() %>"><%= obj_yw["Between_Date"].ToString() %></option>
+                    <option value="<%= obj_yw["Tesco_Year"].ToString() %><%= obj_yw["Tesco_Week"].ToString() %>"><%= obj_yw["Tesco_Year"].ToString() %><%= obj_yw["Tesco_Week"].ToString() %> | <%= obj_yw["Between_Date"].ToString() %></option>
                 <% } obj_yw.Close(); %>
                 </select>
             </div>
@@ -186,7 +195,7 @@
                 <select class="form-control" id="DC" name="DC">
                     <option value="">เลือกทั้งหมด</option>
                 <%  SqlCommand rs_dc = new SqlCommand(sql_dc, objConn); SqlDataReader obj_dc = rs_dc.ExecuteReader(); while (obj_dc.Read()){ %>
-                    <option value="<%= obj_dc["DC_NO"].ToString() %>"><%= obj_dc["DC_Name"].ToString() %></option>
+                    <option value="<%= obj_dc["DC_NO"].ToString() %>"><%= obj_dc["DC_NO"].ToString() %> | <%= obj_dc["DC_Name"].ToString() %></option>
                 <% } obj_dc.Close(); %>
                 </select>
             </div>
@@ -216,7 +225,7 @@
                 
                 <% SqlCommand rs_yw_hc = new SqlCommand(sql_yw, objConn); SqlDataReader obj_yw_hc = rs_yw_hc.ExecuteReader(); while (obj_yw_hc.Read())
                    { %>
-                    <option value="<%= obj_yw_hc["Tesco_Year"].ToString() %><%= obj_yw_hc["Tesco_Week"].ToString() %>"><%= obj_yw_hc["Between_Date"].ToString() %></option>
+                    <option value="<%= obj_yw_hc["Tesco_Year"].ToString() %><%= obj_yw_hc["Tesco_Week"].ToString() %>"><%= obj_yw_hc["Tesco_Year"].ToString() %><%= obj_yw_hc["Tesco_Week"].ToString() %> | <%= obj_yw_hc["Between_Date"].ToString() %></option>
                 <% } obj_yw_hc.Close(); %>
                 </select>
             </div>
@@ -246,7 +255,7 @@
                 
                 <% SqlCommand rs_yw_vd = new SqlCommand(sql_yw, objConn); SqlDataReader obj_yw_vd = rs_yw_vd.ExecuteReader(); while (obj_yw_vd.Read())
                    { %>
-                    <option value="<%= obj_yw_vd["Tesco_Year"].ToString() %><%= obj_yw_vd["Tesco_Week"].ToString() %>"><%= obj_yw_vd["Between_Date"].ToString() %></option>
+                    <option value="<%= obj_yw_vd["Tesco_Year"].ToString() %><%= obj_yw_vd["Tesco_Week"].ToString() %>"><%= obj_yw_vd["Tesco_Year"].ToString() %><%= obj_yw_vd["Tesco_Week"].ToString() %> | <%= obj_yw_vd["Between_Date"].ToString() %></option>
                 <% } obj_yw_vd.Close(); %>
                 </select>
             </div>
@@ -316,8 +325,39 @@
         document.getElementById('form_view02').style.display = 'none';
         document.getElementById('form_view03').style.display = 'none';
         document.getElementById('form_view04').style.display = '';
+        document.getElementById('form_view05').style.display = 'none';
     </script>
     <% } %>
+</div>
+<div id="form_view05" style="display:none;">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+            <h4>Tesco Finance Report > Vendor Downlaod Log</h4><hr />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2"><label class="control-label">Tesco Year-Week</label></div>
+            <div class="col-md-3">
+                <select class="form-control" id="vdl" name="vdl">
+                
+                <% SqlCommand rs_vdl = new SqlCommand(sql_yw, objConn); SqlDataReader obj_vdl = rs_vdl.ExecuteReader(); while (obj_vdl.Read())
+                   { %>
+                    <option value="<%= obj_vdl["Tesco_Year"].ToString() %><%= obj_vdl["Tesco_Week"].ToString() %>"><%= obj_vdl["Tesco_Year"].ToString() %><%= obj_vdl["Tesco_Week"].ToString() %> | <%= obj_vdl["Between_Date"].ToString() %></option>
+                <% } obj_vdl.Close(); %>
+                </select>
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2" ><label class="control-label"></label></div>
+            <div class="col-md-7" ><input type="button" value="Perview" class="btn btn-default" onclick="js_export('vdl', '', '', '', '8');" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="js_export('vdl', '', '', '', '9');" /></div>
+        </div>
+    </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </asp:Content>

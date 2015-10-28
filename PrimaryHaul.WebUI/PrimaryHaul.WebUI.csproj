@@ -159,6 +159,7 @@
     <Content Include="pph_include\download\hualier_cost.aspx" />
     <Content Include="pph_include\download\report.aspx" />
     <Content Include="pph_include\download\report_summary.aspx" />
+    <Content Include="pph_include\download\vendor_download_log.aspx" />
     <Content Include="pph_include\download\vendor_file.aspx" />
     <Content Include="pph_include\images\tesco_logo.jpg" />
     <Content Include="pph_include\jquery\jquery-ui.js" />
@@ -169,6 +170,7 @@
     <Content Include="pph_include\perview\hualier_cost.aspx" />
     <Content Include="pph_include\perview\report.aspx" />
     <Content Include="pph_include\perview\report_summary.aspx" />
+    <Content Include="pph_include\perview\vendor_download_log.aspx" />
     <Content Include="pph_include\perview\vendor_perview.aspx" />
     <Content Include="rate_calc.aspx" />
     <Content Include="rate_calc_adj.aspx" />
@@ -530,6 +532,13 @@
     <Compile Include="pph_include\download\report_summary.aspx.designer.cs">
       <DependentUpon>report_summary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pph_include\download\vendor_download_log.aspx.cs">
+      <DependentUpon>vendor_download_log.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\download\vendor_download_log.aspx.designer.cs">
+      <DependentUpon>vendor_download_log.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pph_include\download\vendor_file.aspx.cs">
       <DependentUpon>vendor_file.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -578,6 +587,13 @@
     </Compile>
     <Compile Include="pph_include\perview\report_summary.aspx.designer.cs">
       <DependentUpon>report_summary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\perview\vendor_download_log.aspx.cs">
+      <DependentUpon>vendor_download_log.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\perview\vendor_download_log.aspx.designer.cs">
+      <DependentUpon>vendor_download_log.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\perview\vendor_perview.aspx.cs">
       <DependentUpon>vendor_perview.aspx</DependentUpon>

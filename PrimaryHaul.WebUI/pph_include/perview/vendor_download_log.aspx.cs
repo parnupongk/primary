@@ -8,9 +8,9 @@ using System.Data;
 using System.Data.SqlClient;
 using PrimaryHaul.WebUI.App_Code;
 
-namespace PrimaryHaul.WebUI.pph_include.download
+namespace PrimaryHaul.WebUI.pph_include.perview
 {
-    public partial class hualier_cost : System.Web.UI.Page
+    public partial class vendor_download_log : System.Web.UI.Page
     {
         public SqlDataReader obj_detail;
         public SqlConnection objConn;
@@ -21,11 +21,9 @@ namespace PrimaryHaul.WebUI.pph_include.download
             objConn.ConnectionString = strConnString;
             objConn.Open();
 
-            string sql_detail = "select Haulier_Abbr, sum(Total_Cost_Charging) as Total_Revenue, sum(Total_Cost+Additional_Cost) as Total_Cost, CAST((((Sum(Total_Cost_Charging) - sum(Total_Cost) )/Sum(Total_Cost_Charging))*100) AS DEcimal(12,2)) as Percent_Profit from transportation where year_week_upload='" + Request.QueryString["yw"].ToString() + "' and Total_Cost_Charging<>0 Group by Haulier_Abbr";
+            string sql_detail = "Select Distinct T.Vendor_Code,V.Download_DateTime From Transportation T Left Outer Join vendor_download_log V on T.Vendor_Code=V.Vendor_Code and T.Year_Week_Upload='" + Request.QueryString["yw"].ToString() + "' and T.Year_Week_Upload=V.Tesco_Year_Week and Calc_date <> null or Calc_date <> '' Order by T.Vendor_Code,V.Download_DateTime Desc";
             SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
             obj_detail = rs_detail.ExecuteReader();
-
-            Response.AddHeader("Content-Disposition", "attachment;filename=Hualier_Cost_" + Request.QueryString["yw"].ToString() + ".xls");
         }
     }
 }
