@@ -124,12 +124,13 @@ namespace PrimaryHaul.WebUI
                                     #region Insert Row
                                     try
                                     {
+                                        string s = int.Parse(drRead[4].ToString()).ToString("00000");//String.Format("{0:00000}", );
                                         dr = dtHaulierUp.NewTransportationRow();
                                         dr.PO_No = drRead[1].ToString().Trim();
                                         dr.Haulier_Abbr = drRead[0].ToString().Trim();
                                         dr.Delivery_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "M/d/yyyy", null).ToString("MMddyyyy");
                                         dr.Delivery_Ref = drRead[2].ToString().Trim();
-                                        dr.Vendor_Code = drRead[4].ToString().Trim();
+                                        dr.Vendor_Code = s;
                                         dr.Vendor_Name = drRead[5].ToString().Trim();
                                         dr.Collection_Point = drRead[6].ToString().Trim();
                                         dr.Delivery_Location = drRead[7].ToString().Trim();
@@ -230,8 +231,8 @@ namespace PrimaryHaul.WebUI
             try
             {
                 string str = "Haulier_Abbr='" + dr.Haulier_Abbr + "' and PO_no='" + dr.PO_No + "' and Delivery_ref='" + dr.Delivery_Ref + "' and Delivery_date='" + dr.Delivery_Date + "' ";
-                str += "and Vendor_code = '" + dr.Vendor_Code + "' and Collection_point = '" + dr.Collection_Point + "' and Delivery_location = '" + dr.Delivery_Location + "'";
-                str += "and Ratetype = '" + dr.RateType + "' and Rate_Per_Unit = '" + dr.Rate_Per_Unit + "'";
+                str += "and Vendor_code = '" + dr.Vendor_Code  + "' and Delivery_location = '" + dr.Delivery_Location + "'";
+                str += "and Ratetype = '" + dr.RateType + "' and Rate_Per_Unit = '" + dr.Rate_Per_Unit + "'"; // + "' and Collection_point = '" + dr.Collection_Point
                 dv.RowFilter = new System.Text.StringBuilder().Append(str).ToString();
 
                 return dv.Count > 0 ? true : false;

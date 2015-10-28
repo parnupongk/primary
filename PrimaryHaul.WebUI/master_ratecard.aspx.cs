@@ -21,7 +21,7 @@ namespace PrimaryHaul.WebUI
                 DataBindColl();
                 DataBindDC();
                 DataBindRateType();
-                if (Request["type"] == "A1")
+                if (Request["r"] == "A1")
                 {
                     btnImport.Visible = false;
                     btnAdd.Visible = false;
@@ -199,7 +199,7 @@ namespace PrimaryHaul.WebUI
             }
            else if( e.Row.RowType == DataControlRowType.DataRow )
             {
-                if (Request["type"] == "A1")
+                if (Request["r"] == "A1")
                 {
                     LinkButton lbkBtn = (LinkButton)e.Row.Cells[12].Controls[0]; //here use the cell no in which your edit command button is there.
                     lbkBtn.Visible = false;//write a logic to disable or enable according to privilages.
