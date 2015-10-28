@@ -25,26 +25,29 @@
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Profit</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">% Profit</td>
             </tr>
-            <%  int irows = 0; double total_a1 = 0.00, total_a2 = 0.00, total_a3 = 0.00; while (obj_detail.Read())
+            <%  int irows = 0; double total_a1 = 0.00, total_a2 = 0.00, total_a3 = 0.00; if (obj_detail.HasRows)
                 {
-                    irows++;
-                    double a1 = obj_detail["Total_Revenue"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Total_Revenue"].ToString());
-                    double a2 = obj_detail["Total_Cost"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Total_Cost"].ToString());
-                    double a3 = obj_detail["Percent_Profit"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Percent_Profit"].ToString());
-                    total_a1 = total_a1 + a1;
-                    total_a2 = total_a2 + a2;
-                    total_a3 = total_a3 + a3;
+                    while (obj_detail.Read())
+                    {
+                        irows++;
+                        double a1 = obj_detail["Total_Revenue"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Total_Revenue"].ToString());
+                        double a2 = obj_detail["Total_Cost"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Total_Cost"].ToString());
+                        double a3 = obj_detail["Percent_Profit"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Percent_Profit"].ToString());
+                        total_a1 = total_a1 + a1;
+                        total_a2 = total_a2 + a2;
+                        total_a3 = total_a3 + a3;
             %>
             <tr>
                 <td align="center" valign="middle" ><%=irows%></td>
                 <td align="left" valign="middle" ><%=obj_detail["Haulier_Abbr"].ToString()%></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(obj_detail["Total_Revenue"].ToString()).ToString("#,##0.00")%></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(obj_detail["Total_Cost"].ToString()).ToString("#,##0.00")%></td>
-                <td align="right" valign="middle" ><%=Convert.ToDouble((a1-a2)).ToString("#,##0.00") %></td>
-                <td align="right" valign="middle" ><%=Convert.ToDouble(a3).ToString("#,##0.00") %></td>
+                <td align="right" valign="middle" ><%=Convert.ToDouble((a1 - a2)).ToString("#,##0.00")%></td>
+                <td align="right" valign="middle" ><%=Convert.ToDouble(a3).ToString("#,##0.00")%></td>
             </tr>
     
-            <% } obj_detail.Close(); %>
+            <% } obj_detail.Close();
+                } %>
             <tr>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;" colspan="2"></td>
                 <td align="right" valign="middle" style="background-color:#00ffff;font-weight:bold;"><%=Convert.ToDouble(total_a1.ToString()).ToString("#,##0.00") %></td>

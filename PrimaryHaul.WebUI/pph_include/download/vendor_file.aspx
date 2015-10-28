@@ -107,11 +107,11 @@
         <td colspan="2" align="left" valign="middle"><br /></td>
     </tr>
     <tr>
-        <td colspan="2" align="left" valign="middle"><b>DELIVERY DETAILS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%=obj_cpoint["Collection_Point"].ToString()%></b></td>
-    </tr>
-    <tr>
         <td colspan="2" align="left" valign="middle">
         <table cellpadding="5" border="1" bordercolor="#000000" cellspacing="0">
+            <tr>
+                <td colspan="17" align="left" valign="middle" style="background-color:#00ffff;font-weight:bold;">DELIVERY DETAILS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%=obj_cpoint["Collection_Point"].ToString()%></td>
+            </tr>
             <tr>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Tesco Week</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Delivery Date</td>

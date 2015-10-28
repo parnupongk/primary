@@ -427,7 +427,7 @@
 
         $(function () {
 
-            $("#dateEnd").datepicker({ dateFormat: 'dd/mm/yy' });
+            $("#dateEnd").datepicker({ dateFormat: 'dd/mm/yy', minDate: 0 });
         });
 
     </script>

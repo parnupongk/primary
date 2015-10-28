@@ -45,7 +45,7 @@ namespace PrimaryHaul.WebUI.pph_include.perview
             "case when RateType='Pallet' then No_Of_QTY end , " +
             "case when RateType='Tray' then No_Of_QTY end , " +
             "case when RateType='Cases' then No_Of_QTY end , " +
-            "case when RateType='Load' then No_Of_QTY end Order by TransID";
+            "case when RateType='Load' then No_Of_QTY end ,TransID Order by TransID";
             SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
             obj_detail = rs_detail.ExecuteReader();
             obj_detail.Read();
