@@ -178,14 +178,21 @@ namespace PrimaryHaul.WebUI
         protected void gvData_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             TextBox txtEndDate = (TextBox)gvData.Rows[e.RowIndex].FindControl("txtEndDate");
-            if(txtEndDate.Text != "")
+            string message = "";
+            if (txtEndDate.Text != "" && DateTime.ParseExact(txtEndDate.Text, "MM/dd/yyyy", null) > DateTime.Now )
             {
-                string message = PH_RateCardInfo.PH_RateCard_Update(AppCode.strConnDB, gvData.DataKeys[e.RowIndex].Value.ToString(), DateTime.ParseExact(txtEndDate.Text, "MM/dd/yyyy", null)) > 0 ? "Save Data Successfull" : "Save Data Not Successfull";
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('"+ message + "');", true);
+                message = PH_RateCardInfo.PH_RateCard_Update(AppCode.strConnDB, gvData.DataKeys[e.RowIndex].Value.ToString(), DateTime.ParseExact(txtEndDate.Text, "MM/dd/yyyy", null)) > 0 ? "Save Data Successfull" : "Save Data Not Successfull";
+                
 
                 gvData.EditIndex = -1;
                 DataBindData(true);
             }
+            else
+            {
+                message = "end date ต้องมากกว่าวันปัจจุบัน";
+            }
+
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);
         }
 
         protected void gvData_RowDataBound(object sender, GridViewRowEventArgs e)
