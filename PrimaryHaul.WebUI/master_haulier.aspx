@@ -12,7 +12,7 @@
     }
     function js_haulierForm(varUrl, varTax) {
         strUrl = document.getElementById(varUrl).value;
-        window.location.href = strUrl + '&taxID=' + varTax;
+        window.location.href = strUrl + '&taxhlID=' + varTax;
     }
 </script>
 <div id="form_button">
@@ -247,7 +247,7 @@
 </div>
 </div>
 
-<% if (!string.IsNullOrEmpty(Request.QueryString["taxID"] as string)){ %>
+<% if (!string.IsNullOrEmpty(Request.QueryString["taxhlID"] as string)){ %>
 <script>
     document.getElementById('form_view').style.display = 'none';
     document.getElementById('form_add').style.display = 'none';
@@ -370,7 +370,7 @@
 </script>
 <div class="row">
     <% 
-       string sql_haulier = "select Haulier_TaxID, Haulier_Name_En, Haulier_Abbr from Haulier_Info  where Haulier_TaxID ='" + Request.QueryString["taxID"] + "'";
+       string sql_haulier = "select Haulier_TaxID, Haulier_Name_En, Haulier_Abbr from Haulier_Info  where Haulier_TaxID ='" + Request.QueryString["taxhlID"] + "'";
        SqlCommand rs_haulier = new SqlCommand(sql_haulier, objConn);
        SqlDataReader obj_haulier = rs_haulier.ExecuteReader();
        obj_haulier.Read();           

@@ -129,6 +129,9 @@
     <Content Include="pph_include\ajax\files\dc_noDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\dc_Submit.aspx" />
     <Content Include="pph_include\ajax\files\edit_dateweek.aspx" />
+    <Content Include="pph_include\ajax\files\get_hl_report.aspx" />
+    <Content Include="pph_include\ajax\files\get_vd_report.aspx" />
+    <Content Include="pph_include\ajax\files\get_vd_report2.aspx" />
     <Content Include="pph_include\ajax\files\haulier_abbrDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\haulier_edit_Submit.aspx" />
     <Content Include="pph_include\ajax\files\haulier_nameEnDuplicate.aspx" />
@@ -426,6 +429,27 @@
     </Compile>
     <Compile Include="pph_include\ajax\files\edit_dateweek.aspx.designer.cs">
       <DependentUpon>edit_dateweek.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\get_hl_report.aspx.cs">
+      <DependentUpon>get_hl_report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\get_hl_report.aspx.designer.cs">
+      <DependentUpon>get_hl_report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\get_vd_report.aspx.cs">
+      <DependentUpon>get_vd_report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\get_vd_report.aspx.designer.cs">
+      <DependentUpon>get_vd_report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\get_vd_report2.aspx.cs">
+      <DependentUpon>get_vd_report2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\get_vd_report2.aspx.designer.cs">
+      <DependentUpon>get_vd_report2.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\ajax\files\haulier_abbrDuplicate.aspx.cs">
       <DependentUpon>haulier_abbrDuplicate.aspx</DependentUpon>

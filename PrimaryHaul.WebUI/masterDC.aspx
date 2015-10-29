@@ -15,6 +15,11 @@
         strUrl = document.getElementById(varUrl).value;
         window.location.href = strUrl + '&DC_NO=' + varTax + '&DC_Date=' + varDate;
     }
+    function donKeydown(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode)
+            return false;
+    }
 </script>
   <link rel="stylesheet" href="./pph_include/css/jquery-ui.min.css" />  
 <div id="form_button">
@@ -404,7 +409,7 @@
                 <div class="col-md-2" ><label class="control-label">End Date </label></div>
                 <div class="col-md-3">
                     <input type="hidden" class="form-control" id="hid_DC_NO" name="hid_DC_NO" value="<%= Request.QueryString["DC_NO"] %>" />
-                    <input type="text" class="form-control" autocomplete="off" name="dateEnd" id="dateEnd" style="width:100%;" value="<%=obj_dc[1].ToString() %>" />
+                    <input type="text" class="form-control" onkeypress="return donKeydown(event)" autocomplete="off" name="dateEnd" id="dateEnd" style="width:100%;" value="<%=obj_dc[1].ToString() %>" />
                 </div>
                 <div class="col-md-7"></div>
             </div>

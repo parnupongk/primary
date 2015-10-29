@@ -7,10 +7,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta charset="UTF-8" />
     <title></title>
 </head>
 <body>
 <table cellpadding="2" width="1000px" align="center">
+    <tr>
+        <td align="left" valign="middle" style="background-color:#019a7b;border:2px solid #000000;"><b>Tesco Finance Report > Vendor Cost</b></td>
+    </tr>
     <tr>
         <td aling="left" valign="middle"><b>Tesco Year-Week :</b> <%=Request.QueryString["YW"].ToString() %></td>
     </tr>

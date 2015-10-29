@@ -27,6 +27,13 @@
         strUrl = document.getElementById(varUrl).value;
         window.location.href = strUrl + '&taxID=' + varTax + '&vnID=' + varID;
     }
+    function checkk()
+    {
+        var checkbox = document.getElementsByName('selectV[]');
+        var is = 0;
+        for (var i = 0; i < checkbox.length; i++) { if (checkbox[i].checked == true) { is++;} }
+        if (is > 0) { document.getElementById("adduser").disabled = false; } else { document.getElementById("adduser").disabled = true; }
+    }
 </script>
 <div id="form_button">
 <div class="row">
@@ -360,7 +367,7 @@ function isNumberKey(evt) {
         <td style="text-align:center;"><%= irows %></td>
         <td style="text-align:center;"><%= obj_vendorInfo["Vendor_Code"].ToString() %></td>
         <td style="text-align:center;"><%= obj_vendorInfo["Vendor_UserName"].ToString() %></td>
-        <td style="text-align:center;"><input type="checkbox" name="selectV[]" id="selectV_<%= irows %>" value="<%= obj_vendorInfo["VendorID"].ToString() %>-<%= obj_vendorInfo["Vendor_Code"].ToString() %>" /></td>                   
+        <td style="text-align:center;"><input type="checkbox" onclick="checkk()" name="selectV[]" id="selectV_<%= irows %>" value="<%= obj_vendorInfo["VendorID"].ToString() %>-<%= obj_vendorInfo["Vendor_Code"].ToString() %>" /></td>                   
       </tr>
      <% } obj_vendorInfo.Close(); %>
     </table>
@@ -480,7 +487,7 @@ function isNumberKey(evt) {
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-2"></div>
-    <div class="col-md-3"><input type="button" value="Add Username" class="btn btn-default" style="width:100%;" onclick="document.getElementById('form_view').style.display = 'none'; document.getElementById('form_add').style.display = 'none'; document.getElementById('form_button').style.display = 'none'; document.getElementById('form_vendor').style.display = 'none'; document.getElementById('form_addUsername').style.display = ''; "/></div>
+    <div class="col-md-3"><input type="button" id="adduser" value="Add Username" class="btn btn-default" style="width:100%;" onclick="document.getElementById('form_view').style.display = 'none'; document.getElementById('form_add').style.display = 'none'; document.getElementById('form_button').style.display = 'none'; document.getElementById('form_vendor').style.display = 'none'; document.getElementById('form_addUsername').style.display = '';" disabled="disabled"/></div>
     <div class="col-md-5"></div>
 </div>
 </div>

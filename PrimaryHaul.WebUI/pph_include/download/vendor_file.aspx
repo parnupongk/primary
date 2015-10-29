@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <%
 
-    string sql_detail = "select top 1 Vendor_Name,Vendor_Code,RC_Tesco_Period,ISNULL(Sell_Fuel_Rate, 0.00) as Sell_Fuel_Rate,Currency, ISNULL(sum(Sell_Fuel_Rate),0.00) as costFuel, ISNULL(sum(Total_Cost_Charging),0.00) as costTotal,  (select Top 1 CONVERT(varchar(11),Download_DateTime,103)  from Vendor_Download_Log where Tesco_Year_Week='" + Request.QueryString["YW"].ToString() + "' and Vendor_UserID=" + Request.QueryString["id"] + " and substring(File_Name,1,5)='" + Request.QueryString["VD"].ToString() + "' and Vendor_Name<>'DUMMY'  order by Download_DateTime desc) as lastDownload, ISNULL(sum(Sell_Fuel_Rate),0.00) as fRate from Transportation  where Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "' and Vendor_Code='" + Request.QueryString["VD"].ToString() + "' and Calc_Date is not null GROUP BY Vendor_Name,Vendor_Code,RC_Tesco_Period,Sell_Fuel_Rate,Currency,year_week_upload";
+    string sql_detail = "select top 1 Vendor_Name,Vendor_Code,RC_Tesco_Period,ISNULL(Sell_Fuel_Rate, 0.00) as Sell_Fuel_Rate,Currency, ISNULL(sum(Sell_Fuel_Rate),0.00) as costFuel, ISNULL(sum(Total_Cost_Charging),0.00) as costTotal,  (select Top 1 CONVERT(varchar(11),Download_DateTime,103)  from Vendor_Download_Log where Tesco_Year_Week='" + Request.QueryString["YW"].ToString() + "' and Vendor_UserID=" + Request.QueryString["id"] + " and substring(File_Name,1,5)='" + Request.QueryString["VD"].ToString() + "' order by Download_DateTime desc) as lastDownload, ISNULL(sum(Sell_Fuel_Rate),0.00) as fRate from Transportation  where Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "' and Vendor_Code='" + Request.QueryString["VD"].ToString() + "' and Calc_Date is not null GROUP BY Vendor_Name,Vendor_Code,RC_Tesco_Period,Sell_Fuel_Rate,Currency,year_week_upload";
     SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
     SqlDataReader obj_detail = rs_detail.ExecuteReader();
     obj_detail.Read();   
@@ -20,13 +20,13 @@
 <table cellpadding="5" width="1000px;" align="center">
     <tr>
         <td align="right" valign="middle">&nbsp;</td>
-        <td align="right" valign="middle" ><img src="http://www.proudprime.com/primaryhaul/pph_include/images/tesco_logo.jpg" width="142"/></td>
+        <td align="right" valign="middle" ><img src="http://www.proudprime.com/primaryhaul/pph_include/images/tesco_logo.jpg"/></td>
+    </tr>
+    <tr>
+        <td align="right" valign="middle">&nbsp;</td>
+        <td align="right" valign="middle" ><br /><br /><br /></td>
     </tr>
      <tr>
-        <td align="right" valign="middle">&nbsp;</td>
-        <td align="right" valign="middle"><br /><br /><br /></td>
-    </tr
-    <tr>
         <td align="right" valign="middle">&nbsp;</td>
         <td align="right" valign="middle"><b>Primary Distribution</b></td>
     </tr>
@@ -82,7 +82,7 @@
         <td colspan="2" align="left" valign="middle">
         <table cellpadding="5" border="1" bordercolor="#000000" cellspacing="0">
             <tr>
-                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;"">Tesco Period</td>
+                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Tesco Period</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Agreed Fuel Base Price</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Agreed %</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">FTA Fuel Price</td>
@@ -98,7 +98,7 @@
     </tr>
 <% obj_detail.Close(); %>
 <% 
-    string sql_cpoint = "select Distinct Collection_Point from Transportation where Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "' and Vendor_Code='" + Request.QueryString["VD"].ToString() + "' and Calc_Date is not null and Vendor_Name<>'DUMMY' ";
+    string sql_cpoint = "select Distinct Collection_Point from Transportation where Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "' and Vendor_Code='" + Request.QueryString["VD"].ToString() + "' and Calc_Date is not null";
     SqlCommand rs_cpoint = new SqlCommand(sql_cpoint, objConn);
     SqlDataReader obj_cpoint = rs_cpoint.ExecuteReader();
     while (obj_cpoint.Read()) {
@@ -106,12 +106,13 @@
     <tr>
         <td colspan="2" align="left" valign="middle"><br /></td>
     </tr>
+
     <tr>
         <td colspan="2" align="left" valign="middle">
         <table cellpadding="5" border="1" bordercolor="#000000" cellspacing="0">
             <tr>
                 <td colspan="17" align="left" valign="middle" style="background-color:#00ffff;font-weight:bold;">DELIVERY DETAILS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%=obj_cpoint["Collection_Point"].ToString()%></td>
-            </tr>
+            </tr>    
             <tr>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Tesco Week</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Delivery Date</td>
@@ -132,7 +133,7 @@
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Total Cost</td>
             </tr>
          <%
-            string sql_detail0 = "Select Year_Week_Upload,Delivery_Date,Haulier_Abbr,PO_No,Delivery_Ref,Delivery_Location, " +
+        string sql_detail0 = "Select Year_Week_Upload,Delivery_Date,Haulier_Abbr,PO_No,Delivery_Ref,Delivery_Location,TransID, " +
             "case when RateType='Box' then No_Of_QTY end  as Boxes, " +
             "case when RateType='Pallet' then No_Of_QTY end  as Pallets, " +
             "case when RateType='Tray' then No_Of_QTY end  as Trays, " +
@@ -144,7 +145,7 @@
             "from Transportation  " +
             "where Year_Week_Upload='" + Request.QueryString["YW"].ToString() + "' and Vendor_Code='" + Request.QueryString["VD"].ToString() + "'  " +
             "and replace(collection_point,' ','')=replace('" + obj_cpoint["Collection_Point"].ToString() + "',' ','') and Vendor_Name<>'DUMMY' " +
-            "Order by TransID ";
+            "Order by TransID";
             SqlCommand rs_detail0 = new SqlCommand(sql_detail0, objConn);
             SqlDataReader obj_detail0 = rs_detail0.ExecuteReader();
             double total_a1 = 0.00, total_a2 = 0.00, total_a3 = 0.00, total_a4 = 0.00, total_a5 = 0.00, total_a6 = 0.00, total_a7 = 0.00, total_vat = 0.00;
@@ -180,7 +181,7 @@
                 <td align="center" valign="middle" ><%=obj_detail0["Pallets"].ToString()%></td>
                 <td align="center" valign="middle" ><%=obj_detail0["Trays"].ToString()%></td>
                 <td align="center" valign="middle" ><%=obj_detail0["RateType"].ToString()%></td>
-                <td align="right" valign="middle" ><%=obj_detail0["RC_Sell_Rate"].ToString()%></td>
+                <td align="right" valign="middle" ><%=Convert.ToDouble(obj_detail0["RC_Sell_Rate"].ToString()).ToString("#,##0.00")%></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble((a7-vat)).ToString("#,##0.00")%></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(obj_detail0["Sell_Fuel_Rate"].ToString()).ToString("#,##0.00")%></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(obj_detail0["Vat_Cost"].ToString()).ToString("#,##0.00")%></td>
@@ -190,10 +191,10 @@
             <tr>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;" colspan="6">TOTAL</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a1 %></td>
+                <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a5 %></td>
+                <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a4 %></td>
                 <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a2 %></td>
                 <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a3 %></td>
-                <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a4 %></td>
-                <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a5 %></td>
                 <td align="center" valign="middle" style="background-color:#00ffff;"></td>
                 <td align="right" valign="middle" style="background-color:#00ffff;"></td>
                 <td align="right" valign="middle" style="background-color:#00ffff;"><%=Convert.ToDouble(total_a7-total_vat).ToString("#,##0.00") %></td>
@@ -211,3 +212,4 @@
 </table>
 </body>
 </html>
+

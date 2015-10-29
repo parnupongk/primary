@@ -17,10 +17,10 @@
     <title></title>
 </head>
 <body>
-<table cellpadding="5" width="1000px;" align="center">
+<table cellpadding="5" width="1200px;" align="center">
     <tr>
         <td align="right" valign="middle">&nbsp;</td>
-        <td align="right" valign="middle" ><img src="http://www.proudprime.com/primaryhaul/pph_include/images/tesco_logo.jpg" width="144px" /></td>
+        <td align="right" valign="middle" ><img src="http://www.proudprime.com/primaryhaul/pph_include/images/tesco_logo.jpg" width="144" /></td>
     </tr>
      <tr>
         <td align="right" valign="middle">&nbsp;</td>
@@ -166,7 +166,7 @@
         %>
             <tr>
                 <td align="center" valign="middle" ><%=Request.QueryString["YW"].ToString().Substring(4,2)%></td>
-                <td align="center" valign="middle" ><%=obj_detail0["Delivery_Date"].ToString()%></td>
+                <td align="center" valign="middle" ><%=obj_detail0["Delivery_Date"].ToString().Substring(2,2)%>/<%=obj_detail0["Delivery_Date"].ToString().Substring(0,2)%>/<%=obj_detail0["Delivery_Date"].ToString().Substring(4,4)%></td>
                 <td align="center" valign="middle" ><%=obj_detail0["Haulier_Abbr"].ToString()%></td>
                 <td align="center" valign="middle" ><%=obj_detail0["PO_No"].ToString()%></td>
                 <td align="center" valign="middle" ><%=obj_detail0["Delivery_Ref"].ToString()%></td>
@@ -177,7 +177,7 @@
                 <td align="center" valign="middle" ><%=obj_detail0["Pallets"].ToString()%></td>
                 <td align="center" valign="middle" ><%=obj_detail0["Trays"].ToString()%></td>
                 <td align="center" valign="middle" ><%=obj_detail0["RateType"].ToString()%></td>
-                <td align="right" valign="middle" ><%=obj_detail0["RC_Sell_Rate"].ToString()%></td>
+                <td align="right" valign="middle" ><%=Convert.ToDouble(obj_detail0["RC_Sell_Rate"].ToString()).ToString("#,##0.00")%></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble((a7-vat)).ToString("#,##0.00")%></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(obj_detail0["Sell_Fuel_Rate"].ToString()).ToString("#,##0.00")%></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(obj_detail0["Vat_Cost"].ToString()).ToString("#,##0.00")%></td>
@@ -187,10 +187,10 @@
             <tr>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;" colspan="6">TOTAL</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a1 %></td>
+                <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a5 %></td>
+                <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a4 %></td>
                 <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a2 %></td>
                 <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a3 %></td>
-                <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a4 %></td>
-                <td align="center" valign="middle" style="background-color:#00ffff;"><%=total_a5 %></td>
                 <td align="center" valign="middle" style="background-color:#00ffff;"></td>
                 <td align="right" valign="middle" style="background-color:#00ffff;"></td>
                 <td align="right" valign="middle" style="background-color:#00ffff;"><%=Convert.ToDouble(total_a7-total_vat).ToString("#,##0.00") %></td>

@@ -82,10 +82,10 @@
 <div class="row">
     <div class="col-md-1"><label class="control-label">Week </label></div>
     <div class="col-md-3">
-        <select class="form-control" id="YW" name="YW" >
+        <select class="form-control" id="YW" name="YW" style="width:100%;">
             <% while (obj_list.Read())
                { %>
-                <option value="<%= obj_list["Tesco_Year"].ToString() %><%= obj_list["Tesco_Week"].ToString() %>" <%if (obj_list["Tesco_Year"].ToString() + obj_list["Tesco_Week"].ToString() == strYW) { Response.Write("selected=\"selected\""); }%>><%= obj_list["Between_Date"].ToString() %></option>
+                <option value="<%= obj_list["Tesco_Year"].ToString() %><%= obj_list["Tesco_Week"].ToString() %>" <%if (obj_list["Tesco_Year"].ToString() + obj_list["Tesco_Week"].ToString() == strYW) { Response.Write("selected=\"selected\""); }%>><%= obj_list["Tesco_Year"].ToString() %><%= obj_list["Tesco_Week"].ToString() %> | <%= obj_list["Between_Date"].ToString() %></option>
             <% } obj_list.Close(); %>
         </select>
     </div>
