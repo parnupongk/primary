@@ -166,7 +166,7 @@
         %>
             <tr>
                 <td align="center" valign="middle" ><%=Request.QueryString["YW"].ToString().Substring(4,2)%></td>
-                <td align="center" valign="middle" ><%=obj_detail0["Delivery_Date"].ToString().Substring(2,2)%>/<%=obj_detail0["Delivery_Date"].ToString().Substring(0,2)%>/<%=obj_detail0["Delivery_Date"].ToString().Substring(4,4)%></td>
+                <td align="center" valign="middle" ><%=obj_detail0["Delivery_Date"].ToString()%></td>
                 <td align="center" valign="middle" ><%=obj_detail0["Haulier_Abbr"].ToString()%></td>
                 <td align="center" valign="middle" ><%=obj_detail0["PO_No"].ToString()%></td>
                 <td align="center" valign="middle" ><%=obj_detail0["Delivery_Ref"].ToString()%></td>

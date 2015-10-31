@@ -168,7 +168,7 @@
         var strTax = document.getElementById('Haulier_TaxID').value;
         var strName = document.getElementById('Haulier_Name_En').value;
         var strAbbr = document.getElementById('Haulier_Abbr').value;
-        if (strTax != '' && strName != '' && strAbbr != '' && strTax == 13) {
+        if (strTax != '' && strName != '' && strAbbr != '' && strTax != 13) {
             var str_url_address = "./pph_include/ajax/files/haulier_Submit.aspx";
             var str_url = "var01=" + strTax;
             str_url += "&var02=" + strName;

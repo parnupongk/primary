@@ -51,20 +51,21 @@
                 if (req.readyState == 4) {
                     if (req.status == 200) {
                        
-                        var i;
-                        for (i=1;i<=total;i++)
-                        {
-                            var strRes = req.responseText;
-                            var countVendor = strRes.split("-");
-                            if (countVendor[0] == 0) {
-                                alert('ไม่มีไฟล์ให้ Download ค่ะ');
-                            } else {
+                       
+                        var strRes = req.responseText;
+                        var countVendor = strRes.split("-");
+                        if (countVendor[0] == 0) {
+                            alert('ไม่มีไฟล์ให้ Download ค่ะ');
+                        } else {
+                            var i;
+                            for (i = 1; i <= total; i++) {
                                 document.getElementById('downloadStatus' + i).innerHTML = 'Downloaded';
-                                var arrVendor = countVendor[1].split("|");
-                                var iVD;
-                                for (iVD = 1; iVD <= countVendor[0]; iVD++) {
-                                    window.open('./pph_include/download/vendor_file.aspx?id=' + obj2 + '&YW=' + YM + '&VD=' + arrVendor[iVD], '_blank');
-                                }
+                            }
+                            var arrVendor = countVendor[1].split("|");
+                            var iVD;
+
+                            for (iVD = 1; iVD <= countVendor[0]; iVD++) {
+                                window.open('./pph_include/download/vendor_file.aspx?id=' + obj2 + '&YW=' + YM + '&VD=' + arrVendor[iVD], '_blank');
                             }
                         }
                     }
