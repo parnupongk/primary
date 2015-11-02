@@ -878,7 +878,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 this.columnHaulier_Abbr.AllowDBNull = false;
                 this.columnHaulier_Abbr.MaxLength = 20;
                 this.columnDelivery_Date.AllowDBNull = false;
-                this.columnDelivery_Date.MaxLength = 10;
+                this.columnDelivery_Date.MaxLength = 15;
                 this.columnDelivery_Ref.AllowDBNull = false;
                 this.columnDelivery_Ref.MaxLength = 10;
                 this.columnVendor_Code.AllowDBNull = false;

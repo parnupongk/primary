@@ -32,10 +32,10 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Delivery_Date" msprop:Generator_ColumnVarNameInTable="columnDelivery_Date" msprop:Generator_ColumnPropNameInRow="Delivery_Date" msprop:Generator_ColumnPropNameInTable="Delivery_DateColumn" msprop:Generator_UserColumnName="Delivery_Date">
+              <xs:element name="Delivery_Date" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Delivery_Date" msprop:Generator_ColumnVarNameInTable="columnDelivery_Date" msprop:Generator_ColumnPropNameInTable="Delivery_DateColumn" msprop:Generator_UserColumnName="Delivery_Date">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
+                    <xs:maxLength value="15" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

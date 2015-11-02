@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-3 col-md-1">
-                    <asp:Button runat="server" ID="btnSubmit" Text="Venrify Data" CssClass="btn btn-default" OnClick="btnSubmit_Click" />
+                    <asp:Button runat="server" ID="btnSubmit" Text="Verify Data" CssClass="btn btn-default" OnClick="btnSubmit_Click" />
                     <p class="text-danger">
                         <asp:Label ID="lblErr" runat="server"></asp:Label>
                     </p>

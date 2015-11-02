@@ -259,7 +259,7 @@
                     <asp:BoundField DataField="Sell_Rate" HeaderText="Sell Rate" ReadOnly="True" />
                     <asp:BoundField DataField="fuel_rate_from" HeaderText="Fuel Rate From" ReadOnly="True" />
                     <asp:BoundField DataField="fuel_rate_to" HeaderText="Fuel Rate To" ReadOnly="True" />
-                    <asp:BoundField DataField="StartDate" HeaderText="Star tDate" ReadOnly="True" DataFormatString="{0:MM/dd/yyyy}">
+                    <asp:BoundField DataField="StartDate" HeaderText="Star tDate" ReadOnly="True" DataFormatString="{0:dd/MM/yyyy}">
                         <HeaderStyle Width="120px" HorizontalAlign="Right"></HeaderStyle>
 
                         <ItemStyle Width="120px" HorizontalAlign="Center"></ItemStyle>
@@ -270,11 +270,11 @@
                             </asp:TextBox>
                             <asp:CalendarExtender ID="CalendarExtender1" runat="server"
                                 TargetControlID="txtEndDate" PopupButtonID="txtEndDate"
-                                Format="MM/dd/yyyy">
+                                Format="dd/MM/yyyy">
                             </asp:CalendarExtender>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lblendDate" Text='<%# Bind("enddate", "{0:MM/dd/yyyy}") %>' runat="server"></asp:Label>
+                            <asp:Label ID="lblendDate" Text='<%# Bind("enddate", "{0:dd/MM/yyyy}") %>' runat="server"></asp:Label>
                         </ItemTemplate>
 
                         <HeaderStyle Width="120px" HorizontalAlign="Center"></HeaderStyle>

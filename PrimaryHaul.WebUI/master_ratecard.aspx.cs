@@ -179,9 +179,9 @@ namespace PrimaryHaul.WebUI
         {
             TextBox txtEndDate = (TextBox)gvData.Rows[e.RowIndex].FindControl("txtEndDate");
             string message = "";
-            if (txtEndDate.Text != "" && DateTime.ParseExact(txtEndDate.Text, "MM/dd/yyyy", null) > DateTime.Now )
+            if (txtEndDate.Text != "" && DateTime.ParseExact(txtEndDate.Text, "dd/MM/yyyy", null) > DateTime.Now )
             {
-                message = PH_RateCardInfo.PH_RateCard_Update(AppCode.strConnDB, gvData.DataKeys[e.RowIndex].Value.ToString(), DateTime.ParseExact(txtEndDate.Text, "MM/dd/yyyy", null)) > 0 ? "Save Data Successfull" : "Save Data Not Successfull";
+                message = PH_RateCardInfo.PH_RateCard_Update(AppCode.strConnDB, gvData.DataKeys[e.RowIndex].Value.ToString(), DateTime.ParseExact(txtEndDate.Text, "dd/MM/yyyy", null)) > 0 ? "Save Data Successfull" : "Save Data Not Successfull";
                 
 
                 gvData.EditIndex = -1;
@@ -200,7 +200,7 @@ namespace PrimaryHaul.WebUI
             if ((e.Row.RowType == DataControlRowType.DataRow) && (e.Row.RowState.HasFlag(DataControlRowState.Edit) && (e.Row.DataItem != null)))
             {
                 TextBox txtEndDate = (TextBox)e.Row.FindControl("txtEndDate");
-                txtEndDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+                txtEndDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
 
             }
