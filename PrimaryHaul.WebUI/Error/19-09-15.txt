@@ -1,0 +1,92 @@
+
+Log Entry : 
+19/09/2015 20:59:15
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?contextKey={DA8BEDC8-B952-4d5d-8CC2-59FE922E2923}&done=1&guid=268A4A96-6374-5AC7-D823-2F46261858C0. Error Message:PH_CollectionPoint_Insert >> Login failed for user 'sa'.
+__________________________
+
+Log Entry : 
+19/09/2015 21:01:25
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?contextKey={DA8BEDC8-B952-4d5d-8CC2-59FE922E2923}&done=1&guid=BF9DC9DD-DB81-6D10-2357-1ED9B9A98881. Error Message:PH_CollectionPoint_Insert >> Procedure or function 'usp_PrimaryHaul_CollectionPointInsert' expects parameter '@StampTime', which was not supplied.
+__________________________
+
+Log Entry : 
+19/09/2015 21:02:50
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?contextKey={DA8BEDC8-B952-4d5d-8CC2-59FE922E2923}&done=1&guid=B9CAD67F-75D0-67F5-4EB9-09EBC37915FA. Error Message:PH_CollectionPoint_Insert >> Procedure or function 'usp_PrimaryHaul_CollectionPointInsert' expects parameter '@StampTime', which was not supplied.
+__________________________
+
+Log Entry : 
+19/09/2015 21:04:17
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?contextKey={DA8BEDC8-B952-4d5d-8CC2-59FE922E2923}&done=1&guid=2C29B4CF-2A97-FE8E-DF73-A0BF4A148133. Error Message:PH_RateCard_Insert >> Error converting data type nvarchar to decimal.
+__________________________
+
+Log Entry : 
+19/09/2015 21:10:01
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?contextKey={DA8BEDC8-B952-4d5d-8CC2-59FE922E2923}&done=1&guid=B0FBCA61-52EB-CA87-FE29-F567EB143FD8. Error Message:PH_RateCard_Insert >> Input string was not in a correct format.
+__________________________
+
+Log Entry : 
+19/09/2015 21:12:56
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?contextKey={DA8BEDC8-B952-4d5d-8CC2-59FE922E2923}&done=1&guid=EF9DBE3A-A341-1D1A-2A5B-2818CCE53870. Error Message:PH_RateCard_Insert >> Input string was not in a correct format.
+__________________________
+
+Log Entry : 
+19/09/2015 21:21:43
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?contextKey={DA8BEDC8-B952-4d5d-8CC2-59FE922E2923}&done=1&guid=46CBB685-782D-F1D4-0873-21883CEBBA28. Error Message:PH_RateCard_Insert >> Cannot insert duplicate key row in object 'dbo.Rate_Card_Info' with unique index 'Rate_Card_Info_1'.
+The statement has been terminated.
+__________________________
+
+Log Entry : 
+19/09/2015 21:30:11
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?contextKey={DA8BEDC8-B952-4d5d-8CC2-59FE922E2923}&done=1&guid=09F6C77C-6FC9-76A0-7526-DD59815E4AA0. Error Message:PH_RateCard_Insert >> Cannot insert duplicate key row in object 'dbo.Rate_Card_Info' with unique index 'Rate_Card_Info_1'.
+The statement has been terminated.
+__________________________
+
+Log Entry : 
+19/09/2015 21:30:49
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?contextKey={DA8BEDC8-B952-4d5d-8CC2-59FE922E2923}&done=1&guid=B4BC78DA-09D3-DA23-0D85-24AC296CD7A8. Error Message:PH_RateCard_Insert >> Cannot insert duplicate key row in object 'dbo.Rate_Card_Info' with unique index 'Rate_Card_Info_1'.
+The statement has been terminated.
+__________________________
+
+Log Entry : 
+19/09/2015 21:31:49
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?contextKey={DA8BEDC8-B952-4d5d-8CC2-59FE922E2923}&done=1&guid=CCDA9B75-B196-0DDE-3C97-411FA605184F. Error Message:PH_RateCard_Insert >> Cannot insert duplicate key row in object 'dbo.Rate_Card_Info' with unique index 'Rate_Card_Info_1'.
+The statement has been terminated.
+__________________________
+
+Log Entry : 
+19/09/2015 21:34:52
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?contextKey={DA8BEDC8-B952-4d5d-8CC2-59FE922E2923}&done=1&guid=E925B3DA-F2C7-250B-F541-9FCF4012D97B. Error Message:PH_RateCard_Insert >> Cannot insert duplicate key row in object 'dbo.Rate_Card_Info' with unique index 'Rate_Card_Info_1'.
+The statement has been terminated.
+__________________________
+
+Log Entry : 
+19/09/2015 21:42:10
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?contextKey={DA8BEDC8-B952-4d5d-8CC2-59FE922E2923}&done=1&guid=42822208-1241-D912-4FD6-C84A2C9B5CAA. Error Message:PH_RateCard_Insert >> Cannot insert duplicate key row in object 'dbo.Rate_Card_Info' with unique index 'Rate_Card_Info_1'.
+The statement has been terminated.
+__________________________
+
+Log Entry : 
+19/09/2015 21:47:23
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx. Error Message:PH_RateCard_Insert >> Cannot insert duplicate key row in object 'dbo.Rate_Card_Info' with unique index 'Rate_Card_Info_1'.
+The statement has been terminated.
+__________________________
+
+Log Entry : 
+19/09/2015 21:49:22
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx. Error Message:PH_RateCard_Insert >> Cannot insert duplicate key row in object 'dbo.Rate_Card_Info' with unique index 'Rate_Card_Info_1'.
+The statement has been terminated.
+__________________________

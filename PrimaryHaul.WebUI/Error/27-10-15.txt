@@ -1,0 +1,24 @@
+
+Log Entry : 
+27/10/2015 09:04:46
+ IP :  ::1 
+Error in: http://localhost:35449/addNew.aspx. Error Message:Object reference not set to an instance of an object.
+__________________________
+
+Log Entry : 
+27/10/2015 09:33:22
+ IP :  ::1 
+Error in: http://localhost:35449/addNew.aspx. Error Message:Object reference not set to an instance of an object.
+__________________________
+
+Log Entry : 
+27/10/2015 09:33:38
+ IP :  ::1 
+Error in: http://localhost:35449/addNew.aspx?type=A1&r=A1&id=6. Error Message:Object reference not set to an instance of an object.
+__________________________
+
+Log Entry : 
+27/10/2015 09:57:11
+ IP :  ::1 
+Error in: http://localhost:35449/addNew.aspx?type=A1&r=A1&id=6. Error Message:Object reference not set to an instance of an object.
+__________________________

@@ -1,0 +1,18 @@
+
+Log Entry : 
+06/10/2015 13:18:29
+ IP :  ::1 
+Error in: http://localhost:35449/rate_calc.aspx. Error Message:DataBindHaulier >>Object reference not set to an instance of an object.
+__________________________
+
+Log Entry : 
+06/10/2015 13:18:50
+ IP :  ::1 
+Error in: http://localhost:35449/rate_calc.aspx?r=A1&id=6. Error Message:DataBindHaulier >>Object reference not set to an instance of an object.
+__________________________
+
+Log Entry : 
+06/10/2015 13:47:20
+ IP :  ::1 
+Error in: http://localhost:35449/rate_calc.aspx. Error Message:DataBindHaulier >>Object reference not set to an instance of an object.
+__________________________

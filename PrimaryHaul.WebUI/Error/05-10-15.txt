@@ -1,0 +1,36 @@
+
+Log Entry : 
+05/10/2015 13:59:56
+ IP :  ::1 
+Error in: http://localhost:35449/haulier_upload.aspx. Error Message:verlify data >>InsertData>>Could not find installable ISAM.
+__________________________
+
+Log Entry : 
+05/10/2015 14:02:21
+ IP :  ::1 
+Error in: http://localhost:35449/haulier_upload.aspx. Error Message:verlify data >>InsertData>>Could not find installable ISAM.
+__________________________
+
+Log Entry : 
+05/10/2015 14:04:27
+ IP :  ::1 
+Error in: http://localhost:35449/haulier_upload.aspx. Error Message:Verlify Data >>Column 'Delivery_Date' does not allow nulls.
+__________________________
+
+Log Entry : 
+05/10/2015 17:22:03
+ IP :  ::1 
+Error in: http://localhost:35449/rate_calc.aspx. Error Message:DataBindHaulier >>Object reference not set to an instance of an object.
+__________________________
+
+Log Entry : 
+05/10/2015 17:22:15
+ IP :  ::1 
+Error in: http://localhost:35449/rate_calc.aspx. Error Message:DataBindHaulier >>Object reference not set to an instance of an object.
+__________________________
+
+Log Entry : 
+05/10/2015 17:22:30
+ IP :  ::1 
+Error in: http://localhost:35449/rate_calc.aspx?r=A1&id=6. Error Message:DataBindHaulier >>Object reference not set to an instance of an object.
+__________________________

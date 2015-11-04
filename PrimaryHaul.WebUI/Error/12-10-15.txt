@@ -1,0 +1,6 @@
+
+Log Entry : 
+12/10/2015 11:37:41
+ IP :  ::1 
+Error in: http://localhost:35449/rate_calc_adj.aspx?r=A1&id=6. Error Message:DataBinding: 'System.Data.DataRowView' does not contain a property with the name 'halier_abbr'.
+__________________________

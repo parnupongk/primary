@@ -1,0 +1,19 @@
+
+Log Entry : 
+25/09/2015 09:47:33
+ IP :  ::1 
+Error in: http://localhost:35449/haulier_upload.aspx?r=A1&id=6. Error Message:InsertData >>Cannot set column 'Delivery_Date'. The value violates the MaxLength limit of this column.
+__________________________
+
+Log Entry : 
+25/09/2015 09:53:39
+ IP :  ::1 
+Error in: http://localhost:35449/haulier_upload.aspx. Error Message:InsertData >>Cannot set column 'Delivery_Date'. The value violates the MaxLength limit of this column.
+__________________________
+
+Log Entry : 
+25/09/2015 10:12:06
+ IP :  ::1 
+Error in: http://localhost:35449/haulier_upload.aspx?r=A1&id=6. Error Message:btnInsert_Click >>PH_HaulierUp_Insert >> Cannot insert duplicate key row in object 'dbo.Transportation' with unique index 'idx_Transportationo_1'.
+The statement has been terminated.
+__________________________
