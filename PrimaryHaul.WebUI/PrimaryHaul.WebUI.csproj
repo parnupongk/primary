@@ -100,6 +100,30 @@
     <Content Include="dayofexpired.aspx" />
     <Content Include="dist\css\bootstrap.css" />
     <Content Include="dist\css\login.css" />
+    <Content Include="Error\01-09-15.txt" />
+    <Content Include="Error\03-09-15.txt" />
+    <Content Include="Error\04-11-15.txt" />
+    <Content Include="Error\05-10-15.txt" />
+    <Content Include="Error\06-10-15.txt" />
+    <Content Include="Error\11-09-15.txt" />
+    <Content Include="Error\12-09-15.txt" />
+    <Content Include="Error\12-10-15.txt" />
+    <Content Include="Error\15-10-15.txt" />
+    <Content Include="Error\19-09-15.txt" />
+    <Content Include="Error\19-10-15.txt" />
+    <Content Include="Error\21-08-15.txt" />
+    <Content Include="Error\22-08-15.txt" />
+    <Content Include="Error\22-09-15.txt" />
+    <Content Include="Error\22-10-15.txt" />
+    <Content Include="Error\24-09-15.txt" />
+    <Content Include="Error\25-08-15.txt" />
+    <Content Include="Error\25-09-15.txt" />
+    <Content Include="Error\26-08-15.txt" />
+    <Content Include="Error\27-08-15.txt" />
+    <Content Include="Error\27-10-15.txt" />
+    <Content Include="Error\28-08-15.txt" />
+    <Content Include="Error\30-10-15.txt" />
+    <Content Include="Error\31-08-15.txt" />
     <Content Include="haulier_upload.aspx" />
     <Content Include="images\2.jpg" />
     <Content Include="images\bg-login.png" />
@@ -681,7 +705,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Error\" />
     <Folder Include="upload\" />
   </ItemGroup>
   <ItemGroup>
