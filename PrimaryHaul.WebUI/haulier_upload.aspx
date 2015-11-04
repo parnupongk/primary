@@ -31,7 +31,7 @@
 
                     <asp:AjaxFileUpload ID="AjaxFileUpload" runat="server" Padding-Bottom="4"
                         Padding-Left="2" Padding-Right="1" Padding-Top="4" ThrobberID="myThrobber" MaximumNumberOfFiles="10"
-                        AllowedFileTypes="xls,vnd.ms-excel,xls,jpg,png,application/vnd.ms-excel" OnUploadComplete="AjaxFileUpload_UploadComplete" />
+                        AllowedFileTypes="xls,vnd.ms-excel,xls,jpg,png,application/vnd.ms-excel,xlsx" OnUploadComplete="AjaxFileUpload_UploadComplete" />
                 </div>
             </div>
             <div class="form-group">
@@ -95,7 +95,7 @@
                         </asp:BoundField>
                     <asp:BoundField DataField="Trans_Type" Visible="false" HeaderText="Trans_Type" ReadOnly="True" />
                     <asp:BoundField DataField="Remark2" HeaderText="Remark2" Visible="false" ReadOnly="True" />
-
+                    <asp:BoundField DataField="Year_Week_OnFile" HeaderText="Year_Week_OnFile" ReadOnly="True" /> 
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />
                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -124,7 +124,7 @@
                     <asp:BoundField DataField="Addition_Cost" HeaderText="Addition_Cost" ReadOnly="True" />
                     <asp:BoundField DataField="Addition_Cost_Reason" HeaderText="Addition_Cost_Reason" ReadOnly="True" />
                     <asp:BoundField DataField="Total_Cost" HeaderText="Total_Cost" ReadOnly="True" />
-                    <asp:BoundField DataField="Year_Week_No" HeaderText="Year_Week_No" ReadOnly="True" /> 
+                    <asp:BoundField DataField="Year_Week_OnFile" HeaderText="Year_Week_OnFile" ReadOnly="True" /> 
 >>>>>>> origin/master -->
         </div>
     </div>

@@ -88,6 +88,10 @@ namespace PrimaryHaul.WebUI
                                                      });*/
 
                 string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source= " + path + " ; Extended Properties='Excel 8.0;IMEX=1;HDR=Yes;TypeGuessRows=0;ImportMixedTypes=Text;'";
+                string connectionStringXLSX = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= " + path + " ; Extended Properties=\"Excel 12.0;IMEX=1;HDR=Yes;TypeGuessRows=0;ImportMixedTypes=Text\"";
+
+                connectionString = (path.IndexOf("xlsx") > 0) ? connectionStringXLSX : connectionString;
+
                 OleDbConnection conn = new OleDbConnection(connectionString);
                 if (conn.State == ConnectionState.Open) conn.Close();
                 conn.Open();
@@ -124,8 +128,10 @@ namespace PrimaryHaul.WebUI
                                     #region Insert Row
                                     try
                                     {
-                                        string s = int.Parse(drRead[4].ToString()).ToString("00000");//String.Format("{0:00000}", );
                                         dr = dtHaulierUp.NewTransportationRow();
+
+                                        string s = int.Parse(drRead[4].ToString()).ToString("00000");//String.Format("{0:00000}", );
+                                        
                                         dr.PO_No = drRead[1].ToString().Trim();
                                         dr.Haulier_Abbr = drRead[0].ToString().Trim();
                                         dr.Delivery_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "M/d/yyyy", null).ToString("dd/MM/yyyy");

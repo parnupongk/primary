@@ -241,6 +241,18 @@ namespace PrimaryHaul.WebUI
                 string message = PH_RateCardInfo.PH_RateCard_Insert(AppCode.strConnDB, dt.Rows[dt.Rows.Count - 1]) > 0 ? "Save Data Successfull" : "Save Data Not Successfull";
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);
                 DataBindData(true);
+
+                txtVendorCode.Text = "";
+                txtVendorName.Text = "";
+                ddlCollectionPoint.ClearSelection();
+                ddlDC.ClearSelection();
+                txtBuyRate.Text = "";
+                ddlRateType.ClearSelection();
+                ddlRateType.ClearSelection();
+                txtSellRate.Text = "";
+                ddlRateType.ClearSelection();
+                txtRateFrom.Text = "";
+                txtRateTo.Text = "";
             }
             catch(Exception ex)
             {
