@@ -95,7 +95,7 @@
                         </asp:BoundField>
                     <asp:BoundField DataField="Trans_Type" Visible="false" HeaderText="Trans_Type" ReadOnly="True" />
                     <asp:BoundField DataField="Remark2" HeaderText="Remark2" Visible="false" ReadOnly="True" />
-                    <asp:BoundField DataField="Year_Week_OnFile" HeaderText="Year_Week_OnFile" ReadOnly="True" /> 
+                    
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />
                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -125,6 +125,7 @@
                     <asp:BoundField DataField="Addition_Cost_Reason" HeaderText="Addition_Cost_Reason" ReadOnly="True" />
                     <asp:BoundField DataField="Total_Cost" HeaderText="Total_Cost" ReadOnly="True" />
                     <asp:BoundField DataField="Year_Week_OnFile" HeaderText="Year_Week_OnFile" ReadOnly="True" /> 
+                <asp:BoundField DataField="Year_Week_OnFile" HeaderText="Year_Week_OnFile" ReadOnly="True" /> 
 >>>>>>> origin/master -->
         </div>
     </div>
