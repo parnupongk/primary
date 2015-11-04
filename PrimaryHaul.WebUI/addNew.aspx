@@ -20,7 +20,7 @@
 
         .BarBorder {
             padding: 2px 2px 2px 2px;
-            width: 200px;
+            width: 200px; 
             vertical-align: middle;
         }
     </style>
