@@ -18,7 +18,7 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TransID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTransID" msprop:Generator_ColumnPropNameInRow="TransID" msprop:Generator_ColumnPropNameInTable="TransIDColumn" msprop:Generator_UserColumnName="TransID" type="xs:int" />
-              <xs:element name="PO_No" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="PO_No" msprop:Generator_ColumnVarNameInTable="columnPO_No" msprop:Generator_ColumnPropNameInTable="PO_NoColumn" msprop:Generator_UserColumnName="PO_No">
+              <xs:element name="PO_No" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="PO_No" msprop:Generator_ColumnVarNameInTable="columnPO_No" msprop:Generator_ColumnPropNameInTable="PO_NoColumn" msprop:Generator_UserColumnName="PO_No" default="" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />

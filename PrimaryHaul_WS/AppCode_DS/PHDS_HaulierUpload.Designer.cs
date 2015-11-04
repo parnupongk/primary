@@ -873,7 +873,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 this.columnTransID.AllowDBNull = false;
                 this.columnTransID.ReadOnly = true;
                 this.columnTransID.Unique = true;
-                this.columnPO_No.AllowDBNull = false;
+                this.columnPO_No.DefaultValue = ((string)(""));
                 this.columnPO_No.MaxLength = 255;
                 this.columnHaulier_Abbr.AllowDBNull = false;
                 this.columnHaulier_Abbr.MaxLength = 20;
@@ -1052,7 +1052,12 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string PO_No {
                 get {
-                    return ((string)(this[this.tableTransportation.PO_NoColumn]));
+                    if (this.IsPO_NoNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableTransportation.PO_NoColumn]));
+                    }
                 }
                 set {
                     this[this.tableTransportation.PO_NoColumn] = value;
@@ -1503,6 +1508,18 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 set {
                     this[this.tableTransportation.RC_Tesco_PeriodColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPO_NoNull() {
+                return this.IsNull(this.tableTransportation.PO_NoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPO_NoNull() {
+                this[this.tableTransportation.PO_NoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
