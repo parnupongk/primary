@@ -875,19 +875,12 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 this.columnTransID.Unique = true;
                 this.columnPO_No.DefaultValue = ((string)(""));
                 this.columnPO_No.MaxLength = 255;
-                this.columnHaulier_Abbr.AllowDBNull = false;
                 this.columnHaulier_Abbr.MaxLength = 20;
-                this.columnDelivery_Date.AllowDBNull = false;
                 this.columnDelivery_Date.MaxLength = 15;
-                this.columnDelivery_Ref.AllowDBNull = false;
                 this.columnDelivery_Ref.MaxLength = 10;
-                this.columnVendor_Code.AllowDBNull = false;
                 this.columnVendor_Code.MaxLength = 5;
-                this.columnVendor_Name.AllowDBNull = false;
                 this.columnVendor_Name.MaxLength = 255;
-                this.columnCollection_Point.AllowDBNull = false;
                 this.columnCollection_Point.MaxLength = 1000;
-                this.columnDelivery_Location.AllowDBNull = false;
                 this.columnDelivery_Location.MaxLength = 2000;
                 this.columnRateType.MaxLength = 10;
                 this.columnCurrency.MaxLength = 5;
@@ -1068,7 +1061,12 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Haulier_Abbr {
                 get {
-                    return ((string)(this[this.tableTransportation.Haulier_AbbrColumn]));
+                    try {
+                        return ((string)(this[this.tableTransportation.Haulier_AbbrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Haulier_Abbr\' in table \'Transportation\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableTransportation.Haulier_AbbrColumn] = value;
@@ -1079,7 +1077,12 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Delivery_Date {
                 get {
-                    return ((string)(this[this.tableTransportation.Delivery_DateColumn]));
+                    if (this.IsDelivery_DateNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableTransportation.Delivery_DateColumn]));
+                    }
                 }
                 set {
                     this[this.tableTransportation.Delivery_DateColumn] = value;
@@ -1090,7 +1093,12 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Delivery_Ref {
                 get {
-                    return ((string)(this[this.tableTransportation.Delivery_RefColumn]));
+                    try {
+                        return ((string)(this[this.tableTransportation.Delivery_RefColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Delivery_Ref\' in table \'Transportation\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableTransportation.Delivery_RefColumn] = value;
@@ -1101,7 +1109,12 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Vendor_Code {
                 get {
-                    return ((string)(this[this.tableTransportation.Vendor_CodeColumn]));
+                    try {
+                        return ((string)(this[this.tableTransportation.Vendor_CodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Vendor_Code\' in table \'Transportation\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableTransportation.Vendor_CodeColumn] = value;
@@ -1112,7 +1125,12 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Vendor_Name {
                 get {
-                    return ((string)(this[this.tableTransportation.Vendor_NameColumn]));
+                    try {
+                        return ((string)(this[this.tableTransportation.Vendor_NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Vendor_Name\' in table \'Transportation\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableTransportation.Vendor_NameColumn] = value;
@@ -1123,7 +1141,12 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Collection_Point {
                 get {
-                    return ((string)(this[this.tableTransportation.Collection_PointColumn]));
+                    try {
+                        return ((string)(this[this.tableTransportation.Collection_PointColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Collection_Point\' in table \'Transportation\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableTransportation.Collection_PointColumn] = value;
@@ -1134,7 +1157,12 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Delivery_Location {
                 get {
-                    return ((string)(this[this.tableTransportation.Delivery_LocationColumn]));
+                    try {
+                        return ((string)(this[this.tableTransportation.Delivery_LocationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Delivery_Location\' in table \'Transportation\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableTransportation.Delivery_LocationColumn] = value;
@@ -1520,6 +1548,90 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPO_NoNull() {
                 this[this.tableTransportation.PO_NoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHaulier_AbbrNull() {
+                return this.IsNull(this.tableTransportation.Haulier_AbbrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHaulier_AbbrNull() {
+                this[this.tableTransportation.Haulier_AbbrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDelivery_DateNull() {
+                return this.IsNull(this.tableTransportation.Delivery_DateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDelivery_DateNull() {
+                this[this.tableTransportation.Delivery_DateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDelivery_RefNull() {
+                return this.IsNull(this.tableTransportation.Delivery_RefColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDelivery_RefNull() {
+                this[this.tableTransportation.Delivery_RefColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVendor_CodeNull() {
+                return this.IsNull(this.tableTransportation.Vendor_CodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVendor_CodeNull() {
+                this[this.tableTransportation.Vendor_CodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVendor_NameNull() {
+                return this.IsNull(this.tableTransportation.Vendor_NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVendor_NameNull() {
+                this[this.tableTransportation.Vendor_NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCollection_PointNull() {
+                return this.IsNull(this.tableTransportation.Collection_PointColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCollection_PointNull() {
+                this[this.tableTransportation.Collection_PointColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDelivery_LocationNull() {
+                return this.IsNull(this.tableTransportation.Delivery_LocationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDelivery_LocationNull() {
+                this[this.tableTransportation.Delivery_LocationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

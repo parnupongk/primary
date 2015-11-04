@@ -130,7 +130,7 @@ namespace PrimaryHaul.WebUI
                                     {
                                         dr = dtHaulierUp.NewTransportationRow();
 
-                                        string s = int.Parse(drRead[4].ToString()).ToString("00000");//String.Format("{0:00000}", );
+                                        string s = drRead[4].ToString().Trim() !=""? int.Parse(drRead[4].ToString()).ToString("00000"):"00000";//String.Format("{0:00000}", );
                                         
                                         dr.PO_No = drRead[1].ToString().Trim();
                                         dr.Haulier_Abbr = drRead[0].ToString().Trim();
