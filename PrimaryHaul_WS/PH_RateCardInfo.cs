@@ -84,6 +84,7 @@ namespace PrimaryHaul_WS
                     , new SqlParameter[] {new SqlParameter("@Vendor_Code",dr[0].ToString())
                                             ,new SqlParameter("@Vendor_Name",dr[1].ToString())
                                             ,new SqlParameter("@Collection_Point",dr[4].ToString())
+                                            ,new SqlParameter("@ Collection_Point_Replace",dr[4].ToString().Replace(" ",""))
                                             ,new SqlParameter("@DC_ABBR",dr[5].ToString())
                                             ,new SqlParameter("@Transporter_Name",dr[6].ToString())
                                             ,new SqlParameter("@Transporter_Desc",dr[11].ToString())

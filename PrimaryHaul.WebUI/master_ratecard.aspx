@@ -34,6 +34,7 @@
                 }
     </style>
     <script>
+
         function js_tab(varTab) {
             document.getElementById('form_view').style.display = 'none';
             document.getElementById('form_import').style.display = 'none';
@@ -51,6 +52,10 @@
         rel="Stylesheet" type="text/css" />
 
     <script type="text/javascript">
+        function UploadComplete() {
+            document.getElementById('<%= btnSubmit.ClientID %>').disabled = false;
+        }
+
         $(document).ready(function () {
             SearchText();
         });
@@ -134,8 +139,8 @@
                 <div class="col-md-9">
 
                     <asp:AjaxFileUpload ID="AjaxFileUpload" runat="server" Padding-Bottom="4"
-                        Padding-Left="2" Padding-Right="1" Padding-Top="4" ThrobberID="myThrobber" MaximumNumberOfFiles="10"
-                        AllowedFileTypes="xls,vnd.ms-excel,application/vnd.ms-excel" OnUploadComplete="AjaxFileUpload_UploadComplete" />
+                        Padding-Left="2" Padding-Right="1" Padding-Top="4" ThrobberID="myThrobber" MaximumNumberOfFiles="10" OnClientUploadCompleteAll="UploadComplete"
+                        AllowedFileTypes="xls,vnd.ms-excel,application/vnd.ms-excel,xlsx" OnUploadComplete="AjaxFileUpload_UploadComplete" />
                 </div>
             </div>
             <div class="form-group">

@@ -112,7 +112,7 @@ namespace PrimaryHaul.WebUI
                     {
                         try {
 
-                            strSheet = (i == 0) ? "Normal" : "Load";
+                            strSheet = (i == 0) ? "Normal" : "Dummy";
                             string sql = "select * from [" + strSheet + "$]";
                             OleDbCommand cmd = new OleDbCommand(sql, conn);
                             OleDbDataReader drRead = cmd.ExecuteReader();

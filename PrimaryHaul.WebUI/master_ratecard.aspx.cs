@@ -17,6 +17,7 @@ namespace PrimaryHaul.WebUI
         {
            if(!IsPostBack)
             {
+                btnSubmit.Enabled = false;
                 DataBindData(true);
                 DataBindColl();
                 DataBindDC();
@@ -81,14 +82,18 @@ namespace PrimaryHaul.WebUI
             string fullPath = Server.MapPath(ConfigurationManager.AppSettings["PH_FolderUpload"] + fileName);
             AjaxFileUpload.SaveAs(fullPath);
             Session["fileName"] = fullPath;
+            btnSubmit.Enabled = true;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if( Session["fileName"] != null )
             {
-                if (InsertData(Session["fileName"].ToString())) ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alertMessage('Import Data Successful');", true);
+                if (InsertData(Session["fileName"].ToString()))
+                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alertMessage('Import Data Successful');", true);
                 else ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertMessage", "alertMessage('Import Data Not Successful');", true);
+
+                btnSubmit.Enabled = false;
             }
         }
 
@@ -107,6 +112,9 @@ namespace PrimaryHaul.WebUI
                                                      });
             //Response.Write(path);
             string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source= " + path + " ; Extended Properties=Excel 8.0;";
+            string connectionStringXLSX = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= " + path + " ; Extended Properties=\"Excel 12.0;IMEX=1;HDR=Yes;TypeGuessRows=0;ImportMixedTypes=Text\"";
+
+            connectionString = (path.IndexOf("xlsx") > 0) ? connectionStringXLSX : connectionString;
             OleDbConnection conn = new OleDbConnection(connectionString);
             if (conn.State == ConnectionState.Open) conn.Close();
             conn.Open();
