@@ -130,11 +130,11 @@
             </tr>
          <%
         string sql_detail0 = "Select Year_Week_Upload,Delivery_Date,Haulier_Abbr,PO_No,Delivery_Ref,Delivery_Location,TransID, " +
-            "case when RateType='Box' then No_Of_QTY end  as Boxes, " +
-            "case when RateType='Pallet' then No_Of_QTY end  as Pallets, " +
-            "case when RateType='Tray' then No_Of_QTY end  as Trays, " +
-            "case when RateType='Cases' then No_Of_QTY end  as Cases, " +
-            "case when RateType='Load' then No_Of_QTY end  as Loads,  " +
+            "case when upper(RateType) like '%Box%' then No_Of_QTY end  as Boxes, " +
+            "case when upper(RateType) like '%Pallet%' then No_Of_QTY end  as Pallets,  " +
+            "case when upper(RateType) like '%Tray%' then No_Of_QTY end  as Trays, " +
+            "case when upper(RateType) like '%Cases%' then No_Of_QTY end  as Cases,  " +
+            "case when upper(RateType) like '%Load%' then No_Of_QTY end  as Loads,  " +
             "RateType , rc_sell_rate,Sell_Fuel_Rate,  " +
             "CAST((Total_Cost_Charging*Vat_Default) AS Decimal(6,2)) As Vat_Cost, " +
             "Total_Cost_Charging " +

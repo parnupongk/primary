@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="report_summary.aspx.cs" Inherits="PrimaryHaul.WebUI.pph_include.perview.report_summary" %>
-<%@ Import Namespace="System.Data"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="report_summary_sum.aspx.cs" Inherits="PrimaryHaul.WebUI.pph_include.download.report_summary_sum" %>
+
 <%@ Import Namespace="System.Data.SqlClient"%>
 <%@ Import Namespace="PrimaryHaul_WS"%>
 <%@ Import Namespace="PrimaryHaul_WSFlow"%>
@@ -7,6 +7,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 </head>
 <body>
@@ -61,7 +62,7 @@
                 <td align="center" valign="middle"><%=obj_detail["Year"].ToString() %></td>
                 <td align="center" valign="middle"><%=obj_detail["rc_tesco_period"].ToString() %></td>
                 <td align="center" valign="middle"><%=obj_detail["Week"].ToString() %></td>
-                <td align="center" valign="middle"><%=obj_detail["Vendor_Code"].ToString() %></td>
+                <td align="center" valign="middle"></td>
                 <td align="left" valign="middle"><%=obj_detail["Vendor_Name"].ToString() %></td>
                 <td align="center" valign="middle"><%=obj_detail["Haulier_Abbr"].ToString() %></td>
                 <td align="right" valign="middle"><%=Convert.ToDouble(a1.ToString()).ToString("#,##0.00") %></td>

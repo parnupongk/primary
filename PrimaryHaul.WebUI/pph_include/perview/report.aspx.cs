@@ -26,11 +26,11 @@ namespace PrimaryHaul.WebUI.pph_include.perview
             if (!string.IsNullOrEmpty(Request.QueryString["vd"] as string)) { sql_vd = "and Vendor_Code in (select Vendor_Code from Vendor_Group where VendorID='" + Request.QueryString["vd"].ToString() + "') "; }
             if (!string.IsNullOrEmpty(Request.QueryString["dc"] as string)) { sql_hl = "and DC_NO='" + Request.QueryString["dc"].ToString() + "' "; }
             string sql_detail = "select Vendor_Code,Vendor_Name,Haulier_Abbr,DC_No,Delivery_Location,Currency, " +
-            "case when RateType='Box' then No_Of_QTY end  as Boxes, " +
-            "case when RateType='Pallet' then No_Of_QTY end  as Pallet, " +
-            "case when RateType='Tray' then No_Of_QTY end  as Tray, " +
-            "case when RateType='Cases' then No_Of_QTY end  as Cases, " +
-            "case when RateType='Load' then No_Of_QTY end  as Load, " +
+            "case when upper(RateType) like '%Box%' then No_Of_QTY end  as Boxes, " +
+            "case when upper(RateType) like '%Pallet%' then No_Of_QTY end  as Pallets,  " +
+            "case when upper(RateType) like '%Tray%' then No_Of_QTY end  as Trays, " +
+            "case when upper(RateType) like '%Cases%' then No_Of_QTY end  as Cases,  " +
+            "case when upper(RateType) like '%Load%' then No_Of_QTY end  as Loads,  " +           
             "sum(Total_Cost) as Cost , " +
             "sum(Total_Cost+Additional_Cost) as TotalCost, " +
             "sum(Total_Cost_Charging) as Total_Revenue, " +
@@ -41,14 +41,13 @@ namespace PrimaryHaul.WebUI.pph_include.perview
             "" + sql_vd + "" +
             "and Vendor_Name<>'DUMMY' " +
             "and Calc_Date is not null Group by Vendor_Code,Vendor_Name,Haulier_Abbr,DC_No,Delivery_Location,Currency, " +
-            "case when RateType='Box' then No_Of_QTY end , " +
-            "case when RateType='Pallet' then No_Of_QTY end , " +
-            "case when RateType='Tray' then No_Of_QTY end , " +
-            "case when RateType='Cases' then No_Of_QTY end , " +
-            "case when RateType='Load' then No_Of_QTY end ,TransID Order by TransID";
+            "case when upper(RateType) like '%Box%' then No_Of_QTY end , " +
+            "case when upper(RateType) like '%Pallet%' then No_Of_QTY end , " +
+            "case when upper(RateType) like '%Tray%' then No_Of_QTY end , " +
+            "case when upper(RateType) like '%Cases%' then No_Of_QTY end , " +
+            "case when upper(RateType) like '%Load%' then No_Of_QTY end ,TransID Order by Vendor_Name";
             SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
             obj_detail = rs_detail.ExecuteReader();
-            obj_detail.Read();
         }
     }
 }

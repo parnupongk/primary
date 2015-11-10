@@ -60,6 +60,10 @@ namespace PrimaryHaul.WebUI
             main_function PPHfunction = new main_function();
         
             string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source= " + path + " ; Extended Properties=Excel 8.0;";
+            string connectionStringXLSX = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= " + path + " ; Extended Properties=\"Excel 12.0;IMEX=1;HDR=Yes;TypeGuessRows=0;ImportMixedTypes=Text\"";
+
+            connectionString = (path.IndexOf("xlsx") > 0) ? connectionStringXLSX : connectionString;
+
             OleDbConnection conn = new OleDbConnection(connectionString);
             if (conn.State == ConnectionState.Open) conn.Close();
             conn.Open();

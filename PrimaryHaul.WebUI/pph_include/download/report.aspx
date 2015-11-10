@@ -7,7 +7,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta charset="UTF-8" />
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 </head>
 <body>
@@ -63,9 +63,9 @@
             </tr>
             <%  double total_a1 = 0.00, total_a2 = 0.00, total_a3 = 0.00, total_a4 = 0.00, total_a5 = 0.00, total_a6 = 0.00, total_a7 = 0.00, total_a8 = 0.00, total_a9 = 0.00; while (obj_detail.Read()){
                 double a1 = obj_detail["Boxes"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Boxes"].ToString());
-                double a2 = obj_detail["Pallet"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Pallet"].ToString());
-                double a3 = obj_detail["Tray"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Tray"].ToString());
-                double a4 = obj_detail["Load"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Load"].ToString());
+                double a2 = obj_detail["Pallets"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Pallets"].ToString());
+                double a3 = obj_detail["Trays"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Trays"].ToString());
+                double a4 = obj_detail["Loads"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Loads"].ToString());
                 double a5 = obj_detail["Cases"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Cases"].ToString());
                 double a6 = obj_detail["Cost"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Cost"].ToString());
                 double a7 = obj_detail["TotalCost"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["TotalCost"].ToString());
@@ -90,9 +90,9 @@
                 <td align="center" valign="middle" ><%=obj_detail["Currency"].ToString() %></td>
                 <td align="right" valign="middle" ><%=obj_detail["Boxes"].ToString() %></td>
                 <td align="right" valign="middle" ><%=obj_detail["Cases"].ToString() %></td>
-                <td align="right" valign="middle" ><%=obj_detail["Pallet"].ToString() %></td>
-                <td align="right" valign="middle" ><%=obj_detail["Tray"].ToString() %></td>
-                <td align="right" valign="middle" ><%=obj_detail["Load"].ToString() %></td>
+                <td align="right" valign="middle" ><%=obj_detail["Pallets"].ToString() %></td>
+                <td align="right" valign="middle" ><%=obj_detail["Trays"].ToString() %></td>
+                <td align="right" valign="middle" ><%=obj_detail["Loads"].ToString() %></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(a6.ToString()).ToString("#,##0.00") %></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(a7.ToString()).ToString("#,##0.00") %></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(a8.ToString()).ToString("#,##0.00") %></td>
