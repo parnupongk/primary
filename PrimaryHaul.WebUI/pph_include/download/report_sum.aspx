@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="report.aspx.cs" Inherits="PrimaryHaul.WebUI.pph_include.perview.report" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="report_sum.aspx.cs" Inherits="PrimaryHaul.WebUI.pph_include.download.report_sum" %>
 <%@ Import Namespace="System.Data"%>
 <%@ Import Namespace="System.Data.SqlClient"%>
 <%@ Import Namespace="PrimaryHaul_WS"%>
@@ -7,6 +7,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 </head>
 <body>
@@ -43,7 +44,6 @@
         <td>
         <table cellpadding="5"  align="center" border="1" bordercolor="#000000" cellspacing="0" width="100%">
             <tr>
-                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Vendor No</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Vendor Name</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Haulier</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">DC No</td>
@@ -54,6 +54,7 @@
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Pallets</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Trays</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Loads</td>
+                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">RateType</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Cost</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Total Cost</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Revenue</td>
@@ -81,7 +82,6 @@
                 total_a9 = total_a9 + a9;
             %>
             <tr>
-                <td align="center" valign="middle" ><%=obj_detail["Vendor_Code"].ToString() %></td>
                 <td align="left" valign="middle" ><%=obj_detail["Vendor_Name"].ToString() %></td>
                 <td align="center" valign="middle" ><%=obj_detail["Haulier_Abbr"].ToString() %></td>
                 <td align="center" valign="middle" ><%=obj_detail["DC_No"].ToString() %></td>
@@ -92,6 +92,7 @@
                 <td align="right" valign="middle" ><%=obj_detail["Pallets"].ToString() %></td>
                 <td align="right" valign="middle" ><%=obj_detail["Trays"].ToString() %></td>
                 <td align="right" valign="middle" ><%=obj_detail["Loads"].ToString() %></td>
+                <td align="center" valign="middle" ><%=obj_detail["RateType"].ToString() %></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(a6.ToString()).ToString("#,##0.00") %></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(a7.ToString()).ToString("#,##0.00") %></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(a8.ToString()).ToString("#,##0.00") %></td>

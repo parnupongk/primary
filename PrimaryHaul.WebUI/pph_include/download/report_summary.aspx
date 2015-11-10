@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="report_summary.aspx.cs" Inherits="PrimaryHaul.WebUI.pph_include.download.report_summary" %>
-
 <%@ Import Namespace="System.Data"%>
 <%@ Import Namespace="System.Data.SqlClient"%>
 <%@ Import Namespace="PrimaryHaul_WS"%>
@@ -8,7 +7,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 </head>
 <body>
@@ -41,8 +40,8 @@
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Tesco Year</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Period</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Tesco Week No</td>
-                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Supplier Group No</td>
-                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Supplier Name</td>
+                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Vendor Code</td>
+                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Vendor Name</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Haulier</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Accrued Revenue</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Total Revenue</td>
@@ -56,6 +55,8 @@
                    double a3 = obj_detail["Total_Cost"].ToString().Trim() == "" ? 0 : double.Parse(obj_detail["Total_Cost"].ToString());
                    total_a2 = total_a2 + a2;
                    total_a3 = total_a3 + a3;
+                   double profit =0.00;
+                   if (a3 <= 0) { profit = 0.00; } else { profit = (((a2 - a3) * 100) / a3); }
         %>
             <tr>
                 <td align="center" valign="middle"><%=obj_detail["Year"].ToString() %></td>
@@ -68,7 +69,7 @@
                 <td align="right" valign="middle"><%=Convert.ToDouble(a2.ToString()).ToString("#,##0.00") %></td>
                 <td align="right" valign="middle"><%=Convert.ToDouble(a3.ToString()).ToString("#,##0.00") %></td>
                 <td align="right" valign="middle"><%=Convert.ToDouble(a3.ToString()).ToString("#,##0.00") %></td>
-                <td align="right" valign="middle"><%=Convert.ToDouble((((a2-a3)*100)/a3)).ToString("#,##0.00") %></td>
+                <td align="right" valign="middle"><%=Convert.ToDouble(profit.ToString()).ToString("#,##0.00") %></td>
             </tr>
     
             <% } obj_detail.Close(); %>
@@ -77,7 +78,7 @@
                 <td align="right" valign="middle" style="background-color:#00ffff;font-weight:bold;"><%=Convert.ToDouble(total_a2.ToString()).ToString("#,##0.00") %></td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;"></td>
                 <td align="right" valign="middle" style="background-color:#00ffff;font-weight:bold;"><%=Convert.ToDouble(total_a3.ToString()).ToString("#,##0.00") %></td>
-                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;"></td>
+                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;"><%=Convert.ToDouble((((total_a2-total_a3)*100)/total_a3)).ToString("#,##0.00") %></td>
             </tr>
         </table>
         </td>

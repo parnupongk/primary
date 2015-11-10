@@ -14,11 +14,12 @@
         document.getElementById('form_view05').style.display = 'none';
         document.getElementById(varTab).style.display = '';
     }
-    function js_export(yw, hl, vd, dc, type) {
+    function js_export(yw, hl, vd, dc, type, reportSum) {
         var objyw = '';
         var objhl = '';
         var objvd = '';
         var objdc = '';
+        var objrSum = '';
         objyw = document.getElementById(yw).value;
         if (objyw == "") {
             document.getElementById('bt01').disabled = true;
@@ -39,24 +40,40 @@
         {
             objhl = document.getElementById(hl).value;
             objvd = document.getElementById(vd).value;
-            window.open('./pph_include/perview/report_summary.aspx?yw=' + objyw + '&hl=' + objhl + '&vd=' + objvd, '_blank');
+            if (document.getElementById(reportSum).checked) {
+                window.open('./pph_include/perview/report_summary_sum.aspx?yw=' + objyw + '&hl=' + objhl + '&vd=' + objvd, '_blank');
+            } else {
+                window.open('./pph_include/perview/report_summary.aspx?yw=' + objyw + '&hl=' + objhl + '&vd=' + objvd, '_blank');
+            }
         }
         if (type == 2) {
             objhl = document.getElementById(hl).value;
             objvd = document.getElementById(vd).value;
-            window.open('./pph_include/download/report_summary.aspx?yw=' + objyw + '&hl=' + objhl + '&vd=' + objvd, '_blank');
+            if (document.getElementById(reportSum).checked) {
+                window.open('./pph_include/download/report_summary_sum.aspx?yw=' + objyw + '&hl=' + objhl + '&vd=' + objvd, '_blank');
+            } else {
+                window.open('./pph_include/download/report_summary.aspx?yw=' + objyw + '&hl=' + objhl + '&vd=' + objvd, '_blank');
+            }
         }
         if (type == 3) {
             objhl = document.getElementById(hl).value;
             objvd = document.getElementById(vd).value;
             objdc = document.getElementById(dc).value;
-            window.open('./pph_include/perview/report.aspx?yw=' + objyw + '&hl=' + objhl + '&vd=' + objvd + '&dc=' + objdc, '_blank');
+            if (document.getElementById(reportSum).checked) {
+                window.open('./pph_include/perview/report_sum.aspx?yw=' + objyw + '&hl=' + objhl + '&vd=' + objvd + '&dc=' + objdc, '_blank');
+            } else {
+                window.open('./pph_include/perview/report.aspx?yw=' + objyw + '&hl=' + objhl + '&vd=' + objvd + '&dc=' + objdc, '_blank');
+            }
         }
         if (type == 4) {
             objhl = document.getElementById(hl).value;
             objvd = document.getElementById(vd).value;
             objdc = document.getElementById(dc).value;
-            window.open('./pph_include/download/report.aspx?yw=' + objyw + '&hl=' + objhl + '&vd=' + objvd + '&dc=' + objdc, '_blank');
+            if (document.getElementById(reportSum).checked) {
+                window.open('./pph_include/download/report_sum.aspx?yw=' + objyw + '&hl=' + objhl + '&vd=' + objvd + '&dc=' + objdc, '_blank');
+            } else {
+                window.open('./pph_include/download/report.aspx?yw=' + objyw + '&hl=' + objhl + '&vd=' + objvd + '&dc=' + objdc, '_blank');
+            }
         }
         if (type == 5) {
             window.open('./pph_include/perview/hualier_cost.aspx?yw=' + objyw, '_blank');
@@ -236,8 +253,17 @@
     </div>
     <div class="form-group">
         <div class="row">
+            <div class="col-md-2"><label class="control-label">Summary Report</label></div>
+            <div class="col-md-3">
+                <input type="checkbox" id="getReportType01" name="getReportType01" value="1" />
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
             <div class="col-md-2" ><label class="control-label"></label></div>
-            <div class="col-md-7" ><input type="button" value="Perview" class="btn btn-default" onclick="js_export('YW_SUM', 'HL_SUM', 'VD_SUM', '', '1');" id="bt01" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('YW_SUM', 'HL_SUM', 'VD_SUM', '', '2');" id="bt02" /></div>
+            <div class="col-md-7" ><input type="button" value="Perview" class="btn btn-default" onclick="js_export('YW_SUM', 'HL_SUM', 'VD_SUM', '', '1', 'getReportType01');" id="bt01" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('YW_SUM', 'HL_SUM', 'VD_SUM', '', '2', 'getReportType01');" id="bt02" /></div>
         </div>
     </div>
 </div>
@@ -312,8 +338,17 @@
     </div>
     <div class="form-group">
         <div class="row">
+            <div class="col-md-2"><label class="control-label">Summary Report</label></div>
+            <div class="col-md-3">
+                <input type="checkbox" id="getReportType02" name="getReportType02" value="1" />
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
             <div class="col-md-2" ><label class="control-label"></label></div>
-            <div class="col-md-7" ><input type="button" value="Perview" class="btn btn-default" onclick="js_export('YW', 'HL', 'VD', 'DC', '3');" id="bt03" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="js_export('YW', 'HL', 'VD', 'DC', '4');" id="bt04" /></div>
+            <div class="col-md-7" ><input type="button" value="Perview" class="btn btn-default" onclick="js_export('YW', 'HL', 'VD', 'DC', '3', 'getReportType02');" id="bt03" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('YW', 'HL', 'VD', 'DC', '4', 'getReportType02');" id="bt04" /></div>
         </div>
     </div>
 </div>
@@ -340,10 +375,19 @@
             <div class="col-md-7"></div>
         </div>
     </div>
+    <!--<div class="form-group">
+        <div class="row">
+            <div class="col-md-2"><label class="control-label">Summary Report</label></div>
+            <div class="col-md-3">
+                <input type="checkbox" id="getReportType03" name="getReportType03" value="1" />
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+    </div>-->
     <div class="form-group">
         <div class="row">
             <div class="col-md-2" ><label class="control-label"></label></div>
-            <div class="col-md-7" ><input type="button" value="Perview"  class="btn btn-default" onclick="js_export('YW_HC', '', '', '', '5');" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="js_export('YW_HC', '', '', '', '6');" /></div>
+            <div class="col-md-7" ><input type="button" value="Perview"  class="btn btn-default" onclick="js_export('YW_HC', '', '', '', '5', '');" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('YW_HC', '', '', '', '6', '');" /></div>
         </div>
     </div>
 </div>
@@ -373,7 +417,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-2" ><label class="control-label"></label></div>
-            <div class="col-md-7" ><input type="button" value="Perview" class="btn btn-default" onclick="js_export('vdl', '', '', '', '8');" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('vdl', '', '', '', '9');" /></div>
+            <div class="col-md-7" ><input type="button" value="Perview" class="btn btn-default" onclick="js_export('vdl', '', '', '', '8', '');" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('vdl', '', '', '', '9', '');" /></div>
         </div>
     </div>
 </div>
@@ -425,7 +469,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-2" ><label class="control-label"></label></div>
-            <div class="col-md-7" ><input type="button" value="Perview" id="bt05" class="btn btn-default" onclick="js_export('YW_VD', 'r', 'User_VD', 'id', '7');" /></div>
+            <div class="col-md-7" ><input type="button" value="Perview" id="bt05" class="btn btn-default" onclick="js_export('YW_VD', 'r', 'User_VD', 'id', '7', '');" /></div>
         </div>
     </div>
 

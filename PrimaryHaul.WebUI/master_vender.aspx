@@ -417,6 +417,10 @@ function isNumberKey(evt) {
             document.getElementById('btnAddVendorCode').disabled = true;
             document.getElementById('addVendorCodeError').innerHTML = "<font color=\"red\">field is required</font>";
             document.getElementById('addVendorCodeError').style.display = "";
+        } else if (strValue.length != 5) {
+            document.getElementById('btnAddVendorCode').disabled = true;
+            document.getElementById('addVendorCodeError').innerHTML = "<font color=\"red\">Add Vendor_Code number 5 Digits</font>";
+            document.getElementById('addVendorCodeError').style.display = "";
         } else {
             var str_url_address = "./pph_include/ajax/files/ajax_duVendorCode.aspx";
             var str_url = "var01=" + strValue;
@@ -432,7 +436,7 @@ function isNumberKey(evt) {
                             document.getElementById('addVendorCodeError').style.display = "";
                         }
                         else {
-                           
+
                             document.getElementById('btnAddVendorCode').disabled = false;
                             document.getElementById('addVendorCodeError').style.display = "none";
                             ajax_addVendorCode(strValue, strVNID);
@@ -471,7 +475,7 @@ function isNumberKey(evt) {
     <input type="hidden" name="vnID" id="vnID" value="<%= Request.QueryString["taxID"] %>" />
     <div class="col-md-2"></div>
     <div class="col-md-2"><label class="control-label">Vendor Code </label></div>
-    <div class="col-md-3"><input type="text" class="form-control" name="addVendorCode" id="addVendorCode" onchange="ajax_duVendorCode2();"   style="width:100%;" /><p class="text-danger" id="addVendorCodeError" style="display:none;"></p></div>
+    <div class="col-md-3"><input type="text" class="form-control" name="addVendorCode" onkeypress='return isNumberKey(event)' id="addVendorCode" onchange="ajax_duVendorCode2();"   style="width:100%;" maxlength="5" /><p class="text-danger" id="addVendorCodeError" style="display:none;"></p></div>
     <div class="col-md-5"></div>
 </div>
 </div>
@@ -562,12 +566,11 @@ function isNumberKey(evt) {
             }
         }
     </script>
-    <div class="form-horizontal">
     <h4>Master Data > Vender > Vendor List > ADD Username</h4>
     <hr />
     <div class="form-group">
         <div class="row">
-            <div class="col-md-2" style="text-align:right;"><label class="control-label">Username : </label></div>
+            <div class="col-md-2" style="text-align:left;"><label class="control-label">Username : </label></div>
             <div class="col-md-3">
             <select name="vn_username" id="vn_username" onchange="ajax_vnContactPoint('vn_username');">
                 <option value="">กรุณาเลือก Username</option>
@@ -586,7 +589,7 @@ function isNumberKey(evt) {
     </div>
     <div class="form-group">
         <div class="row">
-            <div class="col-md-2" style="text-align:right;"><label class="control-label">Contact Point : </label></div>
+            <div class="col-md-2" style="text-align:left;"><label class="control-label">Contact Point : </label></div>
             <div class="col-md-3"><input type="text" class="form-control" name="showCP" id="showCP" disabled="disabled" /></div>
             <div class="col-md-7"></div>
         </div>
@@ -599,7 +602,6 @@ function isNumberKey(evt) {
         </div>
     </div>
     </div>
-</div>
 </div>    
 <% } %>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
