@@ -59,7 +59,7 @@
                     </asp:BoundField>
                     <asp:BoundField DataField="Delivery_Ref" HeaderText="Delivery Ref" ReadOnly="True" >
                         </asp:BoundField>
-                    <asp:BoundField DataField="Delivery_Date" HeaderText="Delivery Date" ReadOnly="True" >
+                    <asp:BoundField DataField="Delivery_Date" HeaderText="Delivery Date" ReadOnly="True" DataFormatString="{0:dd/MM/yyyy}" >
                         </asp:BoundField>
                     <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True" >
                         </asp:BoundField>

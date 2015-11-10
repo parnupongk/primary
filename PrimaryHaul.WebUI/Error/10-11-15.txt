@@ -1,0 +1,24 @@
+
+Log Entry : 
+10/11/2015 10:44:23
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?r=A2&id=6. Error Message:PH_RateCard_Insert >> Procedure or function usp_PrimaryHaul_RateCardInsert has too many arguments specified.
+__________________________
+
+Log Entry : 
+10/11/2015 14:38:49
+ IP :  ::1 
+Error in: http://localhost:35449/haulier_upload.aspx. Error Message:Verlify Data >>'Dummy$' is not a valid name.  Make sure that it does not include invalid characters or punctuation and that it is not too long.
+__________________________
+
+Log Entry : 
+10/11/2015 14:39:34
+ IP :  ::1 
+Error in: http://localhost:35449/haulier_upload.aspx. Error Message:Verlify Data >>'Dummy$' is not a valid name.  Make sure that it does not include invalid characters or punctuation and that it is not too long.
+__________________________
+
+Log Entry : 
+10/11/2015 15:04:57
+ IP :  ::1 
+Error in: http://localhost:35449/haulier_upload.aspx?r=A1&id=6. Error Message:Verlify Data >>'Dummy$' is not a valid name.  Make sure that it does not include invalid characters or punctuation and that it is not too long.
+__________________________
