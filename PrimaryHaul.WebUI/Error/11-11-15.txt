@@ -1,0 +1,14 @@
+
+Log Entry : 
+11/11/2015 16:58:20
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?r=A2&id=6. Error Message:PH_RateCard_Insert >> Procedure or function 
+
+ has too many arguments specified.
+__________________________
+
+Log Entry : 
+11/11/2015 17:00:56
+ IP :  ::1 
+Error in: http://localhost:35449/master_ratecard.aspx?r=A2&id=6. Error Message:PH_RateCard_Insert >> Procedure or function usp_PrimaryHaul_RateCardInsert has too many arguments specified.
+__________________________
