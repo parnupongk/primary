@@ -109,7 +109,7 @@
         string detailColor = "";
         int irows = 0;
         int icolor = 0;
-        string sql_download = "select Distinct vendor_code,vendor_name, (select top 1 count(Vendor_Download_Log.DownloadLogID) from Vendor_Download_Log where Vendor_Download_Log.Tesco_Year_Week=transportation.year_week_upload and Vendor_Download_Log.Vendor_UserID=" + Request.QueryString["id"] + " and Vendor_Download_Log.File_Name=vendor_code+'_" + Request.QueryString["YW"].ToString() + ".xls') as statusDownload from transportation where year_week_upload='" + Request.QueryString["YW"] + "' and calc_date is not null and vendor_code in (select vendor_code from vendor_group where Vendor_UserName= (select UserName from User_Profile where UserID=" + Request.QueryString["id"] + ") )";
+        string sql_download = "select Distinct vendor_code, (select top 1 count(Vendor_Download_Log.DownloadLogID) from Vendor_Download_Log where Vendor_Download_Log.Tesco_Year_Week=transportation.year_week_upload and Vendor_Download_Log.Vendor_UserID=" + Request.QueryString["id"] + " and Vendor_Download_Log.File_Name=vendor_code+'_" + Request.QueryString["YW"].ToString() + ".xls') as statusDownload from transportation where year_week_upload='" + Request.QueryString["YW"] + "' and calc_date is not null and vendor_code in (select vendor_code from vendor_group where Vendor_UserName= (select UserName from User_Profile where UserID=" + Request.QueryString["id"] + ") )";
         SqlCommand rs_download = new SqlCommand(sql_download, objConn);
         SqlDataReader obj_download = rs_download.ExecuteReader();
         while (obj_download.Read())
