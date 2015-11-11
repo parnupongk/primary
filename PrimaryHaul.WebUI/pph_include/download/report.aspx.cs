@@ -39,7 +39,7 @@ namespace PrimaryHaul.WebUI.pph_include.download
             "Where Year_Week_Upload='" + Request.QueryString["yw"].ToString() + "' " +
             "" + sql_hl + "" +
             "" + sql_vd + "" +
-            "and Vendor_Name<>'DUMMY' " +
+            //"and Vendor_Name<>'DUMMY' " +
             "and Calc_Date is not null Group by Vendor_Code,Vendor_Name,Haulier_Abbr,DC_No,Delivery_Location,Currency, " +
             "case when upper(RateType) like '%Box%' then No_Of_QTY end , " +
             "case when upper(RateType) like '%Pallet%' then No_Of_QTY end , " +

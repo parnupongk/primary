@@ -34,7 +34,7 @@ namespace PrimaryHaul.WebUI.pph_include.download
             "Where Year_Week_Upload='" + Request.QueryString["yw"].ToString() + "' " +
             "" + sql_hl + "" +
             "" + sql_vd + "" +
-            "and Vendor_Name<>'DUMMY' " +
+            //"and Vendor_Name<>'DUMMY' " +
             "and Calc_Date is not null Group by substring(Year_Week_Upload,1,4) ,substring(Year_Week_Upload,5,2), " +
             "rc_tesco_period,Vendor_Name,Haulier_Abbr Order by Vendor_Name";
             SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
