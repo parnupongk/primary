@@ -13,7 +13,14 @@
         <h4>HAULIER Upload</h4>
         <hr />
         <div id="form_import" style="display: ;">
-                        <div runat="server" class="form-group">
+            <div runat="server" class="form-group">
+                <asp:Label runat="server" AssociatedControlID="A1" CssClass="col-md-10 control-label"> </asp:Label>
+                <div class="col-md-2">
+                   <div class="pull-right"> <a runat="server" id="A1" href="file/Haulier_User_Manual.pdf" target="_blank">User Manual</a></div>
+                </div>
+            </div>
+
+            <div runat="server" class="form-group">
                 <asp:Label runat="server" AssociatedControlID="lnkFile" CssClass="col-md-3 control-label">Week </asp:Label>
                 <div class="col-md-9">
                     <asp:Label runat="server" ID="lblWeek" CssClass="form-control" Text="25"></asp:Label>

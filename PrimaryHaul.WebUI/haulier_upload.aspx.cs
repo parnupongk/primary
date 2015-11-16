@@ -134,7 +134,13 @@ namespace PrimaryHaul.WebUI
                                         
                                         dr.PO_No = drRead[1].ToString().Trim();
                                         dr.Haulier_Abbr = drRead[0].ToString().Trim();
-                                        dr.Delivery_Date = drRead[3].ToString().Trim().Split(' ')[0];//DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "d/M/yyyy", null).ToString("dd/MM/yyyy");
+                                        try
+                                        {
+                                            dr.Delivery_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "M/d/yyyy", null).ToString("dd/MM/yyyy"); //drRead[3].ToString().Trim().Split(' ')[0];//
+                                        }
+                                        catch {
+                                            dr.Delivery_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "d/M/yyyy", null).ToString("dd/MM/yyyy"); //drRead[3].ToString().Trim().Split(' ')[0];//
+                                        }
                                         dr.Delivery_Ref = drRead[2].ToString().Trim();
                                         dr.Vendor_Code = s;
                                         dr.Vendor_Name = drRead[5].ToString().Trim();
