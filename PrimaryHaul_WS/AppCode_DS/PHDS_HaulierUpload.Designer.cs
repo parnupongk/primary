@@ -877,7 +877,8 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 this.columnPO_No.MaxLength = 255;
                 this.columnHaulier_Abbr.MaxLength = 20;
                 this.columnDelivery_Date.MaxLength = 15;
-                this.columnDelivery_Ref.MaxLength = 10;
+                this.columnDelivery_Ref.DefaultValue = ((string)(""));
+                this.columnDelivery_Ref.MaxLength = 100;
                 this.columnVendor_Code.MaxLength = 5;
                 this.columnVendor_Name.MaxLength = 255;
                 this.columnCollection_Point.MaxLength = 1000;
@@ -1093,11 +1094,11 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Delivery_Ref {
                 get {
-                    try {
-                        return ((string)(this[this.tableTransportation.Delivery_RefColumn]));
+                    if (this.IsDelivery_RefNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Delivery_Ref\' in table \'Transportation\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableTransportation.Delivery_RefColumn]));
                     }
                 }
                 set {
