@@ -21,7 +21,7 @@ namespace PrimaryHaul.WebUI.pph_include.perview
             objConn.ConnectionString = strConnString;
             objConn.Open();
 
-            string sql_detail = "Select Distinct T.Vendor_Code,V.Download_DateTime From Transportation T Left Outer Join vendor_download_log V on T.Vendor_Code=V.Vendor_Code and T.Year_Week_Upload='" + Request.QueryString["yw"].ToString() + "' and T.Year_Week_Upload=V.Tesco_Year_Week and Calc_date <> null or Calc_date <> '' Order by T.Vendor_Code,V.Download_DateTime Desc";
+            string sql_detail = "Select T.Vendor_Code,L.Download_DateTime,U.UserName From( select Distinct Vendor_Code,Year_Week_Upload from Transportation Where Year_Week_Upload='" + Request.QueryString["yw"].ToString() + "' and Calc_Date is not null) T Left Outer Join Vendor_Download_Log L on T.Vendor_Code = L.Vendor_Code  and T.Year_Week_Upload = L.Tesco_Year_Week and L.Tesco_Year_Week = '" + Request.QueryString["yw"].ToString() + "' Left Outer Join User_Profile U on U.UserID=L.Vendor_UserID Order by T.Vendor_Code Asc";
             SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
             obj_detail = rs_detail.ExecuteReader();
         }

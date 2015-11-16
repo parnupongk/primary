@@ -23,8 +23,9 @@
         <table cellpadding="5"  align="center" border="1" bordercolor="#000000" cellspacing="0" width="100%">
             <tr>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">No</td>
-                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Vendor</td>
+                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Vendor Code</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Download Time</td>
+                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">User Name</td>
             </tr>
             <% int irows = 0;  while (obj_detail.Read())
                {
@@ -32,8 +33,9 @@
             %>
             <tr>
                 <td align="center" valign="middle" ><%=irows%></td>
-                <td align="left" valign="middle" ><%=obj_detail["Vendor_Code"].ToString()%></td>
-                <td align="left" valign="middle" ><%=obj_detail["Download_DateTime"].ToString()%></td>
+                <td align="center" valign="middle" ><%=obj_detail["Vendor_Code"].ToString()%></td>
+                <td align="center" valign="middle" ><%=obj_detail["Download_DateTime"].ToString()%></td>
+                <td align="center" valign="middle" ><%=obj_detail["UserName"].ToString()%></td>
             </tr>
     
             <% } obj_detail.Close(); %>
