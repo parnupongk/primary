@@ -5,9 +5,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
         <script>
-        function alertMessage(str) {
-            alert(str);
-        }
+            function alertMessage(str) {
+                alert(str);
+
+            }
+
+            function UploadComplete() {
+                document.getElementById('<%= btnSubmit.ClientID %>').disabled = false;
+                document.getElementById('<%= btnClear.ClientID %>').disabled = false;
+            }
+
+            function ClearFrom()
+            {
+                document.location.reload();
+            }
     </script>
     <div class="form-horizontal">
         <h4>HAULIER Upload</h4>
@@ -37,7 +48,7 @@
                 <div class="col-md-9">
 
                     <asp:AjaxFileUpload ID="AjaxFileUpload" runat="server" Padding-Bottom="4"
-                        Padding-Left="2" Padding-Right="1" Padding-Top="4" ThrobberID="myThrobber" MaximumNumberOfFiles="10"
+                        Padding-Left="2" Padding-Right="1" Padding-Top="4" ThrobberID="myThrobber" MaximumNumberOfFiles="10" OnClientUploadCompleteAll="UploadComplete"
                         AllowedFileTypes="xls,vnd.ms-excel,xls,jpg,png,application/vnd.ms-excel,xlsx" OnUploadComplete="AjaxFileUpload_UploadComplete" />
                 </div>
             </div>
@@ -47,6 +58,9 @@
                     <p class="text-danger">
                         <asp:Label ID="lblErr" runat="server"></asp:Label>
                     </p>
+                </div>
+                <div class="col-md-offset-1 col-md-1">
+                    <asp:Button runat="server" ID="btnClear" Text="Clear" CssClass="btn btn-default" OnClientClick="ClearFrom();" OnClick="btnClear_Click" />
                 </div>
                 <div class="col-md-offset-1 col-md-1">
                     <asp:Button runat="server" ID="btnInsert" Text="Insert Data" CssClass="btn btn-default" OnClick="btnInsert_Click" />

@@ -18,6 +18,8 @@ namespace PrimaryHaul.WebUI
         {
             if (!IsPostBack)
             {
+                btnClear.Enabled = false;
+                btnSubmit.Enabled = false;
                 btnInsert.Enabled = false;
                 GetHaulierData(true);
                 lblWeek.Text = PH_HaulierUpload.PH_HaulierUp_GetDateWeek(AppCode.strConnDB);
@@ -110,8 +112,9 @@ namespace PrimaryHaul.WebUI
 
                     for (int i = 0; i < 2; i++)
                     {
+                        int index = 0;
                         try {
-
+                            
                             strSheet = (i == 0) ? "Normal" : "Dummy";
                             string sql = "select * from [" + strSheet + "$]";
                             OleDbCommand cmd = new OleDbCommand(sql, conn);
@@ -199,9 +202,11 @@ namespace PrimaryHaul.WebUI
                                     dtHaulierUp.Rows.Add(dr);
                                     #endregion
                                 }
+
+                                index++;
                             }
                         }
-                        catch(Exception ex) { PH_ExceptionManager.WriteError("Verlify Data >>" + ex.Message); }
+                        catch(Exception ex) { PH_ExceptionManager.WriteError("Verlify Data >>" + " Row Index : " + index.ToString() + " err message : " + ex.Message); }
                     }
 
                     gvData.DataSource = dtHaulierUp;
@@ -211,6 +216,8 @@ namespace PrimaryHaul.WebUI
                     if (isErr) btnInsert.Enabled = false;
                     else btnInsert.Enabled = true;
 
+
+                    btnClear.Enabled = true;
                     #endregion
                 }
                 catch (Exception ex)
@@ -313,6 +320,7 @@ namespace PrimaryHaul.WebUI
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);
                 btnInsert.Enabled = false;
                 btnSubmit.Enabled = false;
+                btnClear.Enabled = false;
             }
             catch(Exception ex)
             {
@@ -339,6 +347,13 @@ namespace PrimaryHaul.WebUI
                     e.Row.Cells[11].Text = "";
                 }
             }
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            ViewState["HaulierUpload"] = null;
+            gvData.DataSource = null;
+            gvData.DataBind();
         }
     }
 }
