@@ -78,7 +78,8 @@
     }
 </script>
 <% string strYW = ""; if (!string.IsNullOrEmpty(Request.QueryString["YW"] as string)) { strYW = Request.QueryString["YW"].ToString(); } %>
-<div class="row"><div class="col-md-12"><div class="form-horizontal"><h4>Vendor > Download</h4><hr /></div></div></div>
+    <div class="row"><div class="col-md-12"><div class="form-horizontal"><h4>Vendor > Download</h4><hr /></div></div></div>
+    <div class="row"><div class="col-md-10"></div><div class="col-md-2"><a href="./file/Vendor_User_Manual.pdf" target="_blank">User Manual</a></div></div>
 <div class="form-group">
 <div class="row">
     <div class="col-md-1"><label class="control-label">Week </label></div>
