@@ -6,6 +6,64 @@ namespace PrimaryHaul_WS
 {
     public class PH_HaulierUpload
     {
+
+        public static string PH_HaulierUp_FindAmbient(string strConnDB, AppCode_DS.PHDS_HaulierUpload.TransportationRow dr)
+        {
+            try
+            {
+                DataSet ds = SqlHelper.ExecuteDataset(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_FindRateCard_Ambient"
+                    , new SqlParameter[] {new SqlParameter("@Vendor_Code",dr.Vendor_Code)
+                                            ,new SqlParameter("@Fuel_Rate",dr.Fuel_Rate)
+                                            ,new SqlParameter("@Rate_Per_Unit",dr.Rate_Per_Unit)
+                                            ,new SqlParameter("@Collection_Point",dr.Collection_Point)
+                                         });
+
+                return ds.Tables[0].Rows.Count > 0 ? "" : "err_miss";
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("PH_HaulierUp_FindAmbient >> " + ex.Message);
+            }
+        }
+
+        public static string PH_HaulierUp_FindFresh(string strConnDB, AppCode_DS.PHDS_HaulierUpload.TransportationRow dr)
+        {
+            try
+            {
+                DataSet ds = SqlHelper.ExecuteDataset(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_FindRateCard_Fresh"
+                    , new SqlParameter[] {new SqlParameter("@Vendor_Code",dr.Vendor_Code)
+                                            ,new SqlParameter("@RateType",dr.RateType)
+                                            ,new SqlParameter("@Deliver_Location",dr.Delivery_Location)
+                                            ,new SqlParameter("@Collection_Point",dr.Collection_Point)
+                                         });
+
+                return ds.Tables[0].Rows.Count > 0 ? "" : "err_miss";
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PH_HaulierUp_FindFresh >> " + ex.Message);
+            }
+        }
+
+        public static string PH_HaulierUp_FindRTN(string strConnDB, AppCode_DS.PHDS_HaulierUpload.TransportationRow dr)
+        {
+            try
+            {
+                DataSet ds = SqlHelper.ExecuteDataset(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_FindRateCard_RTN"
+                    , new SqlParameter[] {new SqlParameter("@Vendor_Code",dr.Vendor_Code)
+                                            ,new SqlParameter("@RateType",dr.RateType)
+                                            ,new SqlParameter("@Rate_Per_Unit",dr.Rate_Per_Unit)
+                                            ,new SqlParameter("@Collection_Point",dr.Collection_Point)
+                                         });
+
+                return ds.Tables[0].Rows.Count > 0 ? "" : "err_miss";
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PH_HaulierUp_FindRTN >> " + ex.Message);
+            }
+        }
+
         public static string PH_HaulierUpLog_Insert(string strConnDB,int iUserId,string strTescoWeek,string strFileName,string strHaulierAbbr)
         {
             try

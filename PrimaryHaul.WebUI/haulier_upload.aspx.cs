@@ -190,6 +190,10 @@ namespace PrimaryHaul.WebUI
                                         {
                                             isErr = true;
                                             dr.Remark1 = "errYearWeek";
+                                        }else if(checkHalier(dr) != "")
+                                        {
+                                            isErr = true;
+                                            dr.Remark1 = "Miss RateCard";
                                         }
 
                                     }
@@ -279,6 +283,23 @@ namespace PrimaryHaul.WebUI
                 throw new Exception(ex.Message);
             }
         }
+
+        private string checkHalier(PHDS_HaulierUpload.TransportationRow dr)
+        {
+            try
+            {
+                string rtn = PH_HaulierUpload.PH_HaulierUp_FindAmbient(AppCode.strConnDB, dr);
+                if (  rtn == "" ) rtn = PH_HaulierUpload.PH_HaulierUp_FindFresh(AppCode.strConnDB, dr);
+                if( rtn == "" ) rtn = PH_HaulierUpload.PH_HaulierUp_FindRTN(AppCode.strConnDB, dr);
+
+                return rtn;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("checkHalier >> " + ex.Message);
+            }
+        }
+
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
