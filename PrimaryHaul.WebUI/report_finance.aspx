@@ -263,7 +263,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-2" ><label class="control-label"></label></div>
-            <div class="col-md-7" ><input type="button" value="Perview" class="btn btn-default" onclick="js_export('YW_SUM', 'HL_SUM', 'VD_SUM', '', '1', 'getReportType01');" id="bt01" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('YW_SUM', 'HL_SUM', 'VD_SUM', '', '2', 'getReportType01');" id="bt02" /></div>
+            <div class="col-md-7" ><input type="button" value="Preview" class="btn btn-default" onclick="js_export('YW_SUM', 'HL_SUM', 'VD_SUM', '', '1', 'getReportType01');" id="bt01" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('YW_SUM', 'HL_SUM', 'VD_SUM', '', '2', 'getReportType01');" id="bt02" /></div>
         </div>
     </div>
 </div>
@@ -348,7 +348,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-2" ><label class="control-label"></label></div>
-            <div class="col-md-7" ><input type="button" value="Perview" class="btn btn-default" onclick="js_export('YW', 'HL', 'VD', 'DC', '3', 'getReportType02');" id="bt03" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('YW', 'HL', 'VD', 'DC', '4', 'getReportType02');" id="bt04" /></div>
+            <div class="col-md-7" ><input type="button" value="Preview" class="btn btn-default" onclick="js_export('YW', 'HL', 'VD', 'DC', '3', 'getReportType02');" id="bt03" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('YW', 'HL', 'VD', 'DC', '4', 'getReportType02');" id="bt04" /></div>
         </div>
     </div>
 </div>
@@ -387,7 +387,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-2" ><label class="control-label"></label></div>
-            <div class="col-md-7" ><input type="button" value="Perview"  class="btn btn-default" onclick="js_export('YW_HC', '', '', '', '5', '');" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('YW_HC', '', '', '', '6', '');" /></div>
+            <div class="col-md-7" ><input type="button" value="Preview"  class="btn btn-default" onclick="js_export('YW_HC', '', '', '', '5', '');" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('YW_HC', '', '', '', '6', '');" /></div>
         </div>
     </div>
 </div>
@@ -417,7 +417,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-2" ><label class="control-label"></label></div>
-            <div class="col-md-7" ><input type="button" value="Perview" class="btn btn-default" onclick="js_export('vdl', '', '', '', '8', '');" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('vdl', '', '', '', '9', '');" /></div>
+            <div class="col-md-7" ><input type="button" value="Preview" class="btn btn-default" onclick="js_export('vdl', '', '', '', '8', '');" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_export('vdl', '', '', '', '9', '');" /></div>
         </div>
     </div>
 </div>
@@ -425,7 +425,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-12">
-            <h4>Tesco Finance Report > Vendor Downlaod Perview</h4><hr />
+            <h4>Tesco Finance Report > Vendor Downlaod Preview</h4><hr />
             </div>
         </div>
     </div>
@@ -469,7 +469,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-2" ><label class="control-label"></label></div>
-            <div class="col-md-7" ><input type="button" value="Perview" id="bt05" class="btn btn-default" onclick="js_export('YW_VD', 'r', 'User_VD', 'id', '7', '');" /></div>
+            <div class="col-md-7" ><input type="button" value="Preview" id="bt05" class="btn btn-default" onclick="js_export('YW_VD', 'r', 'User_VD', 'id', '7', '');" /></div>
         </div>
     </div>
 
@@ -481,7 +481,7 @@
                 <td style="text-align:center;width:10%;">No.</td>
                 <td style="text-align:center;width:40%;">Vendor Code</td>
                 <td style="text-align:center;width:25%;">Status</td>
-                <td style="text-align:center;width:25%;">Perview</td>
+                <td style="text-align:center;width:25%;">Preview</td>
             </tr>
             <%
                 string detailColor = "";
@@ -500,7 +500,7 @@
                 <td style="text-align:center;"><%= irows %></td>
                 <td style="text-align:center;"><%= obj_download["vendor_code"].ToString() %></td>
                 <td style="text-align:center;"><span id="downloadStatus<%=irows %>"><% if (obj_download["statusDownload"].ToString() == "0") { Response.Write("Not Download"); } else { Response.Write("Downloaded"); } %></span></td>
-                <td style="text-align:center;"><a href ="./pph_include/perview/vendor_perview.aspx?id=<%=Request.QueryString["vd"].ToString()%>&YW=<%=Request.QueryString["YW"].ToString()%>&VD=<%= obj_download["vendor_code"].ToString() %>" target="_blank">Perview</a></td>  
+                <td style="text-align:center;"><a href ="./pph_include/perview/vendor_perview.aspx?id=<%=Request.QueryString["vd"].ToString()%>&YW=<%=Request.QueryString["YW"].ToString()%>&VD=<%= obj_download["vendor_code"].ToString() %>" target="_blank">Preview</a></td>  
             </tr>
             <% } obj_download.Close(); %>
             </table>

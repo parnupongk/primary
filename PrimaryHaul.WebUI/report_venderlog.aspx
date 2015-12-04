@@ -103,7 +103,7 @@
         <td style="text-align:center;width:10%;">No.</td>
         <td style="text-align:center;width:30%;">Vendor Code</td>
         <td style="text-align:center;width:20%;">Status</td>
-        <td style="text-align:center;width:20%;">Perview</td>
+        <td style="text-align:center;width:20%;">Preview</td>
          <td style="text-align:center;width:20%;">Download</td>
     </tr>
     <%
@@ -123,7 +123,7 @@
         <td style="text-align:center;"><%= irows %></td>
         <td style="text-align:center;"><%= obj_download["vendor_code"].ToString() %></td>
         <td style="text-align:center;"><span id="downloadStatus<%=irows %>"><% if (obj_download["statusDownload"].ToString() == "0") { Response.Write("Not Download"); } else { Response.Write("Downloaded"); } %></span></td>
-        <td style="text-align:center;"><a href ="./pph_include/perview/vendor_perview.aspx?id=<%=Request.QueryString["id"].ToString()%>&YW=<%=Request.QueryString["YW"].ToString()%>&VD=<%= obj_download["vendor_code"].ToString() %>" target="_blank">Perview</a></td>  
+        <td style="text-align:center;"><a href ="./pph_include/perview/vendor_perview.aspx?id=<%=Request.QueryString["id"].ToString()%>&YW=<%=Request.QueryString["YW"].ToString()%>&VD=<%= obj_download["vendor_code"].ToString() %>" target="_blank">Preview</a></td>  
         <td style="text-align:center;"><a href ="javascript:void(0);" <% Response.Write("onclick=\"js_download('"+Request.QueryString["id"].ToString()+"', '"+Request.QueryString["YW"].ToString()+"', '"+obj_download["vendor_code"].ToString()+"', 'downloadStatus"+irows+"');\""); %> target="_blank">Download</a></td>                  
         </tr>
         <% } obj_download.Close(); %>
