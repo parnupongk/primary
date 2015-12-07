@@ -41,7 +41,7 @@
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Tesco Week No</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Vendor Code</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Vendor Name</td>
-                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Haulier</td>
+                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">DC No</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Accrued Revenue</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Total Revenue</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Accrued Cost</td>
@@ -64,7 +64,7 @@
                 <td align="center" valign="middle"><%=obj_detail["Week"].ToString() %></td>
                 <td align="center" valign="middle"></td>
                 <td align="left" valign="middle"><%=obj_detail["Vendor_Name"].ToString() %></td>
-                <td align="center" valign="middle"><%=obj_detail["Haulier_Abbr"].ToString() %></td>
+                <td align="center" valign="middle"><%=obj_detail["DC_No"].ToString() %></td>
                 <td align="right" valign="middle"><%=Convert.ToDouble(a1.ToString()).ToString("#,##0.00") %></td>
                 <td align="right" valign="middle"><%=Convert.ToDouble(a2.ToString()).ToString("#,##0.00") %></td>
                 <td align="right" valign="middle"><%=Convert.ToDouble(a3.ToString()).ToString("#,##0.00") %></td>

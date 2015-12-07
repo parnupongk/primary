@@ -24,6 +24,7 @@
             <tr>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">No</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Haulier</td>
+                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">DC No</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Total Revenue</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Total Cost</td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;">Profit</td>
@@ -44,6 +45,7 @@
             <tr>
                 <td align="center" valign="middle" ><%=irows%></td>
                 <td align="left" valign="middle" ><%=obj_detail["Haulier_Abbr"].ToString()%></td>
+                <td align="center" valign="middle" ><%=obj_detail["DC_No"].ToString()%></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(obj_detail["Total_Revenue"].ToString()).ToString("#,##0.00")%></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble(obj_detail["Total_Cost"].ToString()).ToString("#,##0.00")%></td>
                 <td align="right" valign="middle" ><%=Convert.ToDouble((a1 - a2)).ToString("#,##0.00")%></td>
@@ -53,7 +55,7 @@
             <% } obj_detail.Close();
                 } %>
             <tr>
-                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;" colspan="2"></td>
+                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;" colspan="3"></td>
                 <td align="right" valign="middle" style="background-color:#00ffff;font-weight:bold;"><%=Convert.ToDouble(total_a1.ToString()).ToString("#,##0.00") %></td>
                 <td align="right" valign="middle" style="background-color:#00ffff;font-weight:bold;"><%=Convert.ToDouble(total_a2.ToString()).ToString("#,##0.00") %></td>
                 <td align="right" valign="middle" style="background-color:#00ffff;font-weight:bold;"><%=Convert.ToDouble((total_a1-total_a2)).ToString("#,##0.00") %></td>
