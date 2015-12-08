@@ -29,17 +29,35 @@
             </div>
         </div>
         <div id="form_view" style="display: ;">
-            <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="2" OnRowDataBound="gvData_RowDataBound">
+            <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="2" OnRowDataBound="gvData_RowDataBound" OnRowDeleting="gvData_RowDeleting">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
+                    <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:ImageButton ID="btnDelete" runat="server" CausesValidation="False" 
+                                onclientclick="return confirm('Are you sure you want to delete this record?');"  
+                                CommandName="Delete" ImageUrl="~/images/icon_trashcan.gif" 
+                                Text="Delete" />
+                        </ItemTemplate>
+                        <ItemStyle Width="50px" HorizontalAlign="Center" />
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="No.">
                         <ItemTemplate>
                             <%# Container.DataItemIndex + 1 %>
                         </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center" />
                     </asp:TemplateField>
-                    <asp:BoundField DataField="Haulier_Abbr" HeaderText="Haulier Abbr" ReadOnly="True" />
-                    <asp:BoundField DataField="Status_Upload" HeaderText="Upload Status" ReadOnly="True" />
-                    <asp:BoundField DataField="Status_Calculate" HeaderText="Calc. Status" ReadOnly="True" />
+                    <asp:BoundField DataField="Haulier_Abbr" HeaderText="Haulier Abbr" ReadOnly="True" >
+                    <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Status_Upload" HeaderText="Upload Status" ReadOnly="True" >
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Status_Calculate" HeaderText="Calc. Status" ReadOnly="True" >
+
+                    <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundField>
 
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />

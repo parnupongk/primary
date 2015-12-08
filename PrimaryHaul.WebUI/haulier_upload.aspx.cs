@@ -67,7 +67,8 @@ namespace PrimaryHaul.WebUI
         {
             try
             {
-                lblErr.Text = "";
+                ClearView();
+                lblErr.Text = "Please wait while verifying";
                 InsertData(Session["fileName"].ToString());
             }
             catch (Exception ex)
@@ -78,8 +79,11 @@ namespace PrimaryHaul.WebUI
         }
         private void InsertData(string path)
         {
+            bool isErr = false;
+
             try
             {
+
                 PHDS_HaulierUpload.TransportationDataTable dtHaulierUp = new PHDS_HaulierUpload.TransportationDataTable();
                 /*DataTable dt = new DataTable();
                 dt.Columns.AddRange(new DataColumn[] { new DataColumn("Haulier_Abbr"), new DataColumn("Po_No"), new DataColumn("Delivery_Ref"), new DataColumn("Delivery_Date")
@@ -105,7 +109,7 @@ namespace PrimaryHaul.WebUI
 
                     string strSheet = "Normal";
                     string fileName = path.Split('\\').Length > 0 ? path.Split('\\')[path.Split('\\').Length - 1] : "";
-                    bool isErr = false;
+                    
 
 
                     #region Insert
@@ -193,7 +197,7 @@ namespace PrimaryHaul.WebUI
                                         }else if(checkHalier(dr) != "")
                                         {
                                             isErr = true;
-                                            dr.Remark1 = "Miss RateCard";
+                                            dr.Remark1 = "MissRateCard";
                                         }
 
                                     }
@@ -223,11 +227,17 @@ namespace PrimaryHaul.WebUI
 
                     btnClear.Enabled = true;
                     #endregion
+
+
                 }
                 catch (Exception ex)
                 {
                     lblErr.Text = ex.Message;
                     PH_ExceptionManager.WriteError("Verlify Data >>" + ex.Message);
+                }
+                finally
+                {
+                    if (!isErr) lblErr.Text = "";
                 }
 
             }
@@ -288,9 +298,7 @@ namespace PrimaryHaul.WebUI
         {
             try
             {
-                string rtn = PH_HaulierUpload.PH_HaulierUp_FindAmbient(AppCode.strConnDB, dr);
-                if (  rtn == "" ) rtn = PH_HaulierUpload.PH_HaulierUp_FindFresh(AppCode.strConnDB, dr);
-                if( rtn == "" ) rtn = PH_HaulierUpload.PH_HaulierUp_FindRTN(AppCode.strConnDB, dr);
+                string rtn = PH_HaulierUpload.PH_HaulierUp_FindRateCard(AppCode.strConnDB, dr);
 
                 return rtn;
             }
@@ -359,7 +367,7 @@ namespace PrimaryHaul.WebUI
 
                 string Status = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "Remark1"));
 
-                if (Status == "err" || Status == "dup" || Status == "errYearWeek")
+                if (Status == "err" || Status == "dup" || Status == "errYearWeek" || Status == "MissRateCard")
                 {
                     e.Row.Attributes["style"] = "background-color: #FF9999";
                 }
@@ -370,11 +378,17 @@ namespace PrimaryHaul.WebUI
             }
         }
 
-        protected void btnClear_Click(object sender, EventArgs e)
+        private void ClearView()
         {
             ViewState["HaulierUpload"] = null;
             gvData.DataSource = null;
             gvData.DataBind();
+        }
+
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearView();
         }
     }
 }

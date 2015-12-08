@@ -112,5 +112,13 @@ namespace PrimaryHaul.WebUI
         {
             
         }
+
+        protected void gvData_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string strAbbr = gvData.Rows[e.RowIndex].Cells[2].Text;
+            PH_RateCalc.PH_RateCacl_TransportDelete(AppCode.strConnDB, strAbbr, ddlDateWeek.SelectedValue);
+
+            DataBindHaulier();
+        }
     }
 }
