@@ -132,6 +132,7 @@
     <Content Include="images\icon.jpg" />
     <Content Include="images\icon_setting.png" />
     <Content Include="images\icon_trashcan.gif" />
+    <Content Include="images\Loading.gif" />
     <Content Include="index.aspx" />
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />

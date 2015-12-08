@@ -68,7 +68,7 @@ namespace PrimaryHaul.WebUI
             try
             {
                 ClearView();
-                lblErr.Text = "Please wait while verifying";
+                lblErr.Text = "";
                 InsertData(Session["fileName"].ToString());
             }
             catch (Exception ex)
@@ -237,7 +237,7 @@ namespace PrimaryHaul.WebUI
                 }
                 finally
                 {
-                    if (!isErr) lblErr.Text = "";
+                    lblErr.Text = "";
                 }
 
             }
