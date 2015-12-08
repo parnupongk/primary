@@ -11,7 +11,17 @@ namespace PrimaryHaul_WS
         {
             try
             {
-                DataSet ds = SqlHelper.ExecuteDatasetTypedParams(strConnDB, "usp_PrimaryHaul_FindRateCard", dr);
+                DataSet ds = SqlHelper.ExecuteDataset(strConnDB, "usp_PrimaryHaul_FindRateCard"
+                    , new SqlParameter[] {new SqlParameter("@Vendor_Code",dr.Vendor_Code)
+                                            ,new SqlParameter("@Vendor_Name",dr.Vendor_Name)
+                                            ,new SqlParameter("@Fuel_Rate",dr.Fuel_Rate)
+                                            ,new SqlParameter("@Rate_Per_Unit",dr.Rate_Per_Unit)
+                                            ,new SqlParameter("@RateType",dr.RateType)
+                                            ,new SqlParameter("@Deliver_Location",dr.Delivery_Location)
+                                            ,new SqlParameter("@Collection_Point",dr.Collection_Point)
+                                            ,new SqlParameter("@PO_No",dr.PO_No)
+                                            ,new SqlParameter("@Delivery_Ref",dr.Delivery_Ref)
+                                        });
 
                 return ds.Tables[0].Rows.Count > 0 ? "" : "err_miss";
             }
