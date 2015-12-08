@@ -7,6 +7,21 @@ namespace PrimaryHaul_WS
 {
     public class PH_RateCalc
     {
+        public static int PH_RateCacl_TransportDelete(string strConnDB,string strAbbr,string strYearWeek)
+        {
+            try
+            {
+                return SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_DeleteTransportation"
+                    , new SqlParameter[] {new SqlParameter("@Haulier_Abbr",strAbbr)
+                                        , new SqlParameter("@Year_Week_Upload",strYearWeek)
+                                        });
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("PH_RateCacl_TransportDelete >> " + ex.Message);
+            }
+        }
+
         public static int PH_RateCaclAdj_TransportUpdate(string strConnDB, string strHaulier, string strYearWeek,string strVendorCode)
         {
             try
