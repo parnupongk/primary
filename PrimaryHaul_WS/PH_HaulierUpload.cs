@@ -86,6 +86,18 @@ namespace PrimaryHaul_WS
                 throw new Exception("PH_HaulierUpLog_Insert >> " + ex.Message);
             }
         }
+        public static string PH_HaulierUp_InsertTMP(string strConnDB, AppCode_DS.PHDS_HaulierUpload.TransportationRow dr)
+        {
+            try
+            {
+                return SqlHelper.ExecuteNonQueryTypedParams(strConnDB, "usp_PrimaryHaul_TransportationTMP_Insert", dr).ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PH_HaulierUp_InsertTMP >> " + ex.Message);
+            }
+        }
+
         public static string PH_HaulierUp_Insert(string strConnDB,AppCode_DS.PHDS_HaulierUpload.TransportationRow dr )
         {
             try
@@ -115,11 +127,32 @@ namespace PrimaryHaul_WS
                 throw new Exception(ex.Message);
             }
         }
-        public static DataTable PH_HaulierUp_SelAll(string strConnDB)
+        public static int PH_HaulierUp_DelTMP(string strConnDB, string strYearWeek, string strAbbr, string strUserId)
         {
             try
             {
-                DataSet ds = SqlHelper.ExecuteDataset(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_HaulierUpSelectAll");
+                int rtn = SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_TransportationTMP_Delete"
+                                 , new SqlParameter[] {new SqlParameter("@Year_Week_Upload",strYearWeek)
+                                                        ,new SqlParameter("@Haulier_Abbr",strAbbr)
+                                                        ,new SqlParameter("@UserID",strUserId)
+                                                      });
+
+                return rtn;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PH_HaulierUp_DelTMP >> " + ex.Message);
+            }
+        }
+        public static DataTable PH_HaulierUp_SelTMP(string strConnDB,string strYearWeek,string strAbbr,string strUserId)
+        {
+            try
+            {
+                DataSet ds = SqlHelper.ExecuteDataset(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_TransportationTMP_Select"
+                                 ,new SqlParameter[] {new SqlParameter("@Year_Week_Upload",strYearWeek)
+                                                        ,new SqlParameter("@Haulier_Abbr",strAbbr)
+                                                        ,new SqlParameter("@UserID",strUserId)
+                                                      });
 
                 return ds.Tables[0];
             }
