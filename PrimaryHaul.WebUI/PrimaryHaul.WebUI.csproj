@@ -149,6 +149,7 @@
     <Content Include="pph_include\ajax\files\ajax_addVendorCode.aspx" />
     <Content Include="pph_include\ajax\files\ajax_addVendorUsername.aspx" />
     <Content Include="pph_include\ajax\files\ajax_duVendorCode.aspx" />
+    <Content Include="pph_include\ajax\files\ajax_vendorDeleteUser.aspx" />
     <Content Include="pph_include\ajax\files\ajax_vnContactPoint.aspx" />
     <Content Include="pph_include\ajax\files\dc_abbrDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\dc_EditSubmit.aspx" />
@@ -405,6 +406,13 @@
     </Compile>
     <Compile Include="pph_include\ajax\files\ajax_duVendorCode.aspx.designer.cs">
       <DependentUpon>ajax_duVendorCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_vendorDeleteUser.aspx.cs">
+      <DependentUpon>ajax_vendorDeleteUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_vendorDeleteUser.aspx.designer.cs">
+      <DependentUpon>ajax_vendorDeleteUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\ajax\files\ajax_vnContactPoint.aspx.cs">
       <DependentUpon>ajax_vnContactPoint.aspx</DependentUpon>

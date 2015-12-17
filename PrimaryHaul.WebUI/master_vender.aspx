@@ -32,7 +32,7 @@
         var checkbox = document.getElementsByName('selectV[]');
         var is = 0;
         for (var i = 0; i < checkbox.length; i++) { if (checkbox[i].checked == true) { is++;} }
-        if (is > 0) { document.getElementById("adduser").disabled = false; } else { document.getElementById("adduser").disabled = true; }
+        if (is > 0) { document.getElementById("adduser").disabled = false; document.getElementById("deleteuser").disabled = false; } else { document.getElementById("adduser").disabled = true; document.getElementById("deleteuser").disabled = true; }
     }
 </script>
 <div id="form_button">
@@ -468,6 +468,30 @@ function isNumberKey(evt) {
         req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         req.send(str_url);
     }
+    function ajax_vendorDeleteUser() {
+        var req = Inint_AJAX();
+        var str = Math.random();
+        var dfg = "";
+        var checkbox = document.getElementsByName('selectV[]'); for (var i = 0; i < checkbox.length; i++) { if (checkbox[i].checked) { dfg = dfg + "|" + checkbox[i].value; } }
+        if (dfg != "") {
+            var str_url_address = "./pph_include/ajax/files/ajax_vendorDeleteUser.aspx";
+            var str_url = "var01=" + dfg;
+            str_url += "&clearmemory=" + str;
+            //alert(str_url);
+            req.open('POST', str_url_address, true)
+            req.onreadystatechange = function () {
+                if (req.readyState == 4) {
+                    if (req.status == 200) {
+                        alert('Delete Success');
+                        window.location.reload();
+                        //alert(req.responseText);
+                    }
+                }
+            }
+            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            req.send(str_url);
+        }
+    }
 </script>
 <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %>
 <div class="form-group">
@@ -492,6 +516,14 @@ function isNumberKey(evt) {
     <div class="col-md-2"></div>
     <div class="col-md-2"></div>
     <div class="col-md-3"><input type="button" id="adduser" value="Add Username" class="btn btn-default" style="width:100%;" onclick="document.getElementById('form_view').style.display = 'none'; document.getElementById('form_add').style.display = 'none'; document.getElementById('form_button').style.display = 'none'; document.getElementById('form_vendor').style.display = 'none'; document.getElementById('form_addUsername').style.display = '';" disabled="disabled"/></div>
+    <div class="col-md-5"></div>
+</div>
+</div>
+<div class="form-group">
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-3"><input type="button" id="deleteuser" value="Delete From Group" class="btn btn-danger" style="width:100%;" onclick="ajax_vendorDeleteUser();" disabled="disabled" /></div>
     <div class="col-md-5"></div>
 </div>
 </div>
