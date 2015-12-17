@@ -343,6 +343,8 @@ namespace PrimaryHaul_WS.AppCode_DS {
             
             private global::System.Data.DataColumn columnRC_Tesco_Period;
             
+            private global::System.Data.DataColumn columnstatus;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TransportationDataTable() {
@@ -634,6 +636,14 @@ namespace PrimaryHaul_WS.AppCode_DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn statusColumn {
+                get {
+                    return this.columnstatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -700,7 +710,8 @@ namespace PrimaryHaul_WS.AppCode_DS {
                         decimal Total_Cost_Charging, 
                         System.DateTime StampTime, 
                         int UserID, 
-                        int RC_Tesco_Period) {
+                        int RC_Tesco_Period, 
+                        string status) {
                 TransportationRow rowTransportationRow = ((TransportationRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -734,7 +745,8 @@ namespace PrimaryHaul_WS.AppCode_DS {
                         Total_Cost_Charging,
                         StampTime,
                         UserID,
-                        RC_Tesco_Period};
+                        RC_Tesco_Period,
+                        status};
                 rowTransportationRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTransportationRow);
                 return rowTransportationRow;
@@ -796,6 +808,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 this.columnStampTime = base.Columns["StampTime"];
                 this.columnUserID = base.Columns["UserID"];
                 this.columnRC_Tesco_Period = base.Columns["RC_Tesco_Period"];
+                this.columnstatus = base.Columns["status"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -865,6 +878,8 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 base.Columns.Add(this.columnUserID);
                 this.columnRC_Tesco_Period = new global::System.Data.DataColumn("RC_Tesco_Period", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRC_Tesco_Period);
+                this.columnstatus = new global::System.Data.DataColumn("status", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnTransID}, true));
                 this.columnTransID.AutoIncrement = true;
@@ -1541,6 +1556,22 @@ namespace PrimaryHaul_WS.AppCode_DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string status {
+                get {
+                    if (this.IsstatusNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableTransportation.statusColumn]));
+                    }
+                }
+                set {
+                    this[this.tableTransportation.statusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPO_NoNull() {
                 return this.IsNull(this.tableTransportation.PO_NoColumn);
             }
@@ -1909,6 +1940,18 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRC_Tesco_PeriodNull() {
                 this[this.tableTransportation.RC_Tesco_PeriodColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsstatusNull() {
+                return this.IsNull(this.tableTransportation.statusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetstatusNull() {
+                this[this.tableTransportation.statusColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -14,7 +14,7 @@
   <xs:element name="PHDS_HaulierUpload" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PHDS_HaulierUpload" msprop:Generator_UserDSName="PHDS_HaulierUpload">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Transportation" msprop:Generator_TableClassName="TransportationDataTable" msprop:Generator_TableVarName="tableTransportation" msprop:Generator_TablePropName="Transportation" msprop:Generator_RowDeletingName="TransportationRowDeleting" msprop:Generator_RowChangingName="TransportationRowChanging" msprop:Generator_RowEvHandlerName="TransportationRowChangeEventHandler" msprop:Generator_RowDeletedName="TransportationRowDeleted" msprop:Generator_UserTableName="Transportation" msprop:Generator_RowChangedName="TransportationRowChanged" msprop:Generator_RowEvArgName="TransportationRowChangeEvent" msprop:Generator_RowClassName="TransportationRow">
+        <xs:element name="Transportation" msprop:Generator_TableClassName="TransportationDataTable" msprop:Generator_TableVarName="tableTransportation" msprop:Generator_RowChangedName="TransportationRowChanged" msprop:Generator_TablePropName="Transportation" msprop:Generator_RowDeletingName="TransportationRowDeleting" msprop:Generator_RowChangingName="TransportationRowChanging" msprop:Generator_RowEvHandlerName="TransportationRowChangeEventHandler" msprop:Generator_RowDeletedName="TransportationRowDeleted" msprop:Generator_RowClassName="TransportationRow" msprop:Generator_UserTableName="Transportation" msprop:Generator_RowEvArgName="TransportationRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TransID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTransID" msprop:Generator_ColumnPropNameInRow="TransID" msprop:Generator_ColumnPropNameInTable="TransIDColumn" msprop:Generator_UserColumnName="TransID" type="xs:int" />
@@ -145,6 +145,7 @@
               <xs:element name="StampTime" msprop:Generator_ColumnVarNameInTable="columnStampTime" msprop:Generator_ColumnPropNameInRow="StampTime" msprop:Generator_ColumnPropNameInTable="StampTimeColumn" msprop:Generator_UserColumnName="StampTime" type="xs:dateTime" minOccurs="0" />
               <xs:element name="UserID" msprop:Generator_ColumnVarNameInTable="columnUserID" msprop:Generator_ColumnPropNameInRow="UserID" msprop:Generator_ColumnPropNameInTable="UserIDColumn" msprop:Generator_UserColumnName="UserID" type="xs:int" minOccurs="0" />
               <xs:element name="RC_Tesco_Period" msprop:Generator_ColumnVarNameInTable="columnRC_Tesco_Period" msprop:Generator_ColumnPropNameInRow="RC_Tesco_Period" msprop:Generator_ColumnPropNameInTable="RC_Tesco_PeriodColumn" msprop:Generator_UserColumnName="RC_Tesco_Period" type="xs:int" minOccurs="0" />
+              <xs:element name="status" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_ColumnPropNameInRow="status" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_UserColumnName="status" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

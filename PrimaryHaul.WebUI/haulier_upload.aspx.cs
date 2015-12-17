@@ -202,7 +202,7 @@ namespace PrimaryHaul.WebUI
                                         if (IsErrYearWeek(dr))
                                         {
                                             isErr = true;
-                                            dr.Remark1 = "errYearWeek";
+                                            dr.status = "errYearWeek";
                                         }
 
                                     }
@@ -358,7 +358,7 @@ namespace PrimaryHaul.WebUI
                 string strPoNo = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "po_no"));
                 e.Row.Cells[1].Text = strPoNo.Replace(",", " ,");
 
-                string Status = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "Remark1"));
+                string Status = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "status"));
 
                 if (Status == "err" || Status == "dup" || Status == "errYearWeek" || Status == "MissRateCard")
                 {

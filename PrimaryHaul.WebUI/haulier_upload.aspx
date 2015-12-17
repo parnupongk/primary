@@ -158,6 +158,7 @@
                             </asp:BoundField>
                             <asp:BoundField DataField="Trans_Type" Visible="false" HeaderText="Trans_Type" ReadOnly="True" />
                             <asp:BoundField DataField="Remark2" HeaderText="Remark2" Visible="false" ReadOnly="True" />
+                            <asp:BoundField DataField="status" HeaderText="status" Visible="false" ReadOnly="True" />
 
                         </Columns>
                         <EditRowStyle BackColor="#7C6F57" />

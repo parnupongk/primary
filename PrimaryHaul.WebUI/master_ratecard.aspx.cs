@@ -17,6 +17,7 @@ namespace PrimaryHaul.WebUI
         {
            if(!IsPostBack)
             {
+                lblErr.Text = "";
                 btnSubmit.Enabled = false;
                 DataBindData(true);
                 DataBindColl();
@@ -122,6 +123,7 @@ namespace PrimaryHaul.WebUI
             try
             {
                 #region Insert
+                int iCount = 0, iSuccess = 0, iErr = 0;
                 string strTempRate = "", strTempColl = "";
                 string sql = "select * from [Combine$]";
                 OleDbCommand cmd = new OleDbCommand(sql, conn);
@@ -129,6 +131,7 @@ namespace PrimaryHaul.WebUI
 
                 while (drRead.Read())
                 {
+                    iCount++;
                     if (drRead[0].ToString() != "" && drRead[1].ToString() != "")
                     {
                         try {
@@ -140,20 +143,23 @@ namespace PrimaryHaul.WebUI
                                 , drRead[12], drRead[13], drRead[14], drRead[16]
                                 , drRead[17]);
 
-                            PH_RateCardInfo.PH_RateCard_Insert(AppCode.strConnDB, dt.Rows[dt.Rows.Count - 1]);
+                            if (PH_RateCardInfo.PH_RateCard_Insert(AppCode.strConnDB, dt.Rows[dt.Rows.Count - 1]) > 0)
+                                iSuccess++;
+                            else iErr++;
 
                             strTempRate = drRead[8].ToString();
                             strTempColl = drRead[4].ToString();
                         }
                         catch(Exception ex)
                         {
+                            iErr++;
                             PrimaryHaul_WS.PH_ExceptionManager.WriteError(ex.Message);
                         }
                     }
 
                 }
 
-
+                lblErr.Text = "count="+iCount.ToString() + " success="+ iSuccess + " error=" + iErr;
                 //gvData.DataSource = dt;
                 //gvData.DataBind();
                 DataBindData(true);
