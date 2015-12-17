@@ -208,7 +208,7 @@ namespace PrimaryHaul.WebUI
                                     }
                                     catch (Exception ex)
                                     {
-                                        dr.Remark1 = "err";
+                                        dr.status = "err";
                                         dr.Remark2 = ex.Message;
                                     }
 
@@ -226,8 +226,8 @@ namespace PrimaryHaul.WebUI
                     ViewState["HaulierUploadInsert"] = dtHaulierUp;
                     GetHaulierData(true);
 
-                    if (isErr) btnInsert.Enabled = false;
-                    else btnInsert.Enabled = true;
+                    //if (isErr) btnInsert.Enabled = false;
+                    //else btnInsert.Enabled = true;
 
 
                     btnClear.Enabled = true;
@@ -363,6 +363,7 @@ namespace PrimaryHaul.WebUI
                 if (Status == "err" || Status == "dup" || Status == "errYearWeek" || Status == "MissRateCard")
                 {
                     e.Row.Attributes["style"] = "background-color: #FF9999";
+                    btnInsert.Enabled = false;
                 }
                 else
                 {
