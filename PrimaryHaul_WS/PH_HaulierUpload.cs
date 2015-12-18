@@ -127,6 +127,23 @@ namespace PrimaryHaul_WS
                 throw new Exception(ex.Message);
             }
         }
+        public static int PH_HaulierUp_Verify(string strConnDB, string strYearWeek, string strAbbr, string strUserId)
+        {
+            try
+            {
+                int rtn = SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_TransportationTMP_Verify"
+                                 , new SqlParameter[] {new SqlParameter("@Year_Week_Upload",strYearWeek)
+                                                        ,new SqlParameter("@Haulier_Abbr",strAbbr)
+                                                        ,new SqlParameter("@UserID",strUserId)
+                                                      });
+
+                return rtn;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PH_HaulierUp_Verify >> " + ex.Message);
+            }
+        }
         public static int PH_HaulierUp_DelTMP(string strConnDB, string strYearWeek, string strAbbr, string strUserId)
         {
             try

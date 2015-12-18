@@ -223,6 +223,8 @@ namespace PrimaryHaul.WebUI
                         catch(Exception ex) { PH_ExceptionManager.WriteError("Verlify Data >>" + " Row Index : " + index.ToString() + " err message : " + ex.Message); }
                     }
 
+
+                    PH_HaulierUpload.PH_HaulierUp_Verify(AppCode.strConnDB, lblWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
                     ViewState["HaulierUploadInsert"] = dtHaulierUp;
                     GetHaulierData(true);
 
