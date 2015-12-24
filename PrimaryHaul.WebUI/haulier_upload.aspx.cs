@@ -33,7 +33,7 @@ namespace PrimaryHaul.WebUI
                 if (isNew)
                 {
                     ViewState["HaulierUpload"] = PH_HaulierUpload.PH_HaulierUp_SelTMP(AppCode.strConnDB, lblWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
-
+                    btnInsert.Enabled = true;
                     gvData.DataSource = (DataTable)ViewState["HaulierUpload"];
                     gvData.DataBind();
                 }
@@ -106,8 +106,6 @@ namespace PrimaryHaul.WebUI
 
                 try
                 {
-                    //GetHaulierData(true);
-                    //DataTable dtHaulier = (DataTable)ViewState["HaulierUpload"];
                     ViewState["HaulierUploadInsert"] = null;
                     string strSheet = "Normal";
                     string fileName = path.Split('\\').Length > 0 ? path.Split('\\')[path.Split('\\').Length - 1] : "";
@@ -227,10 +225,6 @@ namespace PrimaryHaul.WebUI
                     PH_HaulierUpload.PH_HaulierUp_Verify(AppCode.strConnDB, lblWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
                     ViewState["HaulierUploadInsert"] = dtHaulierUp;
                     GetHaulierData(true);
-
-                    //if (isErr) btnInsert.Enabled = false;
-                    //else btnInsert.Enabled = true;
-
 
                     btnClear.Enabled = true;
                     #endregion
@@ -359,9 +353,7 @@ namespace PrimaryHaul.WebUI
             {
                 string strPoNo = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "po_no"));
                 e.Row.Cells[1].Text = strPoNo.Replace(",", " ,");
-
                 string Status = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "status"));
-
                 if (Status == "err" || Status == "dup" || Status == "errYearWeek" || Status == "MissRateCard")
                 {
                     e.Row.Attributes["style"] = "background-color: #FF9999";

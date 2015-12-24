@@ -150,7 +150,7 @@
                                 <HeaderStyle Width="50px"></HeaderStyle>
                                 <ItemStyle Width="50px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Remark1" HeaderText="Verify Result" ReadOnly="True">
+                            <asp:BoundField DataField="Remark1" HeaderText="Verify Result" Visible="false" ReadOnly="True">
                                 <ControlStyle Width="70px" />
                                 <FooterStyle Width="70px" />
                                 <HeaderStyle Width="70px"></HeaderStyle>
