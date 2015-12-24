@@ -262,6 +262,7 @@
     <Content Include="dist\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="dist\js\bootstrap.min.js" />
     <Content Include="user_management.aspx" />
+    <Content Include="vat_rate.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -736,6 +737,13 @@
     </Compile>
     <Compile Include="user_management.aspx.designer.cs">
       <DependentUpon>user_management.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vat_rate.aspx.cs">
+      <DependentUpon>vat_rate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vat_rate.aspx.designer.cs">
+      <DependentUpon>vat_rate.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
