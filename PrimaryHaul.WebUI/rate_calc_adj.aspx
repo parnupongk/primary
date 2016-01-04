@@ -47,22 +47,38 @@
             <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="4" OnRowCommand="gvData_RowCommand" OnRowCancelingEdit="gvData_RowCancelingEdit" OnRowEditing="gvData_RowEditing" DataKeyNames="transid" OnRowUpdating="gvData_RowUpdating" OnRowDataBound="gvData_RowDataBound">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
-                    <asp:BoundField DataField="Haulier_Abbr" HeaderText="Haulier Abbr" ReadOnly="True" />
+                    <asp:BoundField DataField="Haulier_Abbr" HeaderText="Haulier Abbr" ReadOnly="True" >
+                        <HeaderStyle Width="50px" HorizontalAlign="Center"></HeaderStyle>
+                        <ItemStyle Width="50px" HorizontalAlign="Center"></ItemStyle>
+                    </asp:BoundField> 
                     <asp:BoundField DataField="Po_No" HeaderText="Po No" ReadOnly="True" >
-                        <ControlStyle Width="50px" />
-                        <FooterStyle Width="50px" />
-                        <HeaderStyle Width="50px"></HeaderStyle>
-                        <ItemStyle Width="50px"></ItemStyle>
+                        <ControlStyle Width="120px" />
+                        <FooterStyle Width="120px" />
+                        <HeaderStyle Width="130px" ></HeaderStyle>
+                        <ItemStyle Width="130px" ></ItemStyle>
                     </asp:BoundField>
-                    <asp:BoundField DataField="Delivery_Ref" HeaderText="Delivery Ref" ReadOnly="True" />
+                    <asp:BoundField DataField="Delivery_Ref" HeaderText="Delivery Ref" ReadOnly="True" >
+                        <HeaderStyle Width="80px" HorizontalAlign="Center"></HeaderStyle>
+                        <ItemStyle Width="80px" HorizontalAlign="Center"></ItemStyle>
+                    </asp:BoundField> 
                     <asp:BoundField DataField="Delivery_Date" HeaderText="Delivery Date" ReadOnly="True" />
-                    <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True" />
+                    <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True" > 
+                        <HeaderStyle Width="80px" HorizontalAlign="Center"></HeaderStyle>
+                        <ItemStyle Width="80px" HorizontalAlign="Center"></ItemStyle>
+                    </asp:BoundField>  
                     <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True" />
                     <asp:BoundField DataField="Collection_Point" HeaderText="Collection Point" ReadOnly="True" />
-                    <asp:BoundField DataField="Delivery_Location" HeaderText="Delivery Location" ReadOnly="True" />
-                    <asp:BoundField DataField="Fuel_Rate" HeaderText="Fuel Rate" ReadOnly="True" />
-                    
+                    <asp:BoundField DataField="Delivery_Location" HeaderText="Delivery Location" ReadOnly="True" >
+                        <HeaderStyle Width="80px" HorizontalAlign="Center"></HeaderStyle>
+                        <ItemStyle Width="80px" HorizontalAlign="Center"></ItemStyle>
+                    </asp:BoundField>  
+                    <asp:BoundField DataField="Fuel_Rate" HeaderText="Fuel Rate" ReadOnly="True">
+                        <HeaderStyle Width="50px" HorizontalAlign="Center"></HeaderStyle>
+                        <ItemStyle Width="50px" HorizontalAlign="Center"></ItemStyle>
+                    </asp:BoundField>   
                     <asp:TemplateField HeaderText="Qty">
+                            <HeaderStyle Width="50px" HorizontalAlign="Center"></HeaderStyle>
+                            <ItemStyle Width="50px" HorizontalAlign="Center"></ItemStyle>
                         <EditItemTemplate>
                             <div>
                                 <asp:TextBox ID="txtOldNoQty" Text='<%# "-" + Eval("No_Of_Qty")%>' CssClass="form-control" runat="server"></asp:TextBox></div>

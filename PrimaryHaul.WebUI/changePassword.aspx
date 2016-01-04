@@ -41,7 +41,8 @@
                         <div class="col-md-10">
                             <asp:TextBox autocomplete="off" runat="server" ID="txtPassword"  Width="200px" CssClass="form-control" MaxLength="8" />
                             <asp:RegularExpressionValidator ID="regexpName" runat="server"
-                                ErrorMessage="Passwords must have at least 8 characters and contain at least two of the following: uppercase letters, lowercase letters, numbers, and symbols."
+                                ErrorMessage="Passwords must have at least 8 characters and contain at least two of the following : <br> 
+                                              Uppercase letters, lowercase letters, numbers, and symbols."
                                 ForeColor="Red"
                                 ControlToValidate="txtPassword"
                                 ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$" />

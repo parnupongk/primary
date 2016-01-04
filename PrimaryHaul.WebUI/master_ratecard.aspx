@@ -140,7 +140,7 @@
 
                     <asp:AjaxFileUpload ID="AjaxFileUpload" runat="server" Padding-Bottom="4"
                         Padding-Left="2" Padding-Right="1" Padding-Top="4" ThrobberID="myThrobber" MaximumNumberOfFiles="10" OnClientUploadCompleteAll="UploadComplete"
-                        AllowedFileTypes="xls,vnd.ms-excel,application/vnd.ms-excel,xlsx,XLSX" OnUploadComplete="AjaxFileUpload_UploadComplete" />
+                        AllowedFileTypes="xls,vnd.ms-excel,application/vnd.ms-excel,xlsx" OnUploadComplete="AjaxFileUpload_UploadComplete" />
                 </div>
             </div>
             <div class="form-group">
@@ -251,11 +251,12 @@
                     <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True" />
                     <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True">
                         <HeaderStyle HorizontalAlign="Center" />
+                        <ItemStyle HorizontalAlign="Left" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Collection_Point" HeaderText="Collection Point" ReadOnly="True">
-                        <HeaderStyle Width="120px"></HeaderStyle>
+                        <HeaderStyle Width="180px" HorizontalAlign="Center" ></HeaderStyle>
 
-                        <ItemStyle Width="120px"></ItemStyle>
+                        <ItemStyle Width="180px" HorizontalAlign="Left"></ItemStyle>
                     </asp:BoundField>
                     <asp:BoundField DataField="DC_ABBR" HeaderText="DC Abbr" ReadOnly="True" />
                     <asp:BoundField DataField="buy_ratetype" HeaderText="Buy Rate Type" ReadOnly="True" />
@@ -264,8 +265,8 @@
                     <asp:BoundField DataField="Sell_Rate" HeaderText="Sell Rate" ReadOnly="True" />
                     <asp:BoundField DataField="fuel_rate_from" HeaderText="Fuel Rate From" ReadOnly="True" />
                     <asp:BoundField DataField="fuel_rate_to" HeaderText="Fuel Rate To" ReadOnly="True" />
-                    <asp:BoundField DataField="StartDate" HeaderText="Star tDate" ReadOnly="True" DataFormatString="{0:dd/MM/yyyy}">
-                        <HeaderStyle Width="120px" HorizontalAlign="Right"></HeaderStyle>
+                    <asp:BoundField DataField="StartDate" HeaderText="Start Date" ReadOnly="True" DataFormatString="{0:dd/MM/yyyy}">
+                        <HeaderStyle Width="120px" HorizontalAlign="Center"></HeaderStyle>
 
                         <ItemStyle Width="120px" HorizontalAlign="Center"></ItemStyle>
                     </asp:BoundField>
