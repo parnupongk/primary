@@ -17,7 +17,7 @@ namespace PrimaryHaul.WebUI.pph_include.ajax.files
         protected void Page_Load(object sender, EventArgs e)
         {
             main_function PPHfunction = new main_function();
-            PPHfunction.QueryExecuteNonQuery("insert into DC_Info (DC_NO,DC_Name, dc_abbr) values ('" + Request.Form["var01"].ToString() + "','" + Request.Form["var02"].ToString() + "','" + Request.Form["var03"].ToString() + "')");
+            PPHfunction.QueryExecuteNonQuery("insert into DC_Info (DC_NO,DC_Name, dc_abbr, DC_Flag) values ('" + Request.Form["var01"].ToString() + "','" + Request.Form["var02"].ToString() + "','" + Request.Form["var03"].ToString() + "','" + Request.Form["var04"].ToString() + "')");
         
         }
     }

@@ -27,7 +27,7 @@ namespace PrimaryHaul.WebUI.pph_include.ajax.files
                 dateEndUse = "NULL";
             }
             //Response.Write("update DC_Info set DC_Name='" + Request.Form["var02"].ToString() + "', EndDate='" + dateEndUse + "' where DC_NO='" + Request.Form["var01"].ToString() + "'");
-            PPHfunction.QueryExecuteNonQuery("update DC_Info set DC_Name='" + Request.Form["var02"].ToString() + "', EndDate=" + dateEndUse + ", dc_abbr='" + Request.Form["var04"].ToString() + "' where DC_NO='" + Request.Form["var01"].ToString() + "'");
+            PPHfunction.QueryExecuteNonQuery("update DC_Info set DC_Name='" + Request.Form["var02"].ToString() + "', EndDate=" + dateEndUse + ", dc_abbr='" + Request.Form["var04"].ToString() + "', DC_Flag='" + Request.Form["var05"].ToString() + "' where DC_NO='" + Request.Form["var01"].ToString() + "'");
         
         }
     }

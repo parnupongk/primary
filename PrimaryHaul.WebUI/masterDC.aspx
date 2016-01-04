@@ -185,11 +185,13 @@
         var strTax = document.getElementById('DC_NO').value;
         var strName = document.getElementById('DC_Name').value;
         var strAbbr = document.getElementById('dc_abbr').value;
+        var checkbox = document.getElementsByName('DC_Flag[]'); for (var i = 0; i < checkbox.length; i++) { if (checkbox[i].checked) { var res = checkbox[i].value; } }
         if (strTax != '') {
             var str_url_address = "./pph_include/ajax/files/dc_Submit.aspx";
             var str_url = "var01=" + strTax;
             str_url += "&var02=" + strName;
             str_url += "&var03=" + strAbbr;
+            str_url += "&var04=" + res;
             str_url += "&clearmemory=" + str;
             req.open('POST', str_url_address, true)
             req.onreadystatechange = function () {
@@ -223,6 +225,7 @@
     document.getElementById('taxError').style.display = "none";
     document.getElementById('nameEnError').style.display = "none";
     document.getElementById('btnSubmitError').style.display = "none";
+
 </script>
 <div class="row">
      <div class="col-md-12">
@@ -252,6 +255,12 @@
                 <div class="col-md-5"></div>
             </div>
         </div>  
+         <div class="form-group">
+            <div class="row">
+                <div class="col-md-2" ><label class="control-label">DC Flag</label></div>
+                <div class="col-md-10"><label class="radio-inline"><input type="radio" name="DC_Flag[]" id="DC_Flag01" value="A" checked="checked" /> Ambient &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input type="radio" name="DC_Flag[]" id="DC_Flag02" value="F" /> Fresh</label></div>               
+            </div>
+        </div> 
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" style="text-align:right;"></div>
@@ -277,7 +286,7 @@
 <br />
 <div id="form_db">
 <%
-       string sql_dc = "select DC_Name,  CONVERT(varchar(11),EndDate,103) as EndDate, dc_abbr from DC_Info  where DC_NO ='" + Request.QueryString["DC_NO"] + "'";
+       string sql_dc = "select DC_Name,  CONVERT(varchar(11),EndDate,103) as EndDate, dc_abbr, DC_Flag from DC_Info  where DC_NO ='" + Request.QueryString["DC_NO"] + "'";
     SqlCommand rs_dc = new SqlCommand(sql_dc, objConn);
     SqlDataReader obj_dc = rs_dc.ExecuteReader();
     obj_dc.Read();
@@ -350,12 +359,14 @@
         var strName = document.getElementById('DC_NameEdit').value;
         var strdateEnd = document.getElementById('dateEnd').value;
         var strAbbr = document.getElementById('dc_abbrEdit').value;
+        var checkbox = document.getElementsByName('DC_FlagE[]'); for (var i = 0; i < checkbox.length; i++) { if (checkbox[i].checked) { var res = checkbox[i].value; } }
         if (strName != '' && strAbbr != '') {
             var str_url_address = "./pph_include/ajax/files/dc_EditSubmit.aspx";
             var str_url = "var01=" + strTax;
             str_url += "&var02=" + strName;
             str_url += "&var03=" + strdateEnd;
             str_url += "&var04=" + strAbbr;
+            str_url += "&var05=" + res;
             str_url += "&clearmemory=" + str;
             req.open('POST', str_url_address, true)
             req.onreadystatechange = function () {
@@ -404,6 +415,12 @@
                 <div class="col-md-5"></div>
             </div>
         </div>  
+         <div class="form-group">
+            <div class="row">
+                <div class="col-md-2" ><label class="control-label">DC Flag</label></div>
+                <div class="col-md-10"><label class="radio-inline"><input type="radio" name="DC_FlagE[]"  value="A" <% if(obj_dc[3].ToString()=="" || obj_dc[3].ToString()=="A"){ %>checked="checked"<% } %> /> Ambient &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input type="radio" name="DC_FlagE[]" value="F" <% if(obj_dc[3].ToString()=="F"){ %>checked="checked"<% } %> /> Fresh</label></div>               
+            </div>
+        </div> 
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" ><label class="control-label">End Date </label></div>
