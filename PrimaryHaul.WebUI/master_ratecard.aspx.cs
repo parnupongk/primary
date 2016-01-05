@@ -222,7 +222,7 @@ namespace PrimaryHaul.WebUI
             {
                 if (Request["r"] == "A1")
                 {
-                    LinkButton lbkBtn = (LinkButton)e.Row.Cells[12].Controls[0]; //here use the cell no in which your edit command button is there.
+                    LinkButton lbkBtn = (LinkButton)e.Row.Cells[14].Controls[0]; //here use the cell no in which your edit command button is there.
                     lbkBtn.Visible = false;//write a logic to disable or enable according to privilages.
                 }
             }

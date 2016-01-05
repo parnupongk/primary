@@ -248,13 +248,18 @@
             <asp:GridView ID="gvData" DataKeyNames="RateCard_ID" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCancelingEdit="gvData_RowCancelingEdit" OnRowDataBound="gvData_RowDataBound" OnRowEditing="gvData_RowEditing" OnRowUpdating="gvData_RowUpdating" Width="100%" AllowPaging="True" OnPageIndexChanging="gvData_PageIndexChanging" PageIndex="0" PageSize="100">
                 <AlternatingRowStyle BackColor="White" HorizontalAlign="Center" />
                 <Columns>
+                    <asp:TemplateField HeaderText="No.">
+                        <ItemTemplate>
+                            <%# Container.DataItemIndex + 1 %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True" />
                     <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True">
                         <HeaderStyle HorizontalAlign="Center" />
                         <ItemStyle HorizontalAlign="Left" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Collection_Point" HeaderText="Collection Point" ReadOnly="True">
-                        <HeaderStyle Width="180px" HorizontalAlign="Center" ></HeaderStyle>
+                        <HeaderStyle Width="180px" HorizontalAlign="Center"></HeaderStyle>
 
                         <ItemStyle Width="180px" HorizontalAlign="Left"></ItemStyle>
                     </asp:BoundField>
@@ -287,7 +292,8 @@
 
                         <ItemStyle Width="120px" HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
-                   <asp:CommandField ShowEditButton="True" />
+                    <asp:BoundField DataField="Transporter_Desc" HeaderText="Transporter Desc" ReadOnly="True" />
+                    <asp:CommandField ShowEditButton="True" />
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />
                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />

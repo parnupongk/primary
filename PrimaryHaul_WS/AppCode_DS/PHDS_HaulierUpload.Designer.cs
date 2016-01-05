@@ -894,7 +894,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 this.columnDelivery_Date.MaxLength = 15;
                 this.columnDelivery_Ref.DefaultValue = ((string)(""));
                 this.columnDelivery_Ref.MaxLength = 100;
-                this.columnVendor_Code.MaxLength = 5;
+                this.columnVendor_Code.MaxLength = 10;
                 this.columnVendor_Name.MaxLength = 255;
                 this.columnCollection_Point.MaxLength = 1000;
                 this.columnDelivery_Location.MaxLength = 2000;
@@ -1125,11 +1125,11 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Vendor_Code {
                 get {
-                    try {
-                        return ((string)(this[this.tableTransportation.Vendor_CodeColumn]));
+                    if (this.IsVendor_CodeNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Vendor_Code\' in table \'Transportation\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableTransportation.Vendor_CodeColumn]));
                     }
                 }
                 set {
