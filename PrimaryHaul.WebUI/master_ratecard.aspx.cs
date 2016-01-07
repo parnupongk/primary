@@ -34,6 +34,7 @@ namespace PrimaryHaul.WebUI
         private void DataBindData(bool isNew)
         {
             DataTable dt = null;
+            lblText.Text = PH_RateCardInfo.PH_RateCard_Count(AppCode.strConnDB);
             if (!isNew && ViewState["RateCardInfo"] !=null)
             {
                 dt = (DataTable)ViewState["RateCardInfo"];

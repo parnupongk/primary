@@ -116,13 +116,15 @@
     <div class="form-horizontal">
         <h4>Master > Rate Card</h4>
         <hr />
-
+        <div class="row">
+            <p class="pull-right"><asp:Label ID="lblText" runat="server" class="text-info"></asp:Label></p>
+        </div>
         <div id="form_button">
             <div class="row">
                 <div class="col-md-4">
                     <input type="button" runat="server" id="btnImport" value="Import" class="btn btn-default" onclick="js_tab('form_import');" />&nbsp;&nbsp;&nbsp;
                 <input type="button" runat="server" id="btnAdd" value="Add" class="btn btn-default" onclick="js_tab('form_add');" />&nbsp;&nbsp;&nbsp;
-                <input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" />
+                <input type="button" runat="server" id="btnViewdata" visible="false" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" />
                 </div>
                 <div class="col-md-8"></div>
             </div>
@@ -292,7 +294,7 @@
 
                         <ItemStyle Width="120px" HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="Transporter_Desc" HeaderText="Transporter Desc" ReadOnly="True" />
+                    <asp:BoundField DataField="Buy_RateType_Desc" HeaderText="RateType Desc." ReadOnly="True" />
                     <asp:CommandField ShowEditButton="True" />
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />

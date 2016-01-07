@@ -7,6 +7,20 @@ namespace PrimaryHaul_WS
 {
     public class PH_RateCardInfo
     {
+        public static string PH_RateCard_Count(string strConnDB)
+        {
+            try
+            {
+                string rtn = "";
+
+                rtn = SqlHelper.ExecuteScalar(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_RateCardCount").ToString();
+                return rtn;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("PH_RateCard_Count >> " + ex.Message);
+            }
+        }
         public static DataTable PH_RateType_SelAll(string strConnDB)
         {
             try

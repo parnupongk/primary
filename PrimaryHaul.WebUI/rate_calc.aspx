@@ -39,7 +39,7 @@
                                 CommandName="Delete" ImageUrl="~/images/icon_trashcan.gif" 
                                 Text="Delete" />
                         </ItemTemplate>
-                        <ItemStyle Width="50px" HorizontalAlign="Center" />
+                        <ItemStyle Width="100px" HorizontalAlign="Center" />
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="No.">
                         <ItemTemplate>
@@ -48,14 +48,14 @@
                         <ItemStyle HorizontalAlign="Center" />
                     </asp:TemplateField>
                     <asp:BoundField DataField="Haulier_Abbr" HeaderText="Haulier Abbr" ReadOnly="True" >
-                    <ItemStyle HorizontalAlign="Center" />
+                    <ItemStyle Width="500px" HorizontalAlign="Center" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Status_Upload" HeaderText="Upload Status" ReadOnly="True" >
-                    <HeaderStyle HorizontalAlign="Center" />
-                    <ItemStyle HorizontalAlign="Center" />
+                    <HeaderStyle HorizontalAlign="Left" />
+                    <ItemStyle HorizontalAlign="Left" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Status_Calculate" HeaderText="Calc. Status" ReadOnly="True" >
-
+                    <HeaderStyle HorizontalAlign="Center" />
                     <ItemStyle HorizontalAlign="Center" />
                     </asp:BoundField>
 
