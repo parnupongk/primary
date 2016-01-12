@@ -237,7 +237,7 @@ function vender_Submit(varA, varB) {
     var strTax = document.getElementById('addNameTax').value;
     var strNameEn = document.getElementById('addNameEn').value;
     var strNameTh = document.getElementById('addNameTh').value;
-    if (strTax != '' && strNameEn != '' && strTax.length == 13 && strNameTh != '') {
+    if (strTax != '' && strNameEn != '' && strTax.length == 13 ) {
         var str_url_address = "./pph_include/ajax/files/vender_Submit.aspx";
         var str_url = "var01=" + strTax;
         str_url += "&var02=" + strNameEn;
