@@ -33,7 +33,7 @@
         <div runat="server" class="form-group">
             <asp:Label runat="server" AssociatedControlID="lnkFile" CssClass="col-md-3 control-label"></asp:Label>
             <div class="col-md-9">
-                <a runat="server" id="lnkFile" href="file/dateweek.xls" target="_blank" >file ตัวอย่าง</a>
+                <a runat="server" id="lnkFile" href="file/dateweek.xlsx" target="_blank" >file ตัวอย่าง</a>
             </div>
         </div>
         <div class="form-group">

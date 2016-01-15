@@ -69,7 +69,8 @@ namespace PrimaryHaul.WebUI
                         if (results != null && results["Menu_Name"].ToString() != "")
                         {
                             ((System.Web.UI.HtmlControls.HtmlAnchor)ctr).Visible = true;
-                            ((System.Web.UI.HtmlControls.HtmlAnchor)ctr).HRef += Request.QueryString;
+                            //((System.Web.UI.HtmlControls.HtmlAnchor)ctr).HRef += Request.QueryString;
+                            ((System.Web.UI.HtmlControls.HtmlAnchor)ctr).HRef += "r=" + Request.QueryString["r"].ToString() + "&id=" + Request.QueryString["id"].ToString() + "";
                         }
                         else
                             ((System.Web.UI.HtmlControls.HtmlAnchor)ctr).Visible = false;

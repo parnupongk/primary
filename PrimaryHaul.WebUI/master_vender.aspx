@@ -87,14 +87,23 @@
     </div>
 </div>
 <% if (!string.IsNullOrEmpty(Request.QueryString["seNameEn"] as string) || !string.IsNullOrEmpty(Request.QueryString["seNameTh"] as string) || !string.IsNullOrEmpty(Request.QueryString["seNameTax"] as string)){ %>
+<script>
+    function js_deleteVendor(varA,varB,varC,varD,varE,varF)
+    {
+        var r = confirm("Press OK For Delete");
+        if (r == true) {
+            window.location.href = './master_vender_delete.aspx?r=' + varA + '&id=' + varB + '&vdID=' + varC + '&seNameEn=' + varD + '&seNameTh=' + varE + '&seNameTax=' + varF;
+        }
+    }
+</script>
 <div class="row">
     <div class="col-md-12">
     <table class="table table-bordered">
     <tr style="background-color:#9bbb59;">
-        <td style="text-align:center;width:10%;">No.</td>
-        <td style="text-align:center;width:35%;">Vendor Name (Eng)</td>
-        <td style="text-align:center;width:35%;">Vendor Name (Thai)</td>
-        <td style="text-align:center;width:20%;"></td>
+        <td style="text-align:center;width:8%;">No.</td>
+        <td style="text-align:center;width:32%;">Vendor Name (Eng)</td>
+        <td style="text-align:center;width:32%;">Vendor Name (Thai)</td>
+        <td style="text-align:center;width:28%;"></td>
     </tr>
     <%
         string detailColor = "", sql_seNameEn = "", sql_seNameTh = "", sql_seNameTax = "";
@@ -116,7 +125,11 @@
         <td style="text-align:center;"><%= irows %></td>
         <td style="text-align:left;"><%= obj_vendorInfo["Vendor_Name_En"].ToString() %></td>
         <td style="text-align:left;"><%= obj_vendorInfo["Vendor_Name_Th"].ToString() %></td>
-        <td style="text-align:center;"><input type="button" value="Vendor List" class="btn btn-default" <% Response.Write("onclick=\"js_venderForm('urlSubmit', '" + obj_vendorInfo["Vendor_TaxID"].ToString() + "', '" + obj_vendorInfo["VendorID"].ToString() + "');\""); %> /> </td>                   
+        <td style="text-align:center;">
+            <input type="button" value="Vendor List" class="btn btn-default" <% Response.Write("onclick=\"js_venderForm('urlSubmit', '" + obj_vendorInfo["Vendor_TaxID"].ToString() + "', '" + obj_vendorInfo["VendorID"].ToString() + "');\""); %> /> &nbsp; 
+            <input type="button" value="Edit" class="btn btn-default" <% Response.Write("onclick=\"window.location.href='./master_vendor_edit.aspx?r=" + Request.QueryString["r"].ToString() + "&id=" + Request.QueryString["id"].ToString() + "&vdID=" + obj_vendorInfo["VendorID"].ToString() + "&seNameEn=" + Request.QueryString["seNameEn"].ToString() + "&seNameTh=" + Request.QueryString["seNameTh"].ToString() + "&seNameTax=" + Request.QueryString["seNameTax"].ToString() + "';\""); %> /> &nbsp; 
+            <input type="button" value="Delete" class="btn btn-danger" <% Response.Write("onclick=\"js_deleteVendor('" + Request.QueryString["r"].ToString() + "', '" + Request.QueryString["id"].ToString() + "', '" + obj_vendorInfo["VendorID"].ToString() + "', '" + Request.QueryString["seNameEn"].ToString() + "', '" + Request.QueryString["seNameTh"].ToString() + "', '" + Request.QueryString["seNameTax"].ToString() + "');\""); %> /> 
+        </td>                   
       </tr>
      <% } obj_vendorInfo.Close(); %>
     </table>
