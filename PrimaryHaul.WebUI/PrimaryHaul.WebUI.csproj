@@ -144,6 +144,8 @@
     <Content Include="master_sku.aspx" />
     <Content Include="master_uad10.aspx" />
     <Content Include="master_vender.aspx" />
+    <Content Include="master_vender_delete.aspx" />
+    <Content Include="master_vendor_edit.aspx" />
     <Content Include="packages.config" />
     <Content Include="pph_include\ajax\ajax_connect.js" />
     <Content Include="pph_include\ajax\files\ajax_addVendorCode.aspx" />
@@ -169,6 +171,7 @@
     <Content Include="pph_include\ajax\files\userDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\vdAll_download_log.aspx" />
     <Content Include="pph_include\ajax\files\vd_download_log.aspx" />
+    <Content Include="pph_include\ajax\files\vender_edit_submit.aspx" />
     <Content Include="pph_include\ajax\files\vender_nameEnDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\vender_nameThDuplicate.aspx" />
     <Content Include="pph_include\ajax\files\vender_Submit.aspx" />
@@ -387,6 +390,20 @@
     <Compile Include="master_vender.aspx.designer.cs">
       <DependentUpon>master_vender.aspx</DependentUpon>
     </Compile>
+    <Compile Include="master_vender_delete.aspx.cs">
+      <DependentUpon>master_vender_delete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="master_vender_delete.aspx.designer.cs">
+      <DependentUpon>master_vender_delete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="master_vendor_edit.aspx.cs">
+      <DependentUpon>master_vendor_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="master_vendor_edit.aspx.designer.cs">
+      <DependentUpon>master_vendor_edit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pph_include\ajax\files\ajax_addVendorCode.aspx.cs">
       <DependentUpon>ajax_addVendorCode.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -547,6 +564,13 @@
     </Compile>
     <Compile Include="pph_include\ajax\files\vd_download_log.aspx.designer.cs">
       <DependentUpon>vd_download_log.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\vender_edit_submit.aspx.cs">
+      <DependentUpon>vender_edit_submit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\vender_edit_submit.aspx.designer.cs">
+      <DependentUpon>vender_edit_submit.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\ajax\files\vender_nameEnDuplicate.aspx.cs">
       <DependentUpon>vender_nameEnDuplicate.aspx</DependentUpon>

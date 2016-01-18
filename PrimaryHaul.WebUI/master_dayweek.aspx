@@ -33,7 +33,7 @@
         <div runat="server" class="form-group">
             <asp:Label runat="server" AssociatedControlID="lnkFile" CssClass="col-md-3 control-label"></asp:Label>
             <div class="col-md-9">
-                <a runat="server" id="lnkFile" href="file/dateweek.xls" target="_blank" >file ตัวอย่าง</a>
+                <a runat="server" id="lnkFile" href="file/dateweek.xlsx" target="_blank" >file ตัวอย่าง</a>
             </div>
         </div>
         <div class="form-group">
@@ -77,7 +77,7 @@
                 string detailColor = "";
                 int irows = 0;
                 int icolor = 0;
-                string sql_dateweek = "select *, CONVERT(varchar(11),Period_StartDate,103) as Period_SStartDate, CONVERT(varchar(11),Period_EndDate,103) as Period_EEndDate from Date_Week_Info order by Tesco_Year asc, Tesco_Week asc";
+                string sql_dateweek = "select *, CONVERT(varchar(11),Period_StartDate,103) as Period_SStartDate, CONVERT(varchar(11),Period_EndDate,103) as Period_EEndDate from Date_Week_Info Order by Tesco_Year Desc , Tesco_Week Desc";
                 SqlCommand rs_dateweek = new SqlCommand(sql_dateweek, objConn);
                 SqlDataReader obj_dateweek = rs_dateweek.ExecuteReader();
                 while (obj_dateweek.Read())
