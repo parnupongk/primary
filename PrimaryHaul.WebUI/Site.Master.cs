@@ -52,6 +52,21 @@ namespace PrimaryHaul.WebUI
                 }
             }
         }
+        private string GetQuery()
+        {
+            string rtn = "";
+            try
+            {
+                if (Request["r"] != null) rtn = "r=" + Request["r"];
+                if (Request["id"] != null) rtn = (rtn == "") ? "id=" + Request["id"] : "&id=" + Request["id"] ;
+
+                return rtn;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         private void GenMenu()
         {
@@ -69,7 +84,7 @@ namespace PrimaryHaul.WebUI
                         if (results != null && results["Menu_Name"].ToString() != "")
                         {
                             ((System.Web.UI.HtmlControls.HtmlAnchor)ctr).Visible = true;
-                            ((System.Web.UI.HtmlControls.HtmlAnchor)ctr).HRef += Request.QueryString;
+                            ((System.Web.UI.HtmlControls.HtmlAnchor)ctr).HRef += GetQuery();
                         }
                         else
                             ((System.Web.UI.HtmlControls.HtmlAnchor)ctr).Visible = false;
