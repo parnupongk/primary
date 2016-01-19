@@ -52,12 +52,27 @@ namespace PrimaryHaul.WebUI
                 }
             }
         }
+        private string GetQuery()
+        {
+            string rtn = "";
+            try
+            {
+                if (Request["r"] != null) rtn = "r=" + Request["r"];
+                if (Request["id"] != null) rtn = (rtn == "") ? "id=" + Request["id"] : "&id=" + Request["id"] ;
+
+                return rtn;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(" GetQuery >> " + ex.Message);
+            }
+        }
 
         private void GenMenu()
         {
             try
             {
-                DataTable dtMenu = PHCode_Menu.PHCode_Menu_SelByRole(AppCode.strConnDB, eStatus.RoleId);
+                 DataTable dtMenu = PHCode_Menu.PHCode_Menu_SelByRole(AppCode.strConnDB, eStatus.RoleId);
                 foreach( Control ctr in this.Controls )
                 {
                     if (ctr.GetType().Name == "HtmlAnchor")
@@ -69,8 +84,7 @@ namespace PrimaryHaul.WebUI
                         if (results != null && results["Menu_Name"].ToString() != "")
                         {
                             ((System.Web.UI.HtmlControls.HtmlAnchor)ctr).Visible = true;
-                            //((System.Web.UI.HtmlControls.HtmlAnchor)ctr).HRef += Request.QueryString;
-                            ((System.Web.UI.HtmlControls.HtmlAnchor)ctr).HRef += "r=" + Request.QueryString["r"].ToString() + "&id=" + Request.QueryString["id"].ToString() + "";
+                            ((System.Web.UI.HtmlControls.HtmlAnchor)ctr).HRef += GetQuery();
                         }
                         else
                             ((System.Web.UI.HtmlControls.HtmlAnchor)ctr).Visible = false;
@@ -81,7 +95,7 @@ namespace PrimaryHaul.WebUI
             }
             catch(Exception ex)
             {
-                PH_ExceptionManager.WriteError(ex.Message);
+                PH_ExceptionManager.WriteError(" GenMenu >> " + ex.Message);
             }
         }
     }

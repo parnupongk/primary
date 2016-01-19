@@ -1,6 +1,0 @@
-
-Log Entry : 
-31/08/2015 21:58:20
- IP :  ::1 
-Error in: http://localhost:35449/login.aspx. Error Message:UserSignIn >> PH_UserProfile_SigIn >>Login failed for user 'sa'.
-__________________________

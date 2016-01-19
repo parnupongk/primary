@@ -1,6 +1,0 @@
-
-Log Entry : 
-15/10/2015 09:27:57
- IP :  ::1 
-Error in: http://localhost:35449/haulier_upload.aspx?r=A1&id=6. Error Message:Verlify Data >>A field or property with the name 'Rate_Per_Uint' was not found on the selected data source.
-__________________________
