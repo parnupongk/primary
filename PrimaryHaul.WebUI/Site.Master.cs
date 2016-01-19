@@ -58,7 +58,7 @@ namespace PrimaryHaul.WebUI
             try
             {
                 if (Request["r"] != null) rtn = "r=" + Request["r"];
-                if (Request["id"] != null) rtn = (rtn == "") ? "id=" + Request["id"] : "&id=" + Request["id"] ;
+                if (Request["id"] != null) rtn += (rtn == "") ? "id=" + Request["id"] : "&id=" + Request["id"] ;
 
                 return rtn;
             }
