@@ -109,18 +109,18 @@ namespace PrimaryHaul.WebUI
                     ViewState["HaulierUploadInsert"] = null;
                     string strSheet = "Normal";
                     string fileName = path.Split('\\').Length > 0 ? path.Split('\\')[path.Split('\\').Length - 1] : "";
-                    
+                    DataTable dtSheet = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
 
 
                     #region Insert
 
-                    for (int i = 0; i < 2; i++)
+                    foreach(DataRow drSheet in dtSheet.Rows)
                     {
                         int index = 0;
                         try {
                             
-                            strSheet = (i == 0) ? "Normal" : "Dummy";
-                            string sql = "select * from [" + strSheet + "$]";
+                            strSheet = drSheet["TABLE_NAME"].ToString();//(i == 0) ? "Normal" : "Dummy";
+                            string sql = "select * from [" + strSheet + "]";
                             OleDbCommand cmd = new OleDbCommand(sql, conn);
                             OleDbDataReader drRead = cmd.ExecuteReader();
                             PHDS_HaulierUpload.TransportationRow dr = null;
@@ -218,7 +218,7 @@ namespace PrimaryHaul.WebUI
                                 index++;
                             }
                         }
-                        catch(Exception ex) { PH_ExceptionManager.WriteError("Verlify Data >>" + " Row Index : " + index.ToString() + " err message : " + ex.Message); }
+                        catch(Exception ex) { lblErr.Text += ex.Message; ; PH_ExceptionManager.WriteError("Verlify Data >>" + " Row Index : " + index.ToString() + " err message : " + ex.Message); }
                     }
 
 
@@ -238,7 +238,7 @@ namespace PrimaryHaul.WebUI
                 }
                 finally
                 {
-                    lblErr.Text = "";
+                   // lblErr.Text = "";
                 }
 
             }
