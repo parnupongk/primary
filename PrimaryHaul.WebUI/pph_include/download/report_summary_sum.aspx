@@ -73,14 +73,14 @@
                 <td align="right" valign="middle"><%=Convert.ToDouble(profit.ToString()).ToString("#,##0.00") %></td>
             </tr>
     
-            <% } obj_detail.Close(); %>
+            <% } obj_detail.Close(); double profit_total = 0.00; if (total_a3 <= 0) { profit_total = 0.00; } else { profit_total = (((total_a2 - total_a3) * 100) / total_a3); }   %>
             <tr>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;" colspan="7"></td>
                 <td align="right" valign="middle" style="background-color:#00ffff;font-weight:bold;"><%=Convert.ToDouble(total_a2.ToString()).ToString("#,##0.00") %></td>
                 <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;"></td>
                 <td align="right" valign="middle" style="background-color:#00ffff;font-weight:bold;"><%=Convert.ToDouble(total_a3.ToString()).ToString("#,##0.00") %></td>
                 <td align="right" valign="middle" style="background-color:#00ffff;font-weight:bold;"><%=Convert.ToDouble(total_a2-total_a3).ToString("#,##0.00") %></td>                
-                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;"><%=Convert.ToDouble((((total_a2-total_a3)*100)/total_a3)).ToString("#,##0.00") %></td>
+                <td align="center" valign="middle" style="background-color:#00ffff;font-weight:bold;"><%=Convert.ToDouble(profit_total).ToString("#,##0.00") %></td>
             </tr>
         </table>
         </td>
