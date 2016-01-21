@@ -17,6 +17,7 @@ namespace PrimaryHaul.WebUI
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            Session["s_forceChangeMsg"] = "";
             try {
                 PrimaryHaul_WSFlow.PHCore_Status status = PrimaryHaul_WSFlow.PHCore_Login.UserSignIn(AppCode.strConnDB, txtUserName.Text, txtPassword.Text);
                 if (status.UserStatus == "D")
@@ -45,6 +46,7 @@ namespace PrimaryHaul.WebUI
                     else if (status.Status == PrimaryHaul_WSFlow.PHCore_Status.SignInStatus.PasswordExpired)
                     {
                         storeUser(status);
+                        if (txtPassword.Text == "P@ssw0rd") { Session["s_forceChangeMsg"] = "password was reset. Please enter new password."; } else { Session["s_forceChangeMsg"] = "your password has expired. Please enter new password."; }
                         Session["s_forceChange"] = "changepassword.aspx?r=" + status.RoleId + "&p=" + PH_EncrptHelper.MD5Encryp(txtPassword.Text) + "&id=" + status.UserId;
                         Response.Redirect("changepassword.aspx?r=" + status.RoleId + "&p=" + PH_EncrptHelper.MD5Encryp(txtPassword.Text) + "&id=" + status.UserId, false);
                     }

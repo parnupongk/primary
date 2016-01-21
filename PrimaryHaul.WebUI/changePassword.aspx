@@ -26,7 +26,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
-
+    <% if (Session["s_forceChangeMsg"] != "") { Response.Write("<script>alert('"+Session["s_forceChangeMsg"]+"');</script>"); } %>
     <div class="row">
         <div class="col-md-12">
 
@@ -37,7 +37,7 @@
 
                     <div class="form-group">
 
-                        <asp:Label runat="server" AssociatedControlID="txtPassword" CssClass="col-md-2 control-label">Password<asp:RequiredFieldValidator runat="server" ControlToValidate="txtPassword" CssClass="text-danger" ErrorMessage=" * " /></asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="txtPassword" CssClass="col-md-2 control-label">New Password<asp:RequiredFieldValidator runat="server" ControlToValidate="txtPassword" CssClass="text-danger" ErrorMessage=" * " /></asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox autocomplete="off" runat="server" ID="txtPassword"  Width="200px" CssClass="form-control" MaxLength="8" />
                             <asp:RegularExpressionValidator ID="regexpName" runat="server"
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="txtPasswordConf" CssClass="col-md-2 control-label">Password Confirm<asp:RequiredFieldValidator runat="server" ControlToValidate="txtPasswordConf" CssClass="text-danger" ErrorMessage=" * " /></asp:Label><div class="col-md-6">
+                        <asp:Label runat="server" AssociatedControlID="txtPasswordConf" CssClass="col-md-2 control-label">Confirm New Password<asp:RequiredFieldValidator runat="server" ControlToValidate="txtPasswordConf" CssClass="text-danger" ErrorMessage=" * " /></asp:Label><div class="col-md-6">
                             <asp:TextBox autocomplete="off" runat="server" ID="txtPasswordConf"  Width="200px" TextMode="Password" CssClass="form-control" MaxLength="8" />
                             <asp:CompareValidator runat="server" ID="Comp1" ForeColor="Red" ControlToValidate="txtPasswordConf" ControlToCompare="txtPassword" Text=" These passwords don't match." />
                         </div>
