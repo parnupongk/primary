@@ -113,13 +113,11 @@ namespace PrimaryHaul.WebUI
 
 
                     #region Insert
-
-                    foreach(DataRow drSheet in dtSheet.Rows)
+                    for(int index =0;index <2;index ++)
                     {
-                        int index = 0;
                         try {
                             
-                            strSheet = drSheet["TABLE_NAME"].ToString();//(i == 0) ? "Normal" : "Dummy";
+                            strSheet = dtSheet.Rows[index]["TABLE_NAME"].ToString();//(i == 0) ? "Normal" : "Dummy";
                             string sql = "select * from [" + strSheet + "]";
                             OleDbCommand cmd = new OleDbCommand(sql, conn);
                             OleDbDataReader drRead = cmd.ExecuteReader();
@@ -215,7 +213,6 @@ namespace PrimaryHaul.WebUI
                                     #endregion
                                 }
 
-                                index++;
                             }
                         }
                         catch(Exception ex) { lblErr.Text += ex.Message; ; PH_ExceptionManager.WriteError("Verlify Data >>" + " Row Index : " + index.ToString() + " err message : " + ex.Message); }
