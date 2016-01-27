@@ -40,31 +40,31 @@
         <td colspan="2" align="left" valign="middle" style="border:2px solid #000000;">
         <table cellpadding="5" style="width:100%;">
             <tr>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;" width="15%">Vendor Name :</td>
+                <td align="right" valign="middle" style="font-weight:bold;font-size:11pt;" width="15%">Vendor Name :</td>
                 <td align="left" valign="middle" width="85%" style="font-size:11pt;" colspan="5"><%=obj_detail["Vendor_Name"].ToString()%></td>
             </tr>
             <tr>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;" width="15%">Tesco Year :</td>
+                <td align="right" valign="middle" style="font-weight:bold;font-size:11pt;" width="15%">Tesco Year :</td>
                 <td align="left" valign="middle" width="17%" style="font-size:11pt;"><%=Request.QueryString["YW"].ToString().Substring(0,4)%></td>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;" width="17%">Cost (Exc Fuel) :</td>
+                <td align="right" valign="middle" style="font-weight:bold;font-size:11pt;" width="17%">Cost (Exc Fuel) :</td>
                 <td align="left" valign="middle" width="17%" style="font-size:11pt;"><%=obj_detail["Currency"].ToString()%> <%= Convert.ToDouble(obj_detail["costFuel"].ToString()).ToString("#,##0.00")%></td>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;" width="17%">Currency :</td>
+                <td align="right" valign="middle" style="font-weight:bold;font-size:11pt;" width="17%">Currency :</td>
                 <td align="left" valign="middle" width="17%" style="font-size:11pt;"><%=obj_detail["Currency"].ToString()%></td>
             </tr>
             <tr>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;">Vendor No :</td>
+                <td align="right" valign="middle" style="font-weight:bold;font-size:11pt;">Vendor No :</td>
                 <td align="left" valign="middle" style="font-size:11pt;"><%=obj_detail["Vendor_Code"].ToString()%></td>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;">Tesco Period :</td>
+                <td align="right" valign="middle" style="font-weight:bold;font-size:11pt;">Tesco Period :</td>
                 <td align="left" valign="middle" style="font-size:11pt;"><%=obj_detail["RC_Tesco_Period"].ToString()%></td>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;">Fuel Cost :</td>
+                <td align="right" valign="middle" style="font-weight:bold;font-size:11pt;">Fuel Cost :</td>
                 <td align="left" valign="middle" style="font-size:11pt;"><%=obj_detail["Currency"].ToString()%> <%= Convert.ToDouble(obj_detail["Sell_Fuel_Rate"].ToString()).ToString("#,##0.00")%></td>
             </tr>
             <tr>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;">Oracle Vendor No :</td>
+                <td align="right" valign="middle" style="font-weight:bold;font-size:11pt;">Oracle Vendor No :</td>
                 <td align="left" valign="middle" style="font-size:11pt;">0</td>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;">Date Download :</td>
+                <td align="right" valign="middle" style="font-weight:bold;font-size:11pt;">Date Download :</td>
                 <td align="left" valign="middle" style="font-size:11pt;"><%=obj_detail["lastDownload"].ToString()%></td>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;">Total To Pay :</td>
+                <td align="right" valign="middle" style="font-weight:bold;font-size:11pt;">Total To Pay :</td>
                 <td align="left" valign="middle" style="font-size:11pt;"><%=obj_detail["Currency"].ToString()%> <%= Convert.ToDouble(obj_detail["costTotal"].ToString()).ToString("#,##0.00")%></td>
             </tr>
         </table>
