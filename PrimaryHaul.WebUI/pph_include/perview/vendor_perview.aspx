@@ -34,16 +34,18 @@
     </tr>
     <tr>
         <td colspan="2" align="left" valign="middle" style="border:2px solid #000000;">
-        <table cellpadding="5">
+        <table cellpadding="5" style="width:100%;">
             <tr>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;" width="14%">Vendor Name :</td>
-                <td align="left" valign="middle" width="27%" style="font-size:11pt;"><%=obj_detail["Vendor_Name"].ToString()%></td>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;" width="12%">Tesco Year :</td>
-                <td align="left" valign="middle" width="12%" style="font-size:11pt;"><%=Request.QueryString["YW"].ToString().Substring(0,4)%></td>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;" width="12%">Cost (Exc Fuel) :</td>
-                <td align="left" valign="middle" width="13%" style="font-size:11pt;"><%=obj_detail["Currency"].ToString()%> <%= Convert.ToDouble(obj_detail["costFuel"].ToString()).ToString("#,##0.00")%></td>
-                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;" width="5%">Currency :</td>
-                <td align="left" valign="middle" width="5%" style="font-size:11pt;"><%=obj_detail["Currency"].ToString()%></td>
+                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;" width="15%">Vendor Name :</td>
+                <td align="left" valign="middle" width="85%" style="font-size:11pt;" colspan="5"><%=obj_detail["Vendor_Name"].ToString()%></td>
+            </tr>
+            <tr>
+                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;" width="15%">Tesco Year :</td>
+                <td align="left" valign="middle" width="17%" style="font-size:11pt;"><%=Request.QueryString["YW"].ToString().Substring(0,4)%></td>
+                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;" width="17%">Cost (Exc Fuel) :</td>
+                <td align="left" valign="middle" width="17%" style="font-size:11pt;"><%=obj_detail["Currency"].ToString()%> <%= Convert.ToDouble(obj_detail["costFuel"].ToString()).ToString("#,##0.00")%></td>
+                <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;" width="17%">Currency :</td>
+                <td align="left" valign="middle" width="17%" style="font-size:11pt;"><%=obj_detail["Currency"].ToString()%></td>
             </tr>
             <tr>
                 <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;">Vendor No :</td>
@@ -52,8 +54,6 @@
                 <td align="left" valign="middle" style="font-size:11pt;"><%=obj_detail["RC_Tesco_Period"].ToString()%></td>
                 <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;">Fuel Cost :</td>
                 <td align="left" valign="middle" style="font-size:11pt;"><%=obj_detail["Currency"].ToString()%> <%= Convert.ToDouble(obj_detail["Sell_Fuel_Rate"].ToString()).ToString("#,##0.00")%></td>
-                <td align="left" valign="middle"></td>
-                <td align="left" valign="middle"></td>
             </tr>
             <tr>
                 <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;">Oracle Vendor No :</td>
@@ -62,8 +62,6 @@
                 <td align="left" valign="middle" style="font-size:11pt;"><%=obj_detail["lastDownload"].ToString()%></td>
                 <td align="left" valign="middle" style="font-weight:bold;font-size:11pt;">Total To Pay :</td>
                 <td align="left" valign="middle" style="font-size:11pt;"><%=obj_detail["Currency"].ToString()%> <%= Convert.ToDouble(obj_detail["costTotal"].ToString()).ToString("#,##0.00")%></td>
-                <td align="left" valign="middle"></td>
-                <td align="left" valign="middle"></td>
             </tr>
         </table>
         </td>
