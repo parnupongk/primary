@@ -107,121 +107,98 @@ namespace PrimaryHaul.WebUI
                 try
                 {
                     ViewState["HaulierUploadInsert"] = null;
+                    int strUserId = int.Parse(Request["id"]);
                     string strSheet = "Normal";
                     string fileName = path.Split('\\').Length > 0 ? path.Split('\\')[path.Split('\\').Length - 1] : "";
-                    DataTable dtSheet = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                    //DataTable dtSheet = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
 
 
                     #region Insert
-
-                    foreach (DataRow drSheet in dtSheet.Rows)
+                    for(int index=0;index<2;index++)
+                    //foreach (DataRow drSheet in dtSheet.Rows)
                     {
-                        int index = 0;
                         try
                         {
 
-                            strSheet = drSheet["TABLE_NAME"].ToString();//(i == 0) ? "Normal" : "Dummy";
-                            if (strSheet.Trim().ToLower() == "normal$" || strSheet.Trim().ToLower() == "dummy$")
-                            {
-                                string sql = "select * from [" + strSheet + "]";
+                            strSheet = (index == 0) ? "Normal" : "Dummy";
+
+                                string sql = "select * from [" + strSheet + "$]";
                                 OleDbCommand cmd = new OleDbCommand(sql, conn);
                                 OleDbDataReader drRead = cmd.ExecuteReader();
                                 PHDS_HaulierUpload.TransportationRow dr = null;
 
 
-                                while (drRead.Read())
-                                {
-                                    if (!string.IsNullOrEmpty(drRead[0].ToString().Trim()))
+                            while (drRead.Read())
+                            {
+                                if (!string.IsNullOrEmpty(drRead[0].ToString().Trim()))
 
+                                {
+                                    #region Insert Row
+                                    try
                                     {
-                                        #region Insert Row
+                                        dr = dtHaulierUp.NewTransportationRow();
+
+                                        string s = drRead[4].ToString().Trim() != "" ? int.Parse(drRead[4].ToString()).ToString("00000") : "00000";//String.Format("{0:00000}", );
+
+                                        dr.PO_No = drRead[1].ToString().Trim();
+                                        dr.Haulier_Abbr = drRead[0].ToString().Trim();
+                                        dr.UserID = strUserId;
+                                        ViewState["HaulierAbbr"] = drRead[0].ToString().Trim();
                                         try
                                         {
-                                            dr = dtHaulierUp.NewTransportationRow();
-
-                                            string s = drRead[4].ToString().Trim() != "" ? int.Parse(drRead[4].ToString()).ToString("00000") : "00000";//String.Format("{0:00000}", );
-
-                                            dr.PO_No = drRead[1].ToString().Trim();
-                                            dr.Haulier_Abbr = drRead[0].ToString().Trim();
-                                            ViewState["HaulierAbbr"] = drRead[0].ToString().Trim();
-                                            try
-                                            {
-                                                dr.Delivery_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "M/d/yyyy", null).ToString("dd/MM/yyyy"); //drRead[3].ToString().Trim().Split(' ')[0];//
-                                            }
-                                            catch
-                                            {
-                                                dr.Delivery_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "d/M/yyyy", null).ToString("dd/MM/yyyy"); //drRead[3].ToString().Trim().Split(' ')[0];//
-                                            }
-                                            dr.Delivery_Ref = drRead[2].ToString().Trim();
-                                            dr.Vendor_Code = s;
-                                            dr.Vendor_Name = drRead[5].ToString().Trim();
-                                            dr.Collection_Point = drRead[6].ToString().Trim();
-                                            dr.Delivery_Location = drRead[7].ToString().Trim();
-                                            dr.DC_No = 0;
-                                            dr.RateType = drRead[8].ToString().Trim();
-                                            dr.No_Of_Qty = drRead[9].ToString().Trim() == "" ? 0 : int.Parse(drRead[9].ToString().Trim());
-                                            dr.Rate_Per_Unit = drRead[10].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[10].ToString().Trim());
-                                            dr.Currency = drRead[11].ToString().Trim();
-                                            dr.Additional_Cost_Reason = drRead[13].ToString();//.Trim() == "" ? 0 : decimal.Parse(drRead[13].ToString().Trim());
-                                            dr.Additional_Cost = drRead[12].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[12].ToString().Trim());
-                                            dr.Total_Cost = drRead[14].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[14].ToString().Trim());
-                                            dr.Year_Week_OnFile = drRead[15].ToString();
-                                            dr.Year_Week_Upload = lblWeek.Text;
-                                            dr.Remark1 = drRead[16].ToString().Trim();
-                                            dr.Remark2 = drRead[17].ToString().Trim();
-                                            dr.Fuel_Rate = drRead[18].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[18].ToString().Trim());
-                                            dr.FileName = fileName;
-                                            dr.Trans_Type = IsErrCaseII(dr); // case II , III ,IV
-                                                                             /*  =================================   */
-                                            dr.Calc_Date = DateTime.Now;
-                                            dr.RC_RateCardID = 0;
-                                            dr.RC_Sell_Rate = 0;
-                                            dr.Sell_Fuel_Rate = 0;
-                                            dr.Total_Cost_Charging = 0;
-                                            dr.StampTime = DateTime.Now;
-                                            dr.UserID = int.Parse(Request["id"]);//PH_EncrptHelper.MD5Decryp();
-
-                                            /*dt.Rows.Add(drRead[0], drRead[1], drRead[2], drRead[3]
-                                                        , drRead[4], drRead[5], drRead[6], drRead[7]
-                                                        , drRead[8], drRead[9], drRead[10], drRead[11]
-                                                        , drRead[12], drRead[13], drRead[14], drRead[15]
-                                                        , drRead[16], drRead[17], drRead[18],"");
-
-                                            dt.Rows[dt.Rows.Count - 1][19] =  // case II , III ,IV*/
-
-                                            /*
-                                            if (IsErrCaseI(dr, dtHaulier.DefaultView))
-                                            {
-                                                isErr = true;
-                                                dr.Remark1 = "dup";
-                                            }
-                                            else if(checkHalier(dr) != "")
-                                            {
-                                                isErr = true;
-                                                dr.Remark1 = "MissRateCard";
-                                            }*/
-
-                                            if (IsErrYearWeek(dr))
-                                            {
-                                                isErr = true;
-                                                dr.status = "errYearWeek";
-                                            }
-
+                                            dr.Delivery_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "M/d/yyyy", null).ToString("dd/MM/yyyy"); //drRead[3].ToString().Trim().Split(' ')[0];//
                                         }
-                                        catch (Exception ex)
+                                        catch
                                         {
-                                            dr.status = "err";
-                                            dr.Remark2 = ex.Message;
+                                            dr.Delivery_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "d/M/yyyy", null).ToString("dd/MM/yyyy"); //drRead[3].ToString().Trim().Split(' ')[0];//
+                                        }
+                                        dr.Delivery_Ref = drRead[2].ToString().Trim();
+                                        dr.Vendor_Code = s;
+                                        dr.Vendor_Name = drRead[5].ToString().Trim();
+                                        dr.Collection_Point = drRead[6].ToString().Trim();
+                                        dr.Delivery_Location = drRead[7].ToString().Trim();
+                                        dr.DC_No = 0;
+                                        dr.RateType = drRead[8].ToString().Trim();
+                                        dr.Currency = drRead[11].ToString().Trim();
+                                        dr.Additional_Cost_Reason = drRead[13].ToString();//.Trim() == "" ? 0 : decimal.Parse(drRead[13].ToString().Trim());
+                                        dr.Year_Week_OnFile = drRead[15].ToString();
+                                        dr.Year_Week_Upload = lblWeek.Text;
+                                        dr.Remark1 = drRead[16].ToString().Trim();
+                                        dr.Remark2 = drRead[17].ToString().Trim();
+                                        dr.FileName = fileName;
+                                        dr.Calc_Date = DateTime.Now;
+                                        dr.RC_RateCardID = 0;
+                                        dr.RC_Sell_Rate = 0;
+                                        dr.Sell_Fuel_Rate = 0;
+                                        dr.Total_Cost_Charging = 0;
+                                        dr.StampTime = DateTime.Now;
+                                        dr.No_Of_Qty = drRead[9].ToString().Trim() == "" ? 0 : int.Parse(drRead[9].ToString().Trim());
+                                        dr.Rate_Per_Unit = drRead[10].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[10].ToString().Trim());
+                                        dr.Additional_Cost = drRead[12].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[12].ToString().Trim());
+                                        dr.Total_Cost = drRead[14].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[14].ToString().Trim());
+                                        dr.Fuel_Rate = drRead[18].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[18].ToString().Trim());
+                                        dr.Trans_Type = IsErrCaseII(dr); // case II , III ,IV
+
+                                        if (IsErrYearWeek(dr))
+                                        {
+                                            isErr = true;
+                                            dr.status = "errYearWeek";
                                         }
 
-                                        dtHaulierUp.Rows.Add(dr);
-                                        PH_HaulierUpload.PH_HaulierUp_InsertTMP(AppCode.strConnDB, dr);
-                                        #endregion
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        dr.status = "err";
+                                        dr.Remark2 = ex.Message;
+                                        PH_ExceptionManager.WriteError("prepare data >> err message : " + ex.Message);
                                     }
 
+                                    dtHaulierUp.Rows.Add(dr);
+                                    PH_HaulierUpload.PH_HaulierUp_InsertTMP(AppCode.strConnDB, dr);
+                                    #endregion
                                 }
+
                             }
-                            index++;
                         }
                         catch (Exception ex) { lblErr.Text += ex.Message; ; PH_ExceptionManager.WriteError("Verlify Data >>" + " Row Index : " + index.ToString() + " err message : " + ex.Message); }
                     }
