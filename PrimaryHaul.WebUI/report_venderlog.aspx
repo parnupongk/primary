@@ -92,7 +92,7 @@
         </select>
     </div>
     <div class="col-md-2"><input type="button" id="btnSubmitEdit" value="View" class="btn btn-default"  <% Response.Write("onclick=\"show_download('" + Request.QueryString["r"].ToString() + "', '" + Request.QueryString["id"].ToString() + "');\""); %> /></div>
-    <div class="col-md-2"><input type="button" id="btnDownloadAll" value="Download All File" class="btn btn-default" <% Response.Write("onclick=\"js_downloadAll('" + Request.QueryString["r"].ToString() + "', '" + Request.QueryString["id"].ToString() + "', 'YW', 'totalRows');\""); %> /></div>
+    <div class="col-md-2"><!--<input type="button" id="btnDownloadAll" value="Download All File" class="btn btn-default" <% Response.Write("onclick=\"js_downloadAll('" + Request.QueryString["r"].ToString() + "', '" + Request.QueryString["id"].ToString() + "', 'YW', 'totalRows');\""); %> />--></div>
 </div>
 </div>
 <% if (!string.IsNullOrEmpty(Request.QueryString["YW"] as string)){ %>
