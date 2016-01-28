@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="dayofexpired.aspx.cs" Inherits="PrimaryHaul.WebUI.dayofexpired" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
     <div class="row">
@@ -30,6 +31,4 @@
 
         </div>
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </asp:Content>

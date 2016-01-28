@@ -24,6 +24,7 @@
             vertical-align: middle;
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
     <% if (Session["s_forceChangeMsg"] != "") { Response.Write("<script>alert('"+Session["s_forceChangeMsg"]+"');</script>"); } %>
@@ -87,5 +88,5 @@
             </section>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
 </asp:Content>

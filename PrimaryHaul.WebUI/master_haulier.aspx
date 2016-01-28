@@ -2,7 +2,9 @@
 <%@ Import Namespace="System.Data"%>
 <%@ Import Namespace="System.Data.SqlClient"%>
 <%@ Import Namespace="PrimaryHaul_WS"%>
-<asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server"></asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
 <script>
     function js_tab(varTab) {
@@ -414,5 +416,5 @@
 </div>
 </div>
 <% } %>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 </asp:Content>
