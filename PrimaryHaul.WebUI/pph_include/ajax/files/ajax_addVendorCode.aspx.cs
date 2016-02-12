@@ -17,7 +17,8 @@ namespace PrimaryHaul.WebUI.pph_include.ajax.files
         {
             main_function PPHfunction = new main_function();
             cs_checkFiled getLast = new cs_checkFiled();
-            string vnID = getLast.sql_getAjaxAnswer("SELECT VendorID FROM Vendor_Info  where Vendor_TaxID ='" + Request.Form["var02"].ToString() + "'");
+            //string vnID = getLast.sql_getAjaxAnswer("SELECT VendorID FROM Vendor_Info  where Vendor_TaxID ='" + Request.Form["var02"].ToString() + "'");
+            string vnID = Request.Form["var02"].ToString();
             PPHfunction.QueryExecuteNonQuery("insert into Vendor_Group (VendorID, Vendor_Code) values ('" + vnID + "', '" + Request.Form["var01"].ToString() + "')");
         
         }

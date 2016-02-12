@@ -509,7 +509,7 @@ function isNumberKey(evt) {
 <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %>
 <div class="form-group">
 <div class="row">
-    <input type="hidden" name="vnID" id="vnID" value="<%= Request.QueryString["taxID"] %>" />
+    <input type="hidden" name="vnID" id="vnID" value="<%= Request.QueryString["vnID"] %>" />
     <div class="col-md-2"></div>
     <div class="col-md-2"><label class="control-label">Vendor Code </label></div>
     <div class="col-md-3"><input type="text" class="form-control" name="addVendorCode" onkeypress='return isNumberKey(event)' id="addVendorCode" onchange="ajax_duVendorCode2();"   style="width:100%;" maxlength="5" /><p class="text-danger" id="addVendorCodeError" style="display:none;"></p></div>
