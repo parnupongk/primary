@@ -26,172 +26,7 @@
     </style>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"
-        type="text/javascript"></script>
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
-        rel="Stylesheet" type="text/css" />
-
-    <script type="text/javascript">
-
-
-
-        $(document).ready(function () {
-            SearchText();
-        });
-        function SearchText() {
-            $("#<%=txtTaxId.ClientID %>").autocomplete({
-                source: function (request, response) {
-                    $.ajax({
-                        url: '<%=ResolveUrl("~/AutoComplete.asmx/GetVendorCode") %>',
-                        data: "{ 'prefixText': '" + request.term + "'}",
-                        dataType: "json",
-                        type: "POST",
-                        contentType: "application/json; charset=utf-8",
-                        success: function (data) {
-                            response($.map(data.d, function (item) {
-                                return {
-                                    label: item.split('-')[0],
-                                    val: item.split('-')[1]
-                                }
-                            }))
-                        },
-                        error: function (result) {
-                            alert(response.responseText);
-                        }
-                    });
-                },
-                focus: function () {
-                    // prevent value inserted on focus
-                    return false;
-                },
-                select: function (event, ui) {
-                    var terms = split(this.value);
-                    // remove the current input
-                    terms.pop();
-                    // add the selected item
-                    terms.push(ui.item.label);
-                    // add placeholder to get the comma-and-space at the end
-                    terms.push("");
-                    this.value = terms.join(", ");
-                    return false;
-                }
-            });
-            $("#<%=txtTaxId.ClientID %>").bind("keydown", function (event) {
-                if (event.keyCode === $.ui.keyCode.TAB &&
-                $(this).data("autocomplete").menu.active) {
-                    event.preventDefault();
-                }
-            })
-            function split(val) {
-                return val.split(/,\s*/);
-            }
-            function extractLast(term) {
-                return split(term).pop();
-            }
-        }
-    </script>
-
-    <script>
-        
-        function alertMessage(str) {
-            alert(str);
-        }
-        $(document).ready(function () {
-
-            var s = "<%= GetRoleId() %>";
-            if (s != "VD")SearchTextHaulier();
-        });
-        function SearchTextHaulier() {
-            $("#<%=txtEngName.ClientID %>").autocomplete({
-                source: function (request, response) {
-                    $.ajax({
-                        url: '<%=ResolveUrl("~/AutoComplete.asmx/GetHaulierCode") %>',
-                        data: "{ 'prefixText': '" + request.term + "'}",
-                        dataType: "json",
-                        type: "POST",
-                        contentType: "application/json; charset=utf-8",
-                        success: function (data) {
-                            response($.map(data.d, function (item) {
-                                return {
-                                    label: item.split('-')[1],
-                                    val: item.split('-')[0],
-                                    val1: item.split('-')[2]
-                                }
-                            }))
-                        },
-                        error: function (result) {
-                            alert(response.responseText);
-                        }
-                    });
-                },
-                focus: function () {
-                    // prevent value inserted on focus
-                    return false;
-                },
-                select: function (event, ui) {
-                    var terms = split(this.value);
-                    // remove the current input
-                    terms.pop();
-                    // add the selected item
-                    terms.push(ui.item.label);
-                    // add placeholder to get the comma-and-space at the end
-                    //terms.push("");
-                    document.getElementById('<%=txtHaulierCode.ClientID%>').value = ui.item.val;
-                    document.getElementById('<%=txtTHAName.ClientID%>').value = ui.item.val1;
-                    this.value = terms;//.join(", ");
-                    //alert(document.getElementById("txtEngName").innerHTML);
-
-                    return false;
-                }
-            });
-            $("#<%=txtEngName.ClientID %>").bind("keydown", function (event) {
-                if (event.keyCode === $.ui.keyCode.TAB &&
-                $(this).data("autocomplete").menu.active) {
-                    event.preventDefault();
-                }
-            })
-            function split(val) {
-                return val.split(/,\s*/);
-            }
-            function extractLast(term) {
-                return split(term).pop();
-            }
-        }
-
-        
-        function ajax_userDuplicate() {
-            var req = Inint_AJAX();
-            var str = Math.random();
-            var varUsername = document.getElementById('<%= txtUserName.ClientID %>').value;
-            if (varUsername != '') {
-                var str_url_address = "./pph_include/ajax/files/userDuplicate.aspx";
-                var str_url = "var01=" + varUsername;
-                str_url += "&clearmemory=" + str;
-                req.open('POST', str_url_address, true)
-                req.onreadystatechange = function () {
-                    if (req.readyState == 4) {
-                        if (req.status == 200) {
-                            var strRes = req.responseText;
-                            if (strRes > "0") {
-                                document.getElementById('<%= btnSubmit.ClientID %>').disabled = true;
-                                document.getElementById('dupError').innerHTML = "<font color=\"red\">Duplicate Username</font>";
-                                document.getElementById('dupError').style.display = "";
-                            }
-                            else {
-                                document.getElementById('<%= btnSubmit.ClientID %>').disabled = false;
-                                document.getElementById('dupError').style.display = "none";
-                            }
-                        }
-                    }
-                }
-                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                req.send(str_url);
-            }
-        }
-
-        document.getElementById('dupError').style.display = "none";
-    </script>
+   
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
@@ -349,4 +184,169 @@
                         </div>
 
                     </!-->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+
+
+
+        $(document).ready(function () {
+            SearchText();
+        });
+        function SearchText() {
+            $("#<%=txtTaxId.ClientID %>").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '<%=ResolveUrl("~/AutoComplete.asmx/GetVendorCode") %>',
+                        data: "{ 'prefixText': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data.d, function (item) {
+                                return {
+                                    label: item.split('-')[0],
+                                    val: item.split('-')[1]
+                                }
+                            }))
+                        },
+                        error: function (result) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                focus: function () {
+                    // prevent value inserted on focus
+                    return false;
+                },
+                select: function (event, ui) {
+                    var terms = split(this.value);
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push(ui.item.label);
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push("");
+                    this.value = terms.join(", ");
+                    return false;
+                }
+            });
+            $("#<%=txtTaxId.ClientID %>").bind("keydown", function (event) {
+                if (event.keyCode === $.ui.keyCode.TAB &&
+                $(this).data("autocomplete").menu.active) {
+                    event.preventDefault();
+                }
+            })
+            function split(val) {
+                return val.split(/,\s*/);
+            }
+            function extractLast(term) {
+                return split(term).pop();
+            }
+        }
+    </script>
+
+    <script>
+
+        function alertMessage(str) {
+            alert(str);
+        }
+        $(document).ready(function () {
+
+            var s = "<%= GetRoleId() %>";
+            if (s != "VD") SearchTextHaulier();
+        });
+            function SearchTextHaulier() {
+                $("#<%=txtEngName.ClientID %>").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '<%=ResolveUrl("~/AutoComplete.asmx/GetHaulierCode") %>',
+                        data: "{ 'prefixText': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data.d, function (item) {
+                                return {
+                                    label: item.split('-')[1],
+                                    val: item.split('-')[0],
+                                    val1: item.split('-')[2]
+                                }
+                            }))
+                        },
+                        error: function (result) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                focus: function () {
+                    // prevent value inserted on focus
+                    return false;
+                },
+                select: function (event, ui) {
+                    var terms = split(this.value);
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push(ui.item.label);
+                    // add placeholder to get the comma-and-space at the end
+                    //terms.push("");
+                    document.getElementById('<%=txtHaulierCode.ClientID%>').value = ui.item.val;
+                    document.getElementById('<%=txtTHAName.ClientID%>').value = ui.item.val1;
+                    this.value = terms;//.join(", ");
+                    //alert(document.getElementById("txtEngName").innerHTML);
+
+                    return false;
+                }
+            });
+            $("#<%=txtEngName.ClientID %>").bind("keydown", function (event) {
+                if (event.keyCode === $.ui.keyCode.TAB &&
+                $(this).data("autocomplete").menu.active) {
+                    event.preventDefault();
+                }
+            })
+            function split(val) {
+                return val.split(/,\s*/);
+            }
+            function extractLast(term) {
+                return split(term).pop();
+            }
+        }
+
+
+        function ajax_userDuplicate() {
+            var req = Inint_AJAX();
+            var str = Math.random();
+            var varUsername = document.getElementById('<%= txtUserName.ClientID %>').value;
+            if (varUsername != '') {
+                var str_url_address = "./pph_include/ajax/files/userDuplicate.aspx";
+                var str_url = "var01=" + varUsername;
+                str_url += "&clearmemory=" + str;
+                req.open('POST', str_url_address, true)
+                req.onreadystatechange = function () {
+                    if (req.readyState == 4) {
+                        if (req.status == 200) {
+                            var strRes = req.responseText;
+                            if (strRes > "0") {
+                                document.getElementById('<%= btnSubmit.ClientID %>').disabled = true;
+                                document.getElementById('dupError').innerHTML = "<font color=\"red\">Duplicate Username</font>";
+                                document.getElementById('dupError').style.display = "";
+                            }
+                            else {
+                                document.getElementById('<%= btnSubmit.ClientID %>').disabled = false;
+                                document.getElementById('dupError').style.display = "none";
+                            }
+                        }
+                    }
+                }
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.send(str_url);
+            }
+        }
+
+        document.getElementById('dupError').style.display = "none";
+    </script>
+
 </asp:Content>

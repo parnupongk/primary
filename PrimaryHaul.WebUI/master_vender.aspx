@@ -2,6 +2,7 @@
 <%@ Import Namespace="System.Data"%>
 <%@ Import Namespace="System.Data.SqlClient"%>
 <%@ Import Namespace="PrimaryHaul_WS"%>
+<%@ Import Namespace="PPH_SC"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
@@ -72,7 +73,7 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-2"><label class="control-label">Tax ID : </label></div>
+                <div class="col-md-2"><label class="control-label">Vendor Code : </label></div>
                 <div class="col-md-3"><input type="text" class="form-control" name="seNameTax" id="seNameTax" value="<%= str_sNameTax %>" /></div>
                 <div class="col-md-7"></div>
             </div>
@@ -106,15 +107,17 @@
         <td style="text-align:center;width:28%;"></td>
     </tr>
     <%
+        
         string detailColor = "", sql_seNameEn = "", sql_seNameTh = "", sql_seNameTax = "";
         int irows = 0;
         int icolor = 0;
-        if (str_sNameEn != "") { sql_seNameEn = "and Vendor_Name_En like '%" + str_sNameEn + "%'"; }
-        if (str_sNameTh != "") { sql_seNameTh = "and Vendor_Name_Th like '%" + str_sNameTh + "%'"; }
-        if (str_sNameTax != "") { sql_seNameTax = "and Vendor_TaxID like '%" + str_sNameTax + "%'"; }
-        string sql_vendorInfo = "select * from Vendor_Info where Vendor_TaxID != '' " + sql_seNameEn + " " + sql_seNameTh + " " + sql_seNameTax + " order by Vendor_Name_En asc";
-        SqlCommand rs_vendorInfo = new SqlCommand(sql_vendorInfo, objConn);
-        SqlDataReader obj_vendorInfo = rs_vendorInfo.ExecuteReader();
+        if (str_sNameEn != "") { sql_seNameEn = "and Vendor_Info.Vendor_Name_En like '%" + str_sNameEn + "%'"; }
+        if (str_sNameTh != "") { sql_seNameTh = "and Vendor_Info.Vendor_Name_Th like '%" + str_sNameTh + "%'"; }
+        if (str_sNameTax != "") { sql_seNameTax = "and Vendor_Info.Vendor_TaxID like '%" + str_sNameTax + "%'"; }
+        //string sql_vendorInfo = "select Vendor_Group.VendorID, Vendor_Group.vendor_type, Vendor_Info.Vendor_TaxID, Vendor_Info.Vendor_Name_En, Vendor_Info.Vendor_Name_Th from Vendor_Group, Vendor_Info where Vendor_Info.VendorID=Vendor_Group.VendorID and Vendor_Info.Vendor_TaxID != '' " + sql_seNameEn + " " + sql_seNameTh + " " + sql_seNameTax + " order by Vendor_Info.Vendor_Name_En asc";
+        //SqlCommand rs_vendorInfo = new SqlCommand(sql_vendorInfo, objConn);
+        //SqlDataReader obj_vendorInfo = rs_vendorInfo.ExecuteReader();
+        SqlDataReader obj_vendorInfo = PPH_VD.get_allVendor(strConnString, str_sNameEn, str_sNameTax);
         while (obj_vendorInfo.Read())
         {
             irows++;
@@ -359,7 +362,8 @@ function isNumberKey(evt) {
     <table class="table table-bordered">
     <tr style="background-color:#9bbb59;">
         <td style="text-align:center;width:10%;">No.</td>
-        <td style="text-align:center;width:40%;">Vendor code</td>
+        <td style="text-align:center;width:20%;">Vendor code</td>
+        <td style="text-align:center;width:20%;">Vendor Type</td>
         <td style="text-align:center;width:40%;">Username</td>
         <td style="text-align:center;width:10%;"></td>
     </tr>
@@ -367,7 +371,7 @@ function isNumberKey(evt) {
         string detailColor = "";
         int irows = 0;
         int icolor = 0;
-        string sql_vendorInfo = "select B.VendorID, B.Vendor_Code,B.Vendor_UserName  from Vendor_Info A , Vendor_Group B where  A.VendorID = B.VendorID and A.VendorID='"+Request.QueryString["vnID"]+"' Order by B.Vendor_Code  asc";
+        string sql_vendorInfo = "select B.VendorID, B.Vendor_Code,B.Vendor_UserName, B.vendor_type  from Vendor_Info A , Vendor_Group B where  A.VendorID = B.VendorID and A.VendorID='" + Request.QueryString["vnID"] + "' Order by B.Vendor_Code  asc";
         SqlCommand rs_vendorInfo = new SqlCommand(sql_vendorInfo, objConn);
         SqlDataReader obj_vendorInfo = rs_vendorInfo.ExecuteReader();
         while (obj_vendorInfo.Read())
@@ -379,6 +383,7 @@ function isNumberKey(evt) {
       <tr <%= detailColor %>>
         <td style="text-align:center;"><%= irows %></td>
         <td style="text-align:center;"><%= obj_vendorInfo["Vendor_Code"].ToString() %></td>
+        <td style="text-align:center;"><%= obj_vendorInfo["vendor_type"].ToString() %></td>
         <td style="text-align:center;"><%= obj_vendorInfo["Vendor_UserName"].ToString() %></td>
         <td style="text-align:center;"><input type="checkbox" onclick="checkk()" name="selectV[]" id="selectV_<%= irows %>" value="<%= obj_vendorInfo["VendorID"].ToString() %>-<%= obj_vendorInfo["Vendor_Code"].ToString() %>" /></td>                   
       </tr>
@@ -421,11 +426,12 @@ function isNumberKey(evt) {
             req.send(str_url);
         }
     }
-    function ajax_duVendorCode(objVNID) {
+    function ajax_duVendorCode(objVNID, objVType) {
         var req = Inint_AJAX();
         var str = Math.random();
         var strValue = document.getElementById('addVendorCode').value;
         var strVNID = document.getElementById('vnID').value;
+        var strVtype = document.getElementById(objVType).value;
         if (strValue == "") {
             document.getElementById('btnAddVendorCode').disabled = true;
             document.getElementById('addVendorCodeError').innerHTML = "<font color=\"red\">field is required</font>";
@@ -452,7 +458,7 @@ function isNumberKey(evt) {
 
                             document.getElementById('btnAddVendorCode').disabled = false;
                             document.getElementById('addVendorCodeError').style.display = "none";
-                            ajax_addVendorCode(strValue, strVNID);
+                            ajax_addVendorCode(strValue, strVNID, strVtype);
                         }
                     }
                 }
@@ -461,12 +467,13 @@ function isNumberKey(evt) {
             req.send(str_url);
         }
     }
-    function ajax_addVendorCode(strValue, strVNID) {
+    function ajax_addVendorCode(strValue, strVNID, strVtype) {
         var req = Inint_AJAX();
         var str = Math.random();
         var str_url_address = "./pph_include/ajax/files/ajax_addVendorCode.aspx";
         var str_url = "var01=" + strValue;
         str_url += "&var02=" + strVNID;
+        str_url += "&var03=" + strVtype;
         str_url += "&clearmemory=" + str;
         //alert(strVNID);
         req.open('POST', str_url_address, true)
@@ -519,8 +526,23 @@ function isNumberKey(evt) {
 <div class="form-group">
 <div class="row">
     <div class="col-md-2"></div>
+    <div class="col-md-2"><label class="control-label">Vendor Type </label></div>
+    <div class="col-md-3">
+        <select name="vd_type" id="vd_type" class="form-control" style="width:100%;">
+            <option value="VD">PrimaryHaul (VD)</option>
+            <option value="BH">BackHaul (BH)</option>
+            <option value="FZ">Forzen (FZ)</option>
+            <option value="IP">Import (IP)</option>
+        </select>
+    </div>
+    <div class="col-md-5"></div>
+</div>
+</div>
+<div class="form-group">
+<div class="row">
     <div class="col-md-2"></div>
-    <div class="col-md-3"><input type="button" value="Add Vendor Code" class="btn btn-default" id="btnAddVendorCode" style="width:100%;" onclick="ajax_duVendorCode('vnID');" /></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-3"><input type="button" value="Add Vendor Code" class="btn btn-default" id="btnAddVendorCode" style="width:100%;" onclick="ajax_duVendorCode('vnID', 'vd_type');" /></div>
     <div class="col-md-5"></div>
 </div>
 </div>

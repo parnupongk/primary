@@ -28,7 +28,8 @@
     <![endif]-->
 
     <script src="pph_include/ajax/ajax_connect.js"></script>
-        <script src="dist/js/bootstrap.min.js"></script>
+    <script src="pph_include/ajax/ajax_haulier.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
     <script>
 
         function isNumberKey(evt) {
@@ -102,6 +103,9 @@
                                         <li><a runat="server" id="lnkTesco" name="Tesco" href="addNew.aspx?type=A1&">Tesco User  </a></li>
                                         <li><a runat="server" id="lnkProHaulier" name="Haulier" href="addnew.aspx?type=HL&">Haulier</a></li>
                                         <li><a runat="server" id="lnkProVendor" name="Vendor" href="addnew.aspx?type=VD&">Vendor</a></li>
+                                        <li><a runat="server" id="lnkBackhaul" name="Backhaul" href="addnew.aspx?type=B1&">Backhaul</a></li>
+                                        <li><a runat="server" id="lnkForzen" name="Forzen" href="addnew.aspx?type=F1&">Forzen</a></li>
+                                        <li><a runat="server" id="lnkImport" name="Import" href="addnew.aspx?type=I1&">Import</a></li>
                                     </ul>
                                 </li>
                                 <li><a runat="server" id="A1" href="user_management.aspx?" name="User Management">User Management</a></li>
@@ -153,7 +157,7 @@
     </div>
     <!-- /container -->
 
-
+     <script src="dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>

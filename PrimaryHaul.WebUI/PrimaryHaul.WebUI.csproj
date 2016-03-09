@@ -47,7 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit">
-      <HintPath>..\..\..\Tesco Primaryhaul\AjaxControlToolkit.Binary\AjaxControlToolkit.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\inetpub\wwwroot\primaryHaul (Server Dev)\bin\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data">
       <HintPath>..\packages\Microsoft.ApplicationBlocks.Data.2.0.0\lib\net45\Microsoft.ApplicationBlocks.Data.dll</HintPath>
@@ -124,7 +124,10 @@
     <Content Include="pph_include\ajax\ajax_connect.js" />
     <Content Include="pph_include\ajax\files\ajax_addVendorCode.aspx" />
     <Content Include="pph_include\ajax\files\ajax_addVendorUsername.aspx" />
+    <Content Include="pph_include\ajax\files\ajax_dc.aspx" />
     <Content Include="pph_include\ajax\files\ajax_duVendorCode.aspx" />
+    <Content Include="pph_include\ajax\ajax_haulier.js" />
+    <Content Include="pph_include\ajax\files\ajax_haulier.aspx" />
     <Content Include="pph_include\ajax\files\ajax_vendorDeleteUser.aspx" />
     <Content Include="pph_include\ajax\files\ajax_vnContactPoint.aspx" />
     <Content Include="pph_include\ajax\files\dc_abbrDuplicate.aspx" />
@@ -392,12 +395,26 @@
     <Compile Include="pph_include\ajax\files\ajax_addVendorUsername.aspx.designer.cs">
       <DependentUpon>ajax_addVendorUsername.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_dc.aspx.cs">
+      <DependentUpon>ajax_dc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_dc.aspx.designer.cs">
+      <DependentUpon>ajax_dc.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pph_include\ajax\files\ajax_duVendorCode.aspx.cs">
       <DependentUpon>ajax_duVendorCode.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pph_include\ajax\files\ajax_duVendorCode.aspx.designer.cs">
       <DependentUpon>ajax_duVendorCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_haulier.aspx.cs">
+      <DependentUpon>ajax_haulier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\ajax\files\ajax_haulier.aspx.designer.cs">
+      <DependentUpon>ajax_haulier.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\ajax\files\ajax_vendorDeleteUser.aspx.cs">
       <DependentUpon>ajax_vendorDeleteUser.aspx</DependentUpon>
@@ -745,6 +762,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PPH_SC\PPH_SC.csproj">
+      <Project>{6494275d-de6c-496f-a2a5-d83ecf5205ef}</Project>
+      <Name>PPH_SC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PrimaryHaul_WSFlow\PrimaryHaul_WSFlow.csproj">
       <Project>{9cea619e-5e2d-491f-b13c-b436c6246982}</Project>
       <Name>PrimaryHaul_WSFlow</Name>

@@ -193,6 +193,33 @@ namespace PrimaryHaul.WebUI {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkProVendor;
         
         /// <summary>
+        /// lnkBackhaul control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkBackhaul;
+        
+        /// <summary>
+        /// lnkForzen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkForzen;
+        
+        /// <summary>
+        /// lnkImport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkImport;
+        
+        /// <summary>
         /// A1 control.
         /// </summary>
         /// <remarks>

@@ -15,6 +15,12 @@ namespace PrimaryHaul_WSFlow
             A2,
             HL,
             VD,
+            B1,
+            B2,
+            F1,
+            F2,
+            I1,
+            I2,
         }
         public enum SignInStatus
         {

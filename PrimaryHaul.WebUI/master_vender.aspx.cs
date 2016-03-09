@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using PrimaryHaul.WebUI.App_Code;
+using PPH_SC;
 
 namespace PrimaryHaul.WebUI
 {
@@ -20,6 +21,8 @@ namespace PrimaryHaul.WebUI
             objConn = new SqlConnection();
             objConn.ConnectionString = strConnString;
             objConn.Open();
+
+            
         }
     }
 }

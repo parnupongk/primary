@@ -20,6 +20,29 @@
         if (charCode)
             return false;
     }
+    function ajax_dc(varType, varID) {
+        var r = confirm("Press OK For Delete");
+        if (r == true) {
+            var req = Inint_AJAX();
+            var str = Math.random();
+            var str_url_address = "./pph_include/ajax/files/ajax_dc.aspx";
+            var str_url = "varType=" + varType;
+            str_url += "&varID=" + varID;
+            str_url += "&clearmemory=" + str;
+            req.open('POST', str_url_address, true)
+            req.onreadystatechange = function () {
+                if (req.readyState == 4) {
+                    if (req.status == 200) {
+                        alert('Delete Success');
+                        window.location.reload();
+                    }
+                }
+            }
+            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            req.send(str_url);
+        }
+        
+    }
 </script>
   <link rel="stylesheet" href="./pph_include/css/jquery-ui.min.css" />  
 <div id="form_button">
@@ -38,11 +61,11 @@
         <table class="table table-bordered">
         <tr style="background-color:#9bbb59;">
             <td style="text-align:center;width:10%;">No.</td>
-            <td style="text-align:center;width:15%;">DC No.</td>
+            <td style="text-align:center;width:10%;">DC No.</td>
             <td style="text-align:center;width:15%;">DC Abbr</td>
             <td style="text-align:center;width:30%;">DC Name</td>
-            <td style="text-align:center;width:20%;">End Date</td>
-            <td style="text-align:center;width:10%;"></td>
+            <td style="text-align:center;width:15%;">End Date</td>
+            <td style="text-align:center;width:20%;"></td>
         </tr>
         <%
             string detailColor = "";
@@ -64,7 +87,10 @@
             <td style="text-align:left;"><%= obj_dcInfo["DC_Name"].ToString() %></td>
             <td style="text-align:center;"><%= obj_dcInfo["EndDate"].ToString() %></td>
             <td style="text-align:center;">
-                <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %><input type="button" value="Update" class="btn btn-default" <% Response.Write("onclick=\"js_dcForm('urlSubmit', '" + obj_dcInfo["DC_NO"].ToString() + "', '" +obj_dcInfo["EndDate"].ToString()+ "');\""); %> /><%} %>                
+                <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %><input type="button" value="Update" class="btn btn-default" <% Response.Write("onclick=\"js_dcForm('urlSubmit', '" + obj_dcInfo["DC_NO"].ToString() + "', '" +obj_dcInfo["EndDate"].ToString()+ "');\""); %> /><%} %> 
+                &nbsp;&nbsp;      
+                <% Response.Write("<input type=\"button\" value=\"Delete\" class=\"btn btn-danger\" onclick=\"ajax_dc('delete', '"+obj_dcInfo["DC_NO"].ToString()+"');\" /> "); %>       
+                
             </td>                   
           </tr>
          <% } obj_dcInfo.Close(); %>
