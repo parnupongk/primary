@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AutoComplete.asmx" />
+    <Content Include="bh_ratecard.aspx" />
     <Content Include="changePassword.aspx" />
     <Content Include="changeprofile.aspx" />
     <Content Include="dayofexpired.aspx" />
@@ -261,6 +262,13 @@
     <Compile Include="AutoComplete.asmx.cs">
       <DependentUpon>AutoComplete.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bh_ratecard.aspx.cs">
+      <DependentUpon>bh_ratecard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bh_ratecard.aspx.designer.cs">
+      <DependentUpon>bh_ratecard.aspx</DependentUpon>
     </Compile>
     <Compile Include="changePassword.aspx.cs">
       <DependentUpon>changePassword.aspx</DependentUpon>
