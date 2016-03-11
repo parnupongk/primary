@@ -72,6 +72,9 @@
                                 <li><a runat="server" id="lnkSKU" href="master_sku.aspx?" name="SKU">SKU</a></li>
                                 <li><a runat="server" id="lnkHaulier" href="master_haulier.aspx?" name="Master_Haulier">Haulier</a></li>
                                 <li><a runat="server" id="lnkVender" href="master_vender.aspx?" name="Master_Vendor">Vendor</a></li>
+                                <li><a runat="server" id="lnkBHratecard" href="bh_ratecard.aspx?" name="BH Rate Card">BH Rate Card</a></li>
+                                <li><a runat="server" id="lnkBHrams" href="bh_rams.aspx?" name="BH RAMS">BH RAMS</a></li>
+                                <li><a runat="server" id="lnkBHtransaction" href="bh_transaction.aspx?" name="BH Transaction">BH Transaction</a></li>            
                             </ul>
                         </li>
                         <li><a runat="server" id="lnkVendorDownloadFile" href="report_venderlog.aspx?" name="VENDOR DOWNLOAD FILE">Vendor Download File</a></li>
@@ -81,6 +84,8 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a runat="server" id="lnkRate" href="rate_calc.aspx?" name="Rate Calculation">Rate Calculation</a></li>
                                 <li><a runat="server" id="lnkRateAdj" href="rate_calc_adj.aspx?" name="Adjust & Re Calculate">Adjust & Re Calculate</a></li>
+                                <li><a runat="server" id="lnkBHcalculate" href="bh_calculate.aspx?" name="BH Calculate">BH Calculate</a></li>
+                                <li><a runat="server" id="lnkBHadjrecel" href="bh_adjrecel.aspx?" name="BH Adjust and ReCalculate">BH Adjust and ReCalculate</a></li>
                             </ul>
                         </li>
                         

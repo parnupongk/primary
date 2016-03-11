@@ -112,6 +112,33 @@ namespace PrimaryHaul.WebUI {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkVender;
         
         /// <summary>
+        /// lnkBHratecard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkBHratecard;
+        
+        /// <summary>
+        /// lnkBHrams control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkBHrams;
+        
+        /// <summary>
+        /// lnkBHtransaction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkBHtransaction;
+        
+        /// <summary>
         /// lnkVendorDownloadFile control.
         /// </summary>
         /// <remarks>
@@ -146,6 +173,24 @@ namespace PrimaryHaul.WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkRateAdj;
+        
+        /// <summary>
+        /// lnkBHcalculate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkBHcalculate;
+        
+        /// <summary>
+        /// lnkBHadjrecel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkBHadjrecel;
         
         /// <summary>
         /// lnkFinance control.
