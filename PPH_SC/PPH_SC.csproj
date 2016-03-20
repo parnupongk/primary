@@ -44,6 +44,8 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PPH_BH.cs" />
+    <Compile Include="PPH_MAIN.cs" />
     <Compile Include="PPH_VD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -10,7 +10,16 @@
 namespace PrimaryHaul.WebUI {
     
     
-    public partial class bh_ratecard {
+    public partial class bh_rams {
+        
+        /// <summary>
+        /// hidYW control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidYW;
         
         /// <summary>
         /// lnkFile control.

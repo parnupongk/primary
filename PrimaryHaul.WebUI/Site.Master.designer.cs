@@ -202,13 +202,13 @@ namespace PrimaryHaul.WebUI {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkFinance;
         
         /// <summary>
-        /// lnkVendorLog control.
+        /// lnkKpi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkVendorLog;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkKpi;
         
         /// <summary>
         /// lnkTesco control.

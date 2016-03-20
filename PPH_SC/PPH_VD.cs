@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace PPH_SC
 {
     public class PPH_VD
@@ -19,7 +20,6 @@ namespace PPH_SC
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@Vendor_Name", SqlDbType.VarChar).Value = strName;
             cmd.Parameters.Add("@Vendor_Code", SqlDbType.VarChar).Value = strCode;
-              
             return cmd.ExecuteReader();
         }
     }

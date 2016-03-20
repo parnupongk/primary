@@ -30,6 +30,7 @@ namespace PrimaryHaul.WebUI
                     {
                         storeUser(status);
                         Session["s_forceChange"] = "";
+                        Session["s_userID"] = status.UserId;
                         if (status.RoleId.ToString() == "VD")
                         {
                             Response.Redirect("report_venderlog.aspx?r=" + status.RoleId + "&id=" + status.UserId, false);

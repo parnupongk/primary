@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ajax_BHrams.aspx.cs" Inherits="PrimaryHaul.WebUI.pph_include.ajax.files.ajax_BHrams" %>
