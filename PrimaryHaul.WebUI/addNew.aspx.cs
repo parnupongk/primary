@@ -46,6 +46,24 @@ namespace PrimaryHaul.WebUI
                         divVender.Visible = false;
 
                     }
+                    else if (type != null && type[0] == PHCore_Status.RoleID.B1.ToString())
+                    {
+                        divContact.Visible = false;
+                        divHaulier.Visible = false;
+                        divVender.Visible = false;
+                    }
+                    else if (type != null && type[0] == PHCore_Status.RoleID.F1.ToString())
+                    {
+                        divContact.Visible = false;
+                        divHaulier.Visible = false;
+                        divVender.Visible = false;
+                    }
+                    else if (type != null && type[0] == PHCore_Status.RoleID.I1.ToString())
+                    {
+                        divContact.Visible = false;
+                        divHaulier.Visible = false;
+                        divVender.Visible = false;
+                    }
                     else Response.Redirect("logout.aspx", false);
                     #endregion
 
@@ -155,10 +173,29 @@ namespace PrimaryHaul.WebUI
         {
             try
             {
-                if(rdoRoleAdmin2.Checked) return PHCore_Status.RoleID.A2.ToString();
+                string[] type = (Request["type"] != null) ? Request["type"].Split(',') : null;
+                if (rdoRoleAdmin2.Checked)
+                {
+                    if (type[0] == PHCore_Status.RoleID.B1.ToString())
+                    {
+                        return PHCore_Status.RoleID.B2.ToString();
+                    }
+                    else if (type[0] == PHCore_Status.RoleID.F1.ToString())
+                    {
+                        return PHCore_Status.RoleID.F2.ToString();
+                    }
+                    else if (type[0] == PHCore_Status.RoleID.I1.ToString())
+                    {
+                        return PHCore_Status.RoleID.I2.ToString();
+                    }
+                    else
+                    {
+                        return PHCore_Status.RoleID.A2.ToString();
+                    }
+                    
+                }
                 else
                 {
-                    string[] type = (Request["type"] != null) ? Request["type"].Split(',') : null;
                     return type[0];
                 }
             }

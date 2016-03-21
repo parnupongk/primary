@@ -3,7 +3,6 @@
 <%@ Import Namespace="System.Data.SqlClient"%>
 <%@ Import Namespace="PrimaryHaul_WS"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
 <script>
@@ -33,10 +32,10 @@
         <table class="table table-bordered">
         <tr style="background-color:#9bbb59;">
             <td style="text-align:center;width:10%;">No.</td>
-            <td style="text-align:center;width:30%;">Haulier ID</td>
+            <td style="text-align:center;width:20%;">Haulier ID</td>
             <td style="text-align:center;width:30%;">Haulier Name</td>
             <td style="text-align:center;width:20%;">Haulier</td>
-            <td style="text-align:center;width:10%;"></td>
+            <td style="text-align:center;width:20%;"></td>
         </tr>
         <%
             string detailColor = "";
@@ -56,7 +55,11 @@
             <td style="text-align:center;"><%= obj_haulierInfo["Haulier_TaxID"].ToString() %></td>
             <td style="text-align:left;"><%= obj_haulierInfo["Haulier_Name_En"].ToString() %></td>
             <td style="text-align:center;"><%= obj_haulierInfo["Haulier_Abbr"].ToString() %></td>
-            <td style="text-align:center;"><% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %><input type="button" value="Edit" class="btn btn-default" <% Response.Write("onclick=\"js_haulierForm('urlSubmit', '" + obj_haulierInfo["Haulier_TaxID"].ToString() + "');\""); %> /> <%} %></td>                   
+            <td style="text-align:center;">
+                <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %><input type="button" value="Edit" class="btn btn-default" <% Response.Write("onclick=\"js_haulierForm('urlSubmit', '" + obj_haulierInfo["Haulier_TaxID"].ToString() + "');\""); %> /> <%} %>
+                &nbsp;&nbsp;      
+                <% Response.Write("<input type=\"button\" value=\"Delete\" class=\"btn btn-danger\" onclick=\"haulier_del('delete', '" + obj_haulierInfo["Haulier_TaxID"].ToString() + "');\" /> "); %> 
+            </td>                   
           </tr>
          <% } obj_haulierInfo.Close(); %>
         </table>
@@ -416,5 +419,5 @@
 </div>
 </div>
 <% } %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </asp:Content>

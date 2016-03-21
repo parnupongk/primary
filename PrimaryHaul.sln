@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimaryHaul_WS", "PrimaryHaul_WS\PrimaryHaul_WS.csproj", "{B7765687-712B-45D4-A389-4864AC58E8F1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimaryHaul_WSFlow", "PrimaryHaul_WSFlow\PrimaryHaul_WSFlow.csproj", "{9CEA619E-5E2D-491F-B13C-B436C6246982}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimaryHaul.WebUI", "PrimaryHaul.WebUI\PrimaryHaul.WebUI.csproj", "{4BA88026-2310-49AC-8CDA-4C5FB609EA09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPH_SC", "PPH_SC\PPH_SC.csproj", "{6494275D-DE6C-496F-A2A5-D83ECF5205EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,12 @@ Global
 		{4BA88026-2310-49AC-8CDA-4C5FB609EA09}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4BA88026-2310-49AC-8CDA-4C5FB609EA09}.Release|x86.ActiveCfg = Release|x86
 		{4BA88026-2310-49AC-8CDA-4C5FB609EA09}.Release|x86.Build.0 = Release|x86
+		{6494275D-DE6C-496F-A2A5-D83ECF5205EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6494275D-DE6C-496F-A2A5-D83ECF5205EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6494275D-DE6C-496F-A2A5-D83ECF5205EF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6494275D-DE6C-496F-A2A5-D83ECF5205EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6494275D-DE6C-496F-A2A5-D83ECF5205EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6494275D-DE6C-496F-A2A5-D83ECF5205EF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
