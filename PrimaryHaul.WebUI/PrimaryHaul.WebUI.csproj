@@ -74,6 +74,9 @@
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\..\..\dotnet4\NPOI.dll</HintPath>
+    </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -124,6 +127,7 @@
     <Content Include="master_vender.aspx" />
     <Content Include="master_vender_delete.aspx" />
     <Content Include="master_vendor_edit.aspx" />
+    <Content Include="NPOI_readme.txt" />
     <Content Include="packages.config" />
     <Content Include="pph_include\ajax\ajax_connect.js" />
     <Content Include="pph_include\ajax\files\ajax_addVendorCode.aspx" />
@@ -207,6 +211,7 @@
     <Content Include="dist\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="file\ratecard.xls" />
     <Content Include="file\haulier.xls" />
+    <None Include="NPOI_LICENSE" />
     <None Include="Properties\PublishProfiles\primaryHaul.pubxml" />
     <None Include="Properties\PublishProfiles\tesco.pubxml" />
     <None Include="Web.Debug.config">

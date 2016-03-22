@@ -136,6 +136,17 @@ namespace PPH_SC
             cmd_rams.Parameters.Add("@YearWeek", SqlDbType.VarChar).Value = txt_week;
             cmd_rams.Parameters.Add("@KeySearch", SqlDbType.VarChar).Value = txt_vendor;
             return cmd_rams.ExecuteReader();
-        }    
+        }
+
+        public static SqlDataReader get_kpi_report(string strConnDB, string txt_week)
+        {
+            SqlConnection objConn = new SqlConnection();
+            objConn.ConnectionString = strConnDB;
+            objConn.Open();
+            SqlCommand cmd_kpireport = new SqlCommand("usp_BH_Transaction_Select_KPI", objConn);
+            cmd_kpireport.CommandType = CommandType.StoredProcedure;
+            cmd_kpireport.Parameters.Add("@Week", SqlDbType.VarChar).Value = txt_week;
+            return cmd_kpireport.ExecuteReader();
+        }  
     }
 }
