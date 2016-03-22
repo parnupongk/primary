@@ -28,7 +28,7 @@
     <![endif]-->
 
     <script src="pph_include/ajax/ajax_connect.js"></script>
-        <script src="dist/js/bootstrap.min.js"></script>
+        
     <script>
 
         function isNumberKey(evt) {
@@ -161,6 +161,6 @@
     <!-- /container -->
 
 
-
+<script src="dist/js/bootstrap.min.js"></script>
 </body>
 </html>
