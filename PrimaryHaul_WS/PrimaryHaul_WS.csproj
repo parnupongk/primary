@@ -68,6 +68,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode_DS\PHDS_BHUpload.cs">
+      <DependentUpon>PHDS_BHUpload.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode_DS\PHDS_BHUpload.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PHDS_BHUpload.xsd</DependentUpon>
+    </Compile>
     <Compile Include="AppCode_DS\PHDS_HaulierUpload.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,6 +99,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PHDS_Vendor.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PH_BHCalc.cs" />
+    <Compile Include="PH_BHUpload.cs" />
     <Compile Include="PH_DayofPasswrdExp.cs" />
     <Compile Include="PH_EncrptHelper.cs" />
     <Compile Include="PH_ExceptionManager.cs" />
@@ -111,6 +121,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AppCode_DS\PHDS_BHUpload.xsc">
+      <DependentUpon>PHDS_BHUpload.xsd</DependentUpon>
+    </None>
+    <None Include="AppCode_DS\PHDS_BHUpload.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PHDS_BHUpload.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AppCode_DS\PHDS_BHUpload.xss">
+      <DependentUpon>PHDS_BHUpload.xsd</DependentUpon>
+    </None>
     <None Include="AppCode_DS\PHDS_HaulierUpload.xsc">
       <DependentUpon>PHDS_HaulierUpload.xsd</DependentUpon>
     </None>

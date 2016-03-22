@@ -95,8 +95,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AutoComplete.asmx" />
+    <Content Include="bh_calc.aspx" />
     <Content Include="bh_rams.aspx" />
     <Content Include="bh_ratecard.aspx" />
+    <Content Include="bh_transaction.aspx" />
     <Content Include="changePassword.aspx" />
     <Content Include="changeprofile.aspx" />
     <Content Include="dayofexpired.aspx" />
@@ -267,6 +269,13 @@
       <DependentUpon>AutoComplete.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="bh_calc.aspx.cs">
+      <DependentUpon>bh_calc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bh_calc.aspx.designer.cs">
+      <DependentUpon>bh_calc.aspx</DependentUpon>
+    </Compile>
     <Compile Include="bh_rams.aspx.cs">
       <DependentUpon>bh_rams.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -280,6 +289,13 @@
     </Compile>
     <Compile Include="bh_ratecard.aspx.designer.cs">
       <DependentUpon>bh_ratecard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bh_transaction.aspx.cs">
+      <DependentUpon>bh_transaction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bh_transaction.aspx.designer.cs">
+      <DependentUpon>bh_transaction.aspx</DependentUpon>
     </Compile>
     <Compile Include="changePassword.aspx.cs">
       <DependentUpon>changePassword.aspx</DependentUpon>
