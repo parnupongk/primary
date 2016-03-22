@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-3 col-md-9">
-                    <asp:Button runat="server" ID="btnAddSubmit" Visible="false" Text="Calculate" CssClass="btn btn-default" OnClick="btnAddSubmit_Click" />
+                    <asp:Button runat="server" ID="btnAddSubmit" Visible="false" Text="Calculate" CssClass="btn btn-default" />
                     <p class="text-danger">
                         <asp:Label ID="lblErr" runat="server"></asp:Label>
                     </p>
