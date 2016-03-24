@@ -347,6 +347,8 @@ namespace PrimaryHaul_WS.AppCode_DS {
             
             private global::System.Data.DataColumn columnStampTime;
             
+            private global::System.Data.DataColumn columnWeek_OnFile;
+            
             private global::System.Data.DataColumn columnStatus;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -656,6 +658,14 @@ namespace PrimaryHaul_WS.AppCode_DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Week_OnFileColumn {
+                get {
+                    return this.columnWeek_OnFile;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn StatusColumn {
                 get {
                     return this.columnStatus;
@@ -733,6 +743,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                         string File_Name, 
                         int UserID, 
                         System.DateTime StampTime, 
+                        string Week_OnFile, 
                         string Status) {
                 BH_Transaction_TMPRow rowBH_Transaction_TMPRow = ((BH_Transaction_TMPRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -770,6 +781,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                         File_Name,
                         UserID,
                         StampTime,
+                        Week_OnFile,
                         Status};
                 rowBH_Transaction_TMPRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBH_Transaction_TMPRow);
@@ -834,6 +846,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 this.columnFile_Name = base.Columns["File_Name"];
                 this.columnUserID = base.Columns["UserID"];
                 this.columnStampTime = base.Columns["StampTime"];
+                this.columnWeek_OnFile = base.Columns["Week_OnFile"];
                 this.columnStatus = base.Columns["Status"];
             }
             
@@ -908,6 +921,8 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 base.Columns.Add(this.columnUserID);
                 this.columnStampTime = new global::System.Data.DataColumn("StampTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStampTime);
+                this.columnWeek_OnFile = new global::System.Data.DataColumn("Week_OnFile", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWeek_OnFile);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -1539,11 +1554,11 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string File_Name {
                 get {
-                    try {
-                        return ((string)(this[this.tableBH_Transaction_TMP.File_NameColumn]));
+                    if (this.IsFile_NameNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'File_Name\' in table \'BH_Transaction_TMP\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableBH_Transaction_TMP.File_NameColumn]));
                     }
                 }
                 set {
@@ -1580,6 +1595,22 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 }
                 set {
                     this[this.tableBH_Transaction_TMP.StampTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Week_OnFile {
+                get {
+                    if (this.IsWeek_OnFileNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableBH_Transaction_TMP.Week_OnFileColumn]));
+                    }
+                }
+                set {
+                    this[this.tableBH_Transaction_TMP.Week_OnFileColumn] = value;
                 }
             }
             
@@ -1897,6 +1928,18 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetStampTimeNull() {
                 this[this.tableBH_Transaction_TMP.StampTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsWeek_OnFileNull() {
+                return this.IsNull(this.tableBH_Transaction_TMP.Week_OnFileColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetWeek_OnFileNull() {
+                this[this.tableBH_Transaction_TMP.Week_OnFileColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

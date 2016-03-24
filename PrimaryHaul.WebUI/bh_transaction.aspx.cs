@@ -141,6 +141,9 @@ namespace PrimaryHaul.WebUI
                                     dr.Rate_Unloading = string.IsNullOrEmpty(drRead[18].ToString()) ? 0 : int.Parse(drRead[18].ToString());
                                     dr.File_Name = fileName;
                                     dr.UserID = strUserId;
+                                    dr.StampTime = DateTime.Now;
+                                    dr.Week_Upload = lblWeek.Text;
+                                    dr.Week_OnFile = lblWeek.Text;
 
                                 }
                                 catch (Exception ex)
