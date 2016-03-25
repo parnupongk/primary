@@ -29,7 +29,12 @@
             <div class="col-md-8"></div>
         </div>
     </div>
-
+    <script>
+        function js_perload()
+        {
+            document.getElementById('msgPerload').innerHTML = "<p style=\"color:#000088; font-weight:bold;\">please wait a few minutes <img src=\"./pph_include/images/loading.gif\" style=\"width:25px;\"></p>";
+        }
+    </script>
     <div id="form_import" style="display:none;">
         <div class="row">
             <div class="col-md-12">
@@ -59,11 +64,11 @@
                     <div class="col-md-9"><asp:AjaxFileUpload ID="AjaxFileUpload" runat="server" Padding-Bottom="4" Padding-Left="2" Padding-Right="1" Padding-Top="4" ThrobberID="myThrobber" MaximumNumberOfFiles="10" AllowedFileTypes="xls,vnd.ms-excel,xls,jpg,png,application/vnd.ms-excel,xlsx" OnUploadComplete="AjaxFileUpload_UploadComplete" /></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-offset-3 col-md-9"><asp:Label ID="msgInsert" runat="server"></asp:Label></div>
+                    <div class="col-md-offset-3 col-md-9"><span id="msgPerload"></span><asp:Label ID="msgInsert" runat="server"></asp:Label></div>
                 </div> 
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-9">
-                        <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-default" OnClick="btnSubmit_Click" /><p class="text-danger"><asp:Label ID="lblErr" runat="server"></asp:Label></p>
+                        <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-default" OnClick="btnSubmit_Click" OnClientClick="js_perload();" /><p class="text-danger"><asp:Label ID="lblErr" runat="server"></asp:Label></p>
                     </div>
                 </div> 
             </div>

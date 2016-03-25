@@ -185,6 +185,7 @@
     <Content Include="pph_include\download\report_summary_sum.aspx" />
     <Content Include="pph_include\download\vendor_download_log.aspx" />
     <Content Include="pph_include\download\vendor_file.aspx" />
+    <Content Include="pph_include\images\loading.gif" />
     <Content Include="pph_include\images\tesco_logo.jpg" />
     <Content Include="pph_include\jquery\jquery-ui.js" />
     <Content Include="pph_include\jquery\jquery.js" />

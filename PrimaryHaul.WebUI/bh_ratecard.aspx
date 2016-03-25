@@ -158,12 +158,12 @@
                         <td style="text-align:center;"><%= bh_ratecard["Unloading_Cost"].ToString() %></td>
                         <td style="text-align:center;"><%= bh_ratecard["Income_Type"].ToString() %></td> 
                         <td style="text-align:center;">
-                            <div id="label_startDate_<%= bh_ratecard["RateCard_ID"].ToString() %>"><%= DateTime.Parse(bh_ratecard["StartDate"].ToString()).ToString("dd/MM/yyyy") %></div>
-                            <div id="div_startDate_<%= bh_ratecard["RateCard_ID"].ToString() %>" style="display:none;"><input type="text" class="form-control" name="startDate_<%= bh_ratecard["RateCard_ID"].ToString() %>" id="startDate_<%= bh_ratecard["RateCard_ID"].ToString() %>" value="<%= DateTime.Parse(bh_ratecard["StartDate"].ToString()).ToString("dd/MM/yyyy") %>" style="width:100%;padding:2px;text-align:center;"/></div>
+                            <div id="label_startDate_<%= bh_ratecard["RateCard_ID"].ToString() %>"><%= bh_ratecard["str_StartDate"].ToString() %></div>
+                            <div id="div_startDate_<%= bh_ratecard["RateCard_ID"].ToString() %>" style="display:none;"><input type="text" class="form-control" name="startDate_<%= bh_ratecard["RateCard_ID"].ToString() %>" id="startDate_<%= bh_ratecard["RateCard_ID"].ToString() %>" value="<%= bh_ratecard["str_StartDate"].ToString() %>" style="width:100%;padding:2px;text-align:center;"/></div>
                         </td> 
                         <td style="text-align:center;">
-                            <div id="label_endDate_<%= bh_ratecard["RateCard_ID"].ToString() %>"><%= DateTime.Parse(bh_ratecard["EndDate"].ToString()).ToString("dd/MM/yyyy") %></div>
-                            <div id="div_endDate_<%= bh_ratecard["RateCard_ID"].ToString() %>" style="display:none;"><input type="text" class="form-control" name="endDate_<%= bh_ratecard["RateCard_ID"].ToString() %>" id="endDate_<%= bh_ratecard["RateCard_ID"].ToString() %>" value="<%= DateTime.Parse(bh_ratecard["EndDate"].ToString()).ToString("dd/MM/yyyy") %>" style="width:100%;padding:2px;text-align:center;"/></div>
+                            <div id="label_endDate_<%= bh_ratecard["RateCard_ID"].ToString() %>"><%= bh_ratecard["str_EndDate"].ToString() %></div>
+                            <div id="div_endDate_<%= bh_ratecard["RateCard_ID"].ToString() %>" style="display:none;"><input type="text" class="form-control" name="endDate_<%= bh_ratecard["RateCard_ID"].ToString() %>" id="endDate_<%= bh_ratecard["RateCard_ID"].ToString() %>" value="<%= bh_ratecard["str_EndDate"].ToString() %>" style="width:100%;padding:2px;text-align:center;"/></div>
                         </td> 
                         <td style="text-align:center;">
                             <input type="hidden" name="hid_edit_<%= bh_ratecard["RateCard_ID"].ToString() %>" id="hid_edit_<%= bh_ratecard["RateCard_ID"].ToString() %>" value="off" />

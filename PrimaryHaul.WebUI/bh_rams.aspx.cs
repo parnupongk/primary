@@ -37,13 +37,14 @@ namespace PrimaryHaul.WebUI
             AjaxFileUpload.SaveAs(fullPath);
             Session["fileName"] = fullPath;
             Session["showCount"] = "";
-            msgInsert.Text = Session["showCount"].ToString();
+            //msgInsert.Text = Session["showCount"].ToString();
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if (Session["fileName"] != null)
             {
+                
                 if (InsertData(Session["fileName"].ToString()))
                 {
                     Response.Write("<script>alert('Import Data Successfu');</script>");
@@ -52,7 +53,12 @@ namespace PrimaryHaul.WebUI
                 else
                 {
                     Response.Write("<script>alert('Import Data Not Successful');</script>");
+                    msgInsert.Text = "";
                 }
+            }
+            else
+            {
+                msgInsert.Text = "";
             }
         }
 
@@ -68,7 +74,6 @@ namespace PrimaryHaul.WebUI
             {
 
                 #region Insert
-                string sss = "";
                 DataTable dbSchema = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
                 if (dbSchema == null || dbSchema.Rows.Count < 1){throw new Exception("Error: Could not determine the name of the first worksheet.");}
                 string firstSheetName = dbSchema.Rows[0]["TABLE_NAME"].ToString();
