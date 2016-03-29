@@ -949,7 +949,6 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 this.columnRate_Unloading.AllowDBNull = false;
                 this.columnRateCard_Income_Type.MaxLength = 10;
                 this.columnRateCard_ChargeType.MaxLength = 20;
-                this.columnWeek_Upload.AllowDBNull = false;
                 this.columnWeek_Upload.MaxLength = 6;
                 this.columnFile_Name.MaxLength = 100;
                 this.columnStatus.MaxLength = 20;
@@ -1543,7 +1542,12 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Week_Upload {
                 get {
-                    return ((string)(this[this.tableBH_Transaction_TMP.Week_UploadColumn]));
+                    if (this.IsWeek_UploadNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableBH_Transaction_TMP.Week_UploadColumn]));
+                    }
                 }
                 set {
                     this[this.tableBH_Transaction_TMP.Week_UploadColumn] = value;
@@ -1892,6 +1896,18 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTotal_Uploading_BahtNull() {
                 this[this.tableBH_Transaction_TMP.Total_Uploading_BahtColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsWeek_UploadNull() {
+                return this.IsNull(this.tableBH_Transaction_TMP.Week_UploadColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetWeek_UploadNull() {
+                this[this.tableBH_Transaction_TMP.Week_UploadColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
