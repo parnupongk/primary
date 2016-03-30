@@ -170,6 +170,7 @@ namespace PrimaryHaul.WebUI
 
                     DataBind_BHTrans(strUserId.ToString());
                     btnClear.Enabled = true;
+                    btnInsert.Enabled = true;
                     #endregion
 
 

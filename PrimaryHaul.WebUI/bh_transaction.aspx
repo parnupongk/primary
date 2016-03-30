@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
 
-     <script>
+    <script>
         function alertMessage(str) {
             alert(str);
 
@@ -118,7 +118,7 @@
                                 <ItemStyle Width="50px"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True"></asp:BoundField>
-                            <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True" ></asp:BoundField>
+                            <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True"></asp:BoundField>
                             <asp:BoundField DataField="Appt_Date" HeaderText="Appt Date" ReadOnly="True" DataFormatString="{0:dd/MM/yyyy}"></asp:BoundField>
                             <asp:BoundField DataField="Load_Appt" HeaderText="Load_Appt" ReadOnly="True"></asp:BoundField>
                             <asp:BoundField DataField="Load_Rcvd" HeaderText="Load_Rcvd" ReadOnly="True"></asp:BoundField>
@@ -186,7 +186,7 @@
                     <asp:BoundField DataField="Year_Week_OnFile" HeaderText="Year_Week_OnFile" ReadOnly="True" /> 
                 <asp:BoundField DataField="Year_Week_OnFile" HeaderText="Year_Week_OnFile" ReadOnly="True" /> 
 >>>>>>> origin/master -->
-</div>
+                </div>
             </div>
 
         </ContentTemplate>
