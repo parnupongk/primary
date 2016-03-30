@@ -4,6 +4,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.OleDb;
 using System.Configuration;
+using System.Text.RegularExpressions;
 using PrimaryHaul_WS;
 using PrimaryHaul_WS.AppCode_DS;
 
@@ -115,7 +116,7 @@ namespace PrimaryHaul.WebUI
                                 {
                                     dr = dtBHTrans.NewBH_Transaction_TMPRow();
                                     dr.Week = drRead[0].ToString();
-                                    dr.Period = string.IsNullOrEmpty(drRead[1].ToString()) ?0: int.Parse(drRead[1].ToString());
+                                    dr.Period = !Regex.IsMatch(drRead[4].ToString(), @"\d") ? 0: int.Parse(drRead[1].ToString());
                                     dr.Vendor_Name = drRead[2].ToString();
                                     try
                                     {
@@ -125,21 +126,21 @@ namespace PrimaryHaul.WebUI
                                     {
                                         dr.Appt_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "d/M/yyyy", null); //drRead[3].ToString().Trim().Split(' ')[0];//
                                     }
-                                    dr.Load_Appt = string.IsNullOrEmpty(drRead[4].ToString()) ? 0 : int.Parse(drRead[4].ToString());
-                                    dr.Load_Rcvd = string.IsNullOrEmpty(drRead[5].ToString()) ? 0 : int.Parse(drRead[5].ToString());
+                                    dr.Load_Appt = !Regex.IsMatch(drRead[4].ToString(), @"\d") ? 0 : int.Parse(drRead[4].ToString());
+                                    dr.Load_Rcvd = !Regex.IsMatch(drRead[5].ToString(), @"\d") ? 0 : int.Parse(drRead[5].ToString());
                                     dr.PO_No = drRead[6].ToString();
-                                    dr.DC_No = string.IsNullOrEmpty(drRead[7].ToString()) ? 0 : int.Parse(drRead[7].ToString());
-                                    dr.Load_No = string.IsNullOrEmpty(drRead[8].ToString()) ? 0 : int.Parse(drRead[8].ToString());
+                                    dr.DC_No = !Regex.IsMatch(drRead[7].ToString(), @"\d") ? 0 : int.Parse(drRead[7].ToString());
+                                    dr.Load_No = !Regex.IsMatch(drRead[8].ToString(), @"\d") ? 0 : int.Parse(drRead[8].ToString());
                                     dr.Appt_To_DC = drRead[9].ToString();
-                                    dr.Type = string.IsNullOrEmpty(drRead[10].ToString()) ? 0 : int.Parse(drRead[10].ToString());
+                                    dr.Type = !Regex.IsMatch(drRead[10].ToString(), @"\d") ? 0 : int.Parse(drRead[10].ToString());
                                     dr.Appt_No = drRead[11].ToString();
-                                    dr.Case_Appt = string.IsNullOrEmpty(drRead[12].ToString()) ? 0 : int.Parse(drRead[12].ToString());
-                                    dr.Pallet =string.IsNullOrEmpty(drRead[13].ToString()) ? 0 : int.Parse(drRead[13].ToString());
+                                    dr.Case_Appt = !Regex.IsMatch(drRead[12].ToString(), @"\d") ? 0 : int.Parse(drRead[12].ToString());
+                                    dr.Pallet = !Regex.IsMatch(drRead[13].ToString(), @"\d") ? 0 : int.Parse(drRead[13].ToString());
                                     dr.Remark = drRead[14].ToString();
-                                    dr.Pallet_From_Vendor = string.IsNullOrEmpty(drRead[15].ToString()) ? 0 : int.Parse(drRead[15].ToString());
-                                    dr.Total_Pallet_From_Vendor = string.IsNullOrEmpty(drRead[16].ToString()) ? 0 : int.Parse(drRead[16].ToString());
-                                    dr.Rate = string.IsNullOrEmpty(drRead[17].ToString()) ? 0 : decimal.Parse(drRead[17].ToString());
-                                    dr.Rate_Unloading = string.IsNullOrEmpty(drRead[18].ToString()) ? 0 : int.Parse(drRead[18].ToString());
+                                    dr.Pallet_From_Vendor = !Regex.IsMatch(drRead[15].ToString(), @"\d") ? 0 : int.Parse(drRead[15].ToString());
+                                    dr.Total_Pallet_From_Vendor = !Regex.IsMatch(drRead[16].ToString(), @"\d") ? 0 : int.Parse(drRead[16].ToString());
+                                    dr.Rate = !Regex.IsMatch(drRead[17].ToString(), @"\d") ? 0 : decimal.Parse(drRead[17].ToString());
+                                    dr.Rate_Unloading = !Regex.IsMatch(drRead[18].ToString(), @"\d") ? 0 : int.Parse(drRead[18].ToString());
                                     dr.File_Name = fileName;
                                     dr.UserID = strUserId;
                                     dr.StampTime = DateTime.Now;
