@@ -89,29 +89,29 @@
                         if (icolor == 1) { detailColor = "style=\"background-color:#ffffff;\""; } else { detailColor = "style=\"background-color:#f3f3f3;\""; icolor = 0; }
             %>
             <tr <%= detailColor %>>
+                <td style="text-align:center;"></td>
+                <td style="text-align:center;"></td>
+                <td style="text-align:center;"></td>
+                <td style="text-align:center;"></td>
+                <td style="text-align:center;"></td>
+                <td style="text-align:center;"></td>
+                <td style="text-align:center;"></td>
+                <td style="text-align:center;"></td>
+                <td style="text-align:center;"></td>
                 <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
-                <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Load_No"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["PO_No"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["DC_No"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Case_RCVD"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["BHA"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Uploading_BHA"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["RateCard_Income_Type"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["RateCard_Remark"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["RateCard_ChargeType"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["System_Income"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Reimbursement"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Appt_No"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Appt_Case"].ToString() %></td>
             </tr>
             <% } obj_kpi.Close();} %>
             </table>
