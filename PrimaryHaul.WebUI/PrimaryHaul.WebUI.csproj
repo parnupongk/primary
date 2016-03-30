@@ -107,6 +107,7 @@
     <Content Include="dayofexpired.aspx" />
     <Content Include="dist\css\bootstrap.css" />
     <Content Include="dist\css\login.css" />
+    <Content Include="dw.aspx" />
     <Content Include="haulier_upload.aspx" />
     <Content Include="images\2.jpg" />
     <Content Include="images\bg-login.png" />
@@ -323,6 +324,13 @@
     </Compile>
     <Compile Include="dayofexpired.aspx.designer.cs">
       <DependentUpon>dayofexpired.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dw.aspx.cs">
+      <DependentUpon>dw.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dw.aspx.designer.cs">
+      <DependentUpon>dw.aspx</DependentUpon>
     </Compile>
     <Compile Include="haulier_upload.aspx.cs">
       <DependentUpon>haulier_upload.aspx</DependentUpon>

@@ -60,6 +60,7 @@ namespace PrimaryHaul.WebUI
 
         private void ClearView()
         {
+            lblErr.Text = "";
             gvData.DataSource = null;
             gvData.DataBind();
         }
@@ -193,6 +194,8 @@ namespace PrimaryHaul.WebUI
         {
             try
             {
+
+
                 DataTable dt = PH_BHUpload.PH_BHTransaction_SelTMP(AppCode.strConnDB, lblWeek.Text, strUserId);
                 ViewState["BH_TRANSACTION"] = dt;
                 gvData.DataSource = dt;

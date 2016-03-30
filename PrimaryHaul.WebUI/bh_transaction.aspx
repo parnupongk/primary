@@ -110,45 +110,44 @@
                     <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="6" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="6" OnRowDataBound="gvData_RowDataBound">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:BoundField DataField="Haulier_Abbr" HeaderText="Haulier Abbr" ReadOnly="True" />
-                            <asp:BoundField DataField="Po_No" HeaderText="Po No" ReadOnly="True">
+                            <asp:BoundField DataField="Week" HeaderText="Week" ReadOnly="True" />
+                            <asp:BoundField DataField="Period" HeaderText="Period" ReadOnly="True">
                                 <ControlStyle Width="50px" />
                                 <FooterStyle Width="50px" />
                                 <HeaderStyle Width="50px"></HeaderStyle>
                                 <ItemStyle Width="50px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Delivery_Ref" HeaderText="Delivery Ref" ReadOnly="True"></asp:BoundField>
-                            <asp:BoundField DataField="Delivery_Date" HeaderText="Delivery Date" ReadOnly="True" DataFormatString="{0:dd/MM/yyyy}"></asp:BoundField>
                             <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True"></asp:BoundField>
-                            <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True"></asp:BoundField>
-                            <asp:BoundField DataField="Collection_Point" HeaderText="Collection Point" ReadOnly="True"></asp:BoundField>
-                            <asp:BoundField DataField="Delivery_Location" HeaderText="Delivery Location" ReadOnly="True"></asp:BoundField>
-                            <asp:BoundField DataField="Fuel_Rate" HeaderText="Fuel Rate" ReadOnly="True">
+                            <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True" ></asp:BoundField>
+                            <asp:BoundField DataField="Appt_Date" HeaderText="Appt Date" ReadOnly="True" DataFormatString="{0:dd/MM/yyyy}"></asp:BoundField>
+                            <asp:BoundField DataField="Load_Appt" HeaderText="Load_Appt" ReadOnly="True"></asp:BoundField>
+                            <asp:BoundField DataField="Load_Rcvd" HeaderText="Load_Rcvd" ReadOnly="True"></asp:BoundField>
+                            <asp:BoundField DataField="PO_No" HeaderText="PO No" ReadOnly="True">
                                 <ControlStyle Width="50px" />
                                 <FooterStyle Width="50px" />
                                 <HeaderStyle Width="50px"></HeaderStyle>
                                 <ItemStyle Width="50px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="No_Of_Qty" HeaderText="Qty" ReadOnly="True">
+                            <asp:BoundField DataField="DC_No" HeaderText="DC No" ReadOnly="True">
                                 <ControlStyle Width="50px" />
                                 <FooterStyle Width="50px" />
                                 <HeaderStyle Width="50px"></HeaderStyle>
                                 <ItemStyle Width="50px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Rate_Per_Unit" HeaderText="Rate" ReadOnly="True">
+                            <asp:BoundField DataField="Load_No" HeaderText="Load No" ReadOnly="True">
                                 <ControlStyle Width="50px" />
                                 <FooterStyle Width="50px" />
                                 <HeaderStyle Width="50px"></HeaderStyle>
                                 <ItemStyle Width="50px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Remark1" HeaderText="Verify Result" Visible="false" ReadOnly="True">
+                            <asp:BoundField DataField="Appt_To_DC" HeaderText="Appt To DC" Visible="false" ReadOnly="True">
                                 <ControlStyle Width="70px" />
                                 <FooterStyle Width="70px" />
                                 <HeaderStyle Width="70px"></HeaderStyle>
                                 <ItemStyle Width="70px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Trans_Type" Visible="false" HeaderText="Trans_Type" ReadOnly="True" />
-                            <asp:BoundField DataField="Remark2" HeaderText="Remark2" Visible="false" ReadOnly="True" />
+                            <asp:BoundField DataField="Type" Visible="true" HeaderText="Type" ReadOnly="True" />
+                            <asp:BoundField DataField="Appt_No" HeaderText="Appt_No" Visible="true" ReadOnly="True" />
                             <asp:BoundField DataField="status" HeaderText="status" ReadOnly="True">
                                 <ControlStyle Width="70px" />
                                 <FooterStyle Width="70px" />
