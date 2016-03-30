@@ -145,6 +145,9 @@ namespace PrimaryHaul.WebUI
                                     dr.Week_Upload = lblWeek.Text;
                                     dr.Week_OnFile = lblWeek.Text;
 
+                                    dtBHTrans.Rows.Add(dr);
+                                    PH_BHUpload.PH_BHTransaction_InsertTMP(AppCode.strConnDB, dr);
+
                                 }
                                 catch (Exception ex)
                                 {
@@ -154,8 +157,7 @@ namespace PrimaryHaul.WebUI
                                     PH_ExceptionManager.WriteError("prepare data BHUpload >> err message : " + ex.Message);
                                 }
 
-                                dtBHTrans.Rows.Add(dr);
-                                PH_BHUpload.PH_BHTransaction_InsertTMP(AppCode.strConnDB, dr);
+                                
                                 #endregion
                             }
 
