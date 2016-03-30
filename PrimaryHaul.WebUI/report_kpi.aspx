@@ -89,15 +89,15 @@
                         if (icolor == 1) { detailColor = "style=\"background-color:#ffffff;\""; } else { detailColor = "style=\"background-color:#f3f3f3;\""; icolor = 0; }
             %>
             <tr <%= detailColor %>>
-                <td style="text-align:center;"></td>
-                <td style="text-align:center;"></td>
-                <td style="text-align:center;"></td>
-                <td style="text-align:center;"></td>
-                <td style="text-align:center;"></td>
-                <td style="text-align:center;"></td>
-                <td style="text-align:center;"></td>
-                <td style="text-align:center;"></td>
-                <td style="text-align:center;"></td>
+                <td style="text-align:center;"><%= obj_kpi["RateCard_Rate"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["RateCard_Unloading_Cost"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Week"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Period"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Vendor_Code"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Week"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Period"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Vendor_Name"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_kpi["Appt_Date"].ToString() %></td>
                 <td style="text-align:center;"><%= obj_kpi["Load_Appt"].ToString() %></td>
                 <td style="text-align:center;"><%= obj_kpi["Load_No"].ToString() %></td>
                 <td style="text-align:center;"><%= obj_kpi["PO_No"].ToString() %></td>
