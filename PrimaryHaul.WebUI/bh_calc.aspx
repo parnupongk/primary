@@ -15,12 +15,12 @@
             <div runat="server" class="form-group">
                 <asp:Label runat="server" AssociatedControlID="ddlDateWeek" CssClass="col-md-3 control-label">Week </asp:Label>
                 <div class="col-md-9">
-                    <asp:DropDownList ID="ddlDateWeek" AutoPostBack="true" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlDateWeek_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlDateWeek" runat="server" CssClass="form-control" ></asp:DropDownList>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-offset-3 col-md-9">
-                    <asp:Button runat="server" ID="btnAddSubmit" Visible="false" Text="Calculate" CssClass="btn btn-default" />
+                    <asp:Button runat="server" ID="btnSubmit" Visible="true" Text="Submit" CssClass="btn btn-default" OnClick="btnSubmit_Click" />
                     <p class="text-danger">
                         <asp:Label ID="lblErr" runat="server"></asp:Label>
                     </p>

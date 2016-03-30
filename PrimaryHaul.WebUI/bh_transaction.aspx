@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <div id="form_view" style="display: ;">
-                    <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="6" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="6" OnRowDataBound="gvData_RowDataBound">
+                    <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="6" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="6" OnRowDataBound="gvData_RowDataBound" AllowPaging="True" OnPageIndexChanging="gvData_PageIndexChanging" PageSize="500">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:BoundField DataField="Week" HeaderText="Week" ReadOnly="True" />

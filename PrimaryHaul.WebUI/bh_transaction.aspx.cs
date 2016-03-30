@@ -96,6 +96,7 @@ namespace PrimaryHaul.WebUI
                     //foreach (DataRow drSheet in dtSheet.Rows)
                     //{
                     int index = 0;
+                    int rowCount = 0, rowError = 0, rowSucc = 0;
                     try
                     {
 
@@ -105,8 +106,8 @@ namespace PrimaryHaul.WebUI
                         OleDbCommand cmd = new OleDbCommand(sql, conn);
                         OleDbDataReader drRead = cmd.ExecuteReader();
                         PHDS_BHUpload.BH_Transaction_TMPRow dr = null;
-                        int rowCount = 0, rowError = 0, rowSucc = 0;
-            
+
+                        string strColumns = "";
                         while (drRead.Read())
                         {
                             if (!string.IsNullOrEmpty(drRead[0].ToString().Trim()))
@@ -114,9 +115,9 @@ namespace PrimaryHaul.WebUI
                                 #region Insert Row
                                 try
                                 {
+                                    index++;
                                     dr = dtBHTrans.NewBH_Transaction_TMPRow();
                                     dr.Week = drRead[0].ToString();
-                                    dr.Period = !Regex.IsMatch(drRead[4].ToString(), @"\d") ? 0: int.Parse(drRead[1].ToString());
                                     dr.Vendor_Name = drRead[2].ToString();
                                     try
                                     {
@@ -126,37 +127,52 @@ namespace PrimaryHaul.WebUI
                                     {
                                         dr.Appt_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "d/M/yyyy", null); //drRead[3].ToString().Trim().Split(' ')[0];//
                                     }
-                                    dr.Load_Appt = !Regex.IsMatch(drRead[4].ToString(), @"\d") ? 0 : int.Parse(drRead[4].ToString());
-                                    dr.Load_Rcvd = !Regex.IsMatch(drRead[5].ToString(), @"\d") ? 0 : int.Parse(drRead[5].ToString());
+                                    
                                     dr.PO_No = drRead[6].ToString();
-                                    dr.DC_No = !Regex.IsMatch(drRead[7].ToString(), @"\d") ? 0 : int.Parse(drRead[7].ToString());
-                                    dr.Load_No = !Regex.IsMatch(drRead[8].ToString(), @"\d") ? 0 : int.Parse(drRead[8].ToString());
                                     dr.Appt_To_DC = drRead[9].ToString();
-                                    dr.Type = !Regex.IsMatch(drRead[10].ToString(), @"\d") ? 0 : int.Parse(drRead[10].ToString());
                                     dr.Appt_No = drRead[11].ToString();
-                                    dr.Case_Appt = !Regex.IsMatch(drRead[12].ToString(), @"\d") ? 0 : int.Parse(drRead[12].ToString());
-                                    dr.Pallet = !Regex.IsMatch(drRead[13].ToString(), @"\d") ? 0 : int.Parse(drRead[13].ToString());
                                     dr.Remark = drRead[14].ToString();
-                                    dr.Pallet_From_Vendor = !Regex.IsMatch(drRead[15].ToString(), @"\d") ? 0 : int.Parse(drRead[15].ToString());
-                                    dr.Total_Pallet_From_Vendor = !Regex.IsMatch(drRead[16].ToString(), @"\d") ? 0 : int.Parse(drRead[16].ToString());
-                                    dr.Rate = !Regex.IsMatch(drRead[17].ToString(), @"\d") ? 0 : decimal.Parse(drRead[17].ToString());
-                                    dr.Rate_Unloading = !Regex.IsMatch(drRead[18].ToString(), @"\d") ? 0 : int.Parse(drRead[18].ToString());
                                     dr.File_Name = fileName;
                                     dr.UserID = strUserId;
                                     dr.StampTime = DateTime.Now;
                                     dr.Week_Upload = lblWeek.Text;
                                     dr.Week_OnFile = lblWeek.Text;
 
+                                    dr.Period = !Regex.IsMatch(drRead[4].ToString(), @"\d") ? 0 : int.Parse(drRead[1].ToString());
+                                    strColumns = "Period";
+                                    dr.Load_Appt = !Regex.IsMatch(drRead[4].ToString(), @"\d") ? 0 : int.Parse(drRead[4].ToString());
+                                    strColumns = "Load_Appt";
+                                    dr.Load_Rcvd = !Regex.IsMatch(drRead[5].ToString(), @"\d") ? 0 : int.Parse(drRead[5].ToString());
+                                    strColumns = "Load_Rcvd";
+                                    dr.DC_No = !Regex.IsMatch(drRead[7].ToString(), @"\d") ? 0 : int.Parse(drRead[7].ToString());
+                                    strColumns = "DC_No";
+                                    dr.Load_No = !Regex.IsMatch(drRead[8].ToString(), @"\d") ? 0 : int.Parse(drRead[8].ToString());
+                                    strColumns = "Load_No";
+                                    dr.Type = !Regex.IsMatch(drRead[10].ToString(), @"\d") ? 0 : int.Parse(drRead[10].ToString());
+                                    strColumns = "Type";
+                                    dr.Case_Appt = !Regex.IsMatch(drRead[12].ToString(), @"\d") ? 0 : int.Parse(drRead[12].ToString());
+                                    strColumns = "Case_Appt";
+                                    dr.Pallet = !Regex.IsMatch(drRead[13].ToString(), @"\d") ? 0 : int.Parse(drRead[13].ToString());
+                                    strColumns = "Pallet";
+                                    dr.Pallet_From_Vendor = !Regex.IsMatch(drRead[15].ToString(), @"\d") ? 0 : int.Parse(drRead[15].ToString());
+                                    strColumns = "Pallet_From_Vendor";
+                                    dr.Total_Pallet_From_Vendor = !Regex.IsMatch(drRead[16].ToString(), @"\d") ? 0 : int.Parse(drRead[16].ToString());
+                                    strColumns = "Total_Pallet_From_Vendor";
+                                    dr.Rate = !Regex.IsMatch(drRead[17].ToString(), @"\d") ? 0 : decimal.Parse(drRead[17].ToString());
+                                    strColumns = "Rate";
+                                    dr.Rate_Unloading = !Regex.IsMatch(drRead[18].ToString(), @"\d") ? 0 : int.Parse(drRead[18].ToString());
+                                    strColumns = "Rate_Unloading";
+
                                     dtBHTrans.Rows.Add(dr);
                                     PH_BHUpload.PH_BHTransaction_InsertTMP(AppCode.strConnDB, dr);
-
+                                    rowSucc++;
                                 }
                                 catch (Exception ex)
                                 {
                                     rowError++;
                                     dr.Status = "err";
                                     //dr.Remark2 = ex.Message;
-                                    PH_ExceptionManager.WriteError("prepare data BHUpload >> err message : " + ex.Message);
+                                    PH_ExceptionManager.WriteError("prepare data BHUpload >> row index : " + index.ToString() + " Columns Err : " + strColumns + "err message : " + ex.Message);
                                 }
 
                                 
@@ -171,6 +187,7 @@ namespace PrimaryHaul.WebUI
                     DataBind_BHTrans(strUserId.ToString());
                     btnClear.Enabled = true;
                     btnInsert.Enabled = true;
+                    lblErr.Text = " Success=" + rowSucc.ToString() + " Error=" + rowError.ToString();
                     #endregion
 
 
@@ -210,6 +227,24 @@ namespace PrimaryHaul.WebUI
             }
         }
 
+        private void DataBindPageIndex_BHTrans()
+        {
+            try
+            {
+
+
+               
+                DataTable dt = (DataTable)ViewState["BH_TRANSACTION"];
+                gvData.DataSource = dt;
+                gvData.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                PH_ExceptionManager.WriteError("DataBind_BHTrans >>" + ex.Message);
+            }
+        }
+
         protected void gvData_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -242,6 +277,12 @@ namespace PrimaryHaul.WebUI
             btnSubmit.Enabled = false;
             btnClear.Enabled = false;
             ClearView();
+        }
+
+        protected void gvData_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvData.PageIndex = e.NewPageIndex;
+            DataBindPageIndex_BHTrans();
         }
     }
 }

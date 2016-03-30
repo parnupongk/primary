@@ -85,5 +85,10 @@ namespace PrimaryHaul.WebUI
         {
             DataBindTransCalc();
         }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            DataBindTransCalc();
+        }
     }
 }

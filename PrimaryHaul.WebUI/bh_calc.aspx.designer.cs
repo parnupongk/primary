@@ -22,13 +22,13 @@ namespace PrimaryHaul.WebUI {
         protected global::System.Web.UI.WebControls.DropDownList ddlDateWeek;
         
         /// <summary>
-        /// btnAddSubmit control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddSubmit;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
         /// lblErr control.
