@@ -52,7 +52,11 @@
                     <HeaderStyle HorizontalAlign="Center" />
                     <ItemStyle HorizontalAlign="Center" />
                     </asp:BoundField>
-
+                    <asp:BoundField DataField="RAMS_Upload" HeaderText="RAMS Upload" ReadOnly="True" >
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundField>
+                    
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:LinkButton ID="btnCalc" runat="server" CommandName="Calc">Calculate</asp:LinkButton>

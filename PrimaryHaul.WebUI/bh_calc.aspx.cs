@@ -24,11 +24,16 @@ namespace PrimaryHaul.WebUI
         {
             try
             {
-                if (string.IsNullOrEmpty(ddlDateWeek.SelectedValue))
+
+                if (!string.IsNullOrEmpty(ddlDateWeek.SelectedValue))
                 {
                     DataTable dt = PH_BHCalc.PH_BHTransCacl_Sel(AppCode.strConnDB, ddlDateWeek.SelectedValue.ToString());
                     gvData.DataSource = dt;
                     gvData.DataBind();
+                }
+                else
+                {
+                    PH_ExceptionManager.WriteError("Date week is null");
                 }
             }
             catch(Exception ex)
