@@ -80,7 +80,7 @@
             int icolor = 0;
             string searchRole = "";
             if (txtType != "All") { searchRole = "and RoleID='" + txtType + "'"; }
-            string sql_listuser = "select CONVERT(varchar(11),Passwd_Expired_Date,103) as Passwd_Expired_Date, * from User_Profile where UserID != '' " + searchRole + " " + txtText + " Order by roleid,username Asc";         
+            string sql_listuser = "select CONVERT(varchar(11),Passwd_Expired_Date,103) as Passwd_Expired_Date, * from User_Profile where UserID != '' " + searchRole + " " + txtText + " " +role_show+" Order by roleid,username Asc";         
             SqlCommand rs_listuser = new SqlCommand(sql_listuser, objConn);
             obj_listuser = rs_listuser.ExecuteReader();
             while (obj_listuser.Read())

@@ -31,7 +31,7 @@
 
     <div id="form_import" style="display:none;">
         <div class="col-md-12">
-            <h4>Master > BH Rate Card‏ > Import File</h4>
+            <h4>Master > Backhaul Rate Card‏ > Import File</h4>
             <hr /> 
             <div runat="server" class="form-group">
                 <asp:Label runat="server" AssociatedControlID="lnkFile" CssClass="col-md-3 control-label"></asp:Label>
@@ -108,7 +108,7 @@
         <% string detailColor = "", strVendor = ""; if (!string.IsNullOrEmpty(Request.QueryString["vendor"] as string)) { strVendor = Request.QueryString["vendor"].ToString(); } %>
         <div class="row">
             <div class="col-md-12">
-                <h4>Master > BH Rate Card</h4>
+                <h4>Master > Backhaul Rate Card</h4>
                 <hr />
             </div>
         </div>

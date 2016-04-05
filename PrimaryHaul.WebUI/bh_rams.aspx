@@ -38,7 +38,7 @@
     <div id="form_import" style="display:none;">
         <div class="row">
             <div class="col-md-12">
-                <h4>Master > BH RAMS‏ > Import File</h4>
+                <h4>Master > Backhaul RAMS‏ > Import File</h4>
                 <hr /> 
             </div>
         </div>
@@ -109,7 +109,7 @@
         <% string detailColor = "", strVendor = "", strWeek = ""; if (!string.IsNullOrEmpty(Request.QueryString["vendor"] as string)) { strVendor = Request.QueryString["vendor"].ToString(); } if (!string.IsNullOrEmpty(Request.QueryString["week"] as string)) { strWeek = Request.QueryString["week"].ToString(); } %>
         <div class="row">
             <div class="col-md-12">
-                <h4>Master > BH RAMS</h4>
+                <h4>Master > Backhaul RAMS</h4>
                 <hr />
             </div>
         </div>

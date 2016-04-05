@@ -60,7 +60,7 @@
 
 
             <div class="form-horizontal">
-                <h4>BH Transaction</h4>
+                <h4>Backhaul Transaction</h4>
                 <hr />
                 <div id="form_import" style="display: ;">
                     <div runat="server" class="form-group">

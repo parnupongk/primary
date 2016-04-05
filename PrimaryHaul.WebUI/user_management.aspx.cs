@@ -14,7 +14,7 @@ namespace PrimaryHaul.WebUI
     public partial class user_management : System.Web.UI.Page
     {
         public string txtType = "";
-        public string txtText = "";
+        public string txtText = "",  role_show = " and RoleID in('A1', 'A2', 'HL', 'VD') ";
         public main_function PPHfunction = new main_function();
         public SqlDataReader obj_usertype;
         public SqlDataReader obj_listuser;
@@ -26,7 +26,14 @@ namespace PrimaryHaul.WebUI
             objConn.ConnectionString = strConnString;
             objConn.Open();
 
-            string sql_usertype = "select distinct RoleID, Group_Menu from Menu_Role where Group_Menu+RoleID not in ('TESCOHL', 'TESCOVD') order by RoleID asc";
+           
+            if (!string.IsNullOrEmpty(Request.QueryString["r"])) {
+                if (Request.QueryString["r"].ToString() == "B1" || Request.QueryString["r"].ToString() == "B2") {
+                    role_show = " and RoleID in('B1', 'B2') "; 
+                }            
+            }
+
+            string sql_usertype = "select distinct RoleID, Group_Menu from Menu_Role where Group_Menu+RoleID not in ('TESCOHL', 'TESCOVD') "+ role_show +" order by RoleID asc";
             SqlCommand rs_usertype = new SqlCommand(sql_usertype, objConn);
             obj_usertype = rs_usertype.ExecuteReader();
 

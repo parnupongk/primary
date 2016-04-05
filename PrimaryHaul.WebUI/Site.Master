@@ -70,24 +70,33 @@
                                 <li><a runat="server" id="lnkUAD10" href="master_uad10.aspx?" name="UAD10">UAD10</a></li>
                                 <li><a runat="server" id="lnkSKU" href="master_sku.aspx?" name="SKU">SKU</a></li>
                                 <li><a runat="server" id="lnkHaulier" href="master_haulier.aspx?" name="Master_Haulier">Haulier</a></li>
-                                <li><a runat="server" id="lnkVender" href="master_vender.aspx?" name="Master_Vendor">Vendor</a></li>           
+                                <li><a runat="server" id="lnkVender" href="master_vender.aspx?" name="Master_Vendor">Vendor</a></li>     
+                                <li><a runat="server" id="lnkBHratecard" href="bh_ratecard.aspx?" name="BH Rate Card">Rate Card</a></li>                                                               
                             </ul>
                         </li>
-                        <li><a runat="server" id="lnkVendorDownloadFile" href="report_venderlog.aspx?" name="VENDOR DOWNLOAD FILE">Vendor Download File</a></li>
+                        <li class="dropdown">
+                            <a id="lnkBackhual" runat="server" name="UPLOAD" class="dropdown-toggle" data-toggle="dropdown">UPLOAD<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a runat="server" id="lnkBHrams" href="bh_rams.aspx?" name="BH RAMS">RAMS</a></li>
+                                <li><a runat="server" id="lnkBHtransaction" href="bh_transaction.aspx?" name="BH Transaction">Transaction</a></li>                 
+                            </ul>
+                        </li>
                         <li><a runat="server" id="lnkHaulierDownload" href="haulier_upload.aspx?" name="HAULIER UPLOAD FILE">Haulier Upload File</a></li>
                         <li class="dropdown">
                             <a runat="server" name="RATE CALC" class="dropdown-toggle" data-toggle="dropdown">RATE CALCULATION <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a runat="server" id="lnkRate" href="rate_calc.aspx?" name="Rate Calculation">Rate Calculation</a></li>
-                                <li><a runat="server" id="lnkRateAdj" href="rate_calc_adj.aspx?" name="Adjust & Re Calculate">Adjust & Re Calculate</a></li>              
+                                <li><a runat="server" id="lnkRateAdj" href="rate_calc_adj.aspx?" name="Adjust & Re Calculate">Adjust & Re Calculate</a></li> 
+                                <li><a runat="server" id="lnkBHcalculate" href="bh_calc.aspx?" name="BH Calculate">Calculate</a></li>
+                                <li><a runat="server" id="lnkBHadjrecel" href="bh_adjrecel.aspx?" name="BH Adjust and ReCalculate">Adjust and ReCalculate</a></li>             
                             </ul>
                         </li>
-                        
-                        
+                        <li><a runat="server" id="lnkVendorDownloadFile" href="report_venderlog.aspx?" name="VENDOR DOWNLOAD FILE">Vendor Download File</a></li>                        
                         <li class="dropdown">
                             <a runat="server" name="REPORT" class="dropdown-toggle" data-toggle="dropdown">REPORT <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a runat="server" id="lnkFinance" href="report_finance.aspx?" name="Tesco Finance">Tesco Finance Report</a></li>
+                                <li><a runat="server" id="lnkKpi" href="report_kpi.aspx?" name="Kpi Report">KPI Report</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -109,29 +118,6 @@
                                 <li><a runat="server" id="lnkDayofExpired" href="dayofexpired.aspx?" name="Change Day of Password Expired">Day of Expired Date</a></li>
                             </ul>
                         </li>
-
-                        <li class="dropdown">
-                            <a id="lnkBackhual" runat="server" name="BACKHUAL" class="dropdown-toggle" data-toggle="dropdown">BACKHUAL<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a runat="server" id="lnkBHratecard" href="bh_ratecard.aspx?" name="BH Rate Card">Rate Card</a></li>
-                                <li><a runat="server" id="lnkBHrams" href="bh_rams.aspx?" name="BH RAMS">RAMS</a></li>
-                                <li><a runat="server" id="lnkBHtransaction" href="bh_transaction.aspx?" name="BH Transaction">Transaction</a></li>        
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a runat="server" name="BHRATE CALC" class="dropdown-toggle" data-toggle="dropdown">RATE CALCULATION <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a runat="server" id="lnkBHcalculate" href="bh_calc.aspx?" name="BH Calculate">Calculate</a></li>
-                                <li><a runat="server" id="lnkBHadjrecel" href="bh_adjrecel.aspx?" name="BH Adjust and ReCalculate">Adjust and ReCalculate</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a runat="server" name="BHREPORT" class="dropdown-toggle" data-toggle="dropdown">REPORT <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a runat="server" id="lnkKpi" href="report_kpi.aspx?" name="Kpi Report">KPI Report</a></li>
-                            </ul>
-                        </li>
-
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
 
@@ -145,7 +131,7 @@
                             </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="#" title="Manage your account">Hello, <%:  GetUserName(Request)  %> </a></li>
+                        <li class="active"><a href="#" title="Manage your account">User, <%:  GetUserName(Request)  %> </a></li>
 <!--
                          <li class="active">
                             <a class="dropdown-toggle" data-toggle="dropdown"title="Manage your account">Hello, <%:  GetUserName(Request)  %><span class="caret"></span></a>
