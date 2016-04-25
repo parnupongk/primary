@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Data.OleDb;
 using PrimaryHaul_WS;
 using PrimaryHaul_WS.AppCode_DS;
@@ -172,7 +172,8 @@ namespace PrimaryHaul.WebUI
                                         dr.Sell_Fuel_Rate = 0;
                                         dr.Total_Cost_Charging = 0;
                                         dr.StampTime = DateTime.Now;
-                                        dr.No_Of_Qty = drRead[9].ToString().Trim() == "" ? 0 : int.Parse(drRead[9].ToString().Trim());
+                                        
+                                        dr.No_Of_Qty = !Regex.IsMatch(drRead[9].ToString(), @"\d") ? 0 : int.Parse(drRead[9].ToString());//drRead[9].ToString().Trim() == "" ? 0 : int.Parse(drRead[9].ToString().Trim());
                                         dr.Rate_Per_Unit = drRead[10].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[10].ToString().Trim());
                                         dr.Additional_Cost = drRead[12].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[12].ToString().Trim());
                                         dr.Total_Cost = drRead[14].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[14].ToString().Trim());
