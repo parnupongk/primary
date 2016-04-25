@@ -44,9 +44,9 @@ namespace PrimaryHaul_WS
         {
             try
             {
-                int rtn = SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, "usp_BH_Transaction_Delete"
+                string strSpName = strFileName == "Transaction" ? "usp_BH_Transaction_Delete" : "usp_BH_RAMS_Delete"; 
+                int rtn = SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, strSpName
                                  , new SqlParameter[] {new SqlParameter("@Week",strYearWeek)
-                                 , new SqlParameter("@File_Name",strFileName)
                                                       });
 
                 return rtn;

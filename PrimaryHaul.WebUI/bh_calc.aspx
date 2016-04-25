@@ -20,7 +20,12 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-3 col-md-9">
-                    <asp:Button runat="server" ID="btnSubmit" Visible="true" Text="Submit" CssClass="btn btn-default" OnClick="btnSubmit_Click" />
+                    <asp:Button runat="server" ID="btnSubmit" Visible="true" Text="Show" CssClass="btn btn-default" OnClick="btnSubmit_Click" />
+                </div>
+            </div>
+                        <div class="form-group">
+                <div class="col-md-offset-3 col-md-9">
+                    <asp:Button runat="server" ID="btnCalc" Visible="true" Text="Calculate" CssClass="btn btn-default" OnClick="btnCalc_Click"  />
                     <p class="text-danger">
                         <asp:Label ID="lblErr" runat="server"></asp:Label>
                     </p>
@@ -28,41 +33,9 @@
             </div>
         </div>
         <div id="form_view" style="display: ;">
-            <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="2" OnRowDataBound="gvData_RowDataBound" OnRowDeleting="gvData_RowDeleting" OnRowCommand="gvData_RowCommand">
+            <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="2" OnRowDataBound="gvData_RowDataBound" OnRowDeleting="gvData_RowDeleting">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
-                    <asp:TemplateField HeaderText="No.">
-                        <ItemTemplate>
-                            <%# Container.DataItemIndex + 1 %>
-                        </ItemTemplate>
-                        <ItemStyle HorizontalAlign="Center" />
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="Week" HeaderText="Week" ReadOnly="True" >
-                    <ItemStyle Width="500px" HorizontalAlign="Center" />
-                    </asp:BoundField>
-                    <asp:BoundField DataField="File_Name" HeaderText="File_Name" ReadOnly="True" >
-                    <HeaderStyle HorizontalAlign="Left" />
-                    <ItemStyle HorizontalAlign="Left" />
-                    </asp:BoundField>
-                    <asp:BoundField DataField="RowNo" HeaderText="RowNo" ReadOnly="True" >
-                    <HeaderStyle HorizontalAlign="Center" />
-                    <ItemStyle HorizontalAlign="Center" />
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Status_Calc" HeaderText="Status_Calc" ReadOnly="True" >
-                    <HeaderStyle HorizontalAlign="Center" />
-                    <ItemStyle HorizontalAlign="Center" />
-                    </asp:BoundField>
-                    <asp:BoundField DataField="RAMS_Upload" HeaderText="RAMS Upload" ReadOnly="True" >
-                    <HeaderStyle HorizontalAlign="Center" />
-                    <ItemStyle HorizontalAlign="Center" />
-                    </asp:BoundField>
-                    
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:LinkButton ID="btnCalc" runat="server" CommandName="Calc">Calculate</asp:LinkButton>
-                        </ItemTemplate>
-                        <ItemStyle HorizontalAlign="Center" />
-                    </asp:TemplateField>
                     <asp:TemplateField ShowHeader="False">
                         <ItemTemplate>
                             <asp:ImageButton ID="btnDelete" runat="server" CausesValidation="False" 
@@ -72,6 +45,22 @@
                         </ItemTemplate>
                         <ItemStyle Width="100px" HorizontalAlign="Center" />
                     </asp:TemplateField>
+                    <asp:BoundField DataField="Files" HeaderText="Files" ReadOnly="True" >
+                    <ItemStyle Width="500px" HorizontalAlign="Center" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Rows" HeaderText="Rows" ReadOnly="True" >
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Status_File_Upload" HeaderText="File Upload Status" ReadOnly="True" >
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Status_Calc" HeaderText="Calculate Status" ReadOnly="True" >
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundField>               
+                    
 
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />

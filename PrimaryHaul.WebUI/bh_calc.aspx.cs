@@ -71,20 +71,11 @@ namespace PrimaryHaul.WebUI
 
         protected void gvData_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            string strFileName = gvData.Rows[e.RowIndex].Cells[2].Text;
+            string strFileName = gvData.Rows[e.RowIndex].Cells[1].Text;
             PH_BHCalc.PH_BHTransCalc_Delete(AppCode.strConnDB, ddlDateWeek.SelectedValue, strFileName);
             DataBindTransCalc();
         }
 
-        protected void gvData_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if( e.CommandName == "Calc" )
-            {
-
-                PH_BHCalc.PH_BHTrans_Calc(AppCode.strConnDB, ddlDateWeek.SelectedValue);
-                DataBindTransCalc();
-            }
-        }
 
         protected void ddlDateWeek_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -94,6 +85,21 @@ namespace PrimaryHaul.WebUI
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             DataBindTransCalc();
+        }
+
+        protected void btnCalc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblErr.Text = "";
+                PH_BHCalc.PH_BHTrans_Calc(AppCode.strConnDB, ddlDateWeek.SelectedValue);
+                DataBindTransCalc();
+            }
+            catch(Exception ex)
+            {
+                lblErr.Text = ex.Message;
+                PH_ExceptionManager.WriteError("btnCalc_Click >>" + ex.Message);
+            }
         }
     }
 }
