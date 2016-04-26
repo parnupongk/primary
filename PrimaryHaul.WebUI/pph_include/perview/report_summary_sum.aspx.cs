@@ -28,8 +28,8 @@ namespace PrimaryHaul.WebUI.pph_include.perview
             " rc_tesco_period,Vendor_Name,DC_No, " +
             "sum(Total_Cost_Charging) as Accrued_Revenue, " +
             " sum(Total_Cost_Charging) as Total_Revenue, "+
-            "sum(total_Cost) as Accrued_Cost , " +
-            " sum(total_Cost+Additional_Cost) as Total_Cost " +
+            "sum(Rate_Per_unit*No_Of_Qty) as Accrued_Cost , " +
+            " sum(total_Cost) as Total_Cost " +
             "from transportation " +
             "Where Year_Week_Upload='" + Request.QueryString["yw"].ToString() + "' " +
             "" + sql_hl + "" +

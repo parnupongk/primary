@@ -21,7 +21,7 @@ namespace PrimaryHaul.WebUI.pph_include.download
             objConn.ConnectionString = strConnString;
             objConn.Open();
 
-            string sql_detail = "Select Haulier_Abbr,DC_No,DC_Abbr,Total_Revenue,Total_Cost, (Total_Revenue-Total_Cost) as Profit ,Case When Total_Revenue=0 Then -100 Else Cast(((Total_Revenue-Total_Cost)/Total_Revenue)*100 AS DEcimal(12,2)) End as Percent_Profit From (select Haulier_Abbr, DC_No,Case When PO_No<>'DOC' Then DC_Abbr Else Collection_point End As DC_Abbr,sum(Total_Cost_Charging) as Total_Revenue, sum(Total_Cost+Additional_Cost) as Total_Cost from transportation where year_week_upload='" + Request.QueryString["yw"].ToString() + "' and Calc_Date is not null Group by Haulier_Abbr, DC_No , Case When PO_No<>'DOC' Then DC_Abbr Else Collection_point End) A";
+            string sql_detail = "Select Haulier_Abbr,DC_No,DC_Abbr,Total_Revenue,Total_Cost, (Total_Revenue-Total_Cost) as Profit ,Case When Total_Revenue=0 Then -100 Else Cast(((Total_Revenue-Total_Cost)/Total_Revenue)*100 AS DEcimal(12,2)) End as Percent_Profit From (select Haulier_Abbr, DC_No,Case When PO_No<>'DOC' Then DC_Abbr Else Collection_point End As DC_Abbr,sum(Total_Cost_Charging) as Total_Revenue, sum(Total_Cost) as Total_Cost from transportation where year_week_upload='" + Request.QueryString["yw"].ToString() + "' and Calc_Date is not null Group by Haulier_Abbr, DC_No , Case When PO_No<>'DOC' Then DC_Abbr Else Collection_point End) A";
             SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
             obj_detail = rs_detail.ExecuteReader();
 

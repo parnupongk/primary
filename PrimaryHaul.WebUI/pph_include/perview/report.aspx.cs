@@ -30,11 +30,11 @@ namespace PrimaryHaul.WebUI.pph_include.perview
             "case when upper(RateType) like '%Pallet%' then No_Of_QTY end  as Pallets,  " +
             "case when upper(RateType) like '%Tray%' then No_Of_QTY end  as Trays, " +
             "case when upper(RateType) like '%Cases%' then No_Of_QTY end  as Cases,  " +
-            "case when upper(RateType) like '%Load%' then No_Of_QTY end  as Loads,  " +           
-            "sum(Total_Cost) as Cost , " +
-            "sum(Total_Cost+Additional_Cost) as TotalCost, " +
+            "case when upper(RateType) like '%Load%' then No_Of_QTY end  as Loads,  " +
+            "sum(Rate_Per_unit*No_Of_Qty) as Cost , " +
+            "sum(Total_Cost) as TotalCost, " +
             "sum(Total_Cost_Charging) as Total_Revenue, " +
-            "sum(Total_Cost_Charging-(Total_Cost+Additional_Cost)) as Profit " +
+            "sum(Total_Cost_Charging-(Total_Cost)) as Profit " +
             "from transportation " +
             "Where Year_Week_Upload='" + Request.QueryString["yw"].ToString() + "' " +
             "" + sql_hl + "" +
