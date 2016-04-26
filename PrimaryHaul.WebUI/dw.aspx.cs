@@ -11,7 +11,7 @@ namespace PrimaryHaul.WebUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            TextBox1.Text = DateTime.Now.ToString("MM");
         }
 
         protected void Button1_Click(object sender, EventArgs e)

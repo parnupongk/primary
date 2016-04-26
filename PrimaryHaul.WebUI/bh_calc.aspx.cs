@@ -92,8 +92,10 @@ namespace PrimaryHaul.WebUI
             try
             {
                 lblErr.Text = "";
-                PH_BHCalc.PH_BHTrans_Calc(AppCode.strConnDB, ddlDateWeek.SelectedValue);
+                int isError = PH_BHCalc.PH_BHTrans_Calc(AppCode.strConnDB, ddlDateWeek.SelectedValue);
                 DataBindTransCalc();
+                string message = isError > 0 ? "Save Data Successfull" : "Save Data Not Successfull";
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);
             }
             catch(Exception ex)
             {
