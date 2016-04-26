@@ -86,7 +86,7 @@ namespace PrimaryHaul.WebUI
                 try
                 {
                     int strUserId = int.Parse(Request["id"]);
-                    string strSheet = "Data_WK" + DateTime.Now.ToString("MM");
+                    string strSheet = "Data_WK" + lblWeek.Text.Substring(4,2);
                     string fileName = path.Split('\\').Length > 0 ? path.Split('\\')[path.Split('\\').Length - 1] : "";
                     //DataTable dtSheet = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
 
@@ -100,7 +100,7 @@ namespace PrimaryHaul.WebUI
                     try
                     {
 
-                        strSheet = "bh_transaction";
+                        //strSheet = "bh_transaction";
 
                         string sql = "select * from [" + strSheet + "$]";
                         OleDbCommand cmd = new OleDbCommand(sql, conn);
@@ -185,8 +185,11 @@ namespace PrimaryHaul.WebUI
                     //}
 
                     DataBind_BHTrans(strUserId.ToString());
+                    if (rowError == 0)
+                    {
+                        btnInsert.Enabled = true;
+                    }
                     btnClear.Enabled = true;
-                    btnInsert.Enabled = true;
                     lblErr.Text = " Success=" + rowSucc.ToString() + " Error=" + rowError.ToString();
                     #endregion
 
