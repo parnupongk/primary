@@ -57,7 +57,7 @@
             <div class="col-md-12">             
                 <div runat="server" class="form-group">
                     <asp:Label runat="server" AssociatedControlID="lnkFile" CssClass="col-md-3 control-label"></asp:Label>
-                    <div class="col-md-9"><a runat="server" id="lnkFile" href="file/bh_ratecard.xlsx" target="_blank" >file ตัวอย่าง</a></div>
+                    <div class="col-md-9"><a runat="server" id="lnkFile" href="file/bh_rams.xlsx" target="_blank" >file ตัวอย่าง</a></div>
                 </div>
                 <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="AjaxFileUpload" CssClass="col-md-3 control-label">Import File :</asp:Label>
