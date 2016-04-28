@@ -20,7 +20,9 @@ namespace PrimaryHaul.WebUI.pph_include.ajax.files
             cs_checkFiled getLast = new cs_checkFiled();
             string vnID = getLast.sql_getAjaxAnswer("SELECT VendorID FROM Vendor_Info order by VendorID desc");
             int m = Int32.Parse(vnID);
-            PPHfunction.QueryExecuteNonQuery("insert into Vendor_Info (VendorID, Vendor_TaxID, Vendor_Name_En, Vendor_Name_Th, StampTime) values ('"+ (m+1)+"', '" + Request.Form["var01"].ToString() + "','" + Request.Form["var02"].ToString() + "','" + Request.Form["var03"].ToString() + "','" + DateTime.Now + "')");           
+            string vendor_type = "";
+            if (Request.Form["var04"].ToString().Substring(0, 1) == "B") { vendor_type = "BH"; } else if (Request.Form["var04"].ToString().Substring(0, 1) == "F") { vendor_type = "FZ"; } else { vendor_type = "VD"; }
+            PPHfunction.QueryExecuteNonQuery("insert into Vendor_Info (VendorID, Vendor_TaxID, Vendor_Name_En, Vendor_Name_Th, StampTime, vendor_type) values ('" + (m + 1) + "', '" + Request.Form["var01"].ToString() + "','" + Request.Form["var02"].ToString() + "','" + Request.Form["var03"].ToString() + "','" + DateTime.Now + "','" + vendor_type + "')");           
         }
     }
 }

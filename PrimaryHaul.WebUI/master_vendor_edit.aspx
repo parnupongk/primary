@@ -12,11 +12,13 @@
 </div>
 <br />
 </div>
+<input type="hidden" name="r" id="r" value="<%= Request.QueryString["r"].ToString() %>" />
 <script>
     function vender_taxDuplicate() {
         var req = Inint_AJAX();
         var str = Math.random();
         var varUsername = document.getElementById('addNameTax').value;
+        var strRole = document.getElementById('r').value;
         if (varUsername.length != 13) {
             document.getElementById('btnSubmit').disabled = true;
             document.getElementById('taxError').innerHTML = "<font color=\"red\">TAX ID must be 13 digit</font>";
@@ -26,6 +28,7 @@
             if (varUsername != '') {
                 var str_url_address = "./pph_include/ajax/files/vender_taxDuplicate.aspx";
                 var str_url = "var01=" + varUsername;
+                str_url += "&var02=" + strRole;
                 str_url += "&clearmemory=" + str;
                 req.open('POST', str_url_address, true)
                 req.onreadystatechange = function () {
@@ -56,9 +59,11 @@
         var req = Inint_AJAX();
         var str = Math.random();
         var varUsername = document.getElementById('addNameEn').value;
+        var strRole = document.getElementById('r').value;
         if (varUsername != '') {
             var str_url_address = "./pph_include/ajax/files/vender_nameEnDuplicate.aspx";
             var str_url = "var01=" + varUsername;
+            str_url += "&var02=" + strRole;
             str_url += "&clearmemory=" + str;
             req.open('POST', str_url_address, true)
             req.onreadystatechange = function () {
@@ -88,9 +93,11 @@
         var req = Inint_AJAX();
         var str = Math.random();
         var varUsername = document.getElementById('addNameTh').value;
+        var strRole = document.getElementById('r').value;
         if (varUsername != '') {
             var str_url_address = "./pph_include/ajax/files/vender_nameThDuplicate.aspx";
             var str_url = "var01=" + varUsername;
+            str_url += "&var02=" + strRole;
             str_url += "&clearmemory=" + str;
             req.open('POST', str_url_address, true)
             req.onreadystatechange = function () {
@@ -116,7 +123,7 @@
         }
     }
 
-    function vender_Submit(varA, varB, varC, varD, varE, varF) {
+    function vender_Submit(varA, varB, varC, varD, varE) {
         var req = Inint_AJAX();
         var str = Math.random();
         var strTax = document.getElementById('addNameTax').value;
@@ -140,7 +147,7 @@
                         document.getElementById('addNameEn').value = "";
                         document.getElementById('addNameTh').value = "";
                         alert('Save Success');
-                        window.location.href = './master_vender.aspx?r=' + varA + '&id=' + varB + '&seNameEn=' + varD + '&seNameTh=' + varE + '&seNameTax=' + varF;
+                        window.location.href = './master_vender.aspx?r=' + varA + '&id=' + varB + '&seName=' + varD + '&seCode=' + varE;
                     }
                 }
             }
@@ -201,7 +208,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2" ></div>
-                <div class="col-md-3" style="text-align:left;"><input type="button" id="btnSubmit" value="Save" class="btn btn-default" <% Response.Write("onclick=\"vender_Submit('" + Request.QueryString["r"].ToString() + "', '" + Request.QueryString["id"].ToString() + "', '" + Request.QueryString["vdID"].ToString() + "', '" + Request.QueryString["seNameEn"].ToString() + "', '" + Request.QueryString["seNameTh"].ToString() + "', '" + Request.QueryString["seNameTax"].ToString() + "');\""); %> /><p class="text-danger" id="btnSubmitError" style="display:none;"></p></div>
+                <div class="col-md-3" style="text-align:left;"><input type="button" id="btnSubmit" value="Save" class="btn btn-default" <% Response.Write("onclick=\"vender_Submit('" + Request.QueryString["r"].ToString() + "', '" + Request.QueryString["id"].ToString() + "', '" + Request.QueryString["vdID"].ToString() + "', '" + Request.QueryString["seName"].ToString() + "', '" + Request.QueryString["seCode"].ToString() + "');\""); %> /><p class="text-danger" id="btnSubmitError" style="display:none;"></p></div>
                 <div class="col-md-7" style="text-align:left;"></div>
             </div>
         </div>

@@ -134,7 +134,7 @@
                     <div class="col-md-12">&nbsp;</div>
                 </div>           
                 <div class="row">
-                    <div class="col-md-1"><label class="control-label">Vendor : </label></div>
+                    <div class="col-md-1"><label class="control-label">Keyword : </label></div>
                     <div class="col-md-3" style="text-align:left;"><input type="text" class="form-control" name="vendor" id="vendor" value="<%= strVendor %>" style="width:100%;"/></div>
                     <div class="col-md-8" style="text-align:left;"><input type="button" value="Search" class="btn btn-default" onclick="js_BHrams_Search('urlSubmit', 'week', 'vendor');" /></div>
                 </div>
