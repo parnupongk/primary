@@ -726,7 +726,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                         int Case_Appt, 
                         int Pallet, 
                         string Remark, 
-                        int Pallet_From_Vendor, 
+                        decimal Pallet_From_Vendor, 
                         int Total_Pallet_From_Vendor, 
                         decimal Rate, 
                         decimal Rate_Unloading, 
@@ -887,7 +887,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 base.Columns.Add(this.columnPallet);
                 this.columnRemark = new global::System.Data.DataColumn("Remark", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRemark);
-                this.columnPallet_From_Vendor = new global::System.Data.DataColumn("Pallet_From_Vendor", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnPallet_From_Vendor = new global::System.Data.DataColumn("Pallet_From_Vendor", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPallet_From_Vendor);
                 this.columnTotal_Pallet_From_Vendor = new global::System.Data.DataColumn("Total_Pallet_From_Vendor", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal_Pallet_From_Vendor);
@@ -1336,10 +1336,10 @@ namespace PrimaryHaul_WS.AppCode_DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Pallet_From_Vendor {
+            public decimal Pallet_From_Vendor {
                 get {
                     try {
-                        return ((int)(this[this.tableBH_Transaction_TMP.Pallet_From_VendorColumn]));
+                        return ((decimal)(this[this.tableBH_Transaction_TMP.Pallet_From_VendorColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Pallet_From_Vendor\' in table \'BH_Transaction_TMP\' is DBNull" +
