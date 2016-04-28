@@ -104,7 +104,7 @@ namespace PPH_SC
                 cmd.Parameters.AddWithValue("@Class_Name", Class_Name);
                 cmd.Parameters.AddWithValue("@Style", Style);
                 cmd.Parameters.AddWithValue("@Desciptions", Desciptions);
-                cmd.Parameters.AddWithValue("@Rec_Case", int.Parse(Rec_Case));
+                cmd.Parameters.AddWithValue("@Rec_Case", Math.Round(decimal.Parse(Rec_Case), 2));
                 cmd.Parameters.AddWithValue("@BH_Rate", decimal.Parse(BH_Rate));
                 cmd.Parameters.AddWithValue("@BH_Amount", BH_Amount);
                 cmd.Parameters.AddWithValue("@PO_No", PO_No);
