@@ -68,7 +68,7 @@ namespace PrimaryHaul.WebUI
                 if (dbSchema == null || dbSchema.Rows.Count < 1){throw new Exception("Error: Could not determine the name of the first worksheet.");}
                 string firstSheetName = dbSchema.Rows[0]["TABLE_NAME"].ToString();
                 int countAll = 0, countInsert = 0;
-                string sql = "select * from " + firstSheetName + "";
+                string sql = "select * from [" + firstSheetName + "]";
                 OleDbCommand cmd = new OleDbCommand(sql, conn);
                 OleDbDataReader drRead = cmd.ExecuteReader();
                 while (drRead.Read())
@@ -77,7 +77,7 @@ namespace PrimaryHaul.WebUI
                     {
                         countAll++;
 
-                        if (PPH_BH.insert_ratecard(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], drRead[1].ToString(), drRead[0].ToString(), drRead[2].ToString(), drRead[3].ToString(), drRead[4].ToString(), drRead[5].ToString(), drRead[6].ToString(), drRead[7].ToString(), drRead[8].ToString()) == true)
+                        if (PPH_BH.insert_ratecard(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], drRead[1].ToString(), drRead[0].ToString(), drRead[2].ToString(), drRead[3].ToString(), drRead[4].ToString(), drRead[5].ToString(), drRead[6].ToString(), drRead[8].ToString(), drRead[9].ToString()) == true)
                         {
                             countInsert++;
                         }

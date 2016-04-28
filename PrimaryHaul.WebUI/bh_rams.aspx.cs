@@ -47,7 +47,7 @@ namespace PrimaryHaul.WebUI
                 
                 if (InsertData(Session["fileName"].ToString()))
                 {
-                    Response.Write("<script>alert('Import Data Successfu');</script>");
+                    Response.Write("<script>alert('Import Data Successful');</script>");
                     msgInsert.Text = Session["showCount"].ToString();
                 }
                 else
@@ -74,21 +74,23 @@ namespace PrimaryHaul.WebUI
             {
 
                 #region Insert
-                DataTable dbSchema = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                if (dbSchema == null || dbSchema.Rows.Count < 1){throw new Exception("Error: Could not determine the name of the first worksheet.");}
-                string firstSheetName = dbSchema.Rows[0]["TABLE_NAME"].ToString();
+                DataTable dbSchema1 = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                if (dbSchema1 == null || dbSchema1.Rows.Count < 1){throw new Exception("Error: Could not determine the name of the first worksheet.");}
+                string firstSheetName_rams = dbSchema1.Rows[0]["TABLE_NAME"].ToString();
                 int countAll = 0, countInsert = 0;
-                string sql = "select * from "+firstSheetName+"";
-                OleDbCommand cmd = new OleDbCommand(sql, conn);
-                OleDbDataReader drRead = cmd.ExecuteReader();
-                while (drRead.Read())
+                string sql = "select * from [" + firstSheetName_rams + "]";
+                OleDbCommand cmd1 = new OleDbCommand(sql, conn);
+                OleDbDataReader drReadrams = cmd1.ExecuteReader();
+                while (drReadrams.Read())
                 {
-                    if (drRead[1].ToString() != "" && drRead[2].ToString() != "")
+                    if (drReadrams[1].ToString() != "" && drReadrams[2].ToString() != "")
                     {
                         countAll++;
-                        if (hidYW.Value.ToString().Substring(0, 4) == drRead[2].ToString() && hidYW.Value.ToString().Substring(4, 2) == drRead[1].ToString())
+                        string excelPr = hidYW.Value.ToString().Substring(4, 2);
+                        if (excelPr.Substring(0, 1) == "0") { excelPr = excelPr.Substring(1, 1); }
+                        if (hidYW.Value.ToString().Substring(0, 4) == drReadrams[2].ToString() && excelPr == drReadrams[1].ToString())
                         {
-                            if (PPH_BH.insert_rams(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], drRead[0].ToString(), drRead[1].ToString(), drRead[2].ToString(), drRead[3].ToString(), drRead[4].ToString(), drRead[5].ToString(), drRead[6].ToString(), drRead[7].ToString(), drRead[8].ToString(), drRead[9].ToString(), drRead[10].ToString(), drRead[11].ToString(), drRead[12].ToString(), drRead[13].ToString(), Session["fileName"].ToString(), Session["s_userID"].ToString()) == true)
+                            if (PPH_BH.insert_rams(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], drReadrams[0].ToString(), drReadrams[1].ToString(), drReadrams[2].ToString(), drReadrams[3].ToString(), drReadrams[4].ToString(), drReadrams[5].ToString(), drReadrams[6].ToString(), drReadrams[7].ToString(), drReadrams[8].ToString(), drReadrams[9].ToString(), drReadrams[10].ToString(), drReadrams[11].ToString(), drReadrams[12].ToString(), drReadrams[13].ToString(), Session["fileName"].ToString(), Session["s_userID"].ToString()) == true)
                             {
                                 countInsert++;
                             }
