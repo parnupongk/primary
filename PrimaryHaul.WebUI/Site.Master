@@ -109,9 +109,10 @@
                                         <li><a runat="server" id="lnkTesco" name="Tesco" href="addNew.aspx?type=A1&">Tesco User  </a></li>
                                         <li><a runat="server" id="lnkProHaulier" name="Haulier" href="addnew.aspx?type=HL&">Haulier</a></li>
                                         <li><a runat="server" id="lnkProVendor" name="Vendor" href="addnew.aspx?type=VD&">Vendor</a></li>
-                                        <li><a runat="server" id="lnkBackhaul" name="Backhaul" href="addnew.aspx?type=B1&">Backhaul</a></li>
-                                        <li><a runat="server" id="lnkForzen" name="Forzen" href="addnew.aspx?type=F1&">Forzen</a></li>
-                                        <li><a runat="server" id="lnkImport" name="Import" href="addnew.aspx?type=I1&">Import</a></li>
+                                        <li><a runat="server" id="lnkBackhaul" name="Backhaul" href="addnew.aspx?type=B1&">Backhaul User</a></li>
+                                        <li><a runat="server" id="lnkBackhaulVendor" name="BackhaulVendor" href="addnew.aspx?type=BH&">Backhaul Vendor</a></li>
+                                        <li><a runat="server" id="lnkForzen" name="Forzen" href="addnew.aspx?type=F1&">Forzen User</a></li>
+                                        <li><a runat="server" id="lnkImport" name="Import" href="addnew.aspx?type=I1&">Import User</a></li>
                                     </ul>
                                 </li>
                                 <li><a runat="server" id="A1" href="user_management.aspx?" name="User Management">User Management</a></li>

@@ -21,6 +21,7 @@ namespace PrimaryHaul_WSFlow
             F2,
             I1,
             I2,
+            BH,
         }
         public enum SignInStatus
         {

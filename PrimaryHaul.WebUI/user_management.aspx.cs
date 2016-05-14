@@ -29,7 +29,7 @@ namespace PrimaryHaul.WebUI
            
             if (!string.IsNullOrEmpty(Request.QueryString["r"])) {
                 if (Request.QueryString["r"].ToString() == "B1" || Request.QueryString["r"].ToString() == "B2") {
-                    role_show = " and RoleID in('B1', 'B2') "; 
+                    role_show = " and RoleID in('B1', 'B2', 'BH') "; 
                 }            
             }
 

@@ -64,6 +64,13 @@ namespace PrimaryHaul.WebUI
                         divHaulier.Visible = false;
                         divVender.Visible = false;
                     }
+                    else if (type != null && type[0] == PHCore_Status.RoleID.BH.ToString())
+                    {
+                        divHaulier.Visible = false;
+                        divRole.Visible = false;
+                        divVender.Visible = false;
+
+                    }
                     else Response.Redirect("logout.aspx", false);
                     #endregion
 

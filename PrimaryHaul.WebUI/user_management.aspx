@@ -104,7 +104,8 @@
         <td style="text-align:center;"><%= obj_listuser["EMail_Address"].ToString() %></td>
         <td style="text-align:center;"><%= detailStatus %></td>
         <td style="text-align:center;">
-        <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1"){ %>
+        <% if (PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A1" || PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "B1")
+           { %>
             <div class="form-group"><input type="button" value="Reset Password" id="btnResetPass" class="btn btn-default" <% Response.Write("onclick=\"js_confirm('คุณต้องการ Reset Password ใช่หรือไม่', '" + urlReset + "');\""); %> style="width:200px;" /></div>
             <div class="form-group"><input type="button" value="Update Status" class="btn btn-default" <% Response.Write("onclick=\"js_confirm('คุณต้องการ Update Status ใช่หรือไม่', '" + urlUpdateStatus + "');\""); %> style="width:200px;" /></div>
             <div class="form-group"><input type="button" value="Delete" class="btn btn-default" <% Response.Write("onclick=\"js_confirm('คุณต้องการ Delete User นี้ใช่หรือไม่', '" + urlDeleteUser + "');\""); %> style="width:200px;" /></div>
