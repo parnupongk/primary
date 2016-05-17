@@ -86,7 +86,7 @@ namespace PrimaryHaul.WebUI
                 try
                 {
                     int strUserId = int.Parse(Request["id"]);
-                    string strSheet = "Data_WK" + lblWeek.Text.Substring(4,2);
+                    string strSheet = "Data WK" + lblWeek.Text.Substring(4,2);
                     string fileName = path.Split('\\').Length > 0 ? path.Split('\\')[path.Split('\\').Length - 1] : "";
                     //DataTable dtSheet = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
 
