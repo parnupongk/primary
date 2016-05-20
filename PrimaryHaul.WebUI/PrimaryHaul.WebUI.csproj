@@ -181,6 +181,7 @@
     <Content Include="pph_include\css\jquery-ui.min.css" />
     <Content Include="pph_include\download\hualier_cost.aspx" />
     <Content Include="pph_include\download\report.aspx" />
+    <Content Include="pph_include\download\report_kpi.aspx" />
     <Content Include="pph_include\download\report_sum.aspx" />
     <Content Include="pph_include\download\report_summary.aspx" />
     <Content Include="pph_include\download\report_summary_sum.aspx" />
@@ -667,6 +668,13 @@
     </Compile>
     <Compile Include="pph_include\download\report.aspx.designer.cs">
       <DependentUpon>report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\download\report_kpi.aspx.cs">
+      <DependentUpon>report_kpi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\download\report_kpi.aspx.designer.cs">
+      <DependentUpon>report_kpi.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\download\report_sum.aspx.cs">
       <DependentUpon>report_sum.aspx</DependentUpon>

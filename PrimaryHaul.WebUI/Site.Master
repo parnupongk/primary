@@ -71,7 +71,7 @@
                                 <li><a runat="server" id="lnkSKU" href="master_sku.aspx?" name="SKU">SKU</a></li>
                                 <li><a runat="server" id="lnkHaulier" href="master_haulier.aspx?" name="Master_Haulier">Haulier</a></li>
                                 <li><a runat="server" id="lnkVender" href="master_vender.aspx?" name="Master_Vendor">Vendor</a></li>     
-                                <li><a runat="server" id="lnkBHratecard" href="bh_ratecard.aspx?" name="BH Rate Card">Rate Card</a></li>                                                               
+                                <li><a runat="server" id="lnkBHratecard" href="bh_ratecard.aspx?" name="BH Rate Card">BH Rate Card</a></li>                                                               
                             </ul>
                         </li>
                         <li class="dropdown">

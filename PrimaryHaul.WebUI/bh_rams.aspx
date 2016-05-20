@@ -61,7 +61,7 @@
                 </div>
                 <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="AjaxFileUpload" CssClass="col-md-3 control-label">Import File :</asp:Label>
-                    <div class="col-md-9"><asp:AjaxFileUpload ID="AjaxFileUpload" runat="server" Padding-Bottom="4" Padding-Left="2" Padding-Right="1" Padding-Top="4" ThrobberID="myThrobber" MaximumNumberOfFiles="10" AllowedFileTypes="xls,vnd.ms-excel,xls,jpg,png,application/vnd.ms-excel,xlsx" OnUploadComplete="AjaxFileUpload_UploadComplete" /></div>
+                    <div class="col-md-9"><asp:AjaxFileUpload ID="AjaxFileUpload" runat="server" Padding-Bottom="4" Padding-Left="2" Padding-Right="1" Padding-Top="4" ThrobberID="myThrobber" MaximumNumberOfFiles="10" AllowedFileTypes="xls,vnd.ms-excel,xls,jpg,png,application/vnd.ms-excel,xlsx,xlsb" OnUploadComplete="AjaxFileUpload_UploadComplete" /></div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-9"><span id="msgPerload"></span><asp:Label ID="msgInsert" runat="server"></asp:Label></div>

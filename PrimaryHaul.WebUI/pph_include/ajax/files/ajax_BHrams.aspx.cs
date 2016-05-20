@@ -20,7 +20,7 @@ namespace PrimaryHaul.WebUI.pph_include.ajax.files
             {
                 if (Request.Form["varDP"].ToString() == "3")
                 {
-                    if (PPHfunction.QueryExecuteNonQuery("delete from BH_RAMS where CONVERT(varchar,Period)+CONVERT(varchar,Week)='" + Request.Form["var01"].ToString() + "'"))
+                    if (PPHfunction.QueryExecuteNonQuery("delete from BH_RAMS where Week='" + Request.Form["var01"].ToString() + "'"))
                     {
                         Response.Write("1");
                     }

@@ -25,6 +25,7 @@ namespace PrimaryHaul.WebUI
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Request.QueryString["week"] as string)) { hidWeek.Value = Request.QueryString["week"].ToString(); }
+            
             /*string filename = "kpi_d.xls";
             Response.ContentType = "application/vnd.ms-excel";
             Response.AddHeader("Content-Disposition", string.Format("attachment;filename={0}", filename));

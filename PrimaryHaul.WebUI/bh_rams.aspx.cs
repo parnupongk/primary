@@ -66,7 +66,7 @@ namespace PrimaryHaul.WebUI
         {
             string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source= " + path + " ; Extended Properties=Excel 8.0;";
             string connectionStringXLSX = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= " + path + " ; Extended Properties=\"Excel 12.0;IMEX=1;HDR=Yes;TypeGuessRows=0;ImportMixedTypes=Text\"";
-            connectionString = (path.IndexOf("xlsx") > 0) ? connectionStringXLSX : connectionString;
+            connectionString = (path.IndexOf("xlsx") > 0 || path.IndexOf("xlsb") > 0) ? connectionStringXLSX : connectionString;
             OleDbConnection conn = new OleDbConnection(connectionString);
             if (conn.State == ConnectionState.Open) conn.Close();
             conn.Open();          
@@ -90,7 +90,7 @@ namespace PrimaryHaul.WebUI
                         if (excelPr.Substring(0, 1) == "0") { excelPr = excelPr.Substring(1, 1); }
                         if (hidYW.Value.ToString().Substring(0, 4) == drReadrams[2].ToString() && excelPr == drReadrams[1].ToString())
                         {
-                            if (PPH_BH.insert_rams(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], drReadrams[0].ToString(), drReadrams[1].ToString(), drReadrams[2].ToString(), drReadrams[3].ToString(), drReadrams[4].ToString(), drReadrams[5].ToString(), drReadrams[6].ToString(), drReadrams[7].ToString(), drReadrams[8].ToString(), drReadrams[9].ToString(), drReadrams[10].ToString(), drReadrams[11].ToString(), drReadrams[12].ToString(), drReadrams[13].ToString(), Session["fileName"].ToString(), Session["s_userID"].ToString()) == true)
+                            if (PPH_BH.insert_rams(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], drReadrams[0].ToString(), drReadrams[2].ToString()+drReadrams[1].ToString(), drReadrams[3].ToString(), drReadrams[4].ToString(), drReadrams[5].ToString(), drReadrams[6].ToString(), drReadrams[7].ToString(), drReadrams[8].ToString(), drReadrams[9].ToString(), drReadrams[10].ToString(), drReadrams[11].ToString(), drReadrams[12].ToString(), drReadrams[13].ToString(), Session["fileName"].ToString(), Session["s_userID"].ToString()) == true)
                             {
                                 countInsert++;
                             }
