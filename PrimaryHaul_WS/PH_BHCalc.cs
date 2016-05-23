@@ -32,7 +32,7 @@ namespace PrimaryHaul_WS
                 using (SqlConnection sqlConn = new SqlConnection(strConnDB))
                 {
                     if (sqlConn.State == ConnectionState.Closed ) sqlConn.Open();
-                    SqlCommand sqlComm = new SqlCommand("usp_BH_Transaction_Calc");
+                    SqlCommand sqlComm = new SqlCommand("usp_BH_Transaction_Calc", sqlConn);
                     sqlComm.CommandText = "usp_BH_Transaction_Calc";
                     sqlComm.CommandType = CommandType.StoredProcedure;
                     sqlComm.CommandTimeout = 0;
