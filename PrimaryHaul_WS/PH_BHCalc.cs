@@ -28,11 +28,26 @@ namespace PrimaryHaul_WS
         {
             try
             {
-                int rtn = SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, "usp_BH_Transaction_Calc"
-                                 , new SqlParameter[] {new SqlParameter("@Tesco_Week",strYearWeek)
-                                                      });
+                int rtn = 0;
+                using (SqlConnection sqlConn = new SqlConnection(strConnDB))
+                {
+                    if (sqlConn.State == ConnectionState.Closed ) sqlConn.Open();
+                    SqlCommand sqlComm = new SqlCommand("usp_BH_Transaction_Calc");
+                    sqlComm.CommandText = "usp_BH_Transaction_Calc";
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    sqlComm.CommandTimeout = 0;
+                    sqlComm.Parameters.AddRange(new SqlParameter[] { new SqlParameter("@Tesco_Week", strYearWeek) });
+                    rtn = sqlComm.ExecuteNonQuery();
+                }
+                    //int rtn =
+                    //SqlTransaction sqlTran = new SqlConnection(strConnDB).BeginTransaction();
 
-                return rtn;
+
+                    //SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, "usp_BH_Transaction_Calc"
+                    //            , new SqlParameter[] {new SqlParameter("@Tesco_Week",strYearWeek)
+                    //                                 });
+
+                    return rtn;
             }
             catch (Exception ex)
             {
