@@ -68,7 +68,6 @@ namespace PrimaryHaul.WebUI
 
         private void InsertData(string path)
         {
-            bool isErr = false;
 
             try
             {
@@ -85,14 +84,15 @@ namespace PrimaryHaul.WebUI
 
                 try
                 {
+                    lblErr.Text = "";
                     bool isSheetName = false;
                     int strUserId = int.Parse(Request["id"]);
-                    string strSheet = "Data WK" + lblWeek.Text.Substring(4,2);
+                    string strSheet = "data wk" + lblWeek.Text.Substring(4,2) + "$";
                     string fileName = path.Split('\\').Length > 0 ? path.Split('\\')[path.Split('\\').Length - 1] : "";
                     DataTable dtSheet = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
                     foreach (DataRow drSheet in dtSheet.Rows)
                     {
-                        if (drSheet["TABLE_NAME"].ToString() == strSheet) isSheetName = true;
+                        if (drSheet[2].ToString().ToLower().Replace("'","") == strSheet.ToString()) isSheetName = true;
                     }
 
                     if (isSheetName)
@@ -109,7 +109,7 @@ namespace PrimaryHaul.WebUI
 
                             //strSheet = "bh_transaction";
 
-                            string sql = "select * from [" + strSheet + "$]";
+                            string sql = "select * from [" + strSheet + "]";
                             OleDbCommand cmd = new OleDbCommand(sql, conn);
                             OleDbDataReader drRead = cmd.ExecuteReader();
                             PHDS_BHUpload.BH_Transaction_TMPRow dr = null;

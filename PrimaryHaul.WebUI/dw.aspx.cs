@@ -11,7 +11,7 @@ namespace PrimaryHaul.WebUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            TextBox1.Text = "201607".Substring(4, 2);
+            //TextBox1.Text = "201607".Substring(4, 2);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
