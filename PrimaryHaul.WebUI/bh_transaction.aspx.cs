@@ -85,115 +85,126 @@ namespace PrimaryHaul.WebUI
 
                 try
                 {
+                    bool isSheetName = false;
                     int strUserId = int.Parse(Request["id"]);
                     string strSheet = "Data WK" + lblWeek.Text.Substring(4,2);
                     string fileName = path.Split('\\').Length > 0 ? path.Split('\\')[path.Split('\\').Length - 1] : "";
-                    //DataTable dtSheet = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                    DataTable dtSheet = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                    foreach (DataRow drSheet in dtSheet.Rows)
+                    {
+                        if (drSheet["TABLE_NAME"].ToString() == strSheet) isSheetName = true;
+                    }
 
-
-                    #region Insert
-                    //for (int index = 0; index < 2; index++)
-                    //foreach (DataRow drSheet in dtSheet.Rows)
-                    //{
-                    int index = 0;
-                    int rowCount = 0, rowError = 0, rowSucc = 0;
-                    try
+                    if (isSheetName)
                     {
 
-                        //strSheet = "bh_transaction";
-
-                        string sql = "select * from [" + strSheet + "$]";
-                        OleDbCommand cmd = new OleDbCommand(sql, conn);
-                        OleDbDataReader drRead = cmd.ExecuteReader();
-                        PHDS_BHUpload.BH_Transaction_TMPRow dr = null;
-
-                        string strColumns = "";
-                        while (drRead.Read())
+                        #region Insert
+                        //for (int index = 0; index < 2; index++)
+                        //foreach (DataRow drSheet in dtSheet.Rows)
+                        //{
+                        int index = 0;
+                        int rowCount = 0, rowError = 0, rowSucc = 0;
+                        try
                         {
-                            if (!string.IsNullOrEmpty(drRead[0].ToString().Trim()))
+
+                            //strSheet = "bh_transaction";
+
+                            string sql = "select * from [" + strSheet + "$]";
+                            OleDbCommand cmd = new OleDbCommand(sql, conn);
+                            OleDbDataReader drRead = cmd.ExecuteReader();
+                            PHDS_BHUpload.BH_Transaction_TMPRow dr = null;
+
+                            string strColumns = "";
+                            while (drRead.Read())
                             {
-                                #region Insert Row
-                                try
+                                if (!string.IsNullOrEmpty(drRead[0].ToString().Trim()))
                                 {
-                                    index++;
-                                    dr = dtBHTrans.NewBH_Transaction_TMPRow();
-                                    dr.Week = drRead[0].ToString();
-                                    dr.Vendor_Name = drRead[2].ToString();
+                                    #region Insert Row
                                     try
                                     {
-                                        dr.Appt_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "M/d/yyyy", null); //drRead[3].ToString().Trim().Split(' ')[0];//
+                                        index++;
+                                        dr = dtBHTrans.NewBH_Transaction_TMPRow();
+                                        dr.Week = drRead[0].ToString();
+                                        dr.Vendor_Name = drRead[2].ToString();
+                                        try
+                                        {
+                                            dr.Appt_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "M/d/yyyy", null); //drRead[3].ToString().Trim().Split(' ')[0];//
+                                        }
+                                        catch
+                                        {
+                                            dr.Appt_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "d/M/yyyy", null); //drRead[3].ToString().Trim().Split(' ')[0];//
+                                        }
+
+                                        dr.PO_No = drRead[6].ToString();
+                                        dr.Appt_To_DC = drRead[9].ToString();
+                                        dr.Appt_No = drRead[11].ToString();
+                                        dr.Remark = drRead[14].ToString();
+                                        dr.File_Name = fileName;
+                                        dr.UserID = strUserId;
+                                        dr.StampTime = DateTime.Now;
+                                        dr.Week_Upload = lblWeek.Text;
+                                        dr.Week_OnFile = lblWeek.Text;
+
+                                        dr.Period = !Regex.IsMatch(drRead[4].ToString(), @"\d") ? 0 : int.Parse(drRead[1].ToString());
+                                        strColumns = "Period";
+                                        dr.Load_Appt = !Regex.IsMatch(drRead[4].ToString(), @"\d") ? 0 : int.Parse(drRead[4].ToString());
+                                        strColumns = "Load_Appt";
+                                        dr.Load_Rcvd = !Regex.IsMatch(drRead[5].ToString(), @"\d") ? 0 : int.Parse(drRead[5].ToString());
+                                        strColumns = "Load_Rcvd";
+                                        dr.DC_No = !Regex.IsMatch(drRead[7].ToString(), @"\d") ? 0 : int.Parse(drRead[7].ToString());
+                                        strColumns = "DC_No";
+                                        dr.Load_No = !Regex.IsMatch(drRead[8].ToString(), @"\d") ? 0 : int.Parse(drRead[8].ToString());
+                                        strColumns = "Load_No";
+                                        dr.Type = !Regex.IsMatch(drRead[10].ToString(), @"\d") ? 0 : int.Parse(drRead[10].ToString());
+                                        strColumns = "Type";
+                                        dr.Case_Appt = !Regex.IsMatch(drRead[12].ToString(), @"\d") ? 0 : Convert.ToInt32(decimal.Parse(drRead[12].ToString()));
+                                        strColumns = "Case_Appt";
+                                        dr.Pallet = !Regex.IsMatch(drRead[13].ToString(), @"\d") ? 0 : int.Parse(drRead[13].ToString());
+                                        strColumns = "Pallet";
+                                        dr.Pallet_From_Vendor = !Regex.IsMatch(drRead[15].ToString(), @"\d") ? 0 : decimal.Parse(drRead[15].ToString());
+                                        strColumns = "Pallet_From_Vendor";
+                                        dr.Total_Pallet_From_Vendor = !Regex.IsMatch(drRead[16].ToString(), @"\d") ? 0 : int.Parse(drRead[16].ToString());
+                                        strColumns = "Total_Pallet_From_Vendor";
+                                        dr.Rate = !Regex.IsMatch(drRead[17].ToString(), @"\d") ? 0 : decimal.Parse(drRead[17].ToString());
+                                        strColumns = "Rate";
+                                        dr.Rate_Unloading = !Regex.IsMatch(drRead[18].ToString(), @"\d") ? 0 : int.Parse(drRead[18].ToString());
+                                        strColumns = "Rate_Unloading";
+
+                                        dtBHTrans.Rows.Add(dr);
+                                        PH_BHUpload.PH_BHTransaction_InsertTMP(AppCode.strConnDB, dr);
+                                        rowSucc++;
                                     }
-                                    catch
+                                    catch (Exception ex)
                                     {
-                                        dr.Appt_Date = DateTime.ParseExact(drRead[3].ToString().Trim().Split(' ')[0], "d/M/yyyy", null); //drRead[3].ToString().Trim().Split(' ')[0];//
+                                        rowError++;
+                                        dr.Status = "err";
+                                        //dr.Remark2 = ex.Message;
+                                        PH_ExceptionManager.WriteError("prepare data BHUpload >> row index : " + index.ToString() + " Columns Err : " + strColumns + "err message : " + ex.Message);
                                     }
-                                    
-                                    dr.PO_No = drRead[6].ToString();
-                                    dr.Appt_To_DC = drRead[9].ToString();
-                                    dr.Appt_No = drRead[11].ToString();
-                                    dr.Remark = drRead[14].ToString();
-                                    dr.File_Name = fileName;
-                                    dr.UserID = strUserId;
-                                    dr.StampTime = DateTime.Now;
-                                    dr.Week_Upload = lblWeek.Text;
-                                    dr.Week_OnFile = lblWeek.Text;
 
-                                    dr.Period = !Regex.IsMatch(drRead[4].ToString(), @"\d") ? 0 : int.Parse(drRead[1].ToString());
-                                    strColumns = "Period";
-                                    dr.Load_Appt = !Regex.IsMatch(drRead[4].ToString(), @"\d") ? 0 : int.Parse(drRead[4].ToString());
-                                    strColumns = "Load_Appt";
-                                    dr.Load_Rcvd = !Regex.IsMatch(drRead[5].ToString(), @"\d") ? 0 : int.Parse(drRead[5].ToString());
-                                    strColumns = "Load_Rcvd";
-                                    dr.DC_No = !Regex.IsMatch(drRead[7].ToString(), @"\d") ? 0 : int.Parse(drRead[7].ToString());
-                                    strColumns = "DC_No";
-                                    dr.Load_No = !Regex.IsMatch(drRead[8].ToString(), @"\d") ? 0 : int.Parse(drRead[8].ToString());
-                                    strColumns = "Load_No";
-                                    dr.Type = !Regex.IsMatch(drRead[10].ToString(), @"\d") ? 0 : int.Parse(drRead[10].ToString());
-                                    strColumns = "Type";
-                                    dr.Case_Appt = !Regex.IsMatch(drRead[12].ToString(), @"\d") ? 0 : Convert.ToInt32(decimal.Parse(drRead[12].ToString()));
-                                    strColumns = "Case_Appt";
-                                    dr.Pallet = !Regex.IsMatch(drRead[13].ToString(), @"\d") ? 0 : int.Parse(drRead[13].ToString());
-                                    strColumns = "Pallet";
-                                    dr.Pallet_From_Vendor = !Regex.IsMatch(drRead[15].ToString(), @"\d") ? 0 : decimal.Parse(drRead[15].ToString());
-                                    strColumns = "Pallet_From_Vendor";
-                                    dr.Total_Pallet_From_Vendor = !Regex.IsMatch(drRead[16].ToString(), @"\d") ? 0 : int.Parse(drRead[16].ToString());
-                                    strColumns = "Total_Pallet_From_Vendor";
-                                    dr.Rate = !Regex.IsMatch(drRead[17].ToString(), @"\d") ? 0 : decimal.Parse(drRead[17].ToString());
-                                    strColumns = "Rate";
-                                    dr.Rate_Unloading = !Regex.IsMatch(drRead[18].ToString(), @"\d") ? 0 : int.Parse(drRead[18].ToString());
-                                    strColumns = "Rate_Unloading";
 
-                                    dtBHTrans.Rows.Add(dr);
-                                    PH_BHUpload.PH_BHTransaction_InsertTMP(AppCode.strConnDB, dr);
-                                    rowSucc++;
-                                }
-                                catch (Exception ex)
-                                {
-                                    rowError++;
-                                    dr.Status = "err";
-                                    //dr.Remark2 = ex.Message;
-                                    PH_ExceptionManager.WriteError("prepare data BHUpload >> row index : " + index.ToString() + " Columns Err : " + strColumns + "err message : " + ex.Message);
+                                    #endregion
                                 }
 
-                                
-                                #endregion
                             }
-
                         }
-                    }
-                    catch (Exception ex) { lblErr.Text += ex.Message; ; PH_ExceptionManager.WriteError("Verlify Data >>" + " Row Index : " + index.ToString() + " err message : " + ex.Message); }
-                    //}
+                        catch (Exception ex) { lblErr.Text += ex.Message; ; PH_ExceptionManager.WriteError("Verlify Data >>" + " Row Index : " + index.ToString() + " err message : " + ex.Message); }
+                        //}
 
-                    DataBind_BHTrans(strUserId.ToString());
-                    if (rowError == 0)
+                        DataBind_BHTrans(strUserId.ToString());
+                        if (rowError == 0)
+                        {
+                            btnInsert.Enabled = true;
+                        }
+                        btnClear.Enabled = true;
+                        lblErr.Text = " Success=" + rowSucc.ToString() + " Error=" + rowError.ToString();
+                        #endregion
+
+                    }
+                    else
                     {
-                        btnInsert.Enabled = true;
+                        lblErr.Text = "Sheet name incorrect";
                     }
-                    btnClear.Enabled = true;
-                    lblErr.Text = " Success=" + rowSucc.ToString() + " Error=" + rowError.ToString();
-                    #endregion
-
-
                 }
                 catch (Exception ex)
                 {
