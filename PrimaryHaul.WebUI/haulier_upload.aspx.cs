@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data;
-using System.Text.RegularExpressions;
+using System.Data.SqlClient;
 using System.Data.OleDb;
 using PrimaryHaul_WS;
 using PrimaryHaul_WS.AppCode_DS;
@@ -114,7 +114,7 @@ namespace PrimaryHaul.WebUI
 
 
                     #region Insert
-                    for(int index=0;index<2;index++)
+                    for (int index = 0; index < 2; index++)
                     //foreach (DataRow drSheet in dtSheet.Rows)
                     {
                         try
@@ -122,16 +122,15 @@ namespace PrimaryHaul.WebUI
 
                             strSheet = (index == 0) ? "Normal" : "Dummy";
 
-                                string sql = "select * from [" + strSheet + "$]";
-                                OleDbCommand cmd = new OleDbCommand(sql, conn);
-                                OleDbDataReader drRead = cmd.ExecuteReader();
-                                PHDS_HaulierUpload.TransportationRow dr = null;
+                            string sql = "select * from [" + strSheet + "$]";
+                            OleDbCommand cmd = new OleDbCommand(sql, conn);
+                            OleDbDataReader drRead = cmd.ExecuteReader();
+                            PHDS_HaulierUpload.TransportationRow dr = null;
 
 
                             while (drRead.Read())
                             {
                                 if (!string.IsNullOrEmpty(drRead[0].ToString().Trim()))
-
                                 {
                                     #region Insert Row
                                     try
@@ -172,8 +171,7 @@ namespace PrimaryHaul.WebUI
                                         dr.Sell_Fuel_Rate = 0;
                                         dr.Total_Cost_Charging = 0;
                                         dr.StampTime = DateTime.Now;
-                                        
-                                        dr.No_Of_Qty = !Regex.IsMatch(drRead[9].ToString(), @"\d") ? 0 : int.Parse(drRead[9].ToString());//drRead[9].ToString().Trim() == "" ? 0 : int.Parse(drRead[9].ToString().Trim());
+                                        dr.No_Of_Qty = drRead[9].ToString().Trim() == "" ? 0 : int.Parse(drRead[9].ToString().Trim());
                                         dr.Rate_Per_Unit = drRead[10].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[10].ToString().Trim());
                                         dr.Additional_Cost = drRead[12].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[12].ToString().Trim());
                                         dr.Total_Cost = drRead[14].ToString().Trim() == "" ? 0 : decimal.Parse(drRead[14].ToString().Trim());
@@ -221,7 +219,7 @@ namespace PrimaryHaul.WebUI
                 }
                 finally
                 {
-                   // lblErr.Text = "";
+                    // lblErr.Text = "";
                 }
 
             }
@@ -238,7 +236,7 @@ namespace PrimaryHaul.WebUI
                 if (dr.Year_Week_OnFile != lblWeek.Text) return true;
                 else return false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -248,7 +246,7 @@ namespace PrimaryHaul.WebUI
             try
             {
                 string str = "Haulier_Abbr='" + dr.Haulier_Abbr + "' and PO_no='" + dr.PO_No + "' and Delivery_ref='" + dr.Delivery_Ref + "' and Delivery_date='" + dr.Delivery_Date + "' ";
-                str += "and Vendor_code = '" + dr.Vendor_Code  + "' and Delivery_location = '" + dr.Delivery_Location + "'";
+                str += "and Vendor_code = '" + dr.Vendor_Code + "' and Delivery_location = '" + dr.Delivery_Location + "'";
                 str += "and Ratetype = '" + dr.RateType + "' and Rate_Per_Unit = '" + dr.Rate_Per_Unit + "'"; // + "' and Collection_point = '" + dr.Collection_Point
                 dv.RowFilter = new System.Text.StringBuilder().Append(str).ToString();
 
@@ -267,8 +265,8 @@ namespace PrimaryHaul.WebUI
                 if (string.IsNullOrEmpty(dr.PO_No) && dr.Remark1.Trim().ToLower() == "miscellaneous") str = "M";
                 else if (string.IsNullOrEmpty(dr.PO_No) && dr.Remark1.Trim().ToLower() == "rejecteditems") str = "R";
                 else if (string.IsNullOrEmpty(dr.PO_No)) str = "N";
-                else if (dr.Vendor_Name == "Dummy" && dr.PO_No == "" && dr.Total_Cost >0) str = "L";
-                
+                else if (dr.Vendor_Name == "Dummy" && dr.PO_No == "" && dr.Total_Cost > 0) str = "L";
+
 
                 return str;
             }
@@ -286,7 +284,7 @@ namespace PrimaryHaul.WebUI
 
                 return rtn;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("checkHalier >> " + ex.Message);
             }
@@ -295,17 +293,19 @@ namespace PrimaryHaul.WebUI
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 bool isError = false;
                 string strMess = "";
                 PHDS_HaulierUpload.TransportationDataTable dt = (PHDS_HaulierUpload.TransportationDataTable)ViewState["HaulierUploadInsert"];
                 foreach (PHDS_HaulierUpload.TransportationRow dr in dt.Rows)
                 {
-                    try {
+                    try
+                    {
                         PH_HaulierUpload.PH_HaulierUp_Insert(AppCode.strConnDB, dr);
-                        PH_HaulierUpload.PH_HaulierUpLog_Insert(AppCode.strConnDB, int.Parse(Request["id"]), lblWeek.Text, Session["fileName"].ToString(),dr.Haulier_Abbr.ToString());
+                        PH_HaulierUpload.PH_HaulierUpLog_Insert(AppCode.strConnDB, int.Parse(Request["id"]), lblWeek.Text, Session["fileName"].ToString(), dr.Haulier_Abbr.ToString());
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         isError = true;
                         strMess = ex.Message;
@@ -314,7 +314,7 @@ namespace PrimaryHaul.WebUI
 
                 }
 
-                PH_HaulierUpload.PH_HaulierUp_DelTMP(AppCode.strConnDB, lblWeek.Text,(string)ViewState["HaulierAbbr"], Request["id"]);
+                PH_HaulierUpload.PH_HaulierUp_DelTMP(AppCode.strConnDB, lblWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
 
 
                 string message = !isError ? "Save Data Successfull" : "Save Data Not Successfull";
@@ -323,7 +323,7 @@ namespace PrimaryHaul.WebUI
                 btnSubmit.Enabled = false;
                 btnClear.Enabled = false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 lblErr.Text = ex.Message;
                 PH_ExceptionManager.WriteError("btnInsert_Click >>" + ex.Message);

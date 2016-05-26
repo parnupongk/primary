@@ -24,6 +24,7 @@
     </script>
     <script type="text/javascript">
         function updatetwait() {
+            alert("dssss");
             //document.getElementById('<%= lblErr.ClientID %>').innerHTML = "Please wait while verifying";
             return false;
         }
@@ -102,7 +103,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-3 col-md-1">
-                            <asp:Button runat="server" ID="btnSubmit" Text="Verify Data" CssClass="btn btn-default" OnClick="btnSubmit_Click" />
+                            <asp:Button runat="server" ID="btnSubmit" Text="Verify Data"  CssClass="btn btn-default" OnClick="btnSubmit_Click" />
                             <p class="text-danger">
                                 <asp:Label ID="lblErr" runat="server"></asp:Label>
                             </p>
@@ -119,48 +120,46 @@
                     <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" CellPadding="6" ForeColor="#333333" GridLines="None" Width="100%" CellSpacing="6" OnRowDataBound="gvData_RowDataBound">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:BoundField DataField="week" HeaderText="Week" ReadOnly="True" />
-                            <asp:BoundField DataField="Period" HeaderText="Period" ReadOnly="True" />
-                            <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True" />
-                            <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True" />
-                            <asp:BoundField DataField="appt_date" HeaderText="Appt Date" DataFormatString="{0:dd/MM/yyyy}" ReadOnly="True"></asp:BoundField>
-                            <asp:BoundField DataField="load_appt" HeaderText="Load Appt" ReadOnly="True"></asp:BoundField>
-                            <asp:BoundField DataField="load_rcvd" HeaderText="Load Rcvd" ReadOnly="True"></asp:BoundField>
+                            <asp:BoundField DataField="Haulier_Abbr" HeaderText="Haulier Abbr" ReadOnly="True" />
                             <asp:BoundField DataField="Po_No" HeaderText="Po No" ReadOnly="True">
                                 <ControlStyle Width="50px" />
                                 <FooterStyle Width="50px" />
                                 <HeaderStyle Width="50px"></HeaderStyle>
                                 <ItemStyle Width="50px"></ItemStyle>
                             </asp:BoundField>
-
-                            <asp:BoundField DataField="do_no" HeaderText="DC No" ReadOnly="True"></asp:BoundField>
-                            <asp:BoundField DataField="load_no" HeaderText="Load No" ReadOnly="True"></asp:BoundField>
-                            <asp:BoundField DataField="appt_to_dc" HeaderText="Appt to DC" ReadOnly="True"></asp:BoundField>
-                            <asp:BoundField DataField="type" HeaderText="Type" ReadOnly="True">
+                            <asp:BoundField DataField="Delivery_Ref" HeaderText="Delivery Ref" ReadOnly="True"></asp:BoundField>
+                            <asp:BoundField DataField="Delivery_Date" HeaderText="Delivery Date" ReadOnly="True" DataFormatString="{0:dd/MM/yyyy}"></asp:BoundField>
+                            <asp:BoundField DataField="Vendor_Code" HeaderText="Vendor Code" ReadOnly="True"></asp:BoundField>
+                            <asp:BoundField DataField="Vendor_Name" HeaderText="Vendor Name" ReadOnly="True"></asp:BoundField>
+                            <asp:BoundField DataField="Collection_Point" HeaderText="Collection Point" ReadOnly="True"></asp:BoundField>
+                            <asp:BoundField DataField="Delivery_Location" HeaderText="Delivery Location" ReadOnly="True"></asp:BoundField>
+                            <asp:BoundField DataField="Fuel_Rate" HeaderText="Fuel Rate" ReadOnly="True">
                                 <ControlStyle Width="50px" />
                                 <FooterStyle Width="50px" />
                                 <HeaderStyle Width="50px"></HeaderStyle>
                                 <ItemStyle Width="50px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="appt_no" HeaderText="Appt No" ReadOnly="True">
+                            <asp:BoundField DataField="No_Of_Qty" HeaderText="Qty" ReadOnly="True">
                                 <ControlStyle Width="50px" />
                                 <FooterStyle Width="50px" />
                                 <HeaderStyle Width="50px"></HeaderStyle>
                                 <ItemStyle Width="50px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="case_appt" HeaderText="Case Appt" ReadOnly="True">
+                            <asp:BoundField DataField="Rate_Per_Unit" HeaderText="Rate" ReadOnly="True">
                                 <ControlStyle Width="50px" />
                                 <FooterStyle Width="50px" />
                                 <HeaderStyle Width="50px"></HeaderStyle>
                                 <ItemStyle Width="50px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Pallet" HeaderText="Pallet" ReadOnly="True">
+                            <asp:BoundField DataField="Remark1" HeaderText="Verify Result" Visible="false" ReadOnly="True">
                                 <ControlStyle Width="70px" />
                                 <FooterStyle Width="70px" />
                                 <HeaderStyle Width="70px"></HeaderStyle>
                                 <ItemStyle Width="70px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="status" HeaderText="status" ReadOnly="True">
+                            <asp:BoundField DataField="Trans_Type" Visible="false" HeaderText="Trans_Type" ReadOnly="True" />
+                            <asp:BoundField DataField="Remark2" HeaderText="Remark2" Visible="false" ReadOnly="True" />
+                            <asp:BoundField DataField="status" HeaderText="status" ReadOnly="True" >
                                 <ControlStyle Width="70px" />
                                 <FooterStyle Width="70px" />
                                 <HeaderStyle Width="70px"></HeaderStyle>
@@ -179,7 +178,25 @@
                         <SortedDescendingCellStyle BackColor="#D4DFE1" />
                         <SortedDescendingHeaderStyle BackColor="#15524A" />
                     </asp:GridView>
-
+                    <!--
+                                    <asp:TemplateField HeaderText="Po No">
+                <ItemTemplate>
+                    <div style="width: 40px; overflow: auto; white-space: nowrap; text-overflow: ellipsis">
+                        <%# Eval("Po_No") %>
+                    </div>
+                </ItemTemplate>
+            </asp:TemplateField>
+                <asp:BoundField DataField="Remark1" HeaderText="Remark1" Visible="false" ReadOnly="True" />
+                        <asp:BoundField DataField="RateType" HeaderText="RateType" ReadOnly="True" />
+                    <asp:BoundField DataField="No_Of_Qty" HeaderText="No_Of_Qty" ReadOnly="True" />
+                    <asp:BoundField DataField="Rate_Per_Uint" HeaderText="Rate_Per_Uint" ReadOnly="True" />
+                    <asp:BoundField DataField="Currency" HeaderText="Currency" ReadOnly="True" />
+                    <asp:BoundField DataField="Addition_Cost" HeaderText="Addition_Cost" ReadOnly="True" />
+                    <asp:BoundField DataField="Addition_Cost_Reason" HeaderText="Addition_Cost_Reason" ReadOnly="True" />
+                    <asp:BoundField DataField="Total_Cost" HeaderText="Total_Cost" ReadOnly="True" />
+                    <asp:BoundField DataField="Year_Week_OnFile" HeaderText="Year_Week_OnFile" ReadOnly="True" /> 
+                <asp:BoundField DataField="Year_Week_OnFile" HeaderText="Year_Week_OnFile" ReadOnly="True" /> 
+>>>>>>> origin/master -->
                 </div>
             </div>
 
