@@ -87,22 +87,13 @@ namespace PrimaryHaul.WebUI
                     lblErr.Text = "";
                     bool isSheetName = false;
                     int strUserId = int.Parse(Request["id"]);
-                    string strSheet = "data wk" + lblWeek.Text.Substring(4,2) + "$";
+                    string strSheet = "data wk" + lblWeek.Text.Substring(4,2);
                     string fileName = path.Split('\\').Length > 0 ? path.Split('\\')[path.Split('\\').Length - 1] : "";
-                    string strCheckSheet = "";
                     DataTable dtSheet = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
                     foreach (DataRow drSheet in dtSheet.Rows)
                     {
-<<<<<<< HEAD
                         if (drSheet["TABLE_NAME"].ToString().Replace("'", "").Replace("$", "").ToLower() == strSheet.ToLower()) isSheetName = true;
-                        //strCheckSheet = strCheckSheet + drSheet["TABLE_NAME"].ToString().Replace("'", "").Replace("$", "").ToLower() + "|" + strSheet.ToLower() + "<br /><br />";
-=======
-                        if (drSheet[2].ToString().ToLower().Replace("'","") == strSheet.ToString()) isSheetName = true;
                     }
->>>>>>> origin/master
-
-                    }
-                    //lblErr.Text = strCheckSheet;
                     if (isSheetName)
                     {
 
@@ -117,7 +108,7 @@ namespace PrimaryHaul.WebUI
 
                             //strSheet = "bh_transaction";
 
-                            string sql = "select * from [" + strSheet + "]";
+                            string sql = "select * from [" + strSheet + "$]";
                             OleDbCommand cmd = new OleDbCommand(sql, conn);
                             OleDbDataReader drRead = cmd.ExecuteReader();
                             PHDS_BHUpload.BH_Transaction_TMPRow dr = null;
