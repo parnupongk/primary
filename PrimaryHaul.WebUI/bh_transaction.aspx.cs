@@ -89,12 +89,15 @@ namespace PrimaryHaul.WebUI
                     int strUserId = int.Parse(Request["id"]);
                     string strSheet = "Data WK" + lblWeek.Text.Substring(4,2);
                     string fileName = path.Split('\\').Length > 0 ? path.Split('\\')[path.Split('\\').Length - 1] : "";
+                    string strCheckSheet = "";
                     DataTable dtSheet = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
                     foreach (DataRow drSheet in dtSheet.Rows)
                     {
-                        if (drSheet["TABLE_NAME"].ToString() == strSheet) isSheetName = true;
-                    }
+                        if (drSheet["TABLE_NAME"].ToString().Replace("'", "").Replace("$", "").ToLower() == strSheet.ToLower()) isSheetName = true;
+                        //strCheckSheet = strCheckSheet + drSheet["TABLE_NAME"].ToString().Replace("'", "").Replace("$", "").ToLower() + "|" + strSheet.ToLower() + "<br /><br />";
 
+                    }
+                    //lblErr.Text = strCheckSheet;
                     if (isSheetName)
                     {
 

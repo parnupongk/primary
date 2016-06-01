@@ -94,7 +94,7 @@ namespace PPH_SC
             try
             {
                 SqlCommand cmd = new SqlCommand("usp_BH_RAMS_Insert", objConn);
-                cmd.CommandTimeout = 1200;
+                cmd.CommandTimeout = 0;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@DC_No", int.Parse(DC_No));
                 cmd.Parameters.AddWithValue("@Week", Week);
