@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Text.RegularExpressions;
 using PrimaryHaul_WS;
 using PrimaryHaul_WS.AppCode_DS;
+using PPH_SC;
 
 
 namespace PrimaryHaul.WebUI
@@ -170,7 +171,11 @@ namespace PrimaryHaul.WebUI
                                         strColumns = "Rate_Unloading";
 
                                         dtBHTrans.Rows.Add(dr);
-                                        PH_BHUpload.PH_BHTransaction_InsertTMP(AppCode.strConnDB, dr);
+                                        //PH_BHUpload.PH_BHTransaction_InsertTMP(AppCode.strConnDB, dr);
+                                        if (PPH_BH.insert_bhtransactonTMP(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], dr.Week_Upload, dr.Week, dr.Period, dr.Vendor_Name, dr.Appt_Date, dr.Load_Appt, dr.Load_Rcvd, dr.PO_No, dr.DC_No, dr.Load_No, dr.Appt_To_DC, dr.Type, dr.Appt_No, dr.Case_Appt, dr.Pallet, dr.Remark, dr.Pallet_From_Vendor, dr.Total_Pallet_From_Vendor, dr.Rate, dr.Rate_Unloading, dr.File_Name, dr.UserID) == true)
+                                        {
+                                           
+                                        }
                                         rowSucc++;
                                     }
                                     catch (Exception ex)

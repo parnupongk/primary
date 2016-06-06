@@ -15,12 +15,23 @@ namespace PrimaryHaul.WebUI.pph_include.ajax.files
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            main_function PPHfunction = new main_function();
+
             if (!string.IsNullOrEmpty(Request.Form["varDP"] as string))
             {
                 if (Request.Form["varDP"].ToString() == "3")
                 {
-                    if (PPHfunction.QueryExecuteNonQuery("delete from BH_RAMS where Week='" + Request.Form["var01"].ToString() + "'"))
+                    if (PPH_BH.delete_rams(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], Request.Form["var01"].ToString()))
+                    {
+                        Response.Write("1");
+                    }
+                    else
+                    {
+                        Response.Write("0");
+                    }
+                }
+                if (Request.Form["varDP"].ToString() == "4")
+                {
+                    if (PPH_BH.rams_rollback(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], Request.Form["var01"].ToString()))
                     {
                         Response.Write("1");
                     }

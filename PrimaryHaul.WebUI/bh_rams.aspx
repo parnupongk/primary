@@ -83,6 +83,7 @@
             function js_BHrams_Delete(varURL, varWeek) {
                 var r = confirm("Press OK For Delete (Week : " + document.getElementById(varWeek).value+")");
                 if (r == true) {
+                    document.getElementById('msg_process').innerHTML = '<p style=\"color:#000088; font-weight:bold;\">please wait a few minutes <img src=\"./pph_include/images/loading.gif\" style=\"width:25px;\"></p>';
                     var req = Inint_AJAX();
                     var str = Math.random();
                     var str_url_address = "./pph_include/ajax/files/ajax_BHrams.aspx";
@@ -98,6 +99,34 @@
                                 } else {
                                     alert("Delete was not successfully");
                                 }
+                                document.getElementById('msg_process').innerHTML = "&nbsp;";
+                            }
+                        }
+                    }
+                    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    req.send(str_url);
+                }
+            }
+            function js_BHrams_rollback(varURL, varWeek) {
+                var r = confirm("Press OK For Rollback (Week : " + document.getElementById(varWeek).value + ")");
+                if (r == true) {
+                    document.getElementById('msg_process').innerHTML = '<p style=\"color:#000088; font-weight:bold;\">please wait a few minutes <img src=\"./pph_include/images/loading.gif\" style=\"width:25px;\"></p>';
+                    var req = Inint_AJAX();
+                    var str = Math.random();
+                    var str_url_address = "./pph_include/ajax/files/ajax_BHrams.aspx";
+                    var str_url = "var01=" + document.getElementById(varWeek).value;
+                    str_url += "&varDP=4";
+                    str_url += "&clearmemory=" + str;
+                    req.open('POST', str_url_address, true)
+                    req.onreadystatechange = function () {
+                        if (req.readyState == 4) {
+                            if (req.status == 200) {
+                                if (req.responseText == "1") {
+                                    alert("Rollback Success");
+                                } else {
+                                    alert("Rollback was not successfully");
+                                }
+                                document.getElementById('msg_process').innerHTML = "&nbsp;";
                             }
                         }
                     }
@@ -128,14 +157,15 @@
                             <% } obj_ywALL.Close(); } %>
                         </select>
                     </div>
-                    <div class="col-md-8" style="text-align:left;"><input type="button" value="Delete" class="btn btn-danger" onclick="js_BHrams_Delete('urlSubmit', 'week')" /></div>
+                    <div class="col-md-1" style="text-align:left;"><input type="button" value="Delete" class="btn btn-danger" onclick="js_BHrams_Delete('urlSubmit', 'week')" /></div>
+                    <div class="col-md-7" style="text-align:left;"><input type="button" value="Rollback" class="btn btn-primary" onclick="js_BHrams_rollback('urlSubmit', 'week')" /></div>
                 </div>     
                  <div class="row">
-                    <div class="col-md-12">&nbsp;</div>
+                    <div class="col-md-12"><div id="msg_process" style="padding:10px;">&nbsp;</div></div>
                 </div>           
                 <div class="row">
                     <div class="col-md-1"><label class="control-label">Keyword : </label></div>
-                    <div class="col-md-3" style="text-align:left;"><input type="text" class="form-control" name="vendor" id="vendor" value="<%= strVendor %>" style="width:100%;"/></div>
+                    <div class="col-md-3" style="text-align:left;"><input type="text" class="form-control" name="vendor" id="vendor" value="<%= strVendor %>" style="width:100%;" onkeydown = "return (event.keyCode!=13);" /></div>
                     <div class="col-md-8" style="text-align:left;"><input type="button" value="Search" class="btn btn-default" onclick="js_BHrams_Search('urlSubmit', 'week', 'vendor');" /></div>
                 </div>
                 <div class="row">
