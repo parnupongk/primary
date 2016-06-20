@@ -48,6 +48,7 @@ namespace PrimaryHaul.WebUI
                 if (InsertData(Session["fileName"].ToString()))
                 {
                     Response.Write("<script>alert('Import Data Successful');</script>");
+                    btnSubmit.Enabled = false;
                     msgInsert.Text = Session["showCount"].ToString();
                 }
                 else
