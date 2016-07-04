@@ -108,6 +108,7 @@
     <Content Include="dist\css\bootstrap.css" />
     <Content Include="dist\css\login.css" />
     <Content Include="dw.aspx" />
+    <Content Include="export_backhaul_transaction.aspx" />
     <Content Include="haulier_upload.aspx" />
     <Content Include="images\2.jpg" />
     <Content Include="images\bg-login.png" />
@@ -179,7 +180,9 @@
     <Content Include="pph_include\css\images\ui-icons_888888_256x240.png" />
     <Content Include="pph_include\css\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="pph_include\css\jquery-ui.min.css" />
+    <Content Include="pph_include\download\backhaul_transaction.aspx" />
     <Content Include="pph_include\download\hualier_cost.aspx" />
+    <Content Include="pph_include\download\primary_transaction.aspx" />
     <Content Include="pph_include\download\report.aspx" />
     <Content Include="pph_include\download\report_kpi.aspx" />
     <Content Include="pph_include\download\report_sum.aspx" />
@@ -332,6 +335,13 @@
     </Compile>
     <Compile Include="dw.aspx.designer.cs">
       <DependentUpon>dw.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="export_backhaul_transaction.aspx.cs">
+      <DependentUpon>export_backhaul_transaction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="export_backhaul_transaction.aspx.designer.cs">
+      <DependentUpon>export_backhaul_transaction.aspx</DependentUpon>
     </Compile>
     <Compile Include="haulier_upload.aspx.cs">
       <DependentUpon>haulier_upload.aspx</DependentUpon>
@@ -655,12 +665,26 @@
     <Compile Include="pph_include\ajax\files\vender_taxDuplicate.aspx.designer.cs">
       <DependentUpon>vender_taxDuplicate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pph_include\download\backhaul_transaction.aspx.cs">
+      <DependentUpon>backhaul_transaction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\download\backhaul_transaction.aspx.designer.cs">
+      <DependentUpon>backhaul_transaction.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pph_include\download\hualier_cost.aspx.cs">
       <DependentUpon>hualier_cost.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pph_include\download\hualier_cost.aspx.designer.cs">
       <DependentUpon>hualier_cost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\download\primary_transaction.aspx.cs">
+      <DependentUpon>primary_transaction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\download\primary_transaction.aspx.designer.cs">
+      <DependentUpon>primary_transaction.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\download\report.aspx.cs">
       <DependentUpon>report.aspx</DependentUpon>

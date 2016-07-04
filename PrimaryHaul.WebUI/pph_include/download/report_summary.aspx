@@ -15,7 +15,7 @@
         <td align="left" valign="middle" style="background-color:#019a7b;border:2px solid #000000;"><b>Tesco Finance Report > Revenue Profit</b></td>
     </tr>
     <tr>
-        <td aling="left" valign="middle"><b>Tesco Year-Week :</b> <%=Request.QueryString["YW"].ToString() %></td>
+        <td aling="left" valign="middle"><b>Tesco Year-Week :</b> <%=Request.QueryString["YW"].ToString() %> to <%=Request.QueryString["ywend"].ToString() %></td>
     </tr>
     <tr>
         <td aling="left" valign="middle"><b>Haulier Name :</b>

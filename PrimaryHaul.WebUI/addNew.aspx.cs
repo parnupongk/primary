@@ -75,7 +75,7 @@ namespace PrimaryHaul.WebUI
                     #endregion
 
 
-                    if (PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A2")
+                    if (PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value) == "A2" && Request.QueryString["type"].ToString() != "VD")
                     {
                         btnSubmit.Style["visibility"] = "hidden";
                     }

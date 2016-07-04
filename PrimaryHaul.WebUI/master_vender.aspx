@@ -37,7 +37,7 @@
 </script>
 <div id="form_button">
 <div class="row">
-    <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value).Substring(1,1) == "1"){ %><div class="col-md-2"><input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" style="width:100%;" /></div><% } %>
+    <% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value).Substring(1,1) != ""){ %><div class="col-md-2"><input type="button" value="Add" class="btn btn-default" onclick="js_tab('form_add');" style="width:100%;" /></div><% } %>
     <div class="col-md-2"><input type="button" value="View Data" class="btn btn-default" onclick="js_tab('form_view');" style="width:100%;" /></div>
     <div class="col-md-8"></div>
 </div>
@@ -511,7 +511,7 @@ function isNumberKey(evt) {
         }
     }
 </script>
-<% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value).Substring(1,1) == "1"){ %>
+<% if(PH_EncrptHelper.MD5Decryp(Request.Cookies["PH_RoleUserCookie"].Value).Substring(1,1) != ""){ %>
 <div class="form-group">
 <div class="row">
     <input type="hidden" name="vnID" id="vnID" value="<%= Request.QueryString["vnID"] %>" />

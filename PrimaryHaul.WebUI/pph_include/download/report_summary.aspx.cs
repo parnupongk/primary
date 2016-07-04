@@ -31,15 +31,16 @@ namespace PrimaryHaul.WebUI.pph_include.download
             "sum(Rate_Per_unit*No_Of_Qty) as Accrued_Cost , " +
             "sum(total_Cost) as Total_Cost " +
             "from transportation " +
-            "Where Year_Week_Upload='" + Request.QueryString["yw"].ToString() + "' " +
+            "Where Year_Week_Upload between '" + Request.QueryString["yw"].ToString() + "' " +
+            "and '" + Request.QueryString["ywend"].ToString() + "' " +
             "" + sql_hl + "" +
             "" + sql_vd + "" +
             //"and Vendor_Name<>'DUMMY' " +
             "and Calc_Date is not null Group by substring(Year_Week_Upload,1,4) ,substring(Year_Week_Upload,5,2), " +
-            "rc_tesco_period,Vendor_Code,Vendor_Name,DC_No Order by Vendor_Name,Vendor_Code";
+            "rc_tesco_period,Vendor_Code,Vendor_Name,DC_No Order by Year,Week,Vendor_Name,Vendor_Code";
             SqlCommand rs_detail = new SqlCommand(sql_detail, objConn);
             obj_detail = rs_detail.ExecuteReader();
-            Response.AddHeader("Content-Disposition", "attachment;filename=Revenue_Profit_" + Request.QueryString["yw"].ToString() + ".xls");
+            Response.AddHeader("Content-Disposition", "attachment;filename=Revenue_Profit_" + Request.QueryString["yw"].ToString() + "to" + Request.QueryString["ywend"].ToString() + ".xls");
         }
     }
 }
