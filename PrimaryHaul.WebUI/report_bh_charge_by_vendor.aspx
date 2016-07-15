@@ -8,9 +8,7 @@
 <input type="hidden" name="urlSubmit" id="urlSubmit" value="<%= HttpContext.Current.Request.Url.AbsolutePath %>?r=<%= Request.QueryString["r"].ToString() %>&id=<%= Request.QueryString["id"].ToString() %>" />
 <script>
     function js_tab(varTab) {
-        document.getElementById('form_view01').style.display = 'none';
-        document.getElementById('form_view02').style.display = 'none';
-        document.getElementById(varTab).style.display = '';
+        window.location.href = document.getElementById('urlSubmit').value + '&form_view=' + varTab;
     }
        
     function ajax_listBHVD(var01, var02, var03, var04) {
@@ -76,9 +74,9 @@
 <div id="form_button">
     <div class="row">
         <div class="col-md-12">
-            <input type="button" value="Condition Summary Report" class="btn btn-default" onclick="js_tab('form_view01');" />
+            <input type="button" value="Summary Report" class="btn btn-default" onclick="js_tab('form_view01');" />
             &nbsp;&nbsp;&nbsp;
-            <input type="button" value="Condition Report" class="btn btn-default" onclick="js_tab('form_view02');" />
+            <input type="button" value="Details Report" class="btn btn-default" onclick="js_tab('form_view02');" />
         </div>
         <div class="col-md-8"></div>
     </div>
@@ -86,11 +84,11 @@
         <div class="col-md-12"><br /></div>
     </div>
 </div>
-<div id="form_view01" style="display:none;">
+<div id="form_view01" <% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string)){if(Request.QueryString["form_view"].ToString()=="form_view02"){ %>style="display:none;"<% }} %>>
     <div class="form-group">
         <div class="row">
             <div class="col-md-12">
-                <h4>Backhaul charge by Vendor > Condition Summary Report</h4>
+                <h4>Backhaul Charge by Vendor > Summary Report</h4>
                 <hr />
             </div>
         </div>
@@ -141,10 +139,10 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-2" ><label class="control-label"></label></div>
-            <div class="col-md-7" ><input type="button" value="Preview" class="btn btn-default" onclick="js_submit('adSumStart', 'adSumEnd', 'adSumVD', '1', 'form_view01');" id="btn1p" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="js_submit('adSumStart', 'adSumEnd', 'adSumVD', '2', 'form_view01');" id="btn1e" /></div>
+            <div class="col-md-7" ><input type="button" value="Preview" class="btn btn-default" onclick="js_submit('adSumStart', 'adSumEnd', 'adSumVD', '1', 'form_view01');" id="btn1p" /><% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string) && !string.IsNullOrEmpty(Request.QueryString["adVD"] as string)){if(Request.QueryString["form_view"].ToString()=="form_view01"){ %>&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="js_submit('adSumStart', 'adSumEnd', 'adSumVD', '2', 'form_view01');" id="btn1e" /><%}} %></div>
         </div>
     </div>
-    <% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string)){if(Request.QueryString["form_view"].ToString()=="form_view01"){ %>
+    <% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string) && !string.IsNullOrEmpty(Request.QueryString["adVD"] as string)){if(Request.QueryString["form_view"].ToString()=="form_view01"){ %>
     <div class="row">
         <div class="col-md-12">&nbsp;</div>
     </div> 
@@ -161,7 +159,8 @@
             </tr>
             <%
                 string detailColor = "";
-                int irows = 0, icolor = 0;
+                int irows = 0, icolor = 0, intSumLoad=0, intSumCase=0;
+                decimal totalBHA = 0;
                 string[] adStart = Request.QueryString["adStart"].ToString().Split('/');
                 string[] adEnd = Request.QueryString["adEnd"].ToString().Split('/');
                 SqlCommand cmd = new SqlCommand("usp_BH_Charge_by_Vendor_Summary", objConn);
@@ -174,6 +173,9 @@
                     while (obj_result.Read()){
                         irows++;icolor++;
                         if (icolor == 1) { detailColor = "style=\"background-color:#ffffff;\""; } else { detailColor = "style=\"background-color:#f3f3f3;\""; icolor = 0; }
+                        if (obj_result["Sum_Load_RCVD"].ToString() != "") { intSumLoad = intSumLoad + Convert.ToInt32(obj_result["Sum_Load_RCVD"].ToString()); }
+                        if (obj_result["Sum_RAMS_Case_RCVD"].ToString() != "") { intSumCase = intSumCase + Convert.ToInt32(obj_result["Sum_RAMS_Case_RCVD"].ToString()); }
+                        if (obj_result["Sum_RAMS_Case_Baht"].ToString() != "") { totalBHA = totalBHA + Convert.ToDecimal(obj_result["Sum_RAMS_Case_Baht"].ToString()); }
             %>
             <tr <%= detailColor %>>
                 <td style="text-align:center;"><%= obj_result["vendor_code"].ToString() %></td>
@@ -184,16 +186,22 @@
                 <td style="text-align:center;"><%= obj_result["Sum_RAMS_Case_Baht"].ToString() %></td>
             </tr>
             <% } obj_result.Close();} %>
+            <tr style="background-color:#9bbb59;">
+                <td style="text-align:center;" colspan="3"></td>
+                <td style="text-align:center;"><%= intSumLoad %></td>
+                <td style="text-align:center;"><%= intSumCase %></td>
+                <td style="text-align:center;"><%= totalBHA %></td>
+            </tr>
             </table>
         </div>
     </div>
     <% }} %>
 </div>
-<div id="form_view02" style="display:none;">
+<div id="form_view02" <% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string)){if(Request.QueryString["form_view"].ToString()=="form_view01"){ %>style="display:none;"<% }} %>>
     <div class="form-group">
         <div class="row">
             <div class="col-md-12">
-                <h4>Backhaul charge by Vendor > Condition Report</h4>
+                <h4>Backhaul Charge by Vendor > Details Report</h4>
                 <hr />
             </div>
         </div>
@@ -244,10 +252,10 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-2" ><label class="control-label"></label></div>
-            <div class="col-md-7" ><input type="button" value="Preview" class="btn btn-default" onclick="js_submit('adStart', 'adEnd', 'adVD', '1', 'form_view02');" id="btn2p" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_submit('adStart', 'adEnd', 'adVD', '2', 'form_view02');" id="btn2e" /></div>
+            <div class="col-md-7" ><input type="button" value="Preview" class="btn btn-default" onclick="js_submit('adStart', 'adEnd', 'adVD', '1', 'form_view02');" id="btn2p" /><% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string) && !string.IsNullOrEmpty(Request.QueryString["adVD"] as string)){if(Request.QueryString["form_view"].ToString()=="form_view02"){ %>&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_submit('adStart', 'adEnd', 'adVD', '2', 'form_view02');" id="btn2e" /><%}} %></div>
         </div>
     </div>
-    <% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string)){if(Request.QueryString["form_view"].ToString()=="form_view02"){ %>
+    <% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string) && !string.IsNullOrEmpty(Request.QueryString["adVD"] as string)){if(Request.QueryString["form_view"].ToString()=="form_view02"){ %>
     <div class="row">
         <div class="col-md-12">&nbsp;</div>
     </div> 
@@ -269,7 +277,8 @@
             </tr>
             <%
                 string detailColor = "";
-                int irows = 0, icolor = 0;
+                int irows = 0, icolor = 0, intSumLoadAppt = 0, intSumLoadRCVD = 0, intSumCase = 0;
+                decimal totalBHA = 0;
                 string[] adStartD = Request.QueryString["adStart"].ToString().Split('/');
                 string[] adEndD = Request.QueryString["adEnd"].ToString().Split('/');
                 SqlCommand cmdD = new SqlCommand("usp_BH_Charge_by_Vendor_Details", objConn);
@@ -282,6 +291,10 @@
                     while (obj_resultD.Read()){
                         irows++;icolor++;
                         if (icolor == 1) { detailColor = "style=\"background-color:#ffffff;\""; } else { detailColor = "style=\"background-color:#f3f3f3;\""; icolor = 0; }
+                        if (obj_resultD["Load_Appt"].ToString() != "") { intSumLoadAppt = intSumLoadAppt + Convert.ToInt32(obj_resultD["Load_Appt"].ToString()); }
+                        if (obj_resultD["Load_Rcvd"].ToString() != "") { intSumLoadRCVD = intSumCase + Convert.ToInt32(obj_resultD["Load_Rcvd"].ToString()); }
+                        if (obj_resultD["RAMS_Case_RCVD"].ToString() != "") { intSumCase = intSumCase + Convert.ToInt32(obj_resultD["RAMS_Case_RCVD"].ToString()); }
+                        if (obj_resultD["RAMS_Case_Baht"].ToString() != "") { totalBHA = totalBHA + Convert.ToDecimal(obj_resultD["RAMS_Case_Baht"].ToString().Replace(",","")); }
             %>
             <tr <%= detailColor %>>
                 <td style="text-align:center;"><%= obj_resultD["vendor_code"].ToString() %></td>
@@ -297,12 +310,19 @@
                 <td style="text-align:center;"><%= obj_resultD["RAMS_Case_Baht"].ToString() %></td>
             </tr>
             <% } obj_resultD.Close();} %>
+            <tr style="background-color:#9bbb59;">
+                <td style="text-align:center;" colspan="5"></td>
+                <td style="text-align:center;"><%= intSumLoadAppt %></td>
+                <td style="text-align:center;"><%= intSumLoadRCVD %></td>
+                <td style="text-align:center;" colspan="2"></td>
+                <td style="text-align:center;"><%= intSumCase %></td>
+                <td style="text-align:center;"><%= totalBHA %></td>
+            </tr>
             </table>
         </div>
     </div>
     <% }} %>
 </div>
-<% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string)) { Response.Write("<script>js_tab('"+Request.QueryString["form_view"].ToString()+"');</script>"); } %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="./pph_include/jquery/jquery-ui.js"></script>
 <script>

@@ -27,6 +27,7 @@ namespace PrimaryHaul.WebUI.pph_include.download
             obj_detail = cmd_export.ExecuteReader();
 
             Response.AddHeader("Content-Disposition", "attachment;filename=backhaul_transaction_" + Request.QueryString["yw"].ToString() + ".xls");
+ 
         }
     }
 }

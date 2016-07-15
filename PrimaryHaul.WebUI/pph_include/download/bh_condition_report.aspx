@@ -13,7 +13,7 @@
 <body>
 <table cellpadding="2" width="1000px" align="center">
     <tr>
-        <td align="left" valign="middle" style="background-color:#019a7b;border:2px solid #000000;"><b>Backhaul charge by Vendor > Condition Report</b></td>
+        <td align="left" valign="middle" style="background-color:#019a7b;border:2px solid #000000;"><b>Backhaul Charge by Vendor > Details Report</b></td>
     </tr>
     <tr>
         <td>
@@ -33,7 +33,8 @@
             </tr>
             <%
                 string detailColor = "";
-                int irows = 0, icolor = 0;
+                int irows = 0, icolor = 0, intSumLoadAppt = 0, intSumLoadRCVD = 0, intSumCase = 0;
+                decimal totalBHA = 0;
                 string[] adStartD = Request.QueryString["adStart"].ToString().Split('/');
                 string[] adEndD = Request.QueryString["adEnd"].ToString().Split('/');
                 SqlCommand cmdD = new SqlCommand("usp_BH_Charge_by_Vendor_Details", objConn);
@@ -46,6 +47,10 @@
                     while (obj_resultD.Read()){
                         irows++;icolor++;
                         if (icolor == 1) { detailColor = "style=\"background-color:#ffffff;\""; } else { detailColor = "style=\"background-color:#f3f3f3;\""; icolor = 0; }
+                        if (obj_resultD["Load_Appt"].ToString() != "") { intSumLoadAppt = intSumLoadAppt + Convert.ToInt32(obj_resultD["Load_Appt"].ToString()); }
+                        if (obj_resultD["Load_Rcvd"].ToString() != "") { intSumLoadRCVD = intSumCase + Convert.ToInt32(obj_resultD["Load_Rcvd"].ToString()); }
+                        if (obj_resultD["RAMS_Case_RCVD"].ToString() != "") { intSumCase = intSumCase + Convert.ToInt32(obj_resultD["RAMS_Case_RCVD"].ToString()); }
+                        if (obj_resultD["RAMS_Case_Baht"].ToString() != "") { totalBHA = totalBHA + Convert.ToDecimal(obj_resultD["RAMS_Case_Baht"].ToString().Replace(",", "")); }
             %>
             <tr <%= detailColor %>>
                 <td style="text-align:center;"><%= obj_resultD["vendor_code"].ToString() %></td>
@@ -61,6 +66,14 @@
                 <td style="text-align:center;"><%= obj_resultD["RAMS_Case_Baht"].ToString() %></td>
             </tr>
             <% } obj_resultD.Close();} %>
+            <tr style="background-color:#9bbb59;">
+                <td style="text-align:center;" colspan="5"></td>
+                <td style="text-align:center;"><%= intSumLoadAppt %></td>
+                <td style="text-align:center;"><%= intSumLoadRCVD %></td>
+                <td style="text-align:center;" colspan="2"></td>
+                <td style="text-align:center;"><%= intSumCase %></td>
+                <td style="text-align:center;"><%= totalBHA %></td>
+            </tr>
         </table>
         </td>
     </tr>
