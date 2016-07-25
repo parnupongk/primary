@@ -18,6 +18,7 @@ namespace PrimaryHaul.WebUI.pph_include.ajax.files
         {
             String strConnString = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
             Response.Write("<select class=\"form-control\" style=\"width:100%;\" id=\"" + Request.Form["var03"].ToString() + "\" name=\"" + Request.Form["var03"].ToString() + "\">");
+            Response.Write("<option value=\"ALL\">เลือกทั้งหมด</option>");
             SqlConnection objConn = new SqlConnection();
             objConn.ConnectionString = strConnString;
             objConn.Open();

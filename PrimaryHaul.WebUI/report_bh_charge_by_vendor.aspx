@@ -84,7 +84,7 @@
         <div class="col-md-12"><br /></div>
     </div>
 </div>
-<div id="form_view01" <% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string)){if(Request.QueryString["form_view"].ToString()=="form_view02"){ %>style="display:none;"<% }} %>>
+<div id="form_view01" <% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string)){if(Request.QueryString["form_view"].ToString()=="form_view02"){ %>style="display:none;"<% }}else{Response.Write("style=\"display:none;\"");} %>>
     <div class="form-group">
         <div class="row">
             <div class="col-md-12">
@@ -114,6 +114,7 @@
                 <div id="divSumVD">
                     <select class="form-control" id="adSumVD" name="adSumVD">
                         <% if (!string.IsNullOrEmpty(Request.QueryString["adVD"] as string)){
+                            Response.Write("<option value=\"ALL\">เลือกทั้งหมด</option>");
                             string[] adStartSum = Request.QueryString["adStart"].ToString().Split('/');
                             string[] adEndSum = Request.QueryString["adEnd"].ToString().Split('/');
                             SqlCommand cmd_vdSum = new SqlCommand("usp_BH_Vendor_Select_FromTransaction", objConn);
@@ -197,7 +198,7 @@
     </div>
     <% }} %>
 </div>
-<div id="form_view02" <% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string)){if(Request.QueryString["form_view"].ToString()=="form_view01"){ %>style="display:none;"<% }} %>>
+<div id="form_view02" <% if (!string.IsNullOrEmpty(Request.QueryString["form_view"] as string)){if(Request.QueryString["form_view"].ToString()=="form_view01"){ %>style="display:none;"<% }}else{Response.Write("style=\"display:none;\"");} %>>
     <div class="form-group">
         <div class="row">
             <div class="col-md-12">
@@ -227,6 +228,7 @@
                 <div id="divVD">
                     <select class="form-control" id="adVD" name="adVD">
                         <% if (!string.IsNullOrEmpty(Request.QueryString["adVD"] as string)){
+                               Response.Write("<option value=\"ALL\">เลือกทั้งหมด</option>");
                             string[] adStartS = Request.QueryString["adStart"].ToString().Split('/');
                             string[] adEndS = Request.QueryString["adEnd"].ToString().Split('/');
                             SqlCommand cmd_getYW = new SqlCommand("usp_BH_Vendor_Select_FromTransaction", objConn);

@@ -21,6 +21,10 @@ namespace PrimaryHaul.WebUI.pph_include.download
 
 
             Response.AddHeader("Content-Disposition", "attachment;filename=Condition_Detail_Report.xls");
+            Response.Buffer = true;
+            Response.Charset = "UTF-8";
+            Response.ContentType = "application/vnd.ms-excel";
+
         }
     }
 }

@@ -3,6 +3,12 @@
 <%@ Import Namespace="System.Data.SqlClient"%>
 <%@ Import Namespace="PrimaryHaul_WS"%>
 <%@ Import Namespace="PrimaryHaul_WSFlow"%>
+<%
+    Response.AddHeader("Content-Disposition", "attachment;filename=Condition_Summary_Report.xls");
+    Response.Buffer = true;
+    Response.Charset = "UTF-8";
+    Response.ContentType = "application/vnd.ms-excel"; 
+%>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">

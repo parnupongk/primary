@@ -21,7 +21,8 @@ namespace PrimaryHaul.WebUI.pph_include.download
             objConn.Open();
 
 
-            Response.AddHeader("Content-Disposition", "attachment;filename=Condition_Summary_Report.xls");
+            
+
         }
     }
 }
