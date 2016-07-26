@@ -20,7 +20,7 @@ namespace PrimaryHaul.WebUI
             {
                 btnClear.Enabled = false;
                 btnSubmit.Enabled = false;
-                btnInsert.Enabled = false;
+                //btnInsert.Enabled = false;
                 lblWeek.Text = PH_HaulierUpload.PH_HaulierUp_GetDateWeek(AppCode.strConnDB);
             }
         }
@@ -196,10 +196,10 @@ namespace PrimaryHaul.WebUI
                         //}
 
                         DataBind_BHTrans(strUserId.ToString());
-                        if (rowError == 0)
-                        {
-                            btnInsert.Enabled = true;
-                        }
+                        //if (rowError == 0)
+                        //{
+                            //btnInsert.Enabled = true;
+                        //}
                         btnClear.Enabled = true;
                         lblErr.Text = " Success=" + rowSucc.ToString() + " Error=" + rowError.ToString();
                         #endregion
@@ -271,7 +271,7 @@ namespace PrimaryHaul.WebUI
                 if (Status.IndexOf("err") >-1)
                 {
                     e.Row.Attributes["style"] = "background-color: #FF9999";
-                    btnInsert.Enabled = false;
+                    //btnInsert.Enabled = false;
                 }
                 /*else
                 {
@@ -291,7 +291,7 @@ namespace PrimaryHaul.WebUI
 
             string message = rtn >0? "Save Data Successfull" : "Save Data Not Successfull";
             ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);
-            btnInsert.Enabled = false;
+            //btnInsert.Enabled = false;
             btnSubmit.Enabled = false;
             btnClear.Enabled = false;
             ClearView();
