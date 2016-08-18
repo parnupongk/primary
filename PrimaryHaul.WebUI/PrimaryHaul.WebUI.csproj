@@ -209,7 +209,9 @@
     <Content Include="pph_include\perview\vendor_perview.aspx" />
     <Content Include="rate_calc.aspx" />
     <Content Include="rate_calc_adj.aspx" />
+    <Content Include="report_bh_accounting.aspx" />
     <Content Include="report_bh_charge_by_vendor.aspx" />
+    <Content Include="report_bh_pslreport.aspx" />
     <Content Include="report_finance.aspx" />
     <Content Include="report_kpi.aspx" />
     <Content Include="report_venderlog.aspx" />
@@ -844,12 +846,26 @@
     <Compile Include="rate_calc_adj.aspx.designer.cs">
       <DependentUpon>rate_calc_adj.aspx</DependentUpon>
     </Compile>
+    <Compile Include="report_bh_accounting.aspx.cs">
+      <DependentUpon>report_bh_accounting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="report_bh_accounting.aspx.designer.cs">
+      <DependentUpon>report_bh_accounting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="report_bh_charge_by_vendor.aspx.cs">
       <DependentUpon>report_bh_charge_by_vendor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="report_bh_charge_by_vendor.aspx.designer.cs">
       <DependentUpon>report_bh_charge_by_vendor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="report_bh_pslreport.aspx.cs">
+      <DependentUpon>report_bh_pslreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="report_bh_pslreport.aspx.designer.cs">
+      <DependentUpon>report_bh_pslreport.aspx</DependentUpon>
     </Compile>
     <Compile Include="report_finance.aspx.cs">
       <DependentUpon>report_finance.aspx</DependentUpon>

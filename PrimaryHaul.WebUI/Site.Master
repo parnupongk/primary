@@ -99,6 +99,8 @@
                                 <li><a runat="server" id="lnkKpi" href="report_kpi.aspx?" name="Kpi Report">KPI Report</a></li>
                                 <li><a runat="server" id="lnkExportExcel" href="export_backhaul_transaction.aspx?" name="BH Export Transaction">Backhaul Export Transaction</a></li>
                                 <li><a runat="server" id="A2" href="report_bh_charge_by_vendor.aspx?" name="BH Charge by Vendor">Backhaul Charge by Vendor</a></li>
+                                <li><a runat="server" id="lnkBHAcc" href="report_bh_accounting.aspx?" name="BH Accounting">Backhaul Accounting</a></li>
+                                <li><a runat="server" id="lnkBHPSL" href="report_bh_pslreport.aspx?" name="BH PSL Report">Backhaul PSL Report</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
