@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using PrimaryHaul.WebUI.App_Code;
 
-namespace PrimaryHaul.WebUI
+namespace PrimaryHaul.WebUI.pph_include.download
 {
     public partial class report_bh_accounting : System.Web.UI.Page
     {
@@ -24,9 +24,7 @@ namespace PrimaryHaul.WebUI
             objConn.ConnectionString = strConnString;
             objConn.Open();
 
-            
-            
-
+            Response.AppendHeader("content-disposition", "attachment; filename=report_bh_accounting_" + Request.QueryString["wkstart"].ToString() + "_to_" + Request.QueryString["wkend"].ToString() + ".xls");
         }
     }
 }

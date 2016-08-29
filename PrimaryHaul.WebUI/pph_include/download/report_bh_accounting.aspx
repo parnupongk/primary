@@ -1,109 +1,26 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="report_bh_accounting.aspx.cs" Inherits="PrimaryHaul.WebUI.report_bh_accounting" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="report_bh_accounting.aspx.cs" Inherits="PrimaryHaul.WebUI.pph_include.download.report_bh_accounting" %>
 <%@ Import Namespace="System.Data"%>
 <%@ Import Namespace="System.Data.SqlClient"%>
 <%@ Import Namespace="System.Linq"%>
 <%@ Import Namespace="System.Collections.Generic"%>
-<asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
-<input type="hidden" name="urlSubmit" id="urlSubmit" value="<%= HttpContext.Current.Request.Url.AbsolutePath %>?r=<%= Request.QueryString["r"].ToString() %>&id=<%= Request.QueryString["id"].ToString() %>" />
-<script>
-    function js_submit(wkstart, wkend, dc, vd, excel, mainurl) {
-        var obj_wkstart = document.getElementById(wkstart).value;
-        var obj_wkend = document.getElementById(wkend).value;
-        var obj_dc = document.getElementById(dc).value;
-        var obj_vd = document.getElementById(vd).value;
-        var obj_mainurl = document.getElementById(mainurl).value;
-        if (obj_wkstart == "" || obj_wkend == "") {
-            alert('กรุณาเลือก Week');
-        } else {
-            if (excel == "1") {
-                window.location.href = obj_mainurl + '&wkstart=' + obj_wkstart + '&wkend=' + obj_wkend + '&dc=' + obj_dc + '&vd=' + obj_vd;
-            } else {
-                window.open('./pph_include/download/report_bh_accounting.aspx?wkstart=' + obj_wkstart + '&wkend=' + obj_wkend + '&dc=' + obj_dc + '&vd=' + obj_vd, '_blank');
-            }
-        }
-    }
-    function js_viewForm(wkstart, wkend, mainurl) {
-        var obj_wkstart = document.getElementById(wkstart).value;
-        var obj_wkend = document.getElementById(wkend).value;
-        var obj_mainurl = document.getElementById(mainurl).value;
-        if (obj_wkstart != "" || obj_wkend != "") {
-            window.location.href = obj_mainurl + '&wkstart=' + obj_wkstart + '&wkend=' + obj_wkend;
-        }
-    }
-</script>
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
 <% 
     string str_wkstart = ""; if (!string.IsNullOrEmpty(Request.QueryString["wkstart"] as string)) { str_wkstart = Request.QueryString["wkstart"].ToString(); }
     string str_wkend = ""; if (!string.IsNullOrEmpty(Request.QueryString["wkend"] as string)) { str_wkend = Request.QueryString["wkend"].ToString(); }
     string str_dc = "0"; if (!string.IsNullOrEmpty(Request.QueryString["dc"] as string)) { str_dc = Request.QueryString["dc"].ToString(); }
     string str_vd = "ALL"; if (!string.IsNullOrEmpty(Request.QueryString["vd"] as string)) { str_vd = Request.QueryString["vd"].ToString(); } 
 %>
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-12"><h4>Backhaul Accounting</h4><hr /></div>
-    </div>
-</div>
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-2"><label class="control-label">Week : </label></div>
-        <div class="col-md-3">
-            <select class="form-control" id="WKStart" name="WKStart">
-                <option value="" <% if (str_wkstart == "") { Response.Write("selected"); } %>>กรุณาเลือก</option>
-                <% SqlCommand rs_wkstart = new SqlCommand(sql_yw, objConn); SqlDataReader obj_wkstart = rs_wkstart.ExecuteReader(); while (obj_wkstart.Read()){ %>
-                    <option value="<%= obj_wkstart["dateweek"].ToString() %>" <% if (str_wkstart == obj_wkstart["dateweek"].ToString()) { Response.Write("selected"); } %>><%= obj_wkstart["dateweek"].ToString() %> | <%= obj_wkstart["Between_Date"].ToString() %></option>
-                <% } obj_wkstart.Close(); %>
-            </select>
-        </div>
-        <div class="col-md-1"><label class="control-label">to : </label></div>
-        <div class="col-md-3">
-            <select class="form-control" id="WKEnd" name="WKEnd">
-                <option value="" <% if (str_wkend == "") { Response.Write("selected"); } %>>กรุณาเลือก</option>
-                <% SqlCommand rs_wkend = new SqlCommand(sql_yw, objConn); SqlDataReader obj_wkend = rs_wkend.ExecuteReader(); while (obj_wkend.Read()){ %>
-                    <option value="<%= obj_wkend["dateweek"].ToString() %>" <% if (str_wkend == obj_wkend["dateweek"].ToString()) { Response.Write("selected"); } %>><%= obj_wkend["dateweek"].ToString() %> | <%= obj_wkend["Between_Date"].ToString() %></option>
-                <% } obj_wkend.Close(); %>
-            </select>
-        </div>
-    </div>
-</div>
- <% if(str_wkstart != "" && str_wkend != ""){ %>
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-2"><label class="control-label">DC Name : </label></div>
-        <div class="col-md-3">
-            <select class="form-control" id="DC" name="DC">
-                <option value="0" <% if (str_dc == "0") { Response.Write("selected"); } %>>เลือกทั้งหมด</option>
-                <%  SqlCommand rs_dc = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_dc.CommandType = CommandType.StoredProcedure;  rs_dc.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_dc.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader obj_dc = rs_dc.ExecuteReader(); while (obj_dc.Read()){ %>
-                    <option value="<%= obj_dc["DC_NO"].ToString() %>" <% if (str_dc == obj_dc["DC_NO"].ToString()) { Response.Write("selected"); } %>><%= obj_dc["DC_NO"].ToString() %></option>
-                <% } obj_dc.Close(); %>
-            </select>
-        </div>
-    </div>
-</div>
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-2"><label class="control-label">Vendor Name : </label></div>
-        <div class="col-md-3">
-            <select class="form-control" id="VD" name="VD">
-                <option value="ALL" <% if (str_vd == "ALL") { Response.Write("selected"); } %>>เลือกทั้งหมด</option>
-                <% SqlCommand rs_vd = new SqlCommand("usp_BH_GET_VendorName_ON_WEEK", objConn); rs_vd.CommandType = CommandType.StoredProcedure;  rs_vd.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_vd.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader obj_vd = rs_vd.ExecuteReader(); while (obj_vd.Read()){ %>
-                    <option value="<%= obj_vd["Vendor_Name"].ToString() %>" <% if (str_vd == obj_vd["Vendor_Name"].ToString()) { Response.Write("selected"); } %>><%= obj_vd["Vendor_Name"].ToString() %></option>
-                <% } obj_vd.Close(); %>
-            </select>
-        </div>
-    </div>
-</div>
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-2" ><label class="control-label"></label></div>
-        <div class="col-md-7" ><input type="button" value="Preview" class="btn btn-default" onclick="js_submit('WKStart', 'WKEnd', 'DC', 'VD', '1', 'urlSubmit');" id="btn01" />&nbsp;&nbsp;&nbsp;<input type="button" value="Export To Excel" class="btn btn-default" onclick="    js_submit('WKStart', 'WKEnd', 'DC', 'VD', '2', 'urlSubmit');" id="btn02" /></div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">&nbsp;</div>
-</div> 
- <% if(Convert.ToInt32(str_wkstart) <= Convert.ToInt32(str_wkend)){ int i;%>
-<div class="row">
-    <div class="col-md-12">
+<% if(Convert.ToInt32(str_wkstart) <= Convert.ToInt32(str_wkend)){ int i;%>
+
         <table class="table table-bordered">
         <tr style="background-color:#9bbb59;">
             <td style="text-align:center;" colspan="3">&nbsp;</td>
@@ -270,16 +187,7 @@
         <% } %>
         </tr>
         </table>
-    </div>
-</div>
+
 <% } %>
-<% }else{ %>
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-2" ><label class="control-label"></label></div>
-        <div class="col-md-7" ><input type="button" value="ทำรายการ" class="btn btn-default" onclick="js_viewForm('WKStart', 'WKEnd', 'urlSubmit');" id="btn03" /></div>
-    </div>
-</div>
-<% } %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-</asp:Content>
+</body>
+</html>

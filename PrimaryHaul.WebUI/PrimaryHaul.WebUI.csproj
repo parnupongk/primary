@@ -81,6 +81,7 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -187,6 +188,8 @@
     <Content Include="pph_include\download\hualier_cost.aspx" />
     <Content Include="pph_include\download\primary_transaction.aspx" />
     <Content Include="pph_include\download\report.aspx" />
+    <Content Include="pph_include\download\report_bh_accounting.aspx" />
+    <Content Include="pph_include\download\report_bh_pslreport.aspx" />
     <Content Include="pph_include\download\report_kpi.aspx" />
     <Content Include="pph_include\download\report_sum.aspx" />
     <Content Include="pph_include\download\report_summary.aspx" />
@@ -719,6 +722,20 @@
     </Compile>
     <Compile Include="pph_include\download\report.aspx.designer.cs">
       <DependentUpon>report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\download\report_bh_accounting.aspx.cs">
+      <DependentUpon>report_bh_accounting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\download\report_bh_accounting.aspx.designer.cs">
+      <DependentUpon>report_bh_accounting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pph_include\download\report_bh_pslreport.aspx.cs">
+      <DependentUpon>report_bh_pslreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\download\report_bh_pslreport.aspx.designer.cs">
+      <DependentUpon>report_bh_pslreport.aspx</DependentUpon>
     </Compile>
     <Compile Include="pph_include\download\report_kpi.aspx.cs">
       <DependentUpon>report_kpi.aspx</DependentUpon>
