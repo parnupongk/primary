@@ -14,7 +14,7 @@
   <xs:element name="PHDS_BHUpload" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PHDS_BHUpload" msprop:Generator_UserDSName="PHDS_BHUpload">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="BH_Transaction_TMP" msprop:Generator_TableClassName="BH_Transaction_TMPDataTable" msprop:Generator_TableVarName="tableBH_Transaction_TMP" msprop:Generator_RowChangedName="BH_Transaction_TMPRowChanged" msprop:Generator_TablePropName="BH_Transaction_TMP" msprop:Generator_RowDeletingName="BH_Transaction_TMPRowDeleting" msprop:Generator_RowChangingName="BH_Transaction_TMPRowChanging" msprop:Generator_RowEvHandlerName="BH_Transaction_TMPRowChangeEventHandler" msprop:Generator_RowDeletedName="BH_Transaction_TMPRowDeleted" msprop:Generator_RowClassName="BH_Transaction_TMPRow" msprop:Generator_UserTableName="BH_Transaction_TMP" msprop:Generator_RowEvArgName="BH_Transaction_TMPRowChangeEvent">
+        <xs:element name="BH_Transaction_TMP" msprop:Generator_TableClassName="BH_Transaction_TMPDataTable" msprop:Generator_TableVarName="tableBH_Transaction_TMP" msprop:Generator_TablePropName="BH_Transaction_TMP" msprop:Generator_RowDeletingName="BH_Transaction_TMPRowDeleting" msprop:Generator_RowChangingName="BH_Transaction_TMPRowChanging" msprop:Generator_RowEvHandlerName="BH_Transaction_TMPRowChangeEventHandler" msprop:Generator_RowDeletedName="BH_Transaction_TMPRowDeleted" msprop:Generator_UserTableName="BH_Transaction_TMP" msprop:Generator_RowChangedName="BH_Transaction_TMPRowChanged" msprop:Generator_RowEvArgName="BH_Transaction_TMPRowChangeEvent" msprop:Generator_RowClassName="BH_Transaction_TMPRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TransID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTransID" msprop:Generator_ColumnPropNameInRow="TransID" msprop:Generator_ColumnPropNameInTable="TransIDColumn" msprop:Generator_UserColumnName="TransID" type="xs:int" />
@@ -68,7 +68,7 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Case_Appt" msprop:Generator_ColumnVarNameInTable="columnCase_Appt" msprop:Generator_ColumnPropNameInRow="Case_Appt" msprop:Generator_ColumnPropNameInTable="Case_ApptColumn" msprop:Generator_UserColumnName="Case_Appt" type="xs:int" minOccurs="0" />
-              <xs:element name="Pallet" msprop:Generator_ColumnVarNameInTable="columnPallet" msprop:Generator_ColumnPropNameInRow="Pallet" msprop:Generator_ColumnPropNameInTable="PalletColumn" msprop:Generator_UserColumnName="Pallet" type="xs:int" minOccurs="0" />
+              <xs:element name="Pallet" msprop:Generator_ColumnVarNameInTable="columnPallet" msprop:Generator_ColumnPropNameInRow="Pallet" msprop:Generator_ColumnPropNameInTable="PalletColumn" msprop:Generator_UserColumnName="Pallet" type="xs:decimal" minOccurs="0" />
               <xs:element name="Remark" msprop:Generator_ColumnVarNameInTable="columnRemark" msprop:Generator_ColumnPropNameInRow="Remark" msprop:Generator_ColumnPropNameInTable="RemarkColumn" msprop:Generator_UserColumnName="Remark" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">

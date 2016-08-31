@@ -159,7 +159,7 @@ namespace PrimaryHaul.WebUI
                                         strColumns = "Type";
                                         dr.Case_Appt = !Regex.IsMatch(drRead[12].ToString(), @"\d") ? 0 : Convert.ToInt32(decimal.Parse(drRead[12].ToString()));
                                         strColumns = "Case_Appt";
-                                        dr.Pallet = !Regex.IsMatch(drRead[13].ToString(), @"\d") ? 0 : int.Parse(drRead[13].ToString());
+                                        dr.Pallet = !Regex.IsMatch(drRead[13].ToString(), @"\d") ? 0 : decimal.Parse(drRead[13].ToString());
                                         strColumns = "Pallet";
                                         dr.Pallet_From_Vendor = !Regex.IsMatch(drRead[15].ToString(), @"\d") ? 0 : decimal.Parse(drRead[15].ToString());
                                         strColumns = "Pallet_From_Vendor";
