@@ -20,7 +20,7 @@
 <body>
 <% if(Convert.ToInt32(str_wkstart) <= Convert.ToInt32(str_wkend)){ int i;%>
 
-        <table class="table table-bordered">
+        <table cellpadding="5"  align="center" border="1" bordercolor="#000000" cellspacing="0" width="100%">
         <tr style="background-color:#ffffff;">
             <td style="text-align:left;font-weight:bold;width:200px;">Income</td> 
             <%  SqlCommand rs_count1 = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_count1.CommandType = CommandType.StoredProcedure; rs_count1.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_count1.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader countCol1 = rs_count1.ExecuteReader(); int iCol1 = 0; while (countCol1.Read()) { iCol1++; } countCol1.Close(); %>
@@ -57,11 +57,8 @@
         </tr>
         <% } %>
         </table>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-bordered">
+<br /><br />
+        <table cellpadding="5"  align="center" border="1" bordercolor="#000000" cellspacing="0" width="100%">
         <tr style="background-color:#ffffff;">
             <td style="text-align:left;font-weight:bold;width:200px;">Unloading</td> 
             <%  SqlCommand rs_count2 = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_count2.CommandType = CommandType.StoredProcedure; rs_count2.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_count2.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader countCol2 = rs_count1.ExecuteReader(); int iCol2= 0; while (countCol2.Read()) { iCol2++; } countCol2.Close(); %>
@@ -98,11 +95,8 @@
         </tr>
         <% } %>
         </table>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-bordered">
+<br /><br />
+        <table cellpadding="5"  align="center" border="1" bordercolor="#000000" cellspacing="0" width="100%">
         <tr style="background-color:#ffffff;">
             <td style="text-align:left;font-weight:bold;width:200px;">Case</td> 
             <%  SqlCommand rs_count3 = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_count3.CommandType = CommandType.StoredProcedure; rs_count3.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_count3.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader countCol3 = rs_count1.ExecuteReader(); int iCol3= 0; while (countCol3.Read()) { iCol3++; } countCol3.Close(); %>
@@ -139,11 +133,8 @@
         </tr>
         <% } %>
         </table>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-bordered">
+<br /><br />
+        <table cellpadding="5"  align="center" border="1" bordercolor="#000000" cellspacing="0" width="100%">
         <tr style="background-color:#ffffff;">
             <td style="text-align:left;font-weight:bold;width:200px;">Load</td> 
             <%  SqlCommand rs_count4 = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_count4.CommandType = CommandType.StoredProcedure; rs_count4.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_count4.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader countCol4 = rs_count1.ExecuteReader(); int iCol4= 0; while (countCol4.Read()) { iCol4++; } countCol4.Close(); %>

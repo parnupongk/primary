@@ -21,7 +21,7 @@
 %>
 <% if(Convert.ToInt32(str_wkstart) <= Convert.ToInt32(str_wkend)){ int i;%>
 
-        <table class="table table-bordered">
+        <table cellpadding="5"  align="center" border="1" bordercolor="#000000" cellspacing="0" width="100%">
         <tr style="background-color:#9bbb59;">
             <td style="text-align:center;" colspan="3">&nbsp;</td>
             <% for(i=Convert.ToInt32(str_wkstart);i<=Convert.ToInt32(str_wkend);i++){ %>
