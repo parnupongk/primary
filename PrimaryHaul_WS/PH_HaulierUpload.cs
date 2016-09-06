@@ -110,6 +110,30 @@ namespace PrimaryHaul_WS
             }
         }
 
+        public static int PH_HaulierUp_Insert1(string strConnDB, string strYearWeek, string strAbbr, string strUserId)
+        {
+            try
+            {
+                int rtn = 0;
+                using (SqlConnection sqlConn = new SqlConnection(strConnDB))
+                {
+                    if (sqlConn.State == ConnectionState.Closed) sqlConn.Open();
+                    SqlCommand sqlComm = new SqlCommand("usp_PrimaryHaul_Transportation_Insert", sqlConn);
+                    sqlComm.CommandText = "usp_PrimaryHaul_Transportation_Insert";
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    sqlComm.CommandTimeout = 0;
+                    sqlComm.Parameters.AddRange(new SqlParameter[] { new SqlParameter("@Year_Week_Upload", strYearWeek)
+                                                        , new SqlParameter("@Haulier_Abbr", strAbbr)
+                                                        , new SqlParameter("@UserID", strUserId)
+                    });
+                    rtn = sqlComm.ExecuteNonQuery();
+                }
+
+                return rtn;
+            }
+            catch(Exception ex) { throw new Exception(ex.Message); }
+        }
+
         public static string PH_HaulierUp_GetDateWeek(string strConnDB)
         {
             try
@@ -131,11 +155,28 @@ namespace PrimaryHaul_WS
         {
             try
             {
-                int rtn = SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_TransportationTMP_Verify"
-                                 , new SqlParameter[] {new SqlParameter("@Year_Week_Upload",strYearWeek)
-                                                        ,new SqlParameter("@Haulier_Abbr",strAbbr)
-                                                        ,new SqlParameter("@UserID",strUserId)
-                                                      });
+                int rtn = 0;
+                using (SqlConnection sqlConn = new SqlConnection(strConnDB))
+                {
+                    if (sqlConn.State == ConnectionState.Closed) sqlConn.Open();
+                    SqlCommand sqlComm = new SqlCommand("usp_PrimaryHaul_TransportationTMP_Verify", sqlConn);
+                    sqlComm.CommandText = "usp_PrimaryHaul_TransportationTMP_Verify";
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    sqlComm.CommandTimeout = 0;
+                    sqlComm.Parameters.AddRange(new SqlParameter[] { new SqlParameter("@Year_Week_Upload", strYearWeek)
+                                                        , new SqlParameter("@Haulier_Abbr", strAbbr)
+                                                        , new SqlParameter("@UserID", strUserId)
+                    });
+                rtn = sqlComm.ExecuteNonQuery();
+                }
+
+
+
+                //int rtn = SqlHelper.ExecuteNonQuery(strConnDB, CommandType.StoredProcedure, "usp_PrimaryHaul_TransportationTMP_Verify"
+                //                 , new SqlParameter[] {new SqlParameter("@Year_Week_Upload",strYearWeek)
+                 //                                       ,new SqlParameter("@Haulier_Abbr",strAbbr)
+                //                                        ,new SqlParameter("@UserID",strUserId)
+                //                                      });
 
                 return rtn;
             }

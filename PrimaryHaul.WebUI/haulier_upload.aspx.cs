@@ -297,7 +297,7 @@ namespace PrimaryHaul.WebUI
             {
                 bool isError = false;
                 string strMess = "";
-                PHDS_HaulierUpload.TransportationDataTable dt = (PHDS_HaulierUpload.TransportationDataTable)ViewState["HaulierUploadInsert"];
+                /*PHDS_HaulierUpload.TransportationDataTable dt = (PHDS_HaulierUpload.TransportationDataTable)ViewState["HaulierUploadInsert"];
                 foreach (PHDS_HaulierUpload.TransportationRow dr in dt.Rows)
                 {
                     try
@@ -312,7 +312,9 @@ namespace PrimaryHaul.WebUI
                         PH_ExceptionManager.WriteError("btnInsert_Click ,PH_HaulierUp_Insert >>" + ex.Message);
                     }
 
-                }
+                }*/
+
+                PH_HaulierUpload.PH_HaulierUp_Insert1(AppCode.strConnDB, lblWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
 
                 PH_HaulierUpload.PH_HaulierUp_DelTMP(AppCode.strConnDB, lblWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
 
