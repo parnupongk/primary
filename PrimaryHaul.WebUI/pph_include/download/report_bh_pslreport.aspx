@@ -48,7 +48,7 @@
                     if (obj_detail1.HasRows)
                     {
                         obj_detail1.Read();
-                        Response.Write(Convert.ToDouble(obj_detail1["BHT"].ToString()).ToString("#,##0.00"));
+                        if (Convert.ToDouble(obj_detail1["BHT"].ToString()) > 0) { Response.Write(Convert.ToDouble(obj_detail1["BHT"].ToString()).ToString("#,##0.00")); }
                         obj_detail1.Close();
                     }
                  %>
@@ -56,9 +56,6 @@
             <% } col_dcDetail1.Close(); %>
         </tr>
         <% } %>
-        </table>
-<br /><br />
-        <table cellpadding="5"  align="center" border="1" bordercolor="#000000" cellspacing="0" width="100%">
         <tr style="background-color:#ffffff;">
             <td style="text-align:left;font-weight:bold;width:200px;">Unloading</td> 
             <%  SqlCommand rs_count2 = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_count2.CommandType = CommandType.StoredProcedure; rs_count2.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_count2.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader countCol2 = rs_count1.ExecuteReader(); int iCol2= 0; while (countCol2.Read()) { iCol2++; } countCol2.Close(); %>
@@ -86,7 +83,7 @@
                     if (obj_detail2.HasRows)
                     {
                         obj_detail2.Read();
-                        Response.Write(Convert.ToDouble(obj_detail2["BHT"].ToString()).ToString("#,##0.00"));
+                        if (Convert.ToDouble(obj_detail2["BHT"].ToString()) > 0) { Response.Write(Convert.ToDouble(obj_detail2["BHT"].ToString()).ToString("#,##0.00")); }
                         obj_detail2.Close();
                     }
                  %>
@@ -94,9 +91,6 @@
             <% } col_dcDetail2.Close(); %>
         </tr>
         <% } %>
-        </table>
-<br /><br />
-        <table cellpadding="5"  align="center" border="1" bordercolor="#000000" cellspacing="0" width="100%">
         <tr style="background-color:#ffffff;">
             <td style="text-align:left;font-weight:bold;width:200px;">Case</td> 
             <%  SqlCommand rs_count3 = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_count3.CommandType = CommandType.StoredProcedure; rs_count3.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_count3.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader countCol3 = rs_count1.ExecuteReader(); int iCol3= 0; while (countCol3.Read()) { iCol3++; } countCol3.Close(); %>
@@ -124,7 +118,7 @@
                     if (obj_detail3.HasRows)
                     {
                         obj_detail3.Read();
-                        Response.Write(Convert.ToDouble(obj_detail3["BHT"].ToString()).ToString("#,##0.00"));
+                        if (Convert.ToDouble(obj_detail3["BHT"].ToString()) > 0) { Response.Write(Convert.ToDouble(obj_detail3["BHT"].ToString()).ToString("#,##0.00")); }
                         obj_detail3.Close();
                     }
                  %>
@@ -132,9 +126,6 @@
             <% } col_dcDetail3.Close(); %>
         </tr>
         <% } %>
-        </table>
-<br /><br />
-        <table cellpadding="5"  align="center" border="1" bordercolor="#000000" cellspacing="0" width="100%">
         <tr style="background-color:#ffffff;">
             <td style="text-align:left;font-weight:bold;width:200px;">Load</td> 
             <%  SqlCommand rs_count4 = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_count4.CommandType = CommandType.StoredProcedure; rs_count4.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_count4.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader countCol4 = rs_count1.ExecuteReader(); int iCol4= 0; while (countCol4.Read()) { iCol4++; } countCol4.Close(); %>
@@ -162,7 +153,7 @@
                     if (obj_detail4.HasRows)
                     {
                         obj_detail4.Read();
-                        Response.Write(Convert.ToDouble(obj_detail4["BHT"].ToString()).ToString("#,##0.00"));
+                        if (Convert.ToDouble(obj_detail4["BHT"].ToString()) > 0) { Response.Write(Convert.ToDouble(obj_detail4["BHT"].ToString()).ToString("#,##0.00")); }
                         obj_detail4.Close();
                     }
                  %>
