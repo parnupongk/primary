@@ -34,7 +34,7 @@
 <% 
     string str_wkstart = ""; if (!string.IsNullOrEmpty(Request.QueryString["wkstart"] as string)) { str_wkstart = Request.QueryString["wkstart"].ToString(); }
     string str_wkend = ""; if (!string.IsNullOrEmpty(Request.QueryString["wkend"] as string)) { str_wkend = Request.QueryString["wkend"].ToString(); }
-    string str_dc = "0"; if (!string.IsNullOrEmpty(Request.QueryString["dc"] as string)) { str_dc = Request.QueryString["dc"].ToString(); }
+    string str_dc = "99999"; if (!string.IsNullOrEmpty(Request.QueryString["dc"] as string)) { str_dc = Request.QueryString["dc"].ToString(); }
 %>
 
 <div class="form-group">
@@ -70,7 +70,7 @@
         <div class="col-md-2"><label class="control-label">DC Name : </label></div>
         <div class="col-md-3">
             <select class="form-control" id="DC" name="DC">
-                <option value="0" <% if (str_dc == "0") { Response.Write("selected"); } %>>เลือกทั้งหมด</option>
+                <option value="99999" <% if (str_dc == "99999") { Response.Write("selected"); } %>>เลือกทั้งหมด</option>
                 <%  SqlCommand rs_dc = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_dc.CommandType = CommandType.StoredProcedure;  rs_dc.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_dc.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader obj_dc = rs_dc.ExecuteReader(); while (obj_dc.Read()){ %>
                     <option value="<%= obj_dc["DC_NO"].ToString() %>" <% if (str_dc == obj_dc["DC_NO"].ToString()) { Response.Write("selected"); } %>><%= obj_dc["DC_NO"].ToString() %></option>
                 <% } obj_dc.Close(); %>
@@ -106,7 +106,7 @@
         <tr style="background-color:#fff;">
             <td style="text-align:center;">WK<%=Convert.ToString(i).Substring(Convert.ToString(i).Length - 2,2)%></td>
             <%  SqlCommand rs_col_dcDetail1 = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_col_dcDetail1.CommandType = CommandType.StoredProcedure;  rs_col_dcDetail1.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_col_dcDetail1.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader col_dcDetail1 = rs_col_dcDetail1.ExecuteReader(); while (col_dcDetail1.Read()){ %>
-                 <td style="text-align:right;">
+                 <td style="text-align:right;width:200px;">
                  <% 
                     SqlCommand rs_detail1 = new SqlCommand("usp_BH_PSL_Report", objConn);
                     rs_detail1.CommandType = CommandType.StoredProcedure;
@@ -147,7 +147,7 @@
         <tr style="background-color:#fff;">
             <td style="text-align:center;">WK<%=Convert.ToString(i).Substring(Convert.ToString(i).Length - 2,2)%></td>
             <%  SqlCommand rs_col_dcDetail2 = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_col_dcDetail2.CommandType = CommandType.StoredProcedure;  rs_col_dcDetail2.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_col_dcDetail2.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader col_dcDetail2 = rs_col_dcDetail2.ExecuteReader(); while (col_dcDetail2.Read()){ %>
-                 <td style="text-align:right;">
+                 <td style="text-align:right;width:200px;">
                  <% 
                     SqlCommand rs_detail2 = new SqlCommand("usp_BH_PSL_Report", objConn);
                     rs_detail2.CommandType = CommandType.StoredProcedure;
@@ -188,7 +188,7 @@
         <tr style="background-color:#fff;">
             <td style="text-align:center;">WK<%=Convert.ToString(i).Substring(Convert.ToString(i).Length - 2,2)%></td>
             <%  SqlCommand rs_col_dcDetail3 = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_col_dcDetail3.CommandType = CommandType.StoredProcedure;  rs_col_dcDetail3.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_col_dcDetail3.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader col_dcDetail3 = rs_col_dcDetail3.ExecuteReader(); while (col_dcDetail3.Read()){ %>
-                 <td style="text-align:right;">
+                 <td style="text-align:right;width:200px;">
                  <% 
                     SqlCommand rs_detail3 = new SqlCommand("usp_BH_PSL_Report", objConn);
                     rs_detail3.CommandType = CommandType.StoredProcedure;
@@ -229,7 +229,7 @@
         <tr style="background-color:#fff;">
             <td style="text-align:center;">WK<%=Convert.ToString(i).Substring(Convert.ToString(i).Length - 2,2)%></td>
             <%  SqlCommand rs_col_dcDetail4 = new SqlCommand("usp_BH_GET_DC_ON_WEEK", objConn); rs_col_dcDetail4.CommandType = CommandType.StoredProcedure;  rs_col_dcDetail4.Parameters.AddWithValue("@Week_Start", "" + str_wkstart + ""); rs_col_dcDetail4.Parameters.AddWithValue("@Week_End", "" + str_wkend + ""); SqlDataReader col_dcDetail4 = rs_col_dcDetail4.ExecuteReader(); while (col_dcDetail4.Read()){ %>
-                 <td style="text-align:right;">
+                 <td style="text-align:right;width:200px;">
                  <% 
                     SqlCommand rs_detail4 = new SqlCommand("usp_BH_PSL_Report", objConn);
                     rs_detail4.CommandType = CommandType.StoredProcedure;
