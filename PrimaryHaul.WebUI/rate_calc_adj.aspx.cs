@@ -156,5 +156,10 @@ namespace PrimaryHaul.WebUI
                 }
             }
         }
+
+        protected void btnHaulierUpload_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("haulier_upload.aspx?" + Request.QueryString, false);
+        }
     }
 }

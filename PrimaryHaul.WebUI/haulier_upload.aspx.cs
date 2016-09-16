@@ -22,7 +22,7 @@ namespace PrimaryHaul.WebUI
                 btnSubmit.Enabled = false;
                 btnInsert.Enabled = false;
                 txtWeek.Text = PH_HaulierUpload.PH_HaulierUp_GetDateWeek(AppCode.strConnDB);
-                if (Request["r"] == "A2") txtWeek.Enabled = true;
+                if (Request["r"] == "A1") txtWeek.Enabled = true;
             }
 
         }

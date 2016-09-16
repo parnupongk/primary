@@ -34,12 +34,14 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-1">
                     <asp:Button runat="server" ID="btnSearch" Text="Search" CssClass="btn btn-default" OnClick="btnSearch_Click" />
+                    <asp:Button runat="server" ID="btnHaulierUpload" Text="HaulierUpload" CssClass="btn btn-default" OnClick="btnHaulierUpload_Click"  />
                     <p class="text-danger">
                         <asp:Label ID="lblErr" runat="server"></asp:Label>
                     </p>
                 </div>
                 <div class="col-md-1">
                     <asp:Button runat="server" ID="btnCalc" Text="Calculate" CssClass="btn btn-default" OnClick="btnCalc_Click" />
+                    
                 </div>
             </div>
         </div>

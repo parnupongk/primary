@@ -84,7 +84,6 @@
                         <asp:Label runat="server" AssociatedControlID="lnkFile" CssClass="col-md-3 control-label">Week </asp:Label>
                         <div class="col-md-9">
                             <asp:TextBox runat="server" ID="txtWeek" CssClass="form-control" Enabled="false"></asp:TextBox>
-                            <!-- asp:Label runat="server" ID="lblWeek" CssClass="form-control" Text="25"></!-->
                         </div>
                     </div>
                     <div runat="server" class="form-group">
