@@ -21,7 +21,8 @@ namespace PrimaryHaul.WebUI
                 btnClear.Enabled = false;
                 btnSubmit.Enabled = false;
                 btnInsert.Enabled = false;
-                lblWeek.Text = PH_HaulierUpload.PH_HaulierUp_GetDateWeek(AppCode.strConnDB);
+                txtWeek.Text = PH_HaulierUpload.PH_HaulierUp_GetDateWeek(AppCode.strConnDB);
+                if (Request["r"] == "A2") txtWeek.Enabled = true;
             }
 
         }
@@ -32,7 +33,7 @@ namespace PrimaryHaul.WebUI
             {
                 if (isNew)
                 {
-                    ViewState["HaulierUpload"] = PH_HaulierUpload.PH_HaulierUp_SelTMP(AppCode.strConnDB, lblWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
+                    ViewState["HaulierUpload"] = PH_HaulierUpload.PH_HaulierUp_SelTMP(AppCode.strConnDB, txtWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
                     btnInsert.Enabled = true;
                     gvData.DataSource = (DataTable)ViewState["HaulierUpload"];
                     gvData.DataBind();
@@ -161,7 +162,7 @@ namespace PrimaryHaul.WebUI
                                         dr.Currency = drRead[11].ToString().Trim();
                                         dr.Additional_Cost_Reason = drRead[13].ToString();//.Trim() == "" ? 0 : decimal.Parse(drRead[13].ToString().Trim());
                                         dr.Year_Week_OnFile = drRead[15].ToString();
-                                        dr.Year_Week_Upload = lblWeek.Text;
+                                        dr.Year_Week_Upload = txtWeek.Text;
                                         dr.Remark1 = drRead[16].ToString().Trim();
                                         dr.Remark2 = drRead[17].ToString().Trim();
                                         dr.FileName = fileName;
@@ -203,7 +204,7 @@ namespace PrimaryHaul.WebUI
                     }
 
 
-                    PH_HaulierUpload.PH_HaulierUp_Verify(AppCode.strConnDB, lblWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
+                    PH_HaulierUpload.PH_HaulierUp_Verify(AppCode.strConnDB, txtWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
                     ViewState["HaulierUploadInsert"] = dtHaulierUp;
                     GetHaulierData(true);
 
@@ -233,7 +234,7 @@ namespace PrimaryHaul.WebUI
         {
             try
             {
-                if (dr.Year_Week_OnFile != lblWeek.Text) return true;
+                if (dr.Year_Week_OnFile != txtWeek.Text) return true;
                 else return false;
             }
             catch (Exception ex)
@@ -303,7 +304,7 @@ namespace PrimaryHaul.WebUI
                     try
                     {
                         PH_HaulierUpload.PH_HaulierUp_Insert(AppCode.strConnDB, dr);
-                        PH_HaulierUpload.PH_HaulierUpLog_Insert(AppCode.strConnDB, int.Parse(Request["id"]), lblWeek.Text, Session["fileName"].ToString(), dr.Haulier_Abbr.ToString());
+                        PH_HaulierUpload.PH_HaulierUpLog_Insert(AppCode.strConnDB, int.Parse(Request["id"]), txtWeek.Text, Session["fileName"].ToString(), dr.Haulier_Abbr.ToString());
                     }
                     catch (Exception ex)
                     {
@@ -314,9 +315,9 @@ namespace PrimaryHaul.WebUI
 
                 }*/
 
-                PH_HaulierUpload.PH_HaulierUp_Insert1(AppCode.strConnDB, lblWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
+                PH_HaulierUpload.PH_HaulierUp_Insert1(AppCode.strConnDB, txtWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
 
-                PH_HaulierUpload.PH_HaulierUp_DelTMP(AppCode.strConnDB, lblWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
+                PH_HaulierUpload.PH_HaulierUp_DelTMP(AppCode.strConnDB, txtWeek.Text, (string)ViewState["HaulierAbbr"], Request["id"]);
 
 
                 string message = !isError ? "Save Data Successfull" : "Save Data Not Successfull";
