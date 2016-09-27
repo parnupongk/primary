@@ -94,7 +94,7 @@ namespace PrimaryHaul.WebUI
                 lblErr.Text = "";
                 int isError = PH_BHCalc.PH_BHTrans_Calc(AppCode.strConnDB, ddlDateWeek.SelectedValue);
                 DataBindTransCalc();
-                string message = isError > 0 ? "Save Data Successfull" : "Save Data Not Successfull";
+                string message = isError > 0 ? "Calculate Data Successfull" : "Calculate Data Not Successfull";
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alertmsg", "alert('" + message + "');", true);
             }
             catch(Exception ex)

@@ -1,0 +1,24 @@
+
+Log Entry : 
+26/09/2016 12:33:08
+ IP :  ::1 
+Error in: http://localhost:35449/login.aspx. Error Message:UserSignIn >> PH_UserProfile_SigIn >>Login failed for user 'sa'.
+__________________________
+
+Log Entry : 
+26/09/2016 12:33:44
+ IP :  ::1 
+Error in: http://localhost:35449/login.aspx. Error Message:UserSignIn >> PH_UserProfile_SigIn >>Login failed for user 'sa'.
+__________________________
+
+Log Entry : 
+26/09/2016 12:36:29
+ IP :  ::1 
+Error in: http://localhost:35449/haulier_upload.aspx?r=A1&id=1. Error Message:Verlify Data >> Row Index : 0 err message : PH_HaulierUp_InsertTMP >> The stored procedure 'usp_PrimaryHaul_TransportationTMP_Insert' doesn't exist.
+__________________________
+
+Log Entry : 
+26/09/2016 12:36:29
+ IP :  ::1 
+Error in: http://localhost:35449/haulier_upload.aspx?r=A1&id=1. Error Message:Verlify Data >>PH_HaulierUp_Verify >> Could not find stored procedure 'usp_PrimaryHaul_TransportationTMP_Verify'.
+__________________________
