@@ -14,6 +14,9 @@
         document.getElementById('form_import').style.display = 'none';
         document.getElementById(varTab).style.display = '';
     }
+    function js_reload(varUrl) {
+        window.location.href = document.getElementById(varUrl).value
+    }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
@@ -57,7 +60,7 @@
             <div class="col-md-12">             
                 <div runat="server" class="form-group">
                     <asp:Label runat="server" AssociatedControlID="lnkFile" CssClass="col-md-3 control-label"></asp:Label>
-                    <div class="col-md-9"><a runat="server" id="lnkFile" href="file/bh_rams.xlsx" target="_blank" >file ตัวอย่าง</a></div>
+                    <div class="col-md-9"><a runat="server" id="lnkFile" href="file/Ex_BH_RAMS_WKxx.xlsx" target="_blank" >file ตัวอย่าง</a></div>
                 </div>
                 <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="AjaxFileUpload" CssClass="col-md-3 control-label">Import File :</asp:Label>
@@ -69,6 +72,9 @@
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-9">
                         <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-default" OnClick="btnSubmit_Click" OnClientClick="js_perload();" /><p class="text-danger"><asp:Label ID="lblErr" runat="server"></asp:Label></p>
+                    </div>
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="button" onclick="js_reload('urlSubmit');" class="btn btn-default">Reload File</button>
                     </div>
                 </div> 
             </div>

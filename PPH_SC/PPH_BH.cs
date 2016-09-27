@@ -85,7 +85,7 @@ namespace PPH_SC
             return cmd.ExecuteReader();
         }
 
-        public static Boolean insert_rams(string strConnDB, string DC_No, string Week, string Vendor_Code, string Dept_Code, string Dept_Name, string Class_Name, string Style, string Desciptions, string Rec_Case, string BH_Rate, string BH_Amount, string PO_No, string Del_Date, string File_Name, string UserID)
+        public static Boolean insert_rams(string strConnDB, string DC_No, string Week, string Vendor_Code, string Dept_Code, string Dept_Name, string Class_Name, string Style, string Rec_Case, string BH_Rate, string BH_Amount, string PO_No, string Del_Date, string File_Name, string UserID)
         {
             if (BH_Rate == "") { BH_Rate = "0"; }
             SqlConnection objConn = new SqlConnection();
@@ -103,7 +103,6 @@ namespace PPH_SC
                 cmd.Parameters.AddWithValue("@Dept_Name", Dept_Name);
                 cmd.Parameters.AddWithValue("@Class_Name", Class_Name);
                 cmd.Parameters.AddWithValue("@Style", Style);
-                cmd.Parameters.AddWithValue("@Desciptions", Desciptions);
                 cmd.Parameters.AddWithValue("@Rec_Case", Math.Round(decimal.Parse(Rec_Case), 2));
                 cmd.Parameters.AddWithValue("@BH_Rate", decimal.Parse(BH_Rate));
                 cmd.Parameters.AddWithValue("@BH_Amount", BH_Amount);

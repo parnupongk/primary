@@ -119,6 +119,7 @@ namespace PrimaryHaul.WebUI
                             {
                                 if (!string.IsNullOrEmpty(drRead[0].ToString().Trim()))
                                 {
+                                    if (drRead[0].ToString().Trim().ToLower() != "week"){
                                     #region Insert Row
                                     try
                                     {
@@ -186,7 +187,7 @@ namespace PrimaryHaul.WebUI
                                         PH_ExceptionManager.WriteError("prepare data BHUpload >> row index : " + index.ToString() + " Columns Err : " + strColumns + "err message : " + ex.Message);
                                     }
 
-
+                                    }
                                     #endregion
                                 }
 
