@@ -14,7 +14,7 @@ namespace PPH_SC
 {
     public class PPH_BH
     {
-        public static Boolean insert_ratecard(string strConnDB, string Vendor_Code, string Vendor_Name, string DC_No, string ChargeType, string Rate, string Unloading_Cost, string Income_Type, string StartDate, string EndDate)
+        public static Boolean insert_ratecard(string strConnDB, string Vendor_Code, string Vendor_Name, string DC_No, string ChargeType, string Rate, string Unloading_Cost, string Income_Type, string StartDate, string EndDate, string Fuel1, string Fuel2)
         {
             SqlConnection objConn = new SqlConnection();
             objConn.ConnectionString = strConnDB;
@@ -32,6 +32,8 @@ namespace PPH_SC
                 cmd.Parameters.Add("@Income_Type", SqlDbType.VarChar).Value = Income_Type;
                 cmd.Parameters.Add("@StartDate", SqlDbType.VarChar).Value = StartDate;
                 cmd.Parameters.Add("@EndDate", SqlDbType.VarChar).Value = EndDate;
+                cmd.Parameters.Add("@Fuel1", SqlDbType.VarChar).Value = 0;
+                cmd.Parameters.Add("@Fuel2", SqlDbType.VarChar).Value = 0;
                 cmd.ExecuteNonQuery();
                 
                 objConn.Close();

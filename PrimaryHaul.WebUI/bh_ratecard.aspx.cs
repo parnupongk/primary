@@ -73,11 +73,11 @@ namespace PrimaryHaul.WebUI
                 OleDbDataReader drRead = cmd.ExecuteReader();
                 while (drRead.Read())
                 {
-                    if (drRead[0].ToString() != "" && drRead[1].ToString() != "")
+                    if (drRead[0].ToString() != "")
                     {
                         countAll++;
 
-                        if (PPH_BH.insert_ratecard(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], drRead[1].ToString(), drRead[0].ToString(), drRead[2].ToString(), drRead[3].ToString(), drRead[4].ToString(), drRead[5].ToString(), drRead[6].ToString(), drRead[8].ToString(), drRead[9].ToString()) == true)
+                        if (PPH_BH.insert_ratecard(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], drRead[1].ToString(), drRead[0].ToString(), drRead[2].ToString(), drRead[3].ToString(), drRead[4].ToString(), drRead[5].ToString(), drRead[6].ToString(), drRead[7].ToString(), drRead[8].ToString(), drRead[9].ToString(), drRead[10].ToString()) == true)
                         {
                             countInsert++;
                         }
