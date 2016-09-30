@@ -1,0 +1,155 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="report_bh_unloading_cost.aspx.cs" Inherits="PrimaryHaul.WebUI.pph_include.download.report_bh_unloading_cost" %>
+<%@ Import Namespace="System.Data"%>
+<%@ Import Namespace="System.Data.SqlClient"%>
+<%@ Import Namespace="System.Linq"%>
+<%@ Import Namespace="System.Collections.Generic"%>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+<% 
+    string str_wkstart = ""; if (!string.IsNullOrEmpty(Request.QueryString["wkstart"] as string)) { str_wkstart = Request.QueryString["wkstart"].ToString(); }
+    string str_wkend = ""; if (!string.IsNullOrEmpty(Request.QueryString["wkend"] as string)) { str_wkend = Request.QueryString["wkend"].ToString(); }
+    string str_dc = "0"; if (!string.IsNullOrEmpty(Request.QueryString["dc"] as string)) { str_dc = Request.QueryString["dc"].ToString(); }
+    string str_vd = "ALL"; if (!string.IsNullOrEmpty(Request.QueryString["vd"] as string)) { str_vd = Request.QueryString["vd"].ToString(); } 
+%>
+<% if(Convert.ToInt32(str_wkstart) <= Convert.ToInt32(str_wkend)){ int i;%>
+
+        <table cellpadding="5"  align="center" border="1" bordercolor="#000000" cellspacing="0" width="100%">
+        <tr style="background-color:#9bbb59;">
+            <td style="text-align:center;">&nbsp;</td>
+            <% for(i=Convert.ToInt32(str_wkstart);i<=Convert.ToInt32(str_wkend);i++){ %>
+                <td style="text-align:center;" colspan="3">WK<%=Convert.ToString(i).Substring(Convert.ToString(i).Length - 2,2)%></td>
+            <% } %>
+        </tr>
+        <tr style="background-color:#9bbb59;">
+            <td style="text-align:center;">DC</td>
+            <% for(i=Convert.ToInt32(str_wkstart);i<=Convert.ToInt32(str_wkend);i++){ %>
+                <td style="text-align:center;">Unloading Cost</td>
+                <td style="text-align:center;">Load(RCVD)</td>
+                <td style="text-align:center;">Unloading(BHA)</td>
+            <% } %>
+        </tr>
+        <%                
+               DataTable dt = new DataTable();
+               DataRow dr;
+               dt.Columns.Add("Week");
+               dt.Columns.Add("DC");
+               dt.Columns.Add("Uploading_Cost", typeof(Double));
+               dt.Columns.Add("LoadRcvd", typeof(Double));
+               dt.Columns.Add("BHT", typeof(Double));
+               SqlCommand rs_dcrow = new SqlCommand("usp_BH_RPT_Unloading_Cost", objConn); rs_dcrow.CommandType = CommandType.StoredProcedure; rs_dcrow.Parameters.AddWithValue("@Week_Start", str_wkstart); rs_dcrow.Parameters.AddWithValue("@Week_End", str_wkend); rs_dcrow.Parameters.AddWithValue("@DC_No", str_dc); ; rs_dcrow.Parameters.AddWithValue("@Vendor_Name", str_vd); SqlDataReader obj_dcrow = rs_dcrow.ExecuteReader(); while (obj_dcrow.Read())
+               {
+                   dr = dt.NewRow();
+                   decimal doble_Uploading_Cost = 0, doble_LoadRcvd = 0, doble_BHT = 0;
+                   if (obj_dcrow["Uploading_Cost"].ToString() != "") { doble_Uploading_Cost = Convert.ToDecimal(obj_dcrow["Uploading_Cost"].ToString()); }
+                   if (obj_dcrow["LoadRcvd"].ToString() != "") { doble_LoadRcvd = Convert.ToDecimal(obj_dcrow["LoadRcvd"].ToString()); }
+                   if (obj_dcrow["BHT"].ToString() != "") { doble_BHT = Convert.ToDecimal(obj_dcrow["BHT"].ToString()); }
+	               dr["Week"] = obj_dcrow["Week"].ToString();
+                   dr["DC"] = obj_dcrow["DC_NO"].ToString();
+                   dr["Uploading_Cost"] = doble_Uploading_Cost;
+                   dr["LoadRcvd"] = doble_LoadRcvd;
+                   dr["BHT"] = doble_BHT;
+                   dt.Rows.Add(dr);
+               } obj_dcrow.Close();
+               
+               var x = (from r in dt.AsEnumerable() select r["DC"]).Distinct().ToList();
+               if (str_dc != "0")
+               {
+                   x = (from r in dt.AsEnumerable() where r.Field<string>("DC") == str_dc select r["DC"]).Distinct().ToList();
+               }
+               string detailColor = "style=\"background-color:#ffffff;\"";
+               foreach(string value in x)
+               {
+                   var vendors = (from m in dt.AsEnumerable()
+                                   where m.Field<string>("DC") == value
+                                    orderby m["DC"] ascending
+                                   select new 
+                                     {
+                                         DC = m.Field<string>("DC")
+                                     }).Distinct().ToList();
+                    string strFirst = "";
+                    foreach(var vendor in vendors)
+                    {
+                        
+       %>
+            <tr <%= detailColor %>>
+                <td style="text-align:center;vertical-align:top;" ><% if (strFirst != vendor.DC) { Response.Write(vendor.DC); } %></td>
+             <% 
+                     
+                 for(i=Convert.ToInt32(str_wkstart);i<=Convert.ToInt32(str_wkend);i++){
+                     
+                     DataRow[] result = dt.Select("Week = '" + Convert.ToString(i) + "' AND DC = " + vendor.DC + " ");
+                     
+             %>
+                <td style="text-align:right;">
+                    <%
+                     foreach (DataRow row in result)
+                     {
+                         string str_load = row["Uploading_Cost"].ToString();
+                         if (str_load == "") { str_load = ""; } else { str_load = Convert.ToDouble(str_load.ToString()).ToString("#,##0.00");}
+                         Response.Write(str_load);
+                     }                  
+                    %>
+                </td>
+                <td style="text-align:right;">
+                    <%
+                     foreach (DataRow row in result)
+                     {
+                         string str_case = row["LoadRcvd"].ToString();
+                         if (str_case == "") { str_case = ""; } else { str_case = Convert.ToDouble(str_case.ToString()).ToString("#,##0.00");}
+                         Response.Write(str_case);
+                     }
+                    %>
+               </td>
+               <td style="text-align:right;">
+                    <%
+                     foreach (DataRow row in result)
+                     {
+                         string str_bath = row["BHT"].ToString();
+                         if (str_bath == "") { str_bath = ""; } else { str_bath = Convert.ToDouble(str_bath.ToString()).ToString("#,##0.00");}
+                         Response.Write(str_bath);
+                     } 
+                    %>
+                </td>
+            <% }  %>
+        </tr>
+
+        <% strFirst = vendor.DC;} %>
+        
+
+        <% } %>
+        <tr style="background-color:#004f0b;">
+            <td style="text-align:center;color:#ffffff;" >Grand Total</td>
+             <% for(i=Convert.ToInt32(str_wkstart);i<=Convert.ToInt32(str_wkend);i++){ %>
+            <td style="text-align:right;color:#ffffff;">
+                <%
+                    string grandTotailLoad = dt.Compute("Sum(Uploading_Cost)", "Week = '" + Convert.ToString(i) + "'").ToString();
+                    if (grandTotailLoad == "") { grandTotailLoad = "0"; }
+                    Response.Write(Convert.ToDouble(grandTotailLoad).ToString("#,##0.00"));
+                %>
+            </td>
+            <td style="text-align:right;color:#ffffff;">
+                <%
+                    string grandTotailCase = dt.Compute("Sum(LoadRcvd)", "Week = '" + Convert.ToString(i) + "'").ToString();
+                    if (grandTotailCase == "") { grandTotailCase = "0"; }
+                    Response.Write(Convert.ToDouble(grandTotailCase).ToString("#,##0.00"));
+                %>
+            </td>
+            <td style="text-align:right;color:#ffffff;">
+                <%
+                    string grandTotailBath = dt.Compute("Sum(BHT)", "Week = '" + Convert.ToString(i) + "'").ToString();
+                    if (grandTotailBath == "") { grandTotailBath = "0"; }
+                    Response.Write(Convert.ToDouble(grandTotailBath).ToString("#,##0.00"));
+                %>
+            </td>
+        <% } %>
+        </tr>
+        </table>
+
+<% } %>
+</body>
+</html>

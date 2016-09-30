@@ -190,6 +190,7 @@
     <Content Include="pph_include\download\report.aspx" />
     <Content Include="pph_include\download\report_bh_accounting.aspx" />
     <Content Include="pph_include\download\report_bh_pslreport.aspx" />
+    <Content Include="pph_include\download\report_bh_unloading_cost.aspx" />
     <Content Include="pph_include\download\report_kpi.aspx" />
     <Content Include="pph_include\download\report_sum.aspx" />
     <Content Include="pph_include\download\report_summary.aspx" />
@@ -215,6 +216,7 @@
     <Content Include="report_bh_accounting.aspx" />
     <Content Include="report_bh_charge_by_vendor.aspx" />
     <Content Include="report_bh_pslreport.aspx" />
+    <Content Include="report_bh_unloading_cost_report.aspx" />
     <Content Include="report_finance.aspx" />
     <Content Include="report_kpi.aspx" />
     <Content Include="report_venderlog.aspx" />
@@ -737,6 +739,13 @@
     <Compile Include="pph_include\download\report_bh_pslreport.aspx.designer.cs">
       <DependentUpon>report_bh_pslreport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pph_include\download\report_bh_unloading_cost.aspx.cs">
+      <DependentUpon>report_bh_unloading_cost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pph_include\download\report_bh_unloading_cost.aspx.designer.cs">
+      <DependentUpon>report_bh_unloading_cost.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pph_include\download\report_kpi.aspx.cs">
       <DependentUpon>report_kpi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -883,6 +892,13 @@
     </Compile>
     <Compile Include="report_bh_pslreport.aspx.designer.cs">
       <DependentUpon>report_bh_pslreport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="report_bh_unloading_cost_report.aspx.cs">
+      <DependentUpon>report_bh_unloading_cost_report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="report_bh_unloading_cost_report.aspx.designer.cs">
+      <DependentUpon>report_bh_unloading_cost_report.aspx</DependentUpon>
     </Compile>
     <Compile Include="report_finance.aspx.cs">
       <DependentUpon>report_finance.aspx</DependentUpon>
