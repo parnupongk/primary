@@ -724,7 +724,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                         int Type, 
                         string Appt_No, 
                         int Case_Appt, 
-                        decimal Pallet, 
+                        string Pallet, 
                         string Remark, 
                         decimal Pallet_From_Vendor, 
                         int Total_Pallet_From_Vendor, 
@@ -883,7 +883,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 base.Columns.Add(this.columnAppt_No);
                 this.columnCase_Appt = new global::System.Data.DataColumn("Case_Appt", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCase_Appt);
-                this.columnPallet = new global::System.Data.DataColumn("Pallet", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnPallet = new global::System.Data.DataColumn("Pallet", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPallet);
                 this.columnRemark = new global::System.Data.DataColumn("Remark", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRemark);
@@ -1304,10 +1304,10 @@ namespace PrimaryHaul_WS.AppCode_DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Pallet {
+            public string Pallet {
                 get {
                     try {
-                        return ((decimal)(this[this.tableBH_Transaction_TMP.PalletColumn]));
+                        return ((string)(this[this.tableBH_Transaction_TMP.PalletColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Pallet\' in table \'BH_Transaction_TMP\' is DBNull.", e);
