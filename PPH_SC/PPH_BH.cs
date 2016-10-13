@@ -21,6 +21,8 @@ namespace PPH_SC
             objConn.Open();         
             try
             {
+                if (Fuel1 == "" || Fuel1 == null) { Fuel1 = "0"; }
+                if (Fuel2 == "" || Fuel2 == null) { Fuel2 = "0"; }
                 SqlCommand cmd = new SqlCommand("usp_BH_RateCard_Insert", objConn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Vendor_Code", SqlDbType.VarChar).Value = Vendor_Code;
@@ -32,8 +34,8 @@ namespace PPH_SC
                 cmd.Parameters.Add("@Income_Type", SqlDbType.VarChar).Value = Income_Type;
                 cmd.Parameters.Add("@StartDate", SqlDbType.VarChar).Value = StartDate;
                 cmd.Parameters.Add("@EndDate", SqlDbType.VarChar).Value = EndDate;
-                cmd.Parameters.Add("@Fuel1", SqlDbType.VarChar).Value = 0;
-                cmd.Parameters.Add("@Fuel2", SqlDbType.VarChar).Value = 0;
+                cmd.Parameters.Add("@Fuel1", SqlDbType.Decimal).Value = Convert.ToDecimal(Fuel1);
+                cmd.Parameters.Add("@Fuel2", SqlDbType.Decimal).Value = Convert.ToDecimal(Fuel2);
                 cmd.ExecuteNonQuery();
                 
                 objConn.Close();
