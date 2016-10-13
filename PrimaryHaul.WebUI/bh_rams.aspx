@@ -3,8 +3,7 @@
 <%@ Import Namespace="System.Data.SqlClient"%>
 <%@ Import Namespace="PrimaryHaul_WS"%>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
-</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
 <% string strFrm = "form_import"; if (!string.IsNullOrEmpty(Request.QueryString["frm"] as string)) { strFrm = Request.QueryString["frm"].ToString(); }  %>
 <input type="hidden" name="urlSubmit" id="urlSubmit" value="<%= HttpContext.Current.Request.Url.AbsolutePath %>?r=<%= Request.QueryString["r"].ToString() %>&id=<%= Request.QueryString["id"].ToString() %>" />
@@ -71,7 +70,7 @@
                 </div> 
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-9">
-                        <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-default" OnClick="btnSubmit_Click" OnClientClick="js_perload();" /><p class="text-danger"><asp:Label ID="lblErr" runat="server"></asp:Label></p>
+                        <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-default" OnClick="btnSubmit_Click" /><p class="text-danger"><asp:Label ID="lblErr" runat="server"></asp:Label></p>
                     </div>
                     <div class="col-md-offset-3 col-md-9">
                         <button type="button" onclick="js_reload('urlSubmit');" class="btn btn-default">Reload File</button>

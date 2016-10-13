@@ -42,7 +42,60 @@ namespace PrimaryHaul.WebUI
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (Session["fileName"] != null)
+            Response.Buffer = false;
+            Response.BufferOutput = false;
+            string path = Session["fileName"].ToString();
+            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source= " + path + " ; Extended Properties=Excel 8.0;";
+            string connectionStringXLSX = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= " + path + " ; Extended Properties=\"Excel 12.0;IMEX=1;HDR=Yes;TypeGuessRows=0;ImportMixedTypes=Text\"";
+            connectionString = (path.IndexOf("xlsx") > 0 || path.IndexOf("xlsb") > 0) ? connectionStringXLSX : connectionString;
+            OleDbConnection conn = new OleDbConnection(connectionString);
+            if (conn.State == ConnectionState.Open) conn.Close();
+            conn.Open();
+            try
+            {
+
+                #region Insert
+                DataTable dbSchema1 = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                if (dbSchema1 == null || dbSchema1.Rows.Count < 1) { throw new Exception("Error: Could not determine the name of the first worksheet."); }
+                string firstSheetName_rams = dbSchema1.Rows[0]["TABLE_NAME"].ToString();
+                int countAll = 0, countInsert = 0;
+                string sql = "select * from [" + firstSheetName_rams + "]";
+                OleDbCommand cmd1 = new OleDbCommand(sql, conn);
+                OleDbDataReader drReadrams = cmd1.ExecuteReader();
+                while (drReadrams.Read())
+                {
+                    if (drReadrams[1].ToString() != "" && drReadrams[2].ToString() != "")
+                    {
+                        countAll++;
+                        string excelPr = hidYW.Value.ToString().Substring(4, 2);
+                        if (excelPr.Substring(0, 1) == "0") { excelPr = excelPr.Substring(1, 1); }
+                        if (hidYW.Value.ToString().Substring(0, 4) == drReadrams[2].ToString() && excelPr == drReadrams[1].ToString())
+                        {
+                            if (PPH_BH.insert_rams(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], drReadrams[0].ToString(), drReadrams[2].ToString() + drReadrams[1].ToString(), drReadrams[3].ToString(), drReadrams[4].ToString(), drReadrams[5].ToString(), drReadrams[6].ToString(), drReadrams[7].ToString(), drReadrams[8].ToString(), drReadrams[9].ToString(), drReadrams[10].ToString(), drReadrams[11].ToString(), drReadrams[12].ToString(), Session["fileName"].ToString(), Session["s_userID"].ToString()) == true)
+                            {
+                                countInsert++;
+                                Response.Write(countInsert + "<br />");
+                            }
+                        }
+                        //Response.Write(countAll + "<br />");
+                    }
+
+                }
+                Session["showCount"] = countInsert + " From " + countAll + " Rows Inserted ";
+                conn.Close();
+                Response.Write("<script>alert('Import Data Successful');</script>");
+                btnSubmit.Enabled = false;
+                msgInsert.Text = Session["showCount"].ToString();
+                //return true;
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                PrimaryHaul_WS.PH_ExceptionManager.WriteError(ex.Message);
+                //return false;
+            }
+           /*if (Session["fileName"] != null) 
             {
                 
                 if (InsertData(Session["fileName"].ToString()))
@@ -60,7 +113,7 @@ namespace PrimaryHaul.WebUI
             else
             {
                 msgInsert.Text = "";
-            }
+            }*/
         }
 
         private bool InsertData(string path)
