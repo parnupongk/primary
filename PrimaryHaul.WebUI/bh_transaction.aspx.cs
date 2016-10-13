@@ -171,10 +171,11 @@ namespace PrimaryHaul.WebUI
                                         strColumns = "Rate";
                                         dr.Rate_Unloading = !Regex.IsMatch(drRead[18].ToString(), @"\d") ? 0 : int.Parse(drRead[18].ToString());
                                         strColumns = "Rate_Unloading";
+                                            dr.Fuel_Rate = !Regex.IsMatch(drRead[19].ToString(), @"\d") ? 0 : int.Parse(drRead[19].ToString());
 
-                                        dtBHTrans.Rows.Add(dr);
+                                            dtBHTrans.Rows.Add(dr);
                                         //PH_BHUpload.PH_BHTransaction_InsertTMP(AppCode.strConnDB, dr);
-                                        if (PPH_BH.insert_bhtransactonTMP(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], dr.Week_Upload, dr.Week, dr.Period, dr.Vendor_Name, dr.Appt_Date, dr.Load_Appt, dr.Load_Rcvd, dr.PO_No, dr.DC_No, dr.Load_No, dr.Appt_To_DC, dr.Type, dr.Appt_No, dr.Case_Appt, dr.Pallet, dr.Remark, dr.Pallet_From_Vendor, dr.Total_Pallet_From_Vendor, dr.Rate, dr.Rate_Unloading, dr.File_Name, dr.UserID) == true)
+                                        if (PPH_BH.insert_bhtransactonTMP(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], dr.Week_Upload, dr.Week, dr.Period, dr.Vendor_Name, dr.Appt_Date, dr.Load_Appt, dr.Load_Rcvd, dr.PO_No, dr.DC_No, dr.Load_No, dr.Appt_To_DC, dr.Type, dr.Appt_No, dr.Case_Appt, dr.Pallet, dr.Remark, dr.Pallet_From_Vendor, dr.Total_Pallet_From_Vendor, dr.Rate, dr.Rate_Unloading, dr.File_Name, dr.UserID,dr.Fuel_Rate) == true)
                                         {
                                            
                                         }

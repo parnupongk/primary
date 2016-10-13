@@ -202,7 +202,7 @@ namespace PPH_SC
             return cmd_kpireport.ExecuteReader();
         }
 
-        public static Boolean insert_bhtransactonTMP(string strConnDB, string Week_Upload, string Week, int Period, string Vendor_Name, DateTime Appt_Date, int Load_Appt, int Load_Rcvd, string PO_No, int DC_No, int Load_No, string Appt_To_DC, int Type, string Appt_No, decimal Case_Appt, string Pallet, string Remark, decimal Pallet_From_Vendor, decimal Total_Pallet_From_Vendor, decimal Rate, decimal Rate_Unloading, string File_Name, int UserID)
+        public static Boolean insert_bhtransactonTMP(string strConnDB, string Week_Upload, string Week, int Period, string Vendor_Name, DateTime Appt_Date, int Load_Appt, int Load_Rcvd, string PO_No, int DC_No, int Load_No, string Appt_To_DC, int Type, string Appt_No, decimal Case_Appt, string Pallet, string Remark, decimal Pallet_From_Vendor, decimal Total_Pallet_From_Vendor, decimal Rate, decimal Rate_Unloading, string File_Name, int UserID,decimal fuel_rate)
         {   
             SqlConnection objConn = new SqlConnection();
             objConn.ConnectionString = strConnDB;
@@ -234,6 +234,7 @@ namespace PPH_SC
                 cmd.Parameters.AddWithValue("@Rate_Unloading", Rate_Unloading);
                 cmd.Parameters.AddWithValue("@File_Name", File_Name);
                 cmd.Parameters.AddWithValue("@UserID", UserID);
+                cmd.Parameters.AddWithValue("@Fuel_Rate", fuel_rate);
                 cmd.ExecuteNonQuery();
                 
                 objConn.Close();

@@ -351,6 +351,8 @@ namespace PrimaryHaul_WS.AppCode_DS {
             
             private global::System.Data.DataColumn columnStatus;
             
+            private global::System.Data.DataColumn columnFuel_Rate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public BH_Transaction_TMPDataTable() {
@@ -674,6 +676,14 @@ namespace PrimaryHaul_WS.AppCode_DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Fuel_RateColumn {
+                get {
+                    return this.columnFuel_Rate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -744,7 +754,8 @@ namespace PrimaryHaul_WS.AppCode_DS {
                         int UserID, 
                         System.DateTime StampTime, 
                         string Week_OnFile, 
-                        string Status) {
+                        string Status, 
+                        decimal Fuel_Rate) {
                 BH_Transaction_TMPRow rowBH_Transaction_TMPRow = ((BH_Transaction_TMPRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -782,7 +793,8 @@ namespace PrimaryHaul_WS.AppCode_DS {
                         UserID,
                         StampTime,
                         Week_OnFile,
-                        Status};
+                        Status,
+                        Fuel_Rate};
                 rowBH_Transaction_TMPRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBH_Transaction_TMPRow);
                 return rowBH_Transaction_TMPRow;
@@ -848,6 +860,7 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 this.columnStampTime = base.Columns["StampTime"];
                 this.columnWeek_OnFile = base.Columns["Week_OnFile"];
                 this.columnStatus = base.Columns["Status"];
+                this.columnFuel_Rate = base.Columns["Fuel_Rate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -925,6 +938,8 @@ namespace PrimaryHaul_WS.AppCode_DS {
                 base.Columns.Add(this.columnWeek_OnFile);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
+                this.columnFuel_Rate = new global::System.Data.DataColumn("Fuel_Rate", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFuel_Rate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnTransID}, true));
                 this.columnTransID.AutoIncrement = true;
@@ -1636,6 +1651,22 @@ namespace PrimaryHaul_WS.AppCode_DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Fuel_Rate {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableBH_Transaction_TMP.Fuel_RateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Fuel_Rate\' in table \'BH_Transaction_TMP\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBH_Transaction_TMP.Fuel_RateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsVendor_CodeNull() {
                 return this.IsNull(this.tableBH_Transaction_TMP.Vendor_CodeColumn);
             }
@@ -1968,6 +1999,18 @@ namespace PrimaryHaul_WS.AppCode_DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetStatusNull() {
                 this[this.tableBH_Transaction_TMP.StatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFuel_RateNull() {
+                return this.IsNull(this.tableBH_Transaction_TMP.Fuel_RateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFuel_RateNull() {
+                this[this.tableBH_Transaction_TMP.Fuel_RateColumn] = global::System.Convert.DBNull;
             }
         }
         
