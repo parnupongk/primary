@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cpControl" runat="server">
 <style>
     div.container {
-        background-color:#1ea48b;
+        /*background-color:#1ea48b;*/
     }
     img.displayed {
         display: block;
@@ -14,7 +14,7 @@
     }
 </style>
     <br /><br /><br />
-    <img class="displayed" src="./pph_include/images/bg_dashboard.png" />
+    <img class="displayed" src="./pph_include/images/S_5078965740105.jpg" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <br /><br /><br /><br /><br /><br />
 </asp:Content>

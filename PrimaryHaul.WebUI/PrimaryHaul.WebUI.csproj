@@ -199,6 +199,7 @@
     <Content Include="pph_include\download\vendor_file.aspx" />
     <Content Include="pph_include\images\bg_dashboard.png" />
     <Content Include="pph_include\images\loading.gif" />
+    <Content Include="pph_include\images\S_5078965740105.jpg" />
     <Content Include="pph_include\images\tesco_logo.jpg" />
     <Content Include="pph_include\jquery\jquery-ui.js" />
     <Content Include="pph_include\jquery\jquery.js" />
