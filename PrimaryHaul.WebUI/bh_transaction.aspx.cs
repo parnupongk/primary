@@ -171,7 +171,7 @@ namespace PrimaryHaul.WebUI
                                         strColumns = "Rate";
                                         dr.Rate_Unloading = !Regex.IsMatch(drRead[18].ToString(), @"\d") ? 0 : int.Parse(drRead[18].ToString());
                                         strColumns = "Rate_Unloading";
-                                            dr.Fuel_Rate = !Regex.IsMatch(drRead[19].ToString(), @"\d") ? 0 : int.Parse(drRead[19].ToString());
+                                            dr.Fuel_Rate = !Regex.IsMatch(drRead[20].ToString(), @"\d") ? 0 : decimal.Parse(drRead[20].ToString());
 
                                             dtBHTrans.Rows.Add(dr);
                                         //PH_BHUpload.PH_BHTransaction_InsertTMP(AppCode.strConnDB, dr);
