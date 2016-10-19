@@ -13,8 +13,6 @@
         margin-right: auto;
     }
 </style>
-    <br /><br /><br />
     <img class="displayed" src="./pph_include/images/S_5078965740105.jpg" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <br /><br /><br /><br /><br /><br />
 </asp:Content>
