@@ -25,7 +25,7 @@
         <tr style="background-color:#9bbb59;">
             <td style="text-align:center;" colspan="3">&nbsp;</td>
             <% for(i=Convert.ToInt32(str_wkstart);i<=Convert.ToInt32(str_wkend);i++){ %>
-                <td style="text-align:center;" colspan="3">WK<%=Convert.ToString(i).Substring(Convert.ToString(i).Length - 2,2)%></td>
+                <td style="text-align:center;" colspan="4">WK<%=Convert.ToString(i).Substring(Convert.ToString(i).Length - 2,2)%></td>
             <% } %>
         </tr>
         <tr style="background-color:#9bbb59;">
@@ -36,6 +36,7 @@
                 <td style="text-align:center;">Load</td>
                 <td style="text-align:center;">Case</td>
                 <td style="text-align:center;">Bath</td>
+                <td style="text-align:center;">Income Type</td>
             <% } %>
         </tr>
         <%                
@@ -45,10 +46,11 @@
                dt.Columns.Add("DC");
                dt.Columns.Add("Vendor");
                dt.Columns.Add("VendorName");
+               dt.Columns.Add("IncomeType");
                dt.Columns.Add("Load", typeof(Double));
                dt.Columns.Add("Case", typeof(Double));
                dt.Columns.Add("Bath", typeof(Double));
-               SqlCommand rs_dcrow = new SqlCommand("usp_BH_Accounting", objConn); rs_dcrow.CommandType = CommandType.StoredProcedure; rs_dcrow.Parameters.AddWithValue("@Week_Start", str_wkstart); rs_dcrow.Parameters.AddWithValue("@Week_End", str_wkend); rs_dcrow.Parameters.AddWithValue("@DC_No", str_dc); ; rs_dcrow.Parameters.AddWithValue("@Vendor_Name", str_vd); SqlDataReader obj_dcrow = rs_dcrow.ExecuteReader(); while (obj_dcrow.Read())
+               SqlCommand rs_dcrow = new SqlCommand("usp_BH_RPT_Accounting", objConn); rs_dcrow.CommandType = CommandType.StoredProcedure; rs_dcrow.Parameters.AddWithValue("@Week_Start", str_wkstart); rs_dcrow.Parameters.AddWithValue("@Week_End", str_wkend); rs_dcrow.Parameters.AddWithValue("@DC_No", str_dc); ; rs_dcrow.Parameters.AddWithValue("@Vendor_Name", str_vd); SqlDataReader obj_dcrow = rs_dcrow.ExecuteReader(); while (obj_dcrow.Read())
                {
                    dr = dt.NewRow();
                    decimal doble_load = 0, doble_case = 0, doble_bath = 0;
@@ -59,6 +61,7 @@
 	               dr["DC"] = obj_dcrow["DC_NO"].ToString();
 	               dr["Vendor"] = obj_dcrow["Vendor_Code"].ToString();
 	               dr["VendorName"] = obj_dcrow["Vendor_Name"].ToString();
+                   dr["IncomeType"] = obj_dcrow["IncomeType"].ToString();
 	               dr["Load"] = doble_load;
 	               dr["Case"] = doble_case;
                    dr["Bath"] = doble_bath;
@@ -128,6 +131,15 @@
                      } 
                     %>
                 </td>
+                <td style="text-align:center;">
+                    <%
+                     foreach (DataRow row in result)
+                     {
+                         string str_bath = row["IncomeType"].ToString();
+                         Response.Write(str_bath);
+                     } 
+                    %>
+                </td>
             <% }  %>
         </tr>
 
@@ -156,6 +168,7 @@
                     Response.Write(Convert.ToDouble(subTotailBath).ToString("#,##0.00"));
                 %>
             </td>
+             <td style="text-align:right;"></td>
         <% } %>
             </tr>
 
@@ -184,6 +197,7 @@
                     Response.Write(Convert.ToDouble(grandTotailBath).ToString("#,##0.00"));
                 %>
             </td>
+            <td style="text-align:right;"></td>
         <% } %>
         </tr>
         </table>
