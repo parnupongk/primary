@@ -70,7 +70,7 @@
                 </div> 
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-9">
-                        <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-default" OnClick="btnSubmit_Click" /><p class="text-danger"><asp:Label ID="lblErr" runat="server"></asp:Label></p>
+                        <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-default" OnClick="btnSubmit_Click"  OnClientClick="js_perload()" /><p class="text-danger"><asp:Label ID="lblErr" runat="server"></asp:Label></p>
                     </div>
                     <div class="col-md-offset-3 col-md-9">
                         <button type="button" onclick="js_reload('urlSubmit');" class="btn btn-default">Reload File</button>

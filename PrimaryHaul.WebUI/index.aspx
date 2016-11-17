@@ -11,8 +11,9 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
+        
     }
 </style>
-    <img class="displayed" src="./pph_include/images/S_5078965740105.jpg" />
+    <img style="width:100%;" src="./pph_include/images/S_5078965740105.jpg" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </asp:Content>

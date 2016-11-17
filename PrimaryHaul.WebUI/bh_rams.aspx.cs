@@ -42,8 +42,6 @@ namespace PrimaryHaul.WebUI
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            Response.Buffer = false;
-            Response.BufferOutput = false;
             string path = Session["fileName"].ToString();
             string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source= " + path + " ; Extended Properties=Excel 8.0;";
             string connectionStringXLSX = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= " + path + " ; Extended Properties=\"Excel 12.0;IMEX=1;HDR=Yes;TypeGuessRows=0;ImportMixedTypes=Text\"";
@@ -74,7 +72,7 @@ namespace PrimaryHaul.WebUI
                             if (PPH_BH.insert_rams(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"], drReadrams[0].ToString(), drReadrams[2].ToString() + drReadrams[1].ToString(), drReadrams[3].ToString(), drReadrams[4].ToString(), drReadrams[5].ToString(), drReadrams[6].ToString(), drReadrams[7].ToString(), drReadrams[8].ToString(), drReadrams[9].ToString(), drReadrams[10].ToString(), drReadrams[11].ToString(), drReadrams[12].ToString(), Session["fileName"].ToString(), Session["s_userID"].ToString()) == true)
                             {
                                 countInsert++;
-                                //Response.Write(countInsert + "<br />");
+                                Response.Write("");
                             }
                         }
                         //Response.Write(countAll + "<br />");
