@@ -129,7 +129,8 @@ namespace PrimaryHaul.WebUI
                 DataTable dbSchema1 = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
                 if (dbSchema1 == null || dbSchema1.Rows.Count < 1){throw new Exception("Error: Could not determine the name of the first worksheet.");}
                 string firstSheetName_rams = dbSchema1.Rows[0]["TABLE_NAME"].ToString();
-                int countAll = 0, countInsert = 0;
+                int countAll = 0, countInsert = 0, countFirstError = 0;
+                string row_err = "";
                 string sql = "select * from [" + firstSheetName_rams + "]";
                 OleDbCommand cmd1 = new OleDbCommand(sql, conn);
                 OleDbDataReader drReadrams = cmd1.ExecuteReader();
@@ -146,11 +147,23 @@ namespace PrimaryHaul.WebUI
                             {
                                 countInsert++;
                             }
+                            else
+                            {
+                                countFirstError++;
+                                if (countFirstError == 1)
+                                {
+                                    row_err = "<br /> Error Row = " + countAll;
+                                }
+                                else
+                                {
+                                    row_err = row_err + "," + countAll;
+                                }           
+                            }
                         }
                     }
 
                 }
-                Session["showCount"] = countInsert + " From " + countAll + " Rows Inserted ";
+                Session["showCount"] = countInsert + " From " + countAll + " Rows Inserted " + row_err;
                 conn.Close();
                 return true;
                 #endregion

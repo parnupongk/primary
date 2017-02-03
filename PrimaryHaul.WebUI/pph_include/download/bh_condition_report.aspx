@@ -30,6 +30,7 @@
                 <td style="text-align:center;">DC</td>
                 <td style="text-align:center;">Case RCVD</td>
                 <td style="text-align:center;">BHA</td>
+                <td style="text-align:center;">Income Type</td>
             </tr>
             <%
                 string detailColor = "";
@@ -64,6 +65,7 @@
                 <td style="text-align:center;"><%= obj_resultD["DC_No"].ToString() %></td>
                 <td style="text-align:center;"><%= obj_resultD["RAMS_Case_RCVD"].ToString() %></td>
                 <td style="text-align:center;"><%= obj_resultD["RAMS_Case_Baht"].ToString() %></td>
+                <td style="text-align:center;"><%= obj_resultD["Income_Type"].ToString() %></td>
             </tr>
             <% } obj_resultD.Close();} %>
             <tr style="background-color:#9bbb59;">
@@ -73,6 +75,7 @@
                 <td style="text-align:center;" colspan="2"></td>
                 <td style="text-align:center;"><%= intSumCase %></td>
                 <td style="text-align:center;"><%= totalBHA %></td>
+                <td style="text-align:center;"></td>
             </tr>
         </table>
         </td>
