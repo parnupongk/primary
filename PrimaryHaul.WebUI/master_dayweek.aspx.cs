@@ -81,9 +81,11 @@ namespace PrimaryHaul.WebUI
                     {
                         string strBetweenS, strBetweenE, strBetween;
                         string[] arrSDate = drRead[2].ToString().Split('/'); strBetweenS = arrSDate[1] + " " + PPHfunction.chrShortMonth(arrSDate[0]) + " " + arrSDate[2].Substring(2, 2);
-                        string[] arrESDate = drRead[3].ToString().Split('/'); strBetweenE = arrESDate[1] + " " + PPHfunction.chrShortMonth(arrESDate[0]) + " " + arrESDate[2].Substring(2, 2); 
+                        string[] arrESDate = drRead[3].ToString().Split('/'); strBetweenE = arrESDate[1] + " " + PPHfunction.chrShortMonth(arrESDate[0]) + " " + arrESDate[2].Substring(2, 2);
+                        string insert_dayweek = drRead[1].ToString();
+                        if (insert_dayweek.Length == 1) { insert_dayweek = "0" + insert_dayweek; }
                         strBetween = strBetweenS + " - " + strBetweenE;
-                        PPHfunction.QueryExecuteNonQuery("insert into Date_Week_Info (Tesco_Year, Tesco_Week, Period_StartDate, Period_EndDate, Between_Date, Tesco_FY, Tesco_Period) values ('" + drRead[0] + "','" + drRead[1] + "','" + drRead[2] + "','" + drRead[3] + "','" + strBetween + "', '" + drRead[4] + "', '" + drRead[5] + "')");
+                        PPHfunction.QueryExecuteNonQuery("insert into Date_Week_Info (Tesco_Year, Tesco_Week, Period_StartDate, Period_EndDate, Between_Date, Tesco_FY, Tesco_Period) values ('" + drRead[0] + "','" + insert_dayweek + "','" + drRead[2] + "','" + drRead[3] + "','" + strBetween + "', '" + drRead[4] + "', '" + drRead[5] + "')");
                        
                     }
 
